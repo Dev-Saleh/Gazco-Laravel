@@ -27,7 +27,7 @@
 <!-- begin sidebar -->
 @include('dashboard.admin.includes.sidebare')
 <!-- end sidebar -->
-<main id="main" class="flex flex-col  bg-red-300 font-tajawal h-full mr-80 w-full ">
+<main id="main" class="flex flex-col  bg-red-300 font-tajawal h-screen overflow-y-scroll mr-72 w-full ">
 <!-- begin header -->
 @include('dashboard.admin.includes.header')
 <!-- end header -->
