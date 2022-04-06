@@ -6,22 +6,12 @@
                 <a class="text-2xl font-bold font-cairo text-gray-700  hover:text-blue-600 text-right "
                   href="#">غـازكو</a>
               </div>
-               <div class="text-sm font-semibold text-gray-700">
-                                  <a class="text-sm font-bold text-gray-700  p-1 border-b-2 border-transparent
-                                   hover:text-blue-700 
-                                   hover:border-blue-700
-                                     " href="#">Adding</a>
-                                 </div>  
-                                <div class="text-sm font-semibold text-gray-700">
-                                  <a class="text-sm font-bold text-gray-700  p-1 border-b-2 border-transparent
-                                  hover:text-blue-700 
-                                  hover:border-blue-700" href="#">View</a>
-                                </div> 
+              
 
             </div>
             <div class=" flex items-center">
               <button type="button" class=" h-8 w-8 rounded-full">
-                <img class="h-8 w-8 rounded-full" src="{{assets('assets/images/Dev-SL.jpeg')}}" alt="Admin">
+                <img class="h-8 w-8 rounded-full" src="{{asset('assets/images/Dev-SL.jpeg')}}" alt="Admin">
               </button>
             </div>
           </div>
