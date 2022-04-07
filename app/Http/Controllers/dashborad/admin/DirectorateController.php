@@ -77,7 +77,21 @@ class DirectorateController extends Controller
      */
     public function show(Directorate $directorate)
     {
-        //
+        try
+    {
+        $directorate=Directorate::select()->get();
+        return response()->json([
+            'status'      => true,
+            'directorate' => $directorate,
+        ]);
+    }
+    catch (\Exception $ex)
+    {
+       return response()->json([
+           'status' => false,
+           'msg'    => 'error in Show Directorate',
+       ]);
+    }
     }
 
     /**
@@ -86,9 +100,29 @@ class DirectorateController extends Controller
      * @param  \App\Models\Directorate  $directorate
      * @return \Illuminate\Http\Response
      */
-    public function edit(Directorate $directorate)
+    public function edit(Request $request)
     {
-        //
+        try{
+            $data=[];
+            $directorate = Directorate::find($request->id);
+               if (!$directorate)
+               return response()->json([
+                   'status' => false,
+                   'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+               ]);
+               $data['directorate']=$directorate;
+               return response()->json([
+                   'status' => true,
+                   'data' => $data,
+               ]);
+              }
+          catch (\Exception $ex)
+          {
+              return response()->json([
+                  'status' => false,
+                  'msg' => 'error in Edit Brand',
+              ]);
+          }
     }
 
     /**
@@ -98,9 +132,29 @@ class DirectorateController extends Controller
      * @param  \App\Models\Directorate  $directorate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Directorate $directorate)
+    public function update(Request $request)
     {
-        //
+        try {
+            // $directorate = Directorate::find($request->id);
+            // if (!$directorate)
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل بالتعديل برجاء المحاوله مجددا',
+                'id'  =>$request->id
+
+               ]);
+            // $directorate->update($request->all());
+            // $directorate->save();
+            // return response()->json([
+            //     'status' => true,
+            //     'msg' => 'تم التعديل بنجاح',
+            // ]);
+        } catch (\Exception $ex) {
+            // return response()->json([
+            //     'status' => false,
+            //     'msg' => 'فشل بالتعديل برجاء المحاوله مجددا',
+            //    ]);
+        }
     }
 
     /**
@@ -132,4 +186,5 @@ class DirectorateController extends Controller
           
          }
     }
+    
 }
