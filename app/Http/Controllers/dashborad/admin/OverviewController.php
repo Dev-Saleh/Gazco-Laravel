@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class DashboradController extends Controller
+class OverviewController extends Controller
 {
     // public function __construct()
     // {

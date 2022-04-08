@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Locks;
 use Illuminate\Http\Request;
 
-class LocksController extends Controller
+class GazLogsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class LocksController extends Controller
     public function index()
     {
         //
-        return view('dashboard.admin.logs.index');
+        return view('dashboard.admin.gaz_logs.index');
     }
 
     /**
