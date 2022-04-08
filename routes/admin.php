@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*/ 'prefix' => 'admin'], function () {
 
   
-    Route::get('/', 'DashboradController@index')->name('admin.dashboard');  // the first page admin visits if authenticated
+    Route::get('/', 'OverviewController@index')->name('admin.dashboard');  // the first page admin visits if authenticated
    
     ################################## directorate routes ######################################
   //  Route::group(['prefix' => 'directorate'], function () {
