@@ -16,7 +16,7 @@ Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*
      
      Route::group(['prefix' => 'directorate'], function () {
 
-     Route::post('Ddelete', 'DirectorateController@destroy')->name('directorate.destroy');
+    // Route::post('Ddelete', 'DirectorateController@destroy')->name('directorate.destroy');
      Route::post('Dedit', 'DirectorateController@edit')->name('directorate.edit');
      Route::post('Dfetch', 'DirectorateController@show')->name('directorate.fetch_all_Data');
      Route::post('Dupdate', 'DirectorateController@update')->name('directorate.update');

@@ -33,7 +33,7 @@ class RigonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RequestsRigon $request)
+    public function store(Request $request)
     {
         try { 
             $rigon = Rigon::create($request->except('_token'));
@@ -43,11 +43,18 @@ class RigonController extends Controller
                 'status' => true,
                 'msg' => 'تم الحفظ بنجاح',
             ]);
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+                'directorates' => $rigon,
+            ]);
+
         }
         catch (\Exception $ex) {
             return response()->json([
                 'status' => false,
                 'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+           
             ]);
         }
     }

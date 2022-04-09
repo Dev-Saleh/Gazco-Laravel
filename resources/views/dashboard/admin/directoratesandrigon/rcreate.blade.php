@@ -110,7 +110,7 @@
     }
  </script> --}}
 <!-- End fetch All directorate -->
-<!--Start Add Directorate By Ajax -->
+<!--Start Add Rigon By Ajax -->
   <script>
         $(document).on('click', '#save_rigon', function (e) {
             e.preventDefault();
@@ -141,6 +141,6 @@
             });
         });
   </script>
-<!--End Add Directorate By Ajax -->
+<!--End Add Rigon By Ajax -->
 
 @stop

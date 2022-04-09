@@ -1,6 +1,6 @@
          <div class="">
             <form action="" method="POST" id='directorateForm'>
-           @csrf
+           @csrf 
             <input type="text" name='id' style="display:none;" class="form-control"  id="directorate_id">
               <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6 flex flex-col items-center">
@@ -240,5 +240,37 @@
 
  </script>
 <!-- Start Update directorate By Ajax -->
+<!--Start Add Rigon By Ajax -->
+  <script>
+        $(document).on('click', '#save_rigon', function (e) {
+            e.preventDefault();
+            var formData = new FormData($('#rigonForm')[0]);       
+            $.ajax({
+                type: 'POST',
+                enctype: 'multipart/form-data',
+                url: "{{route('rigon.store')}}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (data) {
+                  console.log(data);
+                   if (data.status == true) {
+                     {{-- // alert.show(data.msg,'success')
+                        $('#rigon_id').val('');
+                        $('#rigon_name').val('');
+                       fetchrigon(); --}}
+                    }
+                  
+                }, error: function (reject) {
+                    var response = $.parseJSON(reject.responseText);
+                    $.each(response.errors, function (key, val) {
+                        $("#" + key + "_error").text(val[0]);
+                    }); 
+                }
+            });
+        });
+  </script>
+<!--End Add Rigon By Ajax -->
      
 @stop

@@ -61,6 +61,7 @@ class DirectorateController extends Controller
             return response()->json([
                 'status' => false,
                 'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+               
             ]);
         }
     }
