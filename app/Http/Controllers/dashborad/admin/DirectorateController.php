@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\dashborad\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Directorate;
+use App\Http\Requests\RDirectorate;
 use App\Models\Rigon;
 use App\Models\Station;
 use Illuminate\Http\Request;
@@ -44,13 +45,8 @@ class DirectorateController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    
+    public function store(RDirectorate $request)
     {
         try { 
             $directorate = Directorate::create($request->except('_token'));
@@ -77,7 +73,21 @@ class DirectorateController extends Controller
      */
     public function show(Directorate $directorate)
     {
-        //
+        try
+        {
+           $directorates = Directorate::select()->get();
+           return response()->json([
+            'status' => true,
+            'directorates' => $directorates,
+           ]);
+       }
+       catch (\Exception $ex)
+        {
+           return response()->json([
+               'status' => false,
+               'msg' => 'error in index',
+           ]);
+       }
     }
 
     /**
@@ -86,18 +96,29 @@ class DirectorateController extends Controller
      * @param  \App\Models\Directorate  $directorate
      * @return \Illuminate\Http\Response
      */
-    public function edit(Directorate $request)
+    public function edit(Request $request)
     {
-        $directorate = Directorate::find($request -> directorate_id);  // search in given table id only
+        try{
+        $directorate = Directorate::find($request -> id);  // search in given table id only
         if (!$directorate)
             return response()->json([
                 'status' => false,
                 'msg' => 'هذ العرض غير موجود',
+               
             ]);
 
-        $directorate = directorate::select()->find($request -> directorate_id);
-
-        return view('ajaxoffers.edit', compact('offer'));
+        $directorate = directorate::select()->find($request ->id);
+        return response()->json([
+            'status' => true,
+            'directorate' => $directorate,
+        ]);
+      }
+      catch (\Exception $ex) {
+        return response()->json([
+            'status' => false,
+            'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+        ]);
+    }
 
     }
 
@@ -108,9 +129,29 @@ class DirectorateController extends Controller
      * @param  \App\Models\Directorate  $directorate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Directorate $directorate)
+    public function update(RDirectorate $request)
     {
-        //
+        try{
+            $directorate = Directorate::find($request -> id);
+            if (!$directorate)
+                return response()->json([
+                    'status' => false,
+                    'msg' => 'هذ العرض غير موجود',
+                ]);
+            //update data
+            $directorate->update($request->all());
+            return response()->json([
+                'status' => true,
+                'msg' => 'تم  التحديث بنجاح',
+            ]);
+        }
+        catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+            ]);
+        }
+        
     }
 
     /**

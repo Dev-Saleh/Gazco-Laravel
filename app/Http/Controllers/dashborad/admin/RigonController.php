@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\dashborad\admin;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\Rigon as RequestsRigon;
 use App\Models\Rigon;
 use Illuminate\Http\Request;
 
@@ -33,9 +33,23 @@ class RigonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestsRigon $request)
     {
-        //
+        try { 
+            $rigon = Rigon::create($request->except('_token'));
+            $rigon->save();
+            if ($rigon)
+            return response()->json([
+                'status' => true,
+                'msg' => 'تم الحفظ بنجاح',
+            ]);
+        }
+        catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+            ]);
+        }
     }
 
     /**
@@ -46,7 +60,21 @@ class RigonController extends Controller
      */
     public function show(Rigon $rigon)
     {
-        //
+        try
+        {
+           $rigons = Rigon::select()->get();
+           return response()->json([
+            'status' => true,
+            'rigons' => $rigons,
+           ]);
+       }
+       catch (\Exception $ex)
+        {
+           return response()->json([
+               'status' => false,
+               'msg' => 'error in index',
+           ]);
+       }
     }
 
     /**

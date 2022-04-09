@@ -13,6 +13,25 @@ Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*
   //  Route::group(['prefix' => 'directorate'], function () {
     
      Route::resource('directorate', 'DirectorateController');
+     
+     Route::group(['prefix' => 'directorate'], function () {
+
+     Route::post('Ddelete', 'DirectorateController@destroy')->name('directorate.destroy');
+     Route::post('Dedit', 'DirectorateController@edit')->name('directorate.edit');
+     Route::post('Dfetch', 'DirectorateController@show')->name('directorate.fetch_all_Data');
+     Route::post('Dupdate', 'DirectorateController@update')->name('directorate.update');
+     ///////////
+     Route::post('Rstore', 'RigonController@store')->name('rigon.store');
+     Route::post('Rdelete', 'RigonController@destroy')->name('rigon.destroy');
+     Route::post('Redit', 'RigonController@edit')->name('rigon.edit');
+     Route::post('Rfetch', 'RigonController@show')->name('rigon.fetch_all_Data');
+     Route::post('Rupdate', 'RigonController@update')->name('rigon.update');
+  
+    
+     
+     });
+    
+    
      Route::resource('agent', 'AgentController');
      Route::resource('observer', 'ObserverController');
      Route::resource('log', 'LocksController');

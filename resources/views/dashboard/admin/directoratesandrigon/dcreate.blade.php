@@ -7,7 +7,7 @@
                   <div class="flex flex-col">
                     <div class="">
                       <div class="relative z-0 w-full mb-5">
-                        <input type="text" name="directorate_name" id="directorate_name" placeholder=" " required class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent
+                        <input type="text" name="directorate_name"  id="directorate_name" placeholder=" " required class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent
                        border-0 border-b-2 appearance-none 
                        focus:outline-none focus:ring-0 focus:border-blue-600 border-gray-200" />
                         <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اسم المديريه</label>
@@ -38,7 +38,7 @@
                               <th class="p-3 text-center">العمليات</th>
                             </tr>
                           </thead>
-                          <tbody>
+                          <tbody id='fetch_Alldir'>
                            @if($directorates && $directorates -> count() > 0)
                            @foreach($directorates as $directorate)
      +                       <tr  class="offerRow{{$directorate -> id}}" class="bg-gray-100 hover:scale-95 transform transition-all ease-in">
@@ -56,7 +56,7 @@
                                       d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                   </svg>
                                 </a>
-                                <a href="#" class="text-gray-400 hover:text-yellow-100  ">
+                                <a href="#" directorate="{{$directorate->id}}"  id="directorate_edit" class="text-gray-400 hover:text-yellow-100  ">
                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -78,8 +78,41 @@
           </div>
 
  @section('script')
+<!-- Start fetch All directorate -->
+ <script>
+  function fetchdirectorate()
+    {
+        $.ajax({
+                type: 'get',
+                url: "{{route('directorate.fetch_all_Data')}}",
+                dataType:"json",
 
-<!--Start Add Directorate-->
+                success: function (data) {      
+                 $('#fetch_Alldir').html("");
+                  $.each(data.directorates, function (key , directorate) {
+                     $('#fetch_Alldir').append('<tr class="offerRow'+directorate.id+' class="bg-gray-100 hover:scale-95 transform transition-all ease-in">\
+                              <td class="p-3">'+directorate.id+'</td>\
+                              <td class="p-3 text-center">'+directorate.directorate_name+'</td>\
+                              <td class="p-3 flex justify-evenly ">\
+                                <a href="#"  directorate="'+directorate.id+'"  class="directorate_delete btn btn-danger" class="text-gray-400  hover:text-red-400  ">\
+                                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
+                                  </svg>\
+                                </a>\
+                                <a href="#" directorate="'+directorate.id+'"  id="directorate_edit" class="text-gray-400 hover:text-yellow-100  ">\
+                                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"   d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
+                                  </svg>\
+                                </a>\
+                              </td>\
+                            </tr>');
+                  });
+                }
+            });
+    }
+ </script>
+<!-- End fetch All directorate -->
+<!--Start Add Directorate By Ajax -->
   <script>
         $(document).on('click', '#save_directorate', function (e) {
             e.preventDefault();
@@ -95,37 +128,36 @@
                 success: function (data) {
                    if (data.status == true) {
                       alert.show(data.msg,'success')
-                 
-                      //showDataBrand()
+                        $('#directorate_id').val('');
+                        $('#directorate_name').val('');
+                       fetchdirectorate();
                     }
-                  else{
-                       alert.show(data.msg,'error')
-                  }
+                  
                 }, error: function (reject) {
-                   {{-- var response = $.parseJSON(reject.responseText);
-                    $.each(response.errors, func+tion (key, val) {
+                    var response = $.parseJSON(reject.responseText);
+                    $.each(response.errors, function (key, val) {
                         $("#" + key + "_error").text(val[0]);
-                    });    --}}
+                    }); 
                 }
             });
         });
-      </script>
-<!--End Add Directorate-->
- <!-- Start Deleteing Attribute By Ajax -->
+  </script>
+<!--End Add Directorate By Ajax -->
+<!-- Start Deleteing directorate By Ajax -->
    <script>
         $(document).on('click', '.directorate_delete', function (e) {
             e.preventDefault();
               var directorate = $(this).attr('directorate');
             $.ajax({
-                type: 'delete',
-                url: "{{route('directorate.destroy',0)}}",
+                type: 'post',
+                url: "{{route('directorate.destroy')}}",
                 data: {
                     '_token': "{{csrf_token()}}",
                      'id' :directorate, 
                 },
                 success: function (data) {
                      if (data.status == true) {
-                      alert.show(data.msg,'success')
+                      alert.show(data.msg,'success');
                     }
                     $('.offerRow'+data.id).remove();
                 }, error: function (reject) {
@@ -134,7 +166,79 @@
             });
         });
 
-    </script> 
- <!-- End Deleting Attribute By Ajax -->
+   </script> 
+<!-- End Deleting directorate By Ajax -->
+<!-- Start edit directorate By Ajax -->
+       
+  <script>
+        $(document).on('click', '#directorate_edit', function (e) {
+            e.preventDefault();
+              var directorate = $(this).attr('directorate');
+            $.ajax({
+                type: 'post',
+                url:"{{route('directorate.edit')}}",
+                data: {
+                    '_token': "{{csrf_token()}}",
+                     'id' :directorate, 
+                },
+                success: function (data) {
+                  
+                     if (data.status == true) {
+                        
+                       //  window.directorate_id.value=data.directorate.id;
+                       //  window.directorate_name.value=data.directorate.directorate_name;
+                        $('#directorate_id').val(data.directorate.id);
+                        $('#directorate_name').val(data.directorate.directorate_name);
+                      
+                        window.save_directorate.style.display="none";
+                        window.update_directorate.style.display="inline-flex";
+                    }
+                 
+                }, error: function (reject) {
+
+                }
+            });
+        });
+  </script>
+
+<!-- Start edit directorate By Ajax -->
+<!-- Start Update directorate By Ajax -->
+ <script>
+
+        $(document).on('click', '#update_directorate', function (e) {
+            e.preventDefault();
+              var formData = new FormData($('#directorateForm')[0]);  
+            $.ajax({
+                type: 'post',
+                enctype: 'multipart/form-data',
+                url: "{{route('directorate.update')}}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (data) {
+
+                    if(data.status == true){
+
+                        $('#directorate_id').val('');
+                        $('#directorate_name').val('');
+                        window.save_directorate.style.display="inline-flex";
+                        window.update_directorate.style.display="none";
+                        fetchdirectorate();
+                    }
+                }, error: function (reject) {
+                    var response = $.parseJSON(reject.responseText);
+                    $.each(response.errors, function (key, val) {
+                        $("#" + key + "_error").text(val[0]);
+                    }); 
+                }
+                });
+            
+        });
+      
+
+
+ </script>
+<!-- Start Update directorate By Ajax -->
      
 @stop
