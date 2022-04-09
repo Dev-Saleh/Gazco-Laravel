@@ -1,6 +1,5 @@
   <aside id="sidebar"
-      class="w-80 h-screen z-20 right-0 top-0 fixed lg:bg-black xl:bg-slate-800 font-cairo text-white text-4xl font-bold transition-all duration-300
-      ">
+      class="w-72 h-screen z-20 right-0 top-0 fixed bg-stone-900 font-cairo text-white">
       <div class="p-6 flex items-center flex-col">
         <div class="avatar ">
           <div class="rounded-3xl w-24 h-24">
