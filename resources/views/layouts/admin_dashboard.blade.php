@@ -18,8 +18,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>@yield('title')</title>
 </head>
-<body dir="rtl" class="font-tajawal text-base">
-<div id="wrapper" class="flex bg-green-300 h-full relative">
+<body dir="rtl" class="font-tajawal text-base bg-gray-100">
+<div id="wrapper" class="flex h-full relative">
 <!-- fixed-top-->
 <!-- alert Success && error -->
 @include('dashboard.admin.includes.alerts.success')
@@ -27,7 +27,7 @@
 <!-- begin sidebar -->
 @include('dashboard.admin.includes.sidebare')
 <!-- end sidebar -->
-<main id="main" class="flex flex-col  bg-red-300 font-tajawal h-screen overflow-y-scroll mr-72 w-full ">
+<main id="main" class="flex flex-col font-tajawal h-screen overflow-y-auto mr-72 w-full ">
 <!-- begin header -->
 @include('dashboard.admin.includes.header')
 <!-- end header -->

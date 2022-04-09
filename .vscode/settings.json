@@ -1,0 +1,6 @@
+{
+    "liveServer.settings.port": 5501,
+    "editor.tokenColorCustomizations":{
+        "comments": "#ff1f5a",
+    }
+}
