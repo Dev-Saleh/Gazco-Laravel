@@ -13,7 +13,7 @@ class Rigon extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class Rigon extends FormRequest
     public function rules()
     {
         return [
-            //
+            'rigon_name' =>'required|max:25',
+           
+        ];
+    }
+    public function messages()
+    {
+
+        return [
+            'rigon_name.required' =>'أسم المربع مطلوب' ,
+            'rigon_name.max' =>'لايزيد عن 25 حرف',
+           // 'directorate_name.unique' =>'الاسم يجب ان يكون فريد' ,
         ];
     }
 }
