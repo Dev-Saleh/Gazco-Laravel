@@ -9,6 +9,9 @@
               </div>
               <!-- End Line -->
               <div class="mt-4 md:grid md:grid-cols-2 gap-x-10 gap-y-4 ">
+       <!-- Start Code Ajax -->
+        @include('dashboard.admin.includes.ajax.ajax')  
+      <!-- End Code Ajax -->
       <!-- Adding Directorates -->
         @include('dashboard.admin.directoratesandrigon.dcreate')   
       <!-- END Adding Directorates -->
@@ -19,6 +22,7 @@
       <!-- Adding Station -->
         @include('dashboard.admin.directoratesandrigon.screate')  
       <!-- END Adding Station -->
+     
             </div>
             </div>
       </article>

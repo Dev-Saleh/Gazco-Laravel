@@ -46,7 +46,7 @@ class RigonController extends Controller
             return response()->json([
                 'status' => false,
                 'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
-                'directorates' => $rigon,
+                
             ]);
 
         }
@@ -90,10 +90,34 @@ class RigonController extends Controller
      * @param  \App\Models\Rigon  $rigon
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rigon $rigon)
+    public function edit(Request $request)
     {
-        //
+        try{
+        $rigon = Rigon::find($request -> id);  // search in given table id only
+        if (!$rigon)
+            return response()->json([
+                'status' => false,
+                'msg' => 'هذ العرض غير موجود',
+               
+            ]);
+
+        $rigon = Rigon::select()->find($request ->id);
+      
+        return response()->json([
+            'status' => true,
+            'rigon' => $rigon,
+            'dir'   =>$rigon->directorate,
+        ]);
+      }
+      catch (\Exception $ex) {
+        return response()->json([
+            'status' => false,
+            'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+        ]);
     }
+
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -102,9 +126,28 @@ class RigonController extends Controller
      * @param  \App\Models\Rigon  $rigon
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rigon $rigon)
+    public function update(Request $request)
     {
-        //
+        try{
+            $rigon = Rigon::find($request -> id);
+            if (!$rigon)
+                return response()->json([
+                    'status' => false,
+                    'msg' => 'هذ العرض غير موجود',
+                ]);
+            //update data
+            $rigon->update($request->all());
+            return response()->json([
+                'status' => true,
+                'msg' => 'تم  التحديث بنجاح',
+            ]);
+        }
+        catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+            ]);
+        }
     }
 
     /**
@@ -113,8 +156,28 @@ class RigonController extends Controller
      * @param  \App\Models\Rigon  $rigon
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rigon $rigon)
+    public function destroy(Request $request)
     {
-        //
+        try {
+            $rigon = Rigon::find($request -> id); 
+            if (!$rigon)
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل بالتعديل برجاء المحاوله مجددا',
+               ]);
+             $rigon->delete();
+             return response()->json([
+                'status' => true,
+                'msg' => 'تم الحذف بنجاح',
+                'id' => $request -> id
+        ]);
+         } catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+            ]);
+          
+         }
     }
+
 }

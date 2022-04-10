@@ -37,7 +37,22 @@ class StationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try { 
+            $station = Station::create($request->except('_token'));
+            $station->save();
+            if ($station)
+            return response()->json([
+                'status' => true,
+                'msg' => 'تم الحفظ بنجاح',
+            ]);
+        }
+        catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+               
+            ]);
+        }
     }
 
     /**
@@ -48,7 +63,21 @@ class StationController extends Controller
      */
     public function show(Station $station)
     {
-        //
+        try
+        {
+           $station = Station::select()->get();
+           return response()->json([
+            'status' => true,
+            'stations' => $station,
+           ]);
+       }
+       catch (\Exception $ex)
+        {
+           return response()->json([
+               'status' => false,
+               'msg' => 'error in index',
+           ]);
+       }
     }
 
     /**
@@ -57,9 +86,29 @@ class StationController extends Controller
      * @param  \App\Station  $station
      * @return \Illuminate\Http\Response
      */
-    public function edit(Station $station)
+    public function edit(Request $request)
     {
-        //
+        try{
+            $station = Station::find($request -> id);  // search in given table id only
+            if (!$station)
+                return response()->json([
+                    'status' => false,
+                    'msg' => 'هذ العرض غير موجود',
+                   
+                ]);
+    
+            $station = Station::select()->find($request ->id);
+            return response()->json([
+                'status' => true,
+                'station' => $station,
+            ]);
+          }
+          catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+            ]);
+        }
     }
 
     /**
@@ -69,9 +118,29 @@ class StationController extends Controller
      * @param  \App\Station  $station
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Station $station)
+    public function update(Request $request)
     {
-        //
+        try{
+            $station = Station::find($request -> id);
+            if (!$station)
+                return response()->json([
+                    'status' => false,
+                    'msg' => 'هذ العرض غير موجود',
+                ]);
+            //update data
+            $station->update($request->all());
+            return response()->json([
+                'status' => true,
+                'msg' => 'تم  التحديث بنجاح',
+            ]);
+        }
+        catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+            ]);
+        }
+        
     }
 
     /**
@@ -80,8 +149,28 @@ class StationController extends Controller
      * @param  \App\Station  $station
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Station $station)
+    public function destroy(Request $request)
     {
-        //
+        try {
+            $station = Station::find($request -> id); 
+            if (!$station)
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل بالتعديل برجاء المحاوله مجددا',
+               ]);
+             $station->delete();
+             return response()->json([
+                'status' => true,
+                'msg' => 'تم الحذف بنجاح',
+                'id' => $request -> id
+        ]);
+         } catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+            ]);
+        
+         }
     }
+
 }

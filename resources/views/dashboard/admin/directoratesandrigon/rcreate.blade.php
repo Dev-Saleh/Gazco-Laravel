@@ -7,12 +7,14 @@
                   <div class="flex flex-col">
                     <div class="">
                     <div class="relative z-0 w-full mb-5">
-                <select name="select" value="" onclick="this.setAttribute('value', this.value);"
+                <select name="directorate_id" value="" id='select_directorates'  onclick="this.setAttribute('value', this.value);"
                   class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                  <option value="" selected disabled hidden></option>
-                  <option value="1">Admin</option>
-                  <option value="2">User</option>
-
+                  <option value="" id='select_directorate' selected disabled hidden></option>
+                  @if($directorates && $directorates -> count() > 0)
+                  @foreach($directorates as $directorate)
+                        <option value="{{$directorate -> id }}">{{$directorate -> directorate_name}}</option>
+                    @endforeach
+                 @endif
                 </select>
                 <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اختر المديريه</label>
                 <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
@@ -49,7 +51,7 @@
                           <tbody id='fetch_Allrigon'>
                            @if($rigons && $rigons -> count() > 0)
                            @foreach($rigons as $rigon)
-                            <tr class="bg-gray-100 hover:scale-95 transform transition-all ease-in">
+                            <tr  class="offerRow{{$rigon->id}}"  class="bg-gray-100 hover:scale-95 transform transition-all ease-in">
                               <td class="p-3">
                                 {{$rigon->id}}
                               </td>
@@ -85,73 +87,3 @@
               </div>
             </form>
           </div>
-
- @section('script')
-<!-- Start fetch All directorate -->
- {{-- <script>
-  function fetchrigon()
-    {
-        $.ajax({
-                type: 'get',
-                url: "{{route('rigon.fetch_all_Data')}}",
-                dataType:"json",
-
-                success: function (data) {      
-                 $('#fetch_Allrigon').html("");
-                  $.each(data.rigons, function (key , rigon) {
-                     $('#fetch_Allrigon').append('<tr class="offerRow'+rigon.id+' class="bg-gray-100 hover:scale-95 transform transition-all ease-in">\
-                              <td class="p-3">'+directorate.id+'</td>\
-                              <td class="p-3 text-center">'+rigon.rigon_name+'</td>\
-                              <td class="p-3 flex justify-evenly ">\
-                                <a href="#"  rigon="'+rigon.id+'"  class="rigon_delete btn btn-danger" class="text-gray-400  hover:text-red-400  ">\
-                                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
-                                  </svg>\
-                                </a>\
-                                <a href="#" rigon="'+rigon.id+'"  id="rigon_edit" class="text-gray-400 hover:text-yellow-100  ">\
-                                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"   d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
-                                  </svg>\
-                                </a>\
-                              </td>\
-                            </tr>');
-                  });
-                }
-            });
-    }
- </script> --}}
-<!-- End fetch All directorate -->
-<!--Start Add Rigon By Ajax -->
-  <script>
-        $(document).on('click', '#save_rigon', function (e) {
-            e.preventDefault();
-            var formData = new FormData($('#rigonForm')[0]);       
-            $.ajax({
-                type: 'POST',
-                enctype: 'multipart/form-data',
-                url: "{{route('rigon.store')}}",
-                data: formData,
-                processData: false,
-                contentType: false,
-                cache: false,
-                success: function (data) {
-                  console.log(data);
-                   if (data.status == true) {
-                     {{-- // alert.show(data.msg,'success')
-                        $('#rigon_id').val('');
-                        $('#rigon_name').val('');
-                       fetchrigon(); --}}
-                    }
-                  
-                }, error: function (reject) {
-                    var response = $.parseJSON(reject.responseText);
-                    $.each(response.errors, function (key, val) {
-                        $("#" + key + "_error").text(val[0]);
-                    }); 
-                }
-            });
-        });
-  </script>
-<!--End Add Rigon By Ajax -->
-
-@stop

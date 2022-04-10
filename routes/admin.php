@@ -15,21 +15,27 @@ Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*
      Route::resource('directorate', 'DirectorateController');
      
      Route::group(['prefix' => 'directorate'], function () {
-
-    // Route::post('Ddelete', 'DirectorateController@destroy')->name('directorate.destroy');
-     Route::post('Dedit', 'DirectorateController@edit')->name('directorate.edit');
-     Route::post('Dfetch', 'DirectorateController@show')->name('directorate.fetch_all_Data');
-     Route::post('Dupdate', 'DirectorateController@update')->name('directorate.update');
+     Route::post('edit', 'DirectorateController@edit')->name('directorate.edit');
+     Route::post('fetch', 'DirectorateController@show')->name('directorate.fetch_all_Data');
+     Route::post('update', 'DirectorateController@update')->name('directorate.update');
      ///////////
-     Route::post('Rstore', 'RigonController@store')->name('rigon.store');
-     Route::post('Rdelete', 'RigonController@destroy')->name('rigon.destroy');
-     Route::post('Redit', 'RigonController@edit')->name('rigon.edit');
-     Route::post('Rfetch', 'RigonController@show')->name('rigon.fetch_all_Data');
-     Route::post('Rupdate', 'RigonController@update')->name('rigon.update');
-  
-    
      
      });
+     Route::group(['prefix' => 'rigon'], function () {
+          Route::post('store', 'RigonController@store')->name('rigon.store');
+          Route::delete('delete/{id?}', 'RigonController@destroy')->name('rigon.destroy');
+          Route::get('edit/{id?}', 'RigonController@edit')->name('rigon.edit');
+          Route::get('show_All', 'RigonController@show')->name('rigon.show_all_Data');
+          Route::post('update', 'RigonController@update')->name('rigon.update');
+    });
+    Route::group(['prefix' => 'station'], function () {
+      Route::post('store', 'StationController@store')->name('station.store');
+      Route::delete('delete/{id?}', 'StationController@destroy')->name('station.destroy');
+      Route::get('edit/{id?}', 'StationController@edit')->name('station.edit');
+      Route::get('show_All', 'StationController@show')->name('station.show_all_Data');
+      Route::post('update', 'StationController@update')->name('station.update');
+});
+  
     
     
      Route::resource('agent', 'AgentController');

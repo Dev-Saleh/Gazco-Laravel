@@ -1,6 +1,9 @@
 
     <div class="">
-              <form action="#" method="POST">
+              <form action="" method="POST" id='stationForm'>
+               @csrf 
+              <input type="text" name='id' style="display:none;" class="form-control"  id="station_id">
+            
                 <div class="shadow overflow-hidden sm:rounded-md">
                   <div class="px-4 py-5 bg-white sm:p-6 flex flex-col items-center">
         
@@ -9,19 +12,26 @@
                           <div class="relative z-0 w-full mb-5">
                             <input
                               type="text"
-                              name="name"
+                              name="Station_name" 
+                              id="station_name"
                               placeholder=" "
                               required
                               class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 border-gray-200"
                             />
                             <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"> اسم المحطه</label>
                             <span class="text-sm text-red-600 hidden" id="error">Name is required</span>
+                            <small  id='station_name_error'  style='color:red'></small> 
                           </div>
-                          <button type="submit" class="inline-flex justify-center py-2 px-4 border-blue-600 border-2 shadow-sm 
+                          <button type="submit" id='save_station' class="inline-flex justify-center py-2 px-4 border-blue-600 border-2 shadow-sm 
                           text-sm font-medium rounded-md text-blue-400 bg-transparent hover:bg-blue-600 hover:text-blue-50
                           focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-blue-500 w-full">
                             Add
                           </button>
+                          <button type="submit"   id='update_station'  style='display:none;'class="inline-flex justify-center py-2 px-4 border-blue-600 border-2 shadow-sm 
+                          text-sm font-medium rounded-md text-blue-400 bg-transparent hover:bg-blue-600 hover:text-blue-50
+                          focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-blue-500  w-full">
+                          Edit
+                        </button>
                         </div>
 
                         <div class=" mt-6 w-full">
@@ -36,10 +46,10 @@
                                   <th class="p-3 text-center">العمليات</th>
                                 </tr>
                               </thead>
-                              <tbody>
+                              <tbody id='fetch_Allstation' >
                               @if($Stations && $Stations -> count() > 0)
                               @foreach($Stations as $Station)
-                                <tr class="bg-gray-100 hover:scale-95 transform transition-all ease-in">
+                                <tr  class="offerRow{{$Station -> id}}"  class="bg-gray-100 hover:scale-95 transform transition-all ease-in">
                                   <td class="p-3">
                                    {{$Station->id}}
                                   </td>
@@ -48,14 +58,14 @@
                                   </td>
                                   <td class="p-3 flex justify-evenly ">
     
-                                    <a href="#" class="text-gray-400  hover:text-red-400  ">
+                                    <a href="#" station="{{$Station->id}}"  class="station_delete btn btn-danger" class="text-gray-400  hover:text-red-400  ">
                                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                           d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                       </svg>
                                     </a>
-                                    <a href="#" class="text-gray-400 hover:text-yellow-100  ">
+                                    <a href="#" station="{{$Station->id}}"  id="station_edit" class="text-gray-400 hover:text-yellow-100  ">
                                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

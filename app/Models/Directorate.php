@@ -13,4 +13,9 @@ class Directorate extends Model
 
     public  $timestamps = false;
 
+    public function rigon()
+    {
+        return $this->hasMany(Rigon::class, 'directorate_id','id');
+    }
+
 }
