@@ -1,7 +1,8 @@
 <?php
 namespace App\Http\Controllers\dashborad\admin;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Rigon as RequestsRigon;
+use App\Http\Requests\RequestsRigon;
+
 use App\Models\Rigon;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,7 @@ class RigonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestsRigon $request)
     {
         try { 
             $rigon = Rigon::create($request->except('_token'));
@@ -126,7 +127,7 @@ class RigonController extends Controller
      * @param  \App\Models\Rigon  $rigon
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(RequestsRigon $request)
     {
         try{
             $rigon = Rigon::find($request -> id);

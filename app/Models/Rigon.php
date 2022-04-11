@@ -13,6 +13,10 @@ class Rigon extends Model
 
 
     public  $timestamps = false;
+    public function agent()
+    {
+        return $this->hasMany(Agent::class, 'rigons_id','id');
+    }
     public function directorate()
     {
         return $this->belongsTo(ModelsDirectorate::class,'directorate_id');

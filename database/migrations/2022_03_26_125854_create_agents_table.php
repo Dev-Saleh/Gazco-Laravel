@@ -16,7 +16,8 @@ class CreateAgentsTable extends Migration
         Schema::create('agents', function (Blueprint $table) {
             $table->increments('id');
             $table->string('Agent_name')->unique();
-            $table->string('Agent_password')->unique();
+            $table->string('Agent_password')->unique()->nullable();
+            $table->string('photo');
             $table->integer('directorate_id')->unsigned();
             $table->integer('rigons_id')->unsigned();
             $table->foreign('directorate_id')->references('id')->on('directorates')->onDelete('cascade');

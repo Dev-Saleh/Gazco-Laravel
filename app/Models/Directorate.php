@@ -13,6 +13,10 @@ class Directorate extends Model
 
     public  $timestamps = false;
 
+    public function agent()
+    {
+        return $this->hasMany(Agent::class, 'directorate_id','id');
+    }
     public function rigon()
     {
         return $this->hasMany(Rigon::class, 'directorate_id','id');

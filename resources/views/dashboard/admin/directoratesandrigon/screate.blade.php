@@ -20,7 +20,7 @@
                             />
                             <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"> اسم المحطه</label>
                             <span class="text-sm text-red-600 hidden" id="error">Name is required</span>
-                            <small  id='station_name_error'  style='color:red'></small> 
+                            <small  id='Station_name_error'  style='color:red'></small> 
                           </div>
                           <button type="submit" id='save_station' class="inline-flex justify-center py-2 px-4 border-blue-600 border-2 shadow-sm 
                           text-sm font-medium rounded-md text-blue-400 bg-transparent hover:bg-blue-600 hover:text-blue-50

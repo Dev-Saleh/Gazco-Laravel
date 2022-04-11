@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RDirectorate extends FormRequest
+class RequestsStation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class RDirectorate extends FormRequest
     public function rules()
     {
         return [
-            'directorate_name' =>'required|max:25',
+            'Station_name' =>'required|max:25',
            
         ];
     }
@@ -32,8 +32,8 @@ class RDirectorate extends FormRequest
     {
 
         return [
-            'directorate_name.required' =>'أسم المديرية مطلوب' ,
-            'directorate_name.max' =>'لايزيد عن 25 حرف',
+            'Station_name.required' =>'أسم المحظة مطلوب' ,
+            'Station_name.max' =>'لايزيد عن 25 حرف',
            // 'directorate_name.unique' =>'الاسم يجب ان يكون فريد' ,
         ];
     }

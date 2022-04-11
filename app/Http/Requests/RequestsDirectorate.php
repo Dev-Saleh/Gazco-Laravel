@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Rigon extends FormRequest
+class RequestsDirectorate extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class Rigon extends FormRequest
     public function rules()
     {
         return [
-            'rigon_name' =>'required|max:25',
+            'directorate_name' =>'required|max:25',
            
         ];
     }
@@ -32,9 +32,10 @@ class Rigon extends FormRequest
     {
 
         return [
-            'rigon_name.required' =>'أسم المربع مطلوب' ,
-            'rigon_name.max' =>'لايزيد عن 25 حرف',
+            'directorate_name.required' =>'أسم المديرية مطلوب' ,
+            'directorate_name.max' =>'لايزيد عن 25 حرف',
            // 'directorate_name.unique' =>'الاسم يجب ان يكون فريد' ,
         ];
     }
 }
+

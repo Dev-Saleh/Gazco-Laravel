@@ -18,6 +18,7 @@
                 </select>
                 <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اختر المديريه</label>
                 <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+                   <small  id='directorate_id_error'  style='color:red'></small> 
               </div>
                       <div class="relative z-0 w-full mb-5">
                         <input type="text" name="rigon_name"  id="rigon_name" placeholder=" " required

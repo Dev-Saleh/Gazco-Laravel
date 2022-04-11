@@ -35,10 +35,20 @@ Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*
       Route::get('show_All', 'StationController@show')->name('station.show_all_Data');
       Route::post('update', 'StationController@update')->name('station.update');
 });
+    Route::group(['prefix' => 'agent'], function () {
+       Route::get('index', 'AgentController@index')->name('agent.index');
+       Route::post('store', 'AgentController@store')->name('agent.store');
+       Route::delete('delete/{id?}', 'AgentController@destroy')->name('agent.destroy');
+       Route::get('edit/{id?}', 'AgentController@edit')->name('agent.edit');
+       Route::get('show_rigons/{id?}', 'AgentController@show_rigons')->name('agent.Show_rigons');
+       Route::post('update', 'AgentController@update')->name('agent.update');
+       Route::get('show_All', 'AgentController@show_All')->name('agent.show_All');
+       
+    });
   
     
     
-     Route::resource('agent', 'AgentController');
+    // Route::resource('agent', 'AgentController');
      Route::resource('observer', 'ObserverController');
      Route::resource('log', 'LocksController');
      Route::resource('citizenconfirm', 'CitizenConfirm');

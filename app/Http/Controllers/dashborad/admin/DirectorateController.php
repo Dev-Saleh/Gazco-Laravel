@@ -1,8 +1,9 @@
 <?php
 namespace App\Http\Controllers\dashborad\admin;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RequestsDirectorate;
 use App\Models\Directorate;
-use App\Http\Requests\RDirectorate;
+
 use App\Models\Rigon;
 use App\Models\Station;
 use Illuminate\Http\Request;
@@ -46,7 +47,7 @@ class DirectorateController extends Controller
     }
 
     
-    public function store(RDirectorate $request)
+    public function store(RequestsDirectorate $request)
     {
         try { 
             $directorate = Directorate::create($request->except('_token'));
@@ -130,7 +131,7 @@ class DirectorateController extends Controller
      * @param  \App\Models\Directorate  $directorate
      * @return \Illuminate\Http\Response
      */
-    public function update(RDirectorate $request)
+    public function update(RequestsDirectorate $request)
     {
         try{
             $directorate = Directorate::find($request -> id);

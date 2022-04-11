@@ -4,6 +4,8 @@ namespace App\Http\Controllers\dashborad\admin;
 use App\Http\Controllers\Controller;
 
 use App\Models\Agent;
+use App\Models\Directorate;
+use App\Models\Rigon;
 use Illuminate\Http\Request;
 
 class AgentController extends Controller
@@ -15,9 +17,59 @@ class AgentController extends Controller
      */
     public function index()
     {
-        //
-        return view('dashboard.admin.agents.index');
+        try
+        {
+           $data = [];
+           $data['directorates'] = Directorate::select()->get();
+           $data['rigons'] = Rigon::select()->get();
+           $data['agents']=Agent::select()->get();
+           return view('dashboard.admin.agents.index',$data);
+       }
+       catch (\Exception $ex)
+        {
+           return response()->json([
+               'status' => false,
+               'msg' => 'error in index',
+           ]);
+       }
+    }
+    public function show_rigons(Request $request)
+    {
+        try
+        {
        
+           $rigons = Rigon::select()->where('directorate_id',$request->directorate_id)->get();
+           return response()->json([
+            'status' => true,
+            'rigons' => $rigons,
+           ]);
+       }
+       catch (\Exception $ex)
+        {
+           return response()->json([
+               'status' => false,
+               'msg' => 'error in index',
+           ]);
+       }
+    }
+    
+  public function show_All()
+    {
+        try
+        {
+           $agents = Agent::select()->get();
+           return response()->json([
+            'status' => true,
+            'agents' => $agents,
+           ]);
+       }
+       catch (\Exception $ex)
+        {
+           return response()->json([
+               'status' => false,
+               'msg' => 'error in index',
+           ]);
+       }
     }
 
     /**
@@ -38,7 +90,27 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        try { 
+                   $file =$request->photo;
+                   $filename = uploadImage('agents', $file);
+                   $agent = Agent::create($request->except('_token'));
+                   $agent->photo=$filename;
+                   $agent->save();
+             if ($agent)
+                return response()->json([
+                    'status' => true,
+                    'msg' => 'تم الحفظ بنجاح', 
+                    
+                ]);
+        }
+        catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+               
+            ]);
+        }
     }
 
     /**
@@ -58,9 +130,32 @@ class AgentController extends Controller
      * @param  \App\Models\Agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function edit(Agent $agent)
+    public function edit(Request $request)
     {
-        //
+        try{
+            $agent = Agent::find($request -> id);  // search in given table id only
+            if (!$agent)
+                return response()->json([
+                    'status' => false,
+                    'msg' => 'هذ العرض غير موجود',
+                   
+                ]);
+    
+            $agent = Agent::select()->find($request ->id);
+
+            return response()->json([
+                'status' => true,
+                'agent' => $agent,
+                'directorate_name'=>$agent->directorate->directorate_name,
+                'rigon_name' =>$agent->rigon->rigon_name,
+            ]); 
+          }
+          catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+            ]);
+        }
     }
 
     /**
@@ -70,19 +165,65 @@ class AgentController extends Controller
      * @param  \App\Models\Agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Agent $agent)
+    public function update(Request $request)
     {
-        //
+        try{
+            $agent = Agent::find($request -> id);
+            if (!$agent)
+                return response()->json([
+                    'status' => false,
+                    'msg' => 'هذ العرض غير موجود',
+                ]);
+            if ($request->has('photo')) {
+                $fileName = uploadImage('agents', $request->photo);
+                Agent::where('id', $request -> id)
+                    ->update([
+                        'photo' => $fileName,
+                    ]);
+            }
+            //update data  
+            $agent->update($request->except('_token', 'photo'));
+            return response()->json([
+                'status' => true,
+                'msg' => 'تم  التحديث بنجاح',
+                'photo'=>$fileName,
+            ]);
+        }
+        catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+            ]);
+        }
+        
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Agent  $agent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Agent $agent)
+    public function destroy(Request $request)
     {
-        //
+        try {
+            $agent = Agent::find($request -> id); 
+            if (!$agent)
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل بالتعديل برجاء المحاوله مجددا',
+               ]);
+             $agent->delete();
+             return response()->json([
+                'status' => true,
+                'msg' => 'تم الحذف بنجاح',
+                'id' => $request -> id
+        ]);
+         } catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+            ]);
+          
+         }
     }
 }

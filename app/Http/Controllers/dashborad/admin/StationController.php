@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers\dashborad\admin;
 use App\Http\Controllers\Controller;
-
-
+use App\Http\Requests\RequestsStation;
 use App\Models\Station;
 use Illuminate\Http\Request;
 
@@ -35,7 +34,7 @@ class StationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestsStation $request)
     {
         try { 
             $station = Station::create($request->except('_token'));
@@ -118,7 +117,7 @@ class StationController extends Controller
      * @param  \App\Station  $station
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(RequestsStation $request)
     {
         try{
             $station = Station::find($request -> id);
