@@ -78,6 +78,7 @@ Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*
 Route::group(['namespace' => 'dashborad\observer', /*'middleware' => 'auth:Employe',*/ 'prefix' => 'observer'], function () {
   Route::get('/', 'DashboradController@index')->name('observer.dashboard');  // the first page Employe visits if authenticated
   Route::resource('citizen', 'CitizenController');
+  
 
   ################################## Rescriptions routes ######################################
   //  Route::group(['prefix' => 'Rescriptions'], function () {
