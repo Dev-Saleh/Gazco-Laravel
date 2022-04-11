@@ -10,9 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Tajawal&display=swap" rel="stylesheet">
  
    
-    <link rel="stylesheet"   href="{{asset('assets/admin/css/style.css')}}">
-    <link rel="stylesheet"  href="{{asset('assets/admin/css/output.css')}}">
-    <link rel="stylesheet"  href="{{asset('assets/admin/css/input.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/admin/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/admin/css/output.css')}}">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,13 +19,14 @@
 </head>
 <body dir="rtl" class="font-tajawal text-base bg-gray-100">
 <div id="wrapper" class="flex h-full relative">
+
  <!-- Start Code Ajax -->
-        @include('dashboard.admin.includes.ajax.ajax')  
+ @include('dashboard.admin.includes.ajax.ajax')  
   <!-- End Code Ajax -->
-<!-- fixed-top-->
 <!-- alert Success && error -->
 @include('dashboard.admin.includes.alerts.success')
 <!-- alert Success && error -->
+<!-- fixed-top-->
 <!-- begin sidebar -->
 @include('dashboard.admin.includes.sidebare')
 <!-- end sidebar -->

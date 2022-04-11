@@ -1,31 +1,38 @@
-     <form action="" method="POST" id='agentForm'>
-           @csrf 
-          <input type="text" name='id' style="display:none;" class="form-control"  id="agent_id">    
+  <div class="px-4 py-4 sm:px-0">
+        <h3 class="text-lg font-medium leading-6 text-gray-900">اضافة و عرض الموزعين</h3>
+      </div>
+      <div class=" py-4 border-t border-gray-200">
+  </div>
+<!-- END Line -->
       <div dir="rtl" id="container" class="flex">
           <div class="ml-10 p-6 bg-white border-0 shadow-lg rounded-xl w-full h-full">
+          <form action="" method="POST" id='agentForm'>
+           @csrf 
+          <input type="text" name='id' style="display:none;" class="form-control"  id="agent_id">    
             <div class="flex-col items-center justify-center flex space-y-4">
+
               <label for="file-ip-1"
                 class="relative cursor-pointer bg-white rounded-xl font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 border-2 border-blue-700 px-2">
                 <span>رفع صوره</span>
                 <input id="file-ip-1" name='photo' id='photo' accept="image/*" onchange="showPreviewUser(event);" type="file" class="sr-only">
               </label>
 
-              <div class="mt-2 flex h-48 w-48  border-2 bg-gray-200 border-gray-500 border-dashed rounded-full">
+            <div class="mt-2 flex h-48 w-48  border-2 bg-gray-200 border-gray-500 border-dashed rounded-full">
 
 
                 <img class="rounded-full w-48 h-48 object-cover" src="" id="file-ip-1-preview" alt=""
-                  style="display: none;" class="w-52 h-28">
+                    style="display: none;" class="w-52 h-28">
 
-              </div>
+            </div>
 
               <div class="relative z-0 w-full mb-5">
                 <input type="text" name="Agent_name" id='agent_name' placeholder=" " required
                   class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
                 <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اسم الموزع</label>
                 <span class="text-sm text-red-600 hidden" id="error">اسم الموزع مطلوب !</span>
-              </div>
+            </div>
 
-              
+
 
               <div class="relative z-0 w-full mb-5">
                 <select name="directorate_id" value="" id='select_directorates' onclick="this.setAttribute('value', this.value);"
@@ -37,9 +44,10 @@
                     @endforeach
                  @endif
                 </select>
-                <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اختر المديريه</label>
+                <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اختر
+                    المديريه</label>
                 <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
-              </div>
+            </div>
 
               <div class="relative z-0 w-full mb-5">
                 <select name="rigons_id" value="" id='select_rigons' onclick="this.setAttribute('value', this.value);"
@@ -48,7 +56,7 @@
                 </select>
                 <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-slate-500">اختر المربع</label>
                 <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
-              </div>
+            </div>
 
 
               <button id='save_agent' onclick="alert.show(`Dev SAleh`,`success`)" type="submit"
@@ -62,23 +70,24 @@
                 </button>
 
             </div>
+            </form>
           </div>
-          </form>
+    
           <!--ENd Details& View Section -->
 
-          <!-- Table Section -->
-          <div class="mx-auto w-full">
-            <!-- <p class="text-center font-sans mb-2 text-2xl"> Brands Table</p> -->
-            <div class=" relative overflow-y-scroll" style="height: 580px;">
-              <table class="table w-full text-gray-500 border-separate space-y-6 text-sm">
+    <!-- Table Section -->
+    <div class="mx-auto w-full">
+        <!-- <p class="text-center font-sans mb-2 text-2xl"> Brands Table</p> -->
+        <div class=" relative overflow-y-scroll" style="height: 550px;">
+            <table class="table w-full text-gray-500 border-separate space-y-6 text-sm">
                 <thead class="bg-gray-200 text-gray-500">
-                  <tr>
-                    <th class="p-3">الرقم</th>
-                    <th class="p-3 text-center">الاسم</th>
-                    <th class="p-3 text-center">الصوره</th>
-                    <th class="p-3 text-center">المديريه</th>
-                    <th class="p-3 text-left">العمليات</th>
-                  </tr>
+                    <tr>
+                        <th class="p-3">الرقم</th>
+                        <th class="p-3 text-center">الاسم</th>
+                        <th class="p-3 text-center">الصوره</th>
+                        <th class="p-3 text-center">المديريه</th>
+                        <th class="p-3 text-left">العمليات</th>
+                    </tr>
                 </thead>
                 <tbody id='fetch_Allagent'>
                   @if($agents && $agents -> count() > 0)
@@ -119,4 +128,4 @@
               </table>
             </div>
           </div>
-        </div>
+    </div>

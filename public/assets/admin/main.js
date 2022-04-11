@@ -5,7 +5,7 @@ const alert = {
    show(msg,st) {
    clearTimeout(this.hideTimeout);
          this.el = document.createElement("div");
-         this.el.className = " text-center px-6 py-4 opacity-100  rounded-md text-lg items-center mx-auto w-96 top-10 right-0 left-0 fixed z-10  ";
+         this.el.className = " text-center px-6 py-4 opacity-100 bg-black  rounded-md text-lg items-center mx-auto w-96 top-10 right-0 left-0 fixed z-10  ";
          document.body.appendChild(this.el);
          this.el.textContent = msg;
    // this.el.classList.replace("opacity-0","opacity-100");
