@@ -21,5 +21,10 @@ class Rigon extends Model
     {
         return $this->belongsTo(ModelsDirectorate::class,'directorate_id');
     }
+    public function observer()
+    {
+        return $this->hasMany(observer::class, 'rigons_id','id');
+    }
+    
 
 }

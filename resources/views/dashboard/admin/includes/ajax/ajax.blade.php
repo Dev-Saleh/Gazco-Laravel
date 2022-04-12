@@ -508,7 +508,7 @@
         });
   
 <!-- End select rigon by Ajax -->
-{{-- <!-- Start fetch All Agent  -->
+<!-- Start fetch All Agent  -->
   function fetchagent()
     {
         $.ajax({
@@ -520,12 +520,11 @@
                   console.log(data.agents) ;
                  $('#fetch_Allagent').html("");
                   $.each(data.agents, function (key , agent) {
-                  
-                     $('#fetch_Allagent').append('<tr class="offerRow'+agent.id+' class="bg-gray-50 hover:scale-95 transform transition-all ease-in">\
+                    $('#fetch_Allagent').append('<tr class="offerRow'+agent.id+' class="bg-gray-50 hover:scale-95 transform transition-all ease-in">\
                     <td class="p-3 text-center">'+agent.id+'</td>\
                     <td class="p-3 text-center">'+agent.Agent_name+'</td>\
                     <td class="p-3 text-right">\
-                      <img class="rounded-full h-12 w-12  object-cover" src=""  alt="unsplash image">\
+                      <img class="rounded-full h-12 w-12  object-cover" src="{{asset('assets/images/agents')}}/'+agent.photo+'" alt="unsplash image">\
                     </td>\
                     <td class="p-3 text-center">\
                       <span class="bg-green-400 text-gray-50 rounded-md px-2">'+agent.Agent_name+'</span>\
@@ -551,7 +550,7 @@
             });
     }
 
-<!-- End fetch All Agent --> --}}
+<!-- End fetch All Agent --> 
 <!--Start Add Agent By Ajax -->
     
         $(document).on('click', '#save_agent', function (e) {
@@ -572,7 +571,7 @@
                         $('#select_directorates').val('');
                         $('#select_rigons').val('');
                         $('#agent_name').val('');
-                       fetchagent();
+                         fetchagent();
                     } 
                   
                 }, error: function (reject) {

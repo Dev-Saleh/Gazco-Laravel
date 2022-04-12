@@ -21,5 +21,9 @@ class Directorate extends Model
     {
         return $this->hasMany(Rigon::class, 'directorate_id','id');
     }
+    public function observer()
+    {
+        return $this->hasMany(observer::class, 'directorate_id','id');
+    }
 
 }
