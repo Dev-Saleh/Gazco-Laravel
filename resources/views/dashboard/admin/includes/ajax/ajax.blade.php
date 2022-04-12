@@ -511,56 +511,51 @@
             });
         });
   
-    // End select rigon by Ajax 
+<!-- End select rigon by Ajax -->
+<!-- Start fetch All Agent  -->
+  function fetchagent()
+    {
+        $.ajax({
+                type: 'get',
+                url: "{{route('agent.show_All')}}",
+                dataType:"json",
 
+                success: function (data) {     
+                  console.log(data.agents) ;
+                 $('#fetch_Allagent').html("");
+                  $.each(data.agents, function (key , agent) {
+                    $('#fetch_Allagent').append('<tr class="offerRow'+agent.id+' class="bg-gray-50 hover:scale-95 transform transition-all ease-in">\
+                    <td class="p-3 text-center">'+agent.id+'</td>\
+                    <td class="p-3 text-center">'+agent.Agent_name+'</td>\
+                    <td class="p-3 text-right">\
+                      <img class="rounded-full h-12 w-12  object-cover" src="{{asset('assets/images/agents')}}/'+agent.photo+'" alt="unsplash image">\
+                    </td>\
+                    <td class="p-3 text-center">\
+                      <span class="bg-green-400 text-gray-50 rounded-md px-2">'+agent.Agent_name+'</span>\
+                    </td>\
+                    <td class="p-5 flex space-x-2">\
+                      <a href="#"  agent="'+agent.id+'"  class="agent_delete btn btn-danger" class="text-gray-400  hover:text-red-400 float-left ">\
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
+                        </svg>\
+                      </a>\
+                      <a href="#" agent="'+agent.id+'"  id="agent_edit" class="text-gray-400 hover:text-yellow-400  mx-2">\
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">\
+                          <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />\
+                        </svg>\
+                      </a>\
+                    </td>\
+                  </tr>');
+                
+                  });
+                 
+                
+                }
+            });
+    }
 
-    // Start fetch All Agent  
-        function fetchagent()
-            {
-                $.ajax({
-                        type: 'get',
-                        url: "{{route('agent.show_All')}}",
-                        dataType:"json",
-
-                        success: function (data) {     
-                        console.log(data.agents) ;
-                        $('#fetch_Allagent').html("");
-                        $.each(data.agents, function (key , agent) {
-                        
-                            $('#fetch_Allagent').append('<tr class="offerRow'+agent.id+' class="bg-gray-50 hover:scale-95 transform transition-all ease-in">\
-                            <td class="p-3 text-center">'+agent.id+'</td>\
-                            <td class="p-3 text-center">'+agent.Agent_name+'</td>\
-                            <td class="p-3 text-right">\
-                            <img class="rounded-full h-12 w-12  object-cover" src=""  alt="unsplash image">\
-                            </td>\
-                            <td class="p-3 text-center">\
-                            <span class="bg-green-400 text-gray-50 rounded-md px-2">'+agent.Agent_name+'</span>\
-                            </td>\
-                            <td class="p-5 flex space-x-2">\
-                            <a href="#"  agent="'+agent.id+'"  class="agent_delete btn btn-danger" class="text-gray-400  hover:text-red-400 float-left ">\
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
-                                </svg>\
-                            </a>\
-                            <a href="#" agent="'+agent.id+'"  id="agent_edit" class="text-gray-400 hover:text-yellow-400  mx-2">\
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">\
-                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />\
-                                </svg>\
-                            </a>\
-                            </td>\
-                        </tr>');
-                        
-                        });
-                        
-                        
-                        }
-                    });
-            }
-
-    // End fetch All Agent  
-
-
-    //Start Add Agent By Ajax 
+<!-- End fetch All Agent --> 
+<!--Start Add Agent By Ajax -->
     
         $(document).on('click', '#save_agent', function (e) {
             e.preventDefault();
@@ -580,7 +575,7 @@
                         $('#select_directorates').val('');
                         $('#select_rigons').val('');
                         $('#agent_name').val('');
-                       fetchagent();
+                         fetchagent();
                     } 
                   
                 }, error: function (reject) {

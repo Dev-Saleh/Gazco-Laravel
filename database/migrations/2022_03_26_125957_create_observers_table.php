@@ -15,8 +15,9 @@ class CreateObserversTable extends Migration
     {
         Schema::create('observers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('observers_name')->unique();
-            $table->string('observers_password')->unique();
+            $table->string('observer_name')->unique();
+            $table->string('observer_username')->unique();
+            $table->string('observer_password')->unique();
             $table->integer('directorate_id')->unsigned();
             $table->integer('rigons_id')->unsigned();
             $table->integer('agent_id')->unsigned();

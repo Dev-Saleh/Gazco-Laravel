@@ -1,8 +1,10 @@
 <?php
 namespace App\Http\Controllers\dashborad\admin;
 use App\Http\Controllers\Controller;
-
+use App\Models\Agent;
+use App\Models\Directorate;
 use App\Models\Observer;
+use App\Models\Rigon;
 use Illuminate\Http\Request;
 
 class ObserverController extends Controller
@@ -15,7 +17,23 @@ class ObserverController extends Controller
     public function index()
     {
         //
-        return view('dashboard.admin.observers.index');
+        try
+        {
+           $data = [];
+           $data['directorates'] = Directorate::select()->get();
+           $data['rigons'] = Rigon::select()->get();
+           $data['agents']=Agent::select()->get();
+           return view('dashboard.admin.observers.index',$data);
+       }
+       catch (\Exception $ex)
+        {
+           return response()->json([
+               'status' => false,
+               'msg' => 'error in index',
+           ]);
+       }
+
+        
     }
 
     /**
