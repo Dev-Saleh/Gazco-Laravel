@@ -1,4 +1,4 @@
-     <div class="">
+     <div class="col-start-3 col-end-5">
             <form  action="" method="POST" id='rigonForm'>
             @csrf
              <input type="text" name='id' style="display:none;" class="form-control"  id="rigon_id">

@@ -2,7 +2,7 @@
 @section('content')
    
        <!-- Adding CitizenConfirm -->
-        @include('dashboard.observer.citizens.create')   
+        @include('dashboard.observer.check_booking.create')   
        <!-- END Adding CitizenConfirm -->
-      </article>
+     
       @stop

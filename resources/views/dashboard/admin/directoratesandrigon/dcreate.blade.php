@@ -1,4 +1,4 @@
-         <div class="">
+         <div class="col-span-2">
             <form action="" method="POST" id='directorateForm'>
            @csrf 
             <input type="text" name='id' style="display:none;" class="form-control"  id="directorate_id">

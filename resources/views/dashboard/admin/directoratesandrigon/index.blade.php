@@ -8,7 +8,7 @@
               <div class=" py-4 border-t border-gray-200">
               </div>
               <!-- End Line -->
-              <div class="mt-4 md:grid md:grid-cols-2 gap-x-10 gap-y-4 ">
+              <div class="mt-4 md:grid md:grid-cols-6 gap-x-6">
       
       <!-- Adding Directorates -->
         @include('dashboard.admin.directoratesandrigon.dcreate')   
@@ -16,12 +16,12 @@
       <!-- Adding Squares -->
         @include('dashboard.admin.directoratesandrigon.rcreate')     
       <!-- END Adding Squares -->
-            <div class="col-span-2">
+          
       <!-- Adding Station -->
         @include('dashboard.admin.directoratesandrigon.screate')  
       <!-- END Adding Station -->
      
-            </div>
+         
             </div>
       </article>
   @stop

@@ -1,114 +1,115 @@
    <div class="">
           <form action="#" method="POST">
             <div class="">
-              <div class="px-4 py-5 bg-white space-y-6 sm:p-6 rounded-xl ">
-                <!-- GRID ONE -->
-                <div class="grid grid-cols-6 gap-4">
-                  <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
-                    <div class="relative z-0 w-full">
-                      <input onchange="Slugify(document.getElementById('proudct_slug').value);" id="proudct_slug"
-                        type="text" name="name" placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
-                                 appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
-                                 hover:border-blue-600 text-blue-900" />
-                      <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اسم
-                        المراقب</label>
-                      <span class="text-sm text-red-600 hidden" id="error">الاسم مطلوب !</span>
+              <form action="" method="post">
+                <div class="px-4 py-5 bg-white space-y-6 sm:p-6 rounded-xl ">
+                  <!-- GRID ONE -->
+                  <div class="grid grid-cols-6 gap-4">
+                    <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
+                      <div class="relative z-0 w-full">
+                        <input onchange="Slugify(document.getElementById('proudct_slug').value);" id="proudct_slug"
+                          type="text" name="name" placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
+                                  appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
+                                  hover:border-blue-600 text-blue-900" />
+                        <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اسم
+                          المراقب</label>
+                        <span class="text-sm text-red-600 hidden" id="error">الاسم مطلوب !</span>
+                      </div>
                     </div>
+
+                    <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
+                      <div class="relative z-0 w-full">
+                        <input type="text" name="name" placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
+                                  appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
+                                  hover:border-blue-600 text-blue-900" />
+                        <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Username</label>
+                        <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
+                      </div>
+                    </div>
+
+                    <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
+                      <div class="relative z-0 w-full">
+                        <input type="text" name="name" placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
+                                  appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
+                                  hover:border-blue-600 text-blue-900" />
+                        <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الرقم
+                          السري</label>
+                        <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
+                      </div>
+                    </div>
+
+
+
                   </div>
 
-                  <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
-                    <div class="relative z-0 w-full">
-                      <input type="text" name="name" placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
-                                 appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
-                                 hover:border-blue-600 text-blue-900" />
-                      <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Username</label>
-                      <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
+                  <!-- GRID TWO -->
+                  <div class="grid grid-cols-6 gap-4">
+
+                    <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
+                      <div class="relative z-0 w-full mb-5">
+                        <select name="select" value="" onclick="this.setAttribute('value', this.value);"
+                          class="hover:border-blue-600 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-blue-900 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200">
+                          <option value="" selected disabled hidden></option>
+                          <option value="1">Option 1</option>
+                          <option value="2">Option 2</option>
+                          <option value="3">Option 3</option>
+                          <option value="4">Option 4</option>
+                          <option value="5">Option 5</option>
+                        </select>
+                        <label for="select"
+                          class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المديريه</label>
+                        <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+                      </div>
                     </div>
+
+
+
+                    <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
+                      <div class="relative z-0 w-full mb-5">
+                        <select name="select" value="" onclick="this.setAttribute('value', this.value);"
+                          class="hover:border-blue-600 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-blue-900 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200">
+                          <option value="" selected disabled hidden></option>
+                          <option value="1">Option 1</option>
+                          <option value="2">Option 2</option>
+                          <option value="3">Option 3</option>
+                          <option value="4">Option 4</option>
+                          <option value="5">Option 5</option>
+                        </select>
+                        <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المربع</label>
+                        <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+                      </div>
+                    </div>
+
+                    <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
+                      <div class="relative z-0 w-full mb-5">
+                        <select name="select" value="" onclick="this.setAttribute('value', this.value);"
+                          class="hover:border-blue-600 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-blue-900 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200">
+                          <option value="" selected disabled hidden></option>
+                          <option value="1">Option 1</option>
+                          <option value="2">Option 2</option>
+                          <option value="3">Option 3</option>
+                          <option value="4">Option 4</option>
+                          <option value="5">Option 5</option>
+                        </select>
+                        <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الموزع
+                          المراقب</label>
+                        <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+                      </div>
+                    </div>
+
                   </div>
 
-                  <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
-                    <div class="relative z-0 w-full">
-                      <input type="text" name="name" placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
-                                 appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
-                                 hover:border-blue-600 text-blue-900" />
-                      <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الرقم
-                        السري</label>
-                      <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
-                    </div>
+
+                  <!-- GRID THREE -->
+                  <div class="mt-1 px-4 py-3 bg-transparent text-center sm:px-6  rounded-3xl">
+                    <button type="submit"
+                      class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      أضافه
+                    </button>
                   </div>
-
-
 
                 </div>
-
-                <!-- GRID TWO -->
-                <div class="grid grid-cols-6 gap-4">
-
-                  <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
-                    <div class="relative z-0 w-full mb-5">
-                      <select name="select" value="" onclick="this.setAttribute('value', this.value);"
-                        class="hover:border-blue-600 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-blue-900 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200">
-                        <option value="" selected disabled hidden></option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        <option value="4">Option 4</option>
-                        <option value="5">Option 5</option>
-                      </select>
-                      <label for="select"
-                        class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المديريه</label>
-                      <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
-                    </div>
-                  </div>
-
-
-
-                  <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
-                    <div class="relative z-0 w-full mb-5">
-                      <select name="select" value="" onclick="this.setAttribute('value', this.value);"
-                        class="hover:border-blue-600 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-blue-900 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200">
-                        <option value="" selected disabled hidden></option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        <option value="4">Option 4</option>
-                        <option value="5">Option 5</option>
-                      </select>
-                      <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المربع</label>
-                      <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
-                    </div>
-                  </div>
-
-                  <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
-                    <div class="relative z-0 w-full mb-5">
-                      <select name="select" value="" onclick="this.setAttribute('value', this.value);"
-                        class="hover:border-blue-600 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-blue-900 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200">
-                        <option value="" selected disabled hidden></option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        <option value="4">Option 4</option>
-                        <option value="5">Option 5</option>
-                      </select>
-                      <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الموزع
-                        المراقب</label>
-                      <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
-                    </div>
-                  </div>
-
-                </div>
-
-
-                <!-- GRID THREE -->
-                <div class="mt-1 px-4 py-3 bg-transparent text-center sm:px-6  rounded-3xl">
-                  <button type="submit"
-                    class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    أضافه
-                  </button>
-                </div>
-
-              </div>
-
+              </form>
             </div>
           </form>
 

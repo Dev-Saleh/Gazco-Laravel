@@ -1,5 +1,5 @@
 
-    <div class="">
+    <div class="col-start-5 col-end-8">
               <form action="" method="POST" id='stationForm'>
                @csrf 
               <input type="text" name='id' style="display:none;" class="form-control"  id="station_id">

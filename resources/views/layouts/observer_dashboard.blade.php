@@ -24,7 +24,7 @@
 <!-- begin sidebar -->
 @include('dashboard.observer.includes.sidebare')
 <!-- end sidebar -->
-<main id="main" class="lex flex-col  font-tajawal  h-screen overflow-y-auto mr-72 w-full">
+<main id="main" class="lex flex-col  font-tajawal  h-full overflow-y-auto mr-72 w-full">
 <!-- begin header -->
 @include('dashboard.observer.includes.header')
 <!-- end header -->
