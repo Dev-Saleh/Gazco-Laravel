@@ -19,6 +19,11 @@ class Agent extends Model
     {
         return $this->belongsTo(Rigon::class,'rigons_id');
     }
+    public function observer()
+    {
+        return $this->hasMany(Observer::class, 'agent_id','id');
+    }
+
     
 
    

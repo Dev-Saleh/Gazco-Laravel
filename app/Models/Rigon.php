@@ -11,7 +11,6 @@ class Rigon extends Model
     protected $table='rigons';
     protected $fillable = ['id','rigon_name','directorate_id'];
 
-
     public  $timestamps = false;
     public function agent()
     {
@@ -23,7 +22,7 @@ class Rigon extends Model
     }
     public function observer()
     {
-        return $this->hasMany(observer::class, 'rigons_id','id');
+        return $this->hasMany(Observer::class, 'rigons_id','id');
     }
     
 
