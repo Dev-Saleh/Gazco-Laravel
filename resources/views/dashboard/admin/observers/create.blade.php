@@ -16,7 +16,6 @@
                         المراقب</label>
                       <span class="text-sm text-red-600 hidden" id="error">الاسم مطلوب !</span>
                     </div>
-                  </div>
 
                   <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                     <div class="relative z-0 w-full">
@@ -26,7 +25,6 @@
                       <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Username</label>
                       <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
                     </div>
-                  </div>
 
                   <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                     <div class="relative z-0 w-full">
@@ -37,14 +35,13 @@
                         السري</label>
                       <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
                     </div>
+
+
+
                   </div>
 
-
-
-                </div>
-
-                <!-- GRID TWO -->
-                <div class="grid grid-cols-6 gap-4">
+                  <!-- GRID TWO -->
+                  <div class="grid grid-cols-6 gap-4">
 
                   <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                     <div class="relative z-0 w-full mb-5">
@@ -61,7 +58,6 @@
                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المديريه</label>
                       <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
                     </div>
-                  </div>
 
 
 
@@ -74,7 +70,6 @@
                       <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المربع</label>
                       <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
                     </div>
-                  </div>
 
                   <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                     <div class="relative z-0 w-full mb-5">
@@ -91,10 +86,17 @@
                         المراقب</label>
                       <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
                     </div>
+
                   </div>
 
-                </div>
 
+                  <!-- GRID THREE -->
+                  <div class="mt-1 px-4 py-3 bg-transparent text-center sm:px-6  rounded-3xl">
+                    <button type="submit"
+                      class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      أضافه
+                    </button>
+                  </div>
 
                 <!-- GRID THREE -->
                 <div class="mt-1 px-4 py-3 bg-transparent text-center sm:px-6  rounded-3xl">
@@ -107,9 +109,7 @@
                     تعديل
                   </button>
                 </div>
-
-              </div>
-
+              </form>
             </div>
           </form>
 

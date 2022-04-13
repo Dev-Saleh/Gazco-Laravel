@@ -175,7 +175,7 @@
     //  End Update directorate By Ajax 
 
 
-// ########################## ( RIGON SECTION ) ##############################
+    // ########################## ( RIGON SECTION ) ##############################
 
 
     //  Start fetch All Rigon 
@@ -346,11 +346,9 @@
     // End Update Rigon By Ajax  
 
 
-// ########################## ( Stations SECTION ) ##############################
+    // ########################## ( Stations SECTION ) ##############################
 
-<!-- End Update Rigon By Ajax -->  
-
-{{-- Start Add Station By Ajax  --}}
+    // Start Add Station By Ajax 
   
         $(document).on('click', '#save_station', function (e) {
             e.preventDefault();
@@ -441,6 +439,7 @@
 
     //  End edit Station By Ajax 
 
+
     //  Start Update Station By Ajax 
  
 
@@ -479,8 +478,13 @@
 
 
 
-<!-- End Update Station By Ajax -->  
-<!-- Start select rigon by Ajax -->
+    // End Update Station By Ajax 
+
+
+
+    // ########################## ( Agents SECTION ) ##############################
+
+    // Start select rigon by Ajax 
  
         $(document).on('change', '#select_directorates', function (e) {
             e.preventDefault();
@@ -583,8 +587,10 @@
             });
         });
 
-<!--End Add Agent By Ajax -->
-<!-- Start Deleteing Agent By Ajax -->
+    //End Add Agent By Ajax 
+
+
+    // Start Deleteing Agent By Ajax 
 
         $(document).on('click', '.agent_delete', function (e) {
             e.preventDefault();
@@ -608,8 +614,10 @@
         });
 
    
-<!-- End Deleting Agent By Ajax -->
-<!-- Start edit Agent By Ajax -->
+    // End Deleting Agent By Ajax 
+
+
+    // Start edit Agent By Ajax 
        
  
         $(document).on('click', '#agent_edit', function (e) {
@@ -645,8 +653,10 @@
         });
  
 
-<!-- End edit Agent By Ajax -->
-<!-- Start Update Agent By Ajax -->
+    // End edit Agent By Ajax 
+
+
+    // Start Update Agent By Ajax 
  
 
         $(document).on('click', '#update_agent', function (e) {
