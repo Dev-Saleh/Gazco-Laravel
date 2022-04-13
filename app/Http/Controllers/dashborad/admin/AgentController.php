@@ -20,7 +20,7 @@ class AgentController extends Controller
         try
         {
            $data = [];
-           $data['directorates'] = Directorate::select()->get();
+           $data['directorates'] =Directorate::whereHas('rigon')->get();
            $data['rigons'] = Rigon::select()->get();
            $data['agents']=Agent::select()->get();
            return view('dashboard.admin.agents.index',$data);

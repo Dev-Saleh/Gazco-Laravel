@@ -7,3 +7,8 @@
       <!-- END Adding Directorates -->
       </article>
 @stop
+
+
+directoratesRigonStation (){
+  
+}

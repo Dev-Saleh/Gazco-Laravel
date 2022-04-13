@@ -45,11 +45,21 @@ Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*
        Route::get('show_All', 'AgentController@show_All')->name('agent.show_All');
        
     });
+    Route::group(['prefix' => 'observer'], function () {
+      Route::get('index', 'ObserverController@index')->name('observer.index');
+      Route::post('store', 'ObserverController@store')->name('observer.store');
+      Route::delete('delete/{id?}','ObserverController@destroy')->name('observer.destroy');
+      Route::get('edit/{id?}', 'ObserverController@edit')->name('observer.edit');
+     // Route::get('show_rigons/{id?}', 'AgentController@show_rigons')->name('agent.Show_rigons');
+      //Route::post('update', 'AgentController@update')->name('agent.update');
+      Route::get('show_All', 'ObserverController@show_All')->name('observer.show_All');
+      
+   });
   
     
     
     // Route::resource('agent', 'AgentController');
-     Route::resource('observer', 'ObserverController');
+    // Route::resource('observer', 'ObserverController');
      Route::resource('log', 'LocksController');
      Route::resource('citizenconfirm', 'CitizenConfirm');
     

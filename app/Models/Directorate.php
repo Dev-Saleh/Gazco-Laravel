@@ -23,7 +23,7 @@ class Directorate extends Model
     }
     public function observer()
     {
-        return $this->hasMany(observer::class, 'directorate_id','id');
+        return $this->hasMany(Observer::class, 'directorate_id','id');
     }
 
 }
