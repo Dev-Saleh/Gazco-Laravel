@@ -1,5 +1,5 @@
 
-    <div class="col-start-5 col-end-8">
+    <div class="col-start-5 col-end-8  transform hover:scale-110 hover:transition-all duration-300 ease-out">
               <form action="" method="POST" id='stationForm'>
                @csrf 
               <input type="text" name='id' style="display:none;" class="form-control"  id="station_id">
@@ -36,7 +36,7 @@
 
                         <div class=" mt-6 w-full">
                           <!-- <p class="text-center font-sans mb-2 text-2xl"> Brands Table</p> -->
-                          <div class=" relative overflow-y-scroll" style="height: 250px;">
+                          <div class=" relative overflow-y-auto" style="height: 250px;">
                             <table class="table w-full text-gray-500 border-separate space-y-6 text-sm">
                               <thead class="bg-gray-300 text-gray-500">
                                 <tr>

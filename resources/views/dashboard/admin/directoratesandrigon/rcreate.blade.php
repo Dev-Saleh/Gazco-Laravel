@@ -1,4 +1,4 @@
-     <div class="col-start-3 col-end-5">
+     <div class="col-start-3 col-end-5 -mt-6 transform hover:scale-110 hover:transition-all duration-300 ease-out">
             <form  action="" method="POST" id='rigonForm'>
             @csrf
              <input type="text" name='id' style="display:none;" class="form-control"  id="rigon_id">
@@ -40,7 +40,7 @@
                     </div>
                     <div class=" mt-6 w-full">
                       <!-- <p class="text-center font-sans mb-2 text-2xl"> Brands Table</p> -->
-                      <div class=" relative overflow-y-scroll" style="height: 250px;">
+                      <div class=" relative overflow-y-auto" style="height: 250px;">
                         <table class="table w-full text-gray-500 border-separate space-y-6 text-sm">
                           <thead class="bg-gray-300 text-gray-500">
                             <tr>
