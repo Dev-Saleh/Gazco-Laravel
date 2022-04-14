@@ -23,6 +23,10 @@ class Agent extends Model
     {
         return $this->hasMany(Observer::class, 'agent_id','id');
     }
+    public function gaz_Logs()
+    {
+        return $this->hasMany(gaz_Logs::class, 'agent_id','id');
+    }
 
     
 

@@ -55,12 +55,23 @@ Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*
       Route::get('show_All', 'ObserverController@show_All')->name('observer.show_All');
       
    });
+   Route::group(['prefix' => 'gaz_Logs'], function () {
+    Route::get('index',  'gaz_Logs@index')->name('gaz_Logs.index');
+    Route::post('store', 'gaz_Logs@store')->name('gaz_Logs.store');
+    Route::delete('delete/{id?}','gaz_Logs@destroy')->name('gaz_Logs.destroy');
+    Route::get('edit/{id?}', 'gaz_Logs@edit')->name('gaz_Logs.edit');
+      Route::get('show_Rigons/{id?}', 'gaz_Logs@show_Rigons')->name('gaz_Logs.show_Rigons');
+      Route::get('show_Agents/{id?}', 'gaz_Logs@show_Agents')->name('gaz_Logs.show_Agents');
+    Route::post('update', 'gaz_Logs@update')->name('gaz_Logs.update');
+   // Route::get('show_All', 'ObserverController@show_All')->name('observer.show_All');
+    
+ });
   
     
     
     // Route::resource('agent', 'AgentController');
     // Route::resource('observer', 'ObserverController');
-     Route::resource('log', 'LocksController');
+    // Route::resource('log', 'gaz_Logs');
      Route::resource('citizenconfirm', 'CitizenConfirm');
     
    // });

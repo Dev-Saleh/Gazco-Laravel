@@ -20,8 +20,9 @@
       <!-- Adding Station -->
         @include('dashboard.admin.directoratesandrigon.screate')  
       <!-- END Adding Station -->
-     
-         
+      <!-- Start Code Ajax -->
+        @include('dashboard.admin.includes.ajax.directorates_Rigons_Stations');
+      <!-- End Code Ajax -->
             </div>
       </article>
   @stop

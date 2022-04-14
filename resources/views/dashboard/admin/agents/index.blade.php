@@ -6,9 +6,8 @@
         @include('dashboard.admin.agents.create')   
       <!-- END Adding Directorates -->
       </article>
+     <!-- Start Code Ajax -->
+        @include('dashboard.admin.includes.ajax.agents')
+     <!-- End Code Ajax -->
 @stop
 
-
-directoratesRigonStation (){
-  
-}

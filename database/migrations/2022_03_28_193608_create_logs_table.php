@@ -13,13 +13,14 @@ class CreateLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('logs', function (Blueprint $table) {
+        Schema::create('gaz_Logs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('qty')->nullable();
             $table->integer('directorate_id')->unsigned();
             $table->integer('rigons_id')->unsigned();
             $table->integer('stations_id')->unsigned();
             $table->integer('agent_id')->unsigned();
+            $table->longText('notice')->nullable();
             $table->foreign('directorate_id')->references('id')->on('directorates')->onDelete('cascade');
             $table->foreign('rigons_id')->references('id')->on('rigons')->onDelete('cascade');
             $table->foreign('stations_id')->references('id')->on('stations')->onDelete('cascade');

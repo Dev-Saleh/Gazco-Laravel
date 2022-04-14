@@ -22,11 +22,9 @@
 <body dir="rtl" class="font-tajawal text-base bg-gray-100">
     <div id="wrapper" class="flex h-full relative">
 
-        <!-- Start Code Ajax -->
-        @include('dashboard.admin.includes.ajax.ajax')
-        <!-- End Code Ajax -->
+       
         <!-- alert Success && error -->
-        @include('dashboard.admin.includes.alerts.success')
+        @include('dashboard.admin.includes.alerts.success');
         <!-- alert Success && error -->
         <!-- fixed-top-->
         <!-- begin sidebar -->

@@ -13,6 +13,9 @@
         <!-- Adding observers -->
         @include('dashboard.admin.observers.create')   
         <!-- END Adding observers -->
+         <!-- Start Code Ajax -->
+          @include('dashboard.admin.includes.ajax.observers')
+        <!-- End Code Ajax -->
 
    </article>
       @stop
