@@ -25,6 +25,10 @@ class Directorate extends Model
     {
         return $this->hasMany(Observer::class, 'directorate_id','id');
     }
+    public function citizen()
+    {
+        return $this->hasMany(Citizen::class, 'directorate_id','id');
+    }
     public function gaz_Logs()
     {
         return $this->hasMany(gaz_Logs::class, 'directorate_id','id');

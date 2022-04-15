@@ -20,7 +20,7 @@
               <i class="fas fa-tachometer-alt mr-3"></i>
               نظره عامه
           </a>
-          <a href="{{ route('citizen.index') }}"
+          <a href="{{ route('citizen.index',1) }}"  
               class=" text-base font-semibold flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl

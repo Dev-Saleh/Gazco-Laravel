@@ -64,7 +64,7 @@ class StationController extends Controller
     {
         try
         {
-           $station = Station::select()->get();
+           $station = Station::select('id','Station_name')->get();
            return response()->json([
             'status' => true,
             'stations' => $station,
@@ -78,6 +78,7 @@ class StationController extends Controller
            ]);
        }
     }
+    
 
     /**
      * Show the form for editing the specified resource.

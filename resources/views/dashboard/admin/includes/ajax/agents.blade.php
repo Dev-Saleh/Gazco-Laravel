@@ -40,7 +40,7 @@
                     dataType:"json",
 
                     success: function (data) {     
-                      console.log(data.agents) ;
+                      console.log(data) ;
                     $('#fetch_Allagent').html("");
                       $.each(data.agents, function (key , agent) {
                         $('#fetch_Allagent').append('<tr class="offerRow'+agent.id+' class="bg-gray-50 hover:scale-95 transform transition-all ease-in">\
@@ -50,7 +50,7 @@
                           <img class="rounded-full h-12 w-12  object-cover" src="{{asset('assets/images/agents')}}/'+agent.photo+'" alt="unsplash image">\
                         </td>\
                         <td class="p-3 text-center">\
-                          <span class="bg-green-400 text-gray-50 rounded-md px-2">'+agent.Agent_name+'</span>\
+                          <span class="bg-green-400 text-gray-50 rounded-md px-2">'+agent.directorate.directorate_name+'</span>\
                         </td>\
                         <td class="p-5 flex space-x-2">\
                           <a href="#"  agent="'+agent.id+'"  class="agent_delete btn btn-danger" class="text-gray-400  hover:text-red-400 float-left ">\

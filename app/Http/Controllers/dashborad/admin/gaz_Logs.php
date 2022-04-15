@@ -82,6 +82,41 @@ class gaz_Logs extends Controller
            ]);
        }
     }
+    public function show_All()
+    {
+        try
+        {
+           $gaz_Logs =ModelsGaz_Logs::with([
+           'station'=>function($q)
+            {
+              $q->select('id','Station_name');
+            }
+          ,'agent'=>function($q)
+          {
+            $q->select('id','Agent_name');
+          }
+          ,'directorate'=>function($q)
+          {
+            $q->select('id','directorate_name');
+          }
+          ,'rigon'=>function($q)
+          {
+            $q->select('id','rigon_name');
+          }
+        ],)->select('id','directorate_id','rigons_id','stations_id','agent_id')->get();
+           return response()->json([
+            'status' => true,
+            'gaz_Logs' => $gaz_Logs,
+           ]);
+       }
+       catch (\Exception $ex)
+        {
+           return response()->json([
+               'status' => false,
+               'msg' => 'error in index',
+           ]);
+       }
+    }
     
        
 

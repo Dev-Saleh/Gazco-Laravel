@@ -63,7 +63,7 @@
                 class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-72">
                 أضافه
               </button>
-              <button type="submit"   id='update_agent'  style='display:none;'class="inline-flex justify-center py-2 px-4 border-blue-600 border-2 shadow-sm 
+              <button type="submit"   id='update_agent'  style='display:none;' class="inline-flex justify-center py-2 px-4 border-blue-600 border-2 shadow-sm 
                   text-sm font-medium rounded-md text-blue-400 bg-transparent hover:bg-blue-600 hover:text-blue-50
                   focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-blue-500  w-full">
                    تعديل

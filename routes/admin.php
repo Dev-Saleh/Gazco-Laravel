@@ -32,7 +32,8 @@ Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*
       Route::post('store', 'StationController@store')->name('station.store');
       Route::delete('delete/{id?}', 'StationController@destroy')->name('station.destroy');
       Route::get('edit/{id?}', 'StationController@edit')->name('station.edit');
-      Route::get('show_All', 'StationController@show')->name('station.show_all_Data');
+      Route::get('show_All', 'StationController@show')->name('station.show_All');
+     
       Route::post('update', 'StationController@update')->name('station.update');
 });
     Route::group(['prefix' => 'agent'], function () {
@@ -60,10 +61,10 @@ Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*
     Route::post('store', 'gaz_Logs@store')->name('gaz_Logs.store');
     Route::delete('delete/{id?}','gaz_Logs@destroy')->name('gaz_Logs.destroy');
     Route::get('edit/{id?}', 'gaz_Logs@edit')->name('gaz_Logs.edit');
-      Route::get('show_Rigons/{id?}', 'gaz_Logs@show_Rigons')->name('gaz_Logs.show_Rigons');
-      Route::get('show_Agents/{id?}', 'gaz_Logs@show_Agents')->name('gaz_Logs.show_Agents');
+    Route::get('show_Rigons/{id?}', 'gaz_Logs@show_Rigons')->name('gaz_Logs.show_Rigons');
+    Route::get('show_Agents/{id?}', 'gaz_Logs@show_Agents')->name('gaz_Logs.show_Agents');
     Route::post('update', 'gaz_Logs@update')->name('gaz_Logs.update');
-   // Route::get('show_All', 'ObserverController@show_All')->name('observer.show_All');
+    Route::get('show_All', 'gaz_Logs@show_All')->name('gaz_Logs.show_All');
     
  });
   
@@ -108,7 +109,16 @@ Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*
 
 Route::group(['namespace' => 'dashborad\observer', /*'middleware' => 'auth:Employe',*/ 'prefix' => 'observer'], function () {
   Route::get('/', 'DashboradController@index')->name('observer.dashboard');  // the first page Employe visits if authenticated
-  Route::resource('citizen', 'CitizenController');
+  //Route::resource('citizen', 'CitizenController');
+  Route::group(['prefix' => 'citizen'], function () {
+    Route::get('index/{id}',  'CitizenController@index')->name('citizen.index');
+    Route::post('store', 'CitizenController@store')->name('citizes.store');
+    Route::delete('delete/{id?}','CitizenController@destroy')->name('citizen.destroy');
+    Route::get('edit/{id?}', 'CitizenController@edit')->name('citizen.edit');
+    Route::post('update', 'CitizenController@update')->name('citizen.update');
+    Route::get('show_All', 'CitizenController@show_All')->name('citizen.show_All');
+    
+ });
   
 
   ################################## Rescriptions routes ######################################

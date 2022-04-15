@@ -57,7 +57,9 @@ class AgentController extends Controller
     {
         try
         {
-           $agents = Agent::select()->get();
+           $agents =Agent::with(['directorate'=>function($q){
+            $q->select('id','directorate_name');
+        }])->get();
            return response()->json([
             'status' => true,
             'agents' => $agents,

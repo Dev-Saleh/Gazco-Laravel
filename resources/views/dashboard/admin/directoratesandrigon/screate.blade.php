@@ -46,7 +46,7 @@
                                   <th class="p-3 text-center">العمليات</th>
                                 </tr>
                               </thead>
-                              <tbody id='fetch_Allstation' >
+                              <tbody id='fetch_All_Stations' >
                               @if($Stations && $Stations -> count() > 0)
                               @foreach($Stations as $Station)
                                 <tr  class="offerRow{{$Station -> id}}"  class="bg-gray-100 hover:scale-95 transform transition-all ease-in">

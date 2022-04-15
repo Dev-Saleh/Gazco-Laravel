@@ -8,14 +8,17 @@
         </summary>
         <br>
         <div class="">
-            <form action="#" method="POST" id="citize_form_id">
+            <form action="#" method="POST" id="citize_Form">
+              @csrf 
+          <input type="text" name='id' style="display:none;" class="form-control"  id="citizen_Id"> 
+          <input type="text" name='observer_id' value="{{$observers->id}}" style="display:none;" class="form-control"  id="observer_Id"> 
                 <div class="">
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6 rounded-xl ">
                         <!-- GRID ONE -->
                         <div class="grid grid-cols-6 gap-4">
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full">
-                                    <input type="text" name="name" placeholder=" " required
+                                    <input type="text" name="citizen_name" id='citizen_name' placeholder=" " required
                                         class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
                                    appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200
                                    hover:border-black text-black" />
@@ -28,7 +31,7 @@
 
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full">
-                                    <input type="number" name="money" minlength="3" placeholder=" "
+                                    <input type="number" name="identity_num" id='identity_num' minlength="3" placeholder=" "
                                         onchange="Slugify(document.getElementById('proudct_slug').value);"
                                         id="proudct_slug"
                                         class="hover:border-black pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
@@ -41,7 +44,7 @@
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
 
                                 <div class="relative z-0 w-full ">
-                                    <input type="number" name="password" placeholder=" " id="slugText"
+                                    <input type="number" name="citizen_password" id='citizen_password' placeholder=" " id="slugText"
                                         class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none
                           hover:border-black focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
                                     <label for="password"
@@ -60,7 +63,7 @@
 
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full">
-                                    <input type="number" name="mobile" placeholder=" "
+                                    <input type="number" name="mobile_num" id='mobile_num' placeholder=" "
                                         onchange="Slugify(document.getElementById('proudct_slug').value);"
                                         id="proudct_slug"
                                         class="hover:border-black pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
@@ -73,14 +76,9 @@
 
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full mb-5">
-                                    <select name="select" value="" onclick="this.setAttribute('value', this.value);"
+                                    <select name="directorate_id"  value="{{$observers->directorate_id}}" id='select_directorates'  onclick="this.setAttribute('value', this.value);"
                                         class="hover:border-black  pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-black appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                                        <option value="" selected disabled hidden></option>
-                                        <option class="" value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                        <option value="4">Option 4</option>
-                                        <option value="5">Option 5</option>
+                                       <option value="{{$observers->directorate_id}}" id='select_directorate'>{{$observers->directorate->directorate_name}}</option>
                                     </select>
                                     <label for="select"
                                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المديريه</label>
@@ -93,14 +91,9 @@
 
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full mb-5">
-                                    <select name="select" value="" onclick="this.setAttribute('value', this.value);"
+                                    <select name="rigons_id" id='select_rigons' value="{{$observers->rigons_id}}" onclick="this.setAttribute('value', this.value);"
                                         class="hover:border-black pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-black appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                                        <option value="" selected disabled hidden></option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                        <option value="4">Option 4</option>
-                                        <option value="5">Option 5</option>
+                                        <option value="{{$observers->rigons_id}}" >{{$observers->rigon->rigon_name}}</option>
                                     </select>
                                     <label for="select"
                                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المربع</label>
@@ -123,7 +116,7 @@
                                 <label for="file-ip-1"
                                     class="px-10 relative cursor-pointer bg-white rounded-xl font-medium text-black hover:text-black focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-black border-2 border-black">
                                     <span>رفع صورة الهويه</span>
-                                    <input id="file-ip-1" accept="image/*" onchange="showPreviewUser(event);"
+                                    <input id="file-ip-1" name='attachment' accept="image/*" onchange="showPreviewUser(event);"
                                         type="file" class="sr-only">
                                 </label>
 
@@ -137,21 +130,20 @@
 
                             <div>
                                 <div class="p-20 bg-transparent text-center sm:px-6  rounded-3xl">
-                                    <button type="submit"
+                                    <button type="submit" id='save_Citizen'
                                         class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
                                         تسجيل المواطن
                                     </button>
+                                     <button type="submit" id='update_Citizen'  style='display:none;'
+                                        class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
+                                        تعديل المواطن
+                                     </button>
                                 </div>
                             </div>
                         </div>
-
-
-
                     </div>
-
                 </div>
             </form>
-
         </div>
     </details>
 
@@ -180,23 +172,25 @@
                             <th class="p-3 text-center">العمليات</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr class="bg-gray-50 hover:scale-95 transform transition-all ease-in">
+                    <tbody id='fetch_All_Citizens'>
+                      @if($citizens && $citizens -> count() > 0)
+                      @foreach($citizens as $citizen)
+                        <tr  class="offerRow{{$citizen -> id}}" class="bg-gray-50 hover:scale-95 transform transition-all ease-in">
                             <td class="p-3 text-center">
-                                1
+                                {{$citizen -> id}}
                             </td>
                             <td class="p-3 text-center">
-                                ماهر
+                                {{$citizen -> citizen_name}}
                             </td>
                             <td class="p-3 text-center">
-                                المعلا
+                                 {{$citizen -> directorate->directorate_name}}
                             </td>
 
                             <td class="p-3 text-center">
-                                جبل قوارير
+                                {{$citizen -> rigon->rigon_name}}
                             </td>
                             <td class="p-3 text-center">
-                                <span class="bg-green-400 text-gray-50 rounded-md px-2">كريم</span>
+                                <span class="bg-green-400 text-gray-50 rounded-md px-2">{{$citizen->observer->agent->Agent_name}}</span>
                             </td>
                             <td class="p-3 text-center ">
                                 <div id="delete-alert" class=" h-10 w-28 rounded-full overflow-hidden hidden">
@@ -204,14 +198,14 @@
                                     <button class="bg-red-200 w-14 hover:bg-red-400">N</button>
                                 </div>
                                 <div id="action-div" class="flex justify-center">
-                                    <a onclick="deleteAlert();" href="#" class="text-red-500  hover:text-red-400  ">
+                                    <a onclick="deleteAlert();" href="#" citizen_Id="{{$citizen->id}}"  class="citizen_Delete" class="text-red-500  hover:text-red-400  ">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                         </svg>
                                     </a>
-                                    <a href="#" class="text-yellow-500 hover:text-yellow-400 mx-2 ">
+                                    <a href="#"  citizen_Id="{{$citizen->id}}"  class="citizen_Edit" class="text-yellow-500 hover:text-yellow-400 mx-2 ">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                             viewBox="0 0 20 20" fill="currentColor">
                                             <path
@@ -222,7 +216,8 @@
                                 </div>
                             </td>
                         </tr>
-
+                     @endforeach
+                     @endif
                     </tbody>
                 </table>
             </div>

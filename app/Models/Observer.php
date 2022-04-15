@@ -22,5 +22,9 @@ class Observer extends Model
     {
         return $this->belongsTo(Rigon::class,'rigons_id');
     }
+    public function citizen()
+    {
+        return $this->hasMany(Citizen::class, 'observer_id','id');
+    }
 
 }
