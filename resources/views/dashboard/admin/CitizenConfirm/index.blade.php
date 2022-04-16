@@ -12,5 +12,8 @@
        <!-- Adding CitizenConfirm -->
         @include('dashboard.admin.CitizenConfirm.create')   
        <!-- END Adding CitizenConfirm -->
+        <!-- Start Code Ajax -->
+        @include('dashboard.admin.includes.ajax.citizenConfirm')
+        <!-- End Code Ajax -->
       </article>
       @stop

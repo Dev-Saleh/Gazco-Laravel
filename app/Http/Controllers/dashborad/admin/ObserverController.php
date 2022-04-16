@@ -38,6 +38,43 @@ class ObserverController extends Controller
 
         
     }
+    public function show_rigons(Request $request)
+    {
+        try
+        {
+       
+           $rigons = Rigon::select()->where('directorate_id',$request->directorate_id)->get();
+           return response()->json([
+            'status' => true,
+            'rigons' => $rigons,
+           ]);
+       }
+       catch (\Exception $ex)
+        {
+           return response()->json([
+               'status' => false,
+               'msg' => 'error in index',
+           ]);
+       }
+    }
+    public function show_Agents(Request $request)
+    {
+        try
+        {
+           $agents = Agent::select()->where('rigons_id',$request->rigons_Id)->get();
+           return response()->json([
+            'status' => true,
+            'agents' => $agents,
+           ]);
+       }
+       catch (\Exception $ex)
+        {
+           return response()->json([
+               'status' => false,
+               'msg' => 'error in index',
+           ]);
+       }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -151,9 +188,29 @@ class ObserverController extends Controller
      * @param  \App\Models\Observer  $observer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Observer $observer)
+    public function update(Request $request)
     {
-        //
+        try{
+            $observer = Observer::find($request -> id);
+            if (!$observer)
+                return response()->json([
+                    'status' => false,
+                    'msg' => 'هذ العرض غير موجود',
+                ]);
+         
+            //update data  
+            $observer->update($request->except('_token'));
+            return response()->json([
+                'status' => true,
+                'msg' => 'تم  التحديث بنجاح',
+            ]);
+        }
+        catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+            ]);
+        }
     }
 
     /**

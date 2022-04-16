@@ -25,6 +25,10 @@ class CreateObserversTable extends Migration
             $table->foreign('rigons_id')->references('id')->on('rigons')->onDelete('cascade');
             $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
             $table->timestamps();
+            // alloawBookig boolean
+            //number batch number
+            // qty of sell 
+
       
         });
     }

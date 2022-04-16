@@ -23,9 +23,7 @@
     <div id="wrapper" class="flex h-full relative">
 
        
-        <!-- alert Success && error -->
-        @include('dashboard.admin.includes.alerts.success');
-        <!-- alert Success && error -->
+    
         <!-- fixed-top-->
         <!-- begin sidebar -->
         @include('dashboard.admin.includes.sidebare')

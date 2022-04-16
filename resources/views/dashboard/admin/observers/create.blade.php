@@ -1,4 +1,4 @@
-   <div class="">
+   
           <form action="#" method="POST" id='observerForm'>
             @csrf 
           <input type="text" name='id' style="display:none;" class="form-control"  id="observer_id">
@@ -6,6 +6,7 @@
               <div class="px-4 py-5 bg-white space-y-6 sm:p-6 rounded-xl ">
                 <!-- GRID ONE -->
                 <div class="grid grid-cols-6 gap-4">
+
                   <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                     <div class="relative z-0 w-full">
                       <input onchange="Slugify(document.getElementById('observer_name').value);" id="observer_name"
@@ -16,6 +17,8 @@
                         المراقب</label>
                       <span class="text-sm text-red-600 hidden" id="error">الاسم مطلوب !</span>
                     </div>
+                  </div>
+               
 
                   <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                     <div class="relative z-0 w-full">
@@ -25,79 +28,71 @@
                       <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Username</label>
                       <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
                     </div>
+                  </div>
 
-                  <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
-                    <div class="relative z-0 w-full">
-                      <input type="text" name="observer_password" id="observer_password" placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
-                                 appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
-                                 hover:border-blue-600 text-blue-900" />
-                      <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الرقم
-                        السري</label>
-                      <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
+                    <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
+                      <div class="relative z-0 w-full">
+                        <input type="text" name="observer_password" id="observer_password" placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
+                                  appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
+                                  hover:border-blue-600 text-blue-900" />
+                        <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الرقم
+                          السري</label>
+                        <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
+                      </div>
                     </div>
 
 
 
-                  </div>
-
-                  <!-- GRID TWO -->
+                </div>
+                <!-- GRID TWO -->
                   <div class="grid grid-cols-6 gap-4">
 
-                  <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
-                    <div class="relative z-0 w-full mb-5">
-                       <select name="directorate_id" value="" id='select_directorates' onclick="this.setAttribute('value', this.value);"
+                    <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
+                      <div class="relative z-0 w-full mb-5">
+                        <select name="directorate_id" value="" id='select_directorates' onclick="this.setAttribute('value', this.value);"
+                          class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+                          <option value="" id='select_directorate' selected disabled hidden></option>
+                          @if($directorates && $directorates -> count() > 0)
+                          @foreach($directorates as $directorate)
+                                <option value="{{$directorate->id }}">{{$directorate->directorate_name}}</option>
+                            @endforeach
+                        @endif
+                        </select>
+                        <label for="select"
+                          class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المديريه</label>
+                        <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+                      </div>
+                    </div>
+
+
+                    <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
+                      <div class="relative z-0 w-full mb-5">
+                        <select name="rigons_id" value="" id='select_rigons' onclick="this.setAttribute('value', this.value);"
                         class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                        <option value="" id='select_directorate' selected disabled hidden></option>
-                        @if($directorates && $directorates -> count() > 0)
-                        @foreach($directorates as $directorate)
-                              <option value="{{$directorate->id }}">{{$directorate->directorate_name}}</option>
-                          @endforeach
-                      @endif
+                        <option value="" id='select_rigon'></option>
                       </select>
-                      <label for="select"
-                        class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المديريه</label>
-                      <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+                        <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المربع</label>
+                        <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+                      </div>
                     </div>
 
-
-
-                  <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
-                    <div class="relative z-0 w-full mb-5">
-                      <select name="rigons_id" value="" id='select_rigons' onclick="this.setAttribute('value', this.value);"
-                      class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                      <option value="" id='select_rigon' selected disabled hidden></option>
-                    </select>
-                      <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المربع</label>
-                      <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+                    <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
+                      <div class="relative z-0 w-full mb-5">
+                      <select name="agent_id" value="" id='select_agents' onclick="this.setAttribute('value', this.value);"
+                          class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+                          <option value="" id='select_agent' selected disabled hidden></option>
+                          @if($agents && $agents -> count() > 0)
+                          @foreach($agents as $agent)
+                                <option value="{{$agent -> id }}">{{$agent -> Agent_name}}</option>
+                            @endforeach
+                        @endif
+                        </select>
+                        <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الموزع
+                          المراقب</label>
+                        <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+                      </div>
                     </div>
-
-                  <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
-                    <div class="relative z-0 w-full mb-5">
-                     <select name="agent_id" value="" id='select_agents' onclick="this.setAttribute('value', this.value);"
-                        class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                        <option value="" id='select_agent' selected disabled hidden></option>
-                        @if($agents && $agents -> count() > 0)
-                        @foreach($agents as $agent)
-                              <option value="{{$agent -> id }}">{{$agent -> Agent_name}}</option>
-                          @endforeach
-                      @endif
-                      </select>
-                      <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الموزع
-                        المراقب</label>
-                      <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
-                    </div>
-
                   </div>
-
-
-                  <!-- GRID THREE -->
-                  <div class="mt-1 px-4 py-3 bg-transparent text-center sm:px-6  rounded-3xl">
-                    <button type="submit"
-                      class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                      أضافه
-                    </button>
-                  </div>
-
                 <!-- GRID THREE -->
                 <div class="mt-1 px-4 py-3 bg-transparent text-center sm:px-6  rounded-3xl">
                   <button type="submit" id='save_observer'
@@ -109,7 +104,7 @@
                     تعديل
                   </button>
                 </div>
-              </form>
+              
             </div>
           </form>
 

@@ -1,4 +1,4 @@
-  <div class="px-4 py-4 sm:px-0">
+b  <div class="px-4 py-4 sm:px-0">
         <h3 class="text-lg font-medium leading-6 text-gray-900">اضافة و عرض الموزعين</h3>
       </div>
       <div class=" py-4 border-t border-gray-200">
@@ -15,14 +15,12 @@
                 class="relative cursor-pointer bg-white rounded-xl font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 border-2 border-blue-700 px-2">
                 <span>رفع صوره</span>
                 <input id="file-ip-1" name='photo' id='photo' accept="image/*" onchange="showPreviewUser(event);" type="file" class="sr-only">
+                
               </label>
-
+            
             <div class="mt-2 flex h-48 w-48  border-2 bg-gray-200 border-gray-500 border-dashed rounded-full">
-
-
-                <img class="rounded-full w-48 h-48 object-cover" src="" id="file-ip-1-preview" alt=""
+                <img class="rounded-full w-48 h-48 object-cover" src="" class='image' id="file-ip-1-preview" alt=""
                     style="display: none;" class="w-52 h-28">
-
             </div>
 
               <div class="relative z-0 w-full mb-5">
@@ -35,7 +33,7 @@
 
 
               <div class="relative z-0 w-full mb-5">
-                <select name="directorate_id" value="" id='select_directorates' onclick="this.setAttribute('value', this.value);"
+                <select name="directorate_id" value="" id='select_directorates' 
                   class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                    <option value="" id='select_directorate' selected disabled hidden></option>
                   @if($directorates && $directorates -> count() > 0)
@@ -50,7 +48,7 @@
             </div>
 
               <div class="relative z-0 w-full mb-5">
-                <select name="rigons_id" value="" id='select_rigons' onclick="this.setAttribute('value', this.value);"
+                <select name="rigons_id" value="" id='select_rigons' 
                   class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                   <option value="" id='select_rigon' selected disabled hidden></option>
                 </select>
@@ -59,7 +57,7 @@
             </div>
 
 
-              <button id='save_agent' onclick="alert.show(`Dev SAleh`,`success`)" type="submit"
+              <button id='save_agent' type="submit"
                 class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-72">
                 أضافه
               </button>
@@ -78,7 +76,7 @@
     <!-- Table Section -->
     <div class="mx-auto w-full">
         <!-- <p class="text-center font-sans mb-2 text-2xl"> Brands Table</p> -->
-        <div class=" relative overflow-y-scroll" style="height: 550px;">
+        <div class=" relative overflow-y-auto" style="height: 550px;">
             <table class="table w-full text-gray-500 border-separate space-y-6 text-sm">
                 <thead class="bg-gray-200 text-gray-500">
                     <tr>
@@ -92,7 +90,7 @@
                 <tbody id='fetch_Allagent'>
                   @if($agents && $agents -> count() > 0)
                   @foreach($agents as $agent)
-                  <tr class="offerRow{{$agent -> id}}" class="bg-gray-50 hover:scale-95 transform transition-all ease-in">
+                  <tr  class=" offerRow{{$agent -> id}} bg-gray-50 hover:scale-95 transform transition-all ease-in">
                     <td class="p-3 text-center">
                       {{$agent->id}}
                     </td>
@@ -129,3 +127,4 @@
             </div>
           </div>
     </div>
+

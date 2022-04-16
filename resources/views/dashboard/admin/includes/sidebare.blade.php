@@ -50,7 +50,7 @@
           <i class="fas fa-calendar mr-3"></i>
           الكشوفات
         </a>
-        <a href="{{route('citizenconfirm.index')}}" class="flex items-center text-white 
+        <a href="{{route('citizenConfirm.index')}}" class="flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl
                 hover:text-indigo-200

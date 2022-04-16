@@ -91,6 +91,7 @@
                     if (data.status == true) {
                      // alert.show(data.msg,'success')
                         $('#file-ip-1').val('');
+                      
                         $('#select_directorates').val('');
                         $('#select_rigons').val('');
                         $('#agent_name').val('');
@@ -119,8 +120,9 @@
                      'id' :agent, 
                 },
                 success: function (data) {
+                  console.log(data);
                      if (data.status == true) {
-                     // alert.show(data.msg,'success');
+                      alert(data.msg,'success');
                     }
                     $('.offerRow'+data.id).remove();
                 }, error: function (reject) {
@@ -147,6 +149,7 @@
                 success: function (data) {
                   console.log(data);
                      if (data.status == true) {
+                     
                         $('#agent_id').val(data.agent.id);
                         $('#select_directorate').text(data.directorate_name);
                         $('#select_rigon').text(data.rigon_name);
@@ -168,8 +171,6 @@
  
 
     // End edit Agent By Ajax 
-
-
     // Start Update Agent By Ajax 
  
 

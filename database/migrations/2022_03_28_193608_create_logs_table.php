@@ -26,6 +26,7 @@ class CreateLogsTable extends Migration
             $table->foreign('stations_id')->references('id')->on('stations')->onDelete('cascade');
             $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
             $table->timestamps();
+            //Valid of sell boolean 
         });
     }
 

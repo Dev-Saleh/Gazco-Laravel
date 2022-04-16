@@ -13,7 +13,37 @@ class CitizenConfirm extends Controller
      */
     public function index()
     {
-        return view('dashboard.admin.CitizenConfirm.index');
+        try
+        {
+          $data[]='';
+         
+          $data['citizens'] =Citizen::with([
+          'directorate'=>function($q)
+          {
+            $q->select('id','directorate_name');
+          }
+          ,'rigon'=>function($q)
+          {
+            $q->select('id','rigon_name');
+          }
+          ,'observer'=>function($q)
+          {
+            $q->with(['agent'=>function($q){
+                $q->select('id','Agent_name');
+            }])->select('id','agent_id')->get();
+          }
+        ])->select('id','citizen_name','identity_num','directorate_id','rigons_id','observer_id')->get();
+         return view('dashboard.admin.CitizenConfirm.index',$data); 
+
+       }
+       catch (\Exception $ex)
+        {
+           return response()->json([
+               'status' => false,
+               'msg' => 'error in index',
+           ]);
+       }
+       
     }
 
     /**
@@ -43,9 +73,45 @@ class CitizenConfirm extends Controller
      * @param  \App\Models\Citizen  $citizen
      * @return \Illuminate\Http\Response
      */
-    public function show(Citizen $citizen)
+    public function show(Request $request)
     {
-        //
+        try{
+            $citizen = Citizen::find($request -> citizenId);  // search in given table id only
+            if (!$citizen)
+                return response()->json([
+                    'status' => false,
+                    'msg' => 'هذ العرض غير موجود',
+                   
+                ]);
+             $citizen=Citizen::with([
+                'directorate'=>function($q)
+                {
+                  $q->select('id','directorate_name');
+                }
+                ,'rigon'=>function($q)
+                {
+                  $q->select('id','rigon_name');
+                }
+                ,'observer'=>function($q)
+                {
+                  $q->with(['agent'=>function($q){
+                      $q->select('id','Agent_name');
+                  }])->select('id','agent_id','observer_name')->get();
+                }
+              ])->select()->find($request -> citizenId);  
+            if ($citizen){
+            return response()->json([
+                'status' => true,
+                'citizen' => $citizen,        
+            ]); 
+          }
+          }
+          catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+            ]);
+        }
     }
 
     /**
@@ -54,9 +120,45 @@ class CitizenConfirm extends Controller
      * @param  \App\Models\Citizen  $citizen
      * @return \Illuminate\Http\Response
      */
-    public function edit(Citizen $citizen)
+    public function edit(Request $request)
     {
-        //
+        try{
+            $citizen = Citizen::find($request -> citizenId);  // search in given table id only
+            if (!$citizen)
+                return response()->json([
+                    'status' => false,
+                    'msg' => 'هذ العرض غير موجود',
+                   
+                ]);
+             $citizen=Citizen::with([
+                'directorate'=>function($q)
+                {
+                  $q->select('id','directorate_name');
+                }
+                ,'rigon'=>function($q)
+                {
+                  $q->select('id','rigon_name');
+                }
+                ,'observer'=>function($q)
+                {
+                  $q->with(['agent'=>function($q){
+                      $q->select('id','Agent_name');
+                  }])->select('id','agent_id','observer_name')->get();
+                }
+              ])->select()->find($request -> citizenId);  
+            if ($citizen){
+            return response()->json([
+                'status' => true,
+                'citizen' => $citizen,        
+            ]); 
+          }
+          }
+          catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+            ]);
+        }
     }
 
     /**
@@ -77,8 +179,30 @@ class CitizenConfirm extends Controller
      * @param  \App\Models\Citizen  $citizen
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Citizen $citizen)
+    public function destroy(Request $request)
     {
-        //
+        try {
+            $citizen = Citizen::find($request -> citizenId); 
+            if (!$citizen)
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل بالتعديل برجاء المحاوله مجددا',
+               ]);
+            $imageDelete=base_path("public/assets/images/citizens/".$citizen->attachment);
+            if(file_exists($imageDelete))
+            unlink($imageDelete);
+             $citizen->delete();
+             return response()->json([
+                'status' => true,
+                'msg' => 'تم الحذف بنجاح',
+                'id' => $request -> citizenId
+        ]);
+         } catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+            ]);
+          
+         }
     }
 }

@@ -18,9 +18,7 @@
 <body dir="rtl" class="font-tajawal text-base bg-gray-100">
 <div id="wrapper" class="flex h-full relative">
 <!-- fixed-top-->
-<!-- alert Success && error -->
-@include('dashboard.observer.includes.alerts.success')
-<!-- alert Success && error -->
+
 <!-- begin sidebar -->
 @include('dashboard.observer.includes.sidebare')
 <!-- end sidebar -->

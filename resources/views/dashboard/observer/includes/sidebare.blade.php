@@ -20,7 +20,7 @@
               <i class="fas fa-tachometer-alt mr-3"></i>
               نظره عامه
           </a>
-          <a href="{{ route('citizen.index',1) }}"  
+          <a href="{{ route('citizen.index',2) }}"  
               class=" text-base font-semibold flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl
@@ -31,7 +31,7 @@
               <i class="fas fa-table mr-3"></i>
               المواطنين
           </a>
-          <a href="/html/Agents.html"
+          <a href="{{route('checkBooking.index')}}"
               class=" text-base font-semibold flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl

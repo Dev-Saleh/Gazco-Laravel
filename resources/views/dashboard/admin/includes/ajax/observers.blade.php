@@ -52,6 +52,61 @@
               });
         }
       // End fetch All observer  
+      // Start select rigon by Ajax 
+ 
+        $(document).on('change', '#select_directorates', function (e) {
+            e.preventDefault();
+            var directorate_id= window.select_directorates.value;
+            $.ajax({
+                type: 'get',
+                enctype: 'multipart/form-data',
+                url: "{{route('observer.Show_rigons')}}",
+              data: {
+                     'directorate_id' :directorate_id, 
+                    },
+                success: function (data) {
+                  
+                   if (data.status == true) {
+                       $('#select_rigons').html("");
+                        $.each(data.rigons, function (key , rigon) {
+                        $('#select_rigons').append('<option value='+rigon.id+'>'+rigon.rigon_name+'</option>');
+                        });
+                    }
+                  
+                }, error: function (reject) {
+                   
+                }
+            });
+        });
+  
+      // End select rigon by Ajax 
+        // Start select gaz_Logs Agent by Ajax 
+ 
+        $(document).on('click', '#select_rigons', function (e) {
+            e.preventDefault();
+            var rigons_Id= window.select_rigons.value;
+            $.ajax({
+                type: 'get',
+                enctype: 'multipart/form-data',
+                url: "{{route('observer.show_Agents')}}",
+              data: {
+                     'rigons_Id' :rigons_Id, 
+                    },
+                success: function (data) {
+                  console.log(data);
+                   if (data.status == true) {
+                       $('#select_agents').html("");
+                        $.each(data.agents, function (key , agent) {
+                        $('#select_agents').append('<option value='+agent.id+'>'+agent.Agent_name+'</option>');
+                        });
+                    }
+                }, error: function (reject) {
+                   
+                }
+            });
+        });
+  
+    // End select gaz_Logs Agent by Ajax
 
      // Start Add observer By Ajax 
 
@@ -70,7 +125,7 @@
                   console.log(data);
                    if (data.status == true) {
                        alert.show(data.msg,'success');
-                        {{-- $('#observer_id').val('');
+                        $('#observer_id').val('');
                         $('#observer_name').val(''); 
                         $('#observer_username').val('');
                         $('#observer_password').val('');
@@ -79,7 +134,7 @@
                         $('#select_rigons').val('');
                         $('#select_rigons').text('');
                         $('#select_agents').val('');
-                        $('#select_agents').text(''); --}}
+                        $('#select_agents').text(''); 
                         fetchobserver(); 
                     }
                   
@@ -120,7 +175,6 @@
   // End Deleting observer By Ajax 
  // Start edit observer By Ajax 
        
- 
         $(document).on('click', '#observer_edit', function (e) {
             e.preventDefault();
               var observer = $(this).attr('observer');
@@ -134,17 +188,18 @@
                 success: function (data) {
                   console.log(data);
                      if (data.status == true) {
-                        {{-- $('#agent_id').val(data.agent.id);
-                        $('#select_directorate').text(data.directorate_name);
-                        $('#select_rigon').text(data.rigon_name);
-                        //أسئل صلوح 
-                         //$('#select_directorates').val(data.agent.directorate_id);
-                        //$('#select_rigons').val(data.agent.rigon_id);
-                        $('#agent_name').val(data.agent.Agent_name);
-                        $('#photo').val(data.photo);
-                       // $('#select_directorates').val('');
-                        window.save_agent.style.display="none";
-                        window.update_agent.style.display="inline-flex"; --}}
+                        $('#observer_id').val(data.observer.id);
+                        $('#observer_name').val(data.observer.observer_name); 
+                        $('#observer_username').val(data.observer.observer_username);
+                        $('#observer_password').val(data.observer.observer_password);
+                        $('#select_directorates').val(data.observer.directorate_id);
+                        $('#select_directorate').text(data.observer.directorate.directorate_name);
+                        $('#select_rigons').val(data.observer.rigons_id);
+                        $('#select_rigon').text(data.observer.rigon.rigon_name);
+                        $('#select_agents').val(data.observer.agent_id);
+                        $('#select_agent').text(data.observer.agent.Agent_name); 
+                        window.save_observer.style.display="none";
+                        window.update_observer.style.display="inline-flex";
                     }
                  
                 }, error: function (reject) {
@@ -155,5 +210,44 @@
  
 
 // End edit observer By Ajax 
+// Start Update observer By Ajax 
+ 
+
+        $(document).on('click', '#update_observer', function (e) {
+            e.preventDefault();
+               var formData = new FormData($('#observerForm')[0]);    
+              
+            $.ajax({
+                type: 'post',
+                enctype: 'multipart/form-data',
+                url: "{{route('observer.update')}}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (data) {
+                console.log(data);
+                    if(data.status == true){
+                       alert.show(data.msg,'success');
+                      
+                        window.save_observer.style.display="inline-flex";
+                        window.update_observer.style.display="none";  
+                      fetchobserver(); 
+                        
+                    }
+                }, error: function (reject) {
+                    var response = $.parseJSON(reject.responseText);
+                    $.each(response.errors, function (key, val) {
+                        $("#" + key + "_error").text(val[0]);
+                    }); 
+                }
+                });
+            
+        });
+      
+
+
+
+    // End Update observer By Ajax
 </script>
 @stop

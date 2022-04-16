@@ -105,11 +105,16 @@ class AgentController extends Controller
                     'msg' => 'تم الحفظ بنجاح', 
                     
                 ]);
+
         }
         catch (\Exception $ex) {
+            $imageDelete=base_path("public/assets/images/agents/".$filename);
+            if(file_exists($imageDelete))
+            unlink($imageDelete);
             return response()->json([
                 'status' => false,
                 'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+
                
             ]);
         }
@@ -214,11 +219,16 @@ class AgentController extends Controller
                 'status' => false,
                 'msg' => 'فشل بالتعديل برجاء المحاوله مجددا',
                ]);
-             $agent->delete();
+ 
+             $imageDelete=base_path("public/assets/images/agents/".$agent->photo);
+              if(file_exists($imageDelete))
+               unlink($imageDelete);
+               $agent->delete();
              return response()->json([
                 'status' => true,
                 'msg' => 'تم الحذف بنجاح',
-                'id' => $request -> id
+                'id' => $request -> id,
+                
         ]);
          } catch (\Exception $ex) {
             return response()->json([

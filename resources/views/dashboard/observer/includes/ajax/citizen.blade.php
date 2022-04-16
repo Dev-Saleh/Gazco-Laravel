@@ -14,6 +14,7 @@
 
                     success: function (data) {     
                       console.log(data) ;
+                    if(data.status == true) {
                      $('#fetch_All_Citizens').html("");
                       $.each(data.citizens, function (key , citizen) {
                         $('#fetch_All_Citizens').append('<tr  class="offerRow'+citizen.id+'" class="bg-gray-50 hover:scale-95 transform transition-all ease-in">\
@@ -44,7 +45,8 @@
                             </td>\
                         </tr>');
                      }); 
-                    } 
+                    }
+                    }
                 });
         }
 
@@ -68,7 +70,7 @@
                     console.log(data);
                     if (data.status == true) {
                        $('#citizen_Id').val('');
-                       $('#observer_Id').val('');
+                     //  $('#observer_Id').val(''); can not be null لاتفعل دا
                        $('#citizen_name').val('');
                        $('#identity_num').val('');
                        $('#citizen_password').val('');
@@ -176,7 +178,7 @@
                     if(data.status == true){
                         alert.show(data.msg,'success');
                        $('#citizen_Id').val('');
-                       $('#observer_Id').val('');
+                       //  $('#observer_Id').val(''); can not be null لاتفعل دا
                        $('#citizen_name').val('');
                        $('#identity_num').val('');
                        $('#citizen_password').val('');
