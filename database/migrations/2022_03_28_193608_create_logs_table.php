@@ -20,13 +20,14 @@ class CreateLogsTable extends Migration
             $table->integer('rigons_id')->unsigned();
             $table->integer('stations_id')->unsigned();
             $table->integer('agent_id')->unsigned();
+            $table->boolean('validOfSell')->default('1');
             $table->longText('notice')->nullable();
             $table->foreign('directorate_id')->references('id')->on('directorates')->onDelete('cascade');
             $table->foreign('rigons_id')->references('id')->on('rigons')->onDelete('cascade');
             $table->foreign('stations_id')->references('id')->on('stations')->onDelete('cascade');
             $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
             $table->timestamps();
-            //Valid of sell boolean 
+           
         });
     }
 

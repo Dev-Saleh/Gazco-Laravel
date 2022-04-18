@@ -113,3 +113,8 @@ function showPreviewUser(event){
    alert.classList.replace('hidden','flex');
   
  }
+
+
+ const f = (idOfElement) => {
+      document.getElementById(idOfElement).focus();
+ }

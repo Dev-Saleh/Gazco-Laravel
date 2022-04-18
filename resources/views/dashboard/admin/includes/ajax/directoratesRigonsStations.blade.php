@@ -5,28 +5,28 @@
   // ########################## ( Dirctorates SECTION ) ##############################
 
 
-     //  Start fetch All directorate  
-      function fetchdirectorate()
+     //  Start fetch New Directorate  
+      function fetchNewDirectorate()
         {
             $.ajax({
                     type: 'get',
-                    url: "{{route('directorate.fetch_all_Data')}}",
+                    url: "{{route('directorate.fetchNewDirectorate')}}",
                     dataType:"json",
-
-                    success: function (data) {      
-                    $('#fetch_Alldir').html("");
+                    success: function (data) {   
+                     // console.log(data);
+                    $('#fetchAllDirectorates').html("");
                     $('#select_directorates').html("");
                       $.each(data.directorates, function (key , directorate) {
-                        $('#fetch_Alldir').append('<tr class="offerRow'+directorate.id+' class="bg-gray-100 hover:scale-95 transform transition-all ease-in">\
+                        $('#fetchAllDirectorates').append('<tr  class="offerRow'+directorate.id+' bg-gray-100 hover:scale-95 transform transition-all ease-in">\
                                   <td class="p-3">'+directorate.id+'</td>\
                                   <td class="p-3 text-center">'+directorate.directorate_name+'</td>\
                                   <td class="p-3 flex justify-evenly ">\
-                                    <a href="#"  directorate="'+directorate.id+'"  class="directorate_delete btn btn-danger" class="text-gray-400  hover:text-red-400  ">\
+                                    <a href="#"  directorateId="'+directorate.id+'" class="directorateDelete text-gray-400  hover:text-red-400  ">\
                                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
                                       </svg>\
                                     </a>\
-                                    <a href="#" directorate="'+directorate.id+'"  id="directorate_edit" class="text-gray-400 hover:text-yellow-100  ">\
+                                    <a href="#" directorateId="'+directorate.id+'"  class="directorateEdit text-gray-400 hover:text-yellow-100  ">\
                                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"   d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
                                       </svg>\
@@ -41,10 +41,10 @@
                 });
         }
 
-    //  End fetch All directorate 
+    //  End fetch New Directorate 
 
     // Start Add Directorate By Ajax 
-        $(document).on('click', '#save_directorate', function (e) {
+        $(document).on('click', '#saveDirectorate', function (e) {
             e.preventDefault();
             var formData = new FormData($('#directorateForm')[0]);       
             $.ajax({
@@ -57,11 +57,13 @@
                 cache: false,
                 success: function (data) {
                    if (data.status == true) {
-                      alert.show(data.msg,'success')
-                        $('#directorate_id').val('');
-                        $('#directorate_name').val('');
-                       fetchdirectorate();
-                    }
+                     fetchNewDirectorate();
+                      alert(data.msgSuccess,'success');
+                        $('#directorateId').val('');
+                        $('#directorateName').val('');
+                        
+                     }
+                    else alert(data.msgError,'error');
                   
                 }, error: function (reject) {
                     var response = $.parseJSON(reject.responseText);
@@ -76,23 +78,23 @@
 
     //  Start Deleteing directorate By Ajax 
    
-        $(document).on('click', '.directorate_delete', function (e) {
+        $(document).on('click', '.directorateDelete', function (e) {
             e.preventDefault();
-              var directorate = $(this).attr('directorate');
+              var directorateId = $(this).attr('directorateId');
             $.ajax({
                 type: 'delete',
-                url: "{{route('directorate.destroy','.directorate.')}}",
+                url:"{{route('directorate.destroy')}}",             
                 data: {
-                    '_token': "{{csrf_token()}}",
-                     'id' :directorate, 
+                     'directorateId' :directorateId, 
                 },
                 success: function (data) {
                      if (data.status == true) {
-                      alert.show(data.msg,'success');
+                      alert(data.msgSuccess,'success');
+                      $('.offerRow'+data.directorateId).remove();
                     }
-                    $('.offerRow'+data.id).remove();
+                    else alert(data.msgError,'success');
                 }, error: function (reject) {
-
+                  
                 }
             });
         });
@@ -102,28 +104,24 @@
     // Start edit directorate By Ajax
            
   
-        $(document).on('click', '#directorate_edit', function (e) {
+        $(document).on('click', '.directorateEdit', function (e) {
             e.preventDefault();
-              var directorate = $(this).attr('directorate');
+              var directorateId = $(this).attr('directorateId');
             $.ajax({
                 type: 'post',
                 url:"{{route('directorate.edit')}}",
                 data: {
-                    '_token': "{{csrf_token()}}",
-                     'id' :directorate, 
+                     'directorateId' :directorateId, 
                 },
                 success: function (data) {
                   
                      if (data.status == true) {
-                        
-                       //  window.directorate_id.value=data.directorate.id;
-                       //  window.directorate_name.value=data.directorate.directorate_name;
-                        $('#directorate_id').val(data.directorate.id);
-                        $('#directorate_name').val(data.directorate.directorate_name);
-                      
-                        window.save_directorate.style.display="none";
-                        window.update_directorate.style.display="inline-flex";
+                        $('#directorateId').val(data.directorate.id);
+                        $('#directorateName').val(data.directorate.directorate_name);
+                        window.saveDirectorate.style.display="none";
+                        window.updateDirectorate.style.display="inline-flex";
                     }
+                    else alert(data.msgError,'success');
                  
                 }, error: function (reject) {
 
@@ -137,7 +135,7 @@
     //  Start Update directorate By Ajax 
 
 
-        $(document).on('click', '#update_directorate', function (e) {
+        $(document).on('click', '#updateDirectorate', function (e) {
             e.preventDefault();
               var formData = new FormData($('#directorateForm')[0]); 
               
@@ -152,12 +150,12 @@
                 success: function (data) {
 
                     if(data.status == true){
-
-                        $('#directorate_id').val('');
-                        $('#directorate_name').val('');
-                        window.save_directorate.style.display="inline-flex";
-                        window.update_directorate.style.display="none";
-                        fetchdirectorate();
+                        alert(data.msgSuccess,'success');
+                        $('#directorateId').val('');
+                        $('#directorateName').val('');
+                        window.saveDirectorate.style.display="inline-flex";
+                        window.updateDirectorate.style.display="none";
+                        fetchNewDirectorate();
                     }
                 }, error: function (reject) {
                     var response = $.parseJSON(reject.responseText);
@@ -191,7 +189,7 @@
                         
                     $('#fetch_Allrigon').html("");
                       $.each(data.rigons, function (key , rigon) {
-                        $('#fetch_Allrigon').append('<tr class="offerRow'+rigon.id+' class="bg-gray-100 hover:scale-95 transform transition-all ease-in">\
+                        $('#fetch_Allrigon').append('<tr  class="offerRow'+rigon.id+' bg-gray-100 hover:scale-95 transform transition-all ease-in">\
                                   <td class="p-3">'+rigon.id+'</td>\
                                   <td class="p-3 text-center">'+rigon.rigon_name+'</td>\
                                   <td class="p-3 flex justify-evenly ">\
@@ -230,7 +228,7 @@
                 success: function (data) {
                   console.log(data);
                    if (data.status == true) {
-                      alert.show(data.msg,'success');
+                      alert(data.msg,'success');
                         $('#rigon_id').val('');
                         $('#select_directorate').val('');
                         $('#rigon_name').val('');
@@ -262,7 +260,7 @@
                 },
                 success: function (data) {
                      if (data.status == true) {
-                     // alert.show(data.msg,'success');
+                     alert(data.msg,'success');
                     }
                     $('.offerRow'+data.id).remove();
                 }, error: function (reject) {
@@ -323,7 +321,7 @@
                 success: function (data) {
 
                     if(data.status == true){
-                       alert.show(data.msg,'success');
+                       alert(data.msg,'success');
                         $('#rigon_id').val('');
                         $('#select_directorate').text('');
                        // $('#select_directorate').val('');
@@ -359,7 +357,7 @@
                       console.log(data) ;
                     $('#fetch_All_Stations').html("");
                       $.each(data.stations, function (key , station) {
-                        $('#fetch_All_Stations').append('<tr  class="offerRow'+station.id+'"  class="bg-gray-100 hover:scale-95 transform transition-all ease-in">\
+                        $('#fetch_All_Stations').append('<tr class="offerRow'+station.id+' bg-gray-100 hover:scale-95 transform transition-all ease-in">\
                                   <td class="p-3">'+station.id+'</td>\
                                   <td class="p-3 text-center">'+station.Station_name+'</td>\
                                   <td class="p-3 flex justify-evenly ">\
@@ -398,7 +396,7 @@
                 success: function (data) {
                   console.log(data);
                    if (data.status == true) {
-                      alert.show(data.msg,'success')
+                      alert(data.msg,'success')
                         $('#station_id').val('');
                         $('#station_name').val('');
                         fetch_All_Stations();
@@ -429,7 +427,7 @@
                 },
                 success: function (data) {
                      if (data.status == true) {
-                     // alert.show(data.msg,'success');
+                      alert(data.msg,'success');
                     }
                     $('.offerRow'+data.id).remove();
                 }, error: function (reject) {
@@ -492,7 +490,7 @@
                 success: function (data) {
 
                     if(data.status == true){
-                       alert.show(data.msg,'success');
+                       alert(data.msg,'success');
                         $('#station_id').val('');
                         $('#station_name').val('');
                         window.save_station.style.display="inline-flex";

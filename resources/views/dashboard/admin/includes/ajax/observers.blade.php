@@ -124,17 +124,17 @@
                 success: function (data) {
                   console.log(data);
                    if (data.status == true) {
-                       alert.show(data.msg,'success');
+                       alert(data.msg,'success');
                         $('#observer_id').val('');
                         $('#observer_name').val(''); 
                         $('#observer_username').val('');
                         $('#observer_password').val('');
-                        $('#select_directorates').val('');
-                        $('#select_directorates').text('');
-                        $('#select_rigons').val('');
-                        $('#select_rigons').text('');
-                        $('#select_agents').val('');
-                        $('#select_agents').text(''); 
+                    //    $('#select_directorates').val('');
+                      //  $('#select_directorates').text('');
+                      //  $('#select_rigons').val('');
+                     //   $('#select_rigons').text('');
+                     //   $('#select_agents').val('');
+                      //  $('#select_agents').text(''); 
                         fetchobserver(); 
                     }
                   
@@ -162,7 +162,7 @@
                 },
                 success: function (data) {
                      if (data.status == true) {
-                     // alert.show(data.msg,'success');
+                      alert(data.msg,'success');
                     }
                     $('.offerRow'+data.id).remove();
                 }, error: function (reject) {
@@ -228,11 +228,11 @@
                 success: function (data) {
                 console.log(data);
                     if(data.status == true){
-                       alert.show(data.msg,'success');
+                       alert(data.msg,'success');
                       
                         window.save_observer.style.display="inline-flex";
                         window.update_observer.style.display="none";  
-                      fetchobserver(); 
+                        fetchobserver(); 
                         
                     }
                 }, error: function (reject) {

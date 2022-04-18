@@ -19,9 +19,8 @@ class CreateLogsBookingsTable extends Migration
             $table->date('Reciving_date')->nullable();
             $table->boolean('status_booking');
             $table->integer('citizen_id')->unsigned();
-            $table->integer('table_id')->unsigned();
+            $table->integer('NumBatch')->unsigned();
             $table->foreign('citizen_id')->references('id')->on('citizens')->onDelete('cascade');
-            $table->foreign('table_id')->references('id')->on('logs__tables')->onDelete('cascade');
             $table->timestamps();
         });
     }

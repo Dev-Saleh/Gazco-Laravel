@@ -11,7 +11,7 @@
             <form action="#" method="POST" id="citize_Form">
               @csrf 
           <input type="text" name='id' style="display:none;" class="form-control"  id="citizen_Id"> 
-          <input type="text" name='observer_id' value="{{$observers->id}}" style="display:none;" class="form-control"  id="observer_Id"> 
+            <input type="text" name='observer_id' value="{{$observers->id}}" style="display:none;" class="form-control"  id="observer_Id"> 
                 <div class="">
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6 rounded-xl ">
                         <!-- GRID ONE -->
@@ -152,7 +152,6 @@
     <details class="cursor-pointer ">
         <summary class="text-lg font-medium leading-6 text-gray-900 space-y-6">
             <a href="#c_logs">سجل المواطنين </a>
-
             <div class="border-t border-gray-200">
             </div>
         </summary>

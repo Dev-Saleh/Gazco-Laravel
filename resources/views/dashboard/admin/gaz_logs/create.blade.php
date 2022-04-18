@@ -150,7 +150,7 @@
               <tbody id="fetch_All_Gaz_Logs">
                 @if($gaz_Logs && $gaz_Logs -> count() > 0)
                 @foreach($gaz_Logs as $gaz_Log)
-                <tr  class="offerRow{{$gaz_Log -> id}}" class="bg-gray-50 hover:scale-95 transform transition-all ease-in ">
+                <tr   class="offerRow{{$gaz_Log -> id}} bg-gray-50 hover:scale-95 transform transition-all ease-in ">
                   <td class="p-3 text-center">
                     {{$gaz_Log -> id}}
                   </td>

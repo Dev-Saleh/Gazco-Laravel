@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 
 
+
 Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*/ 'prefix' => 'admin'], function () {
 
   
@@ -12,14 +13,14 @@ Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*
     ################################## directorate routes ######################################
   //  Route::group(['prefix' => 'directorate'], function () {
     
-     Route::resource('directorate', 'DirectorateController');
-     
+    // Route::resource('directorate', 'directoratesController');
      Route::group(['prefix' => 'directorate'], function () {
-     Route::post('edit', 'DirectorateController@edit')->name('directorate.edit');
-     Route::post('fetch', 'DirectorateController@show')->name('directorate.fetch_all_Data');
-     Route::post('update', 'DirectorateController@update')->name('directorate.update');
-     ///////////
-     
+            Route::get('index', 'directoratesController@index')->name('directorate.index');
+            Route::post('store', 'directoratesController@store')->name('directorate.store');
+            Route::post('edit', 'directoratesController@edit')->name('directorate.edit');
+            Route::get('show', 'directoratesController@show')->name('directorate.fetchNewDirectorate');
+            Route::post('update', 'directoratesController@update')->name('directorate.update');
+            Route::delete('delete/{id?}', 'directoratesController@destroy')->name('directorate.destroy'); 
      });
       Route::group(['prefix' => 'rigon'], function () {
             Route::post('store', 'RigonController@store')->name('rigon.store');
@@ -72,53 +73,17 @@ Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*
       Route::get('index',  'CitizenConfirm@index')->name('citizenConfirm.index');
       Route::delete('delete/{id?}','CitizenConfirm@destroy')->name('citizenConfirm.destroy');
       Route::get('edit/{id?}', 'CitizenConfirm@edit')->name('citizenConfirm.edit');
-     // Route::post('update', 'CitizenController@update')->name('citizen.update');
       Route::get('show', 'CitizenConfirm@show')->name('citizenConfirm.show');
       
-    });
-  
-    
-    
-    // Route::resource('agent', 'AgentController');
-    // Route::resource('observer', 'ObserverController');
-    // Route::resource('log', 'gaz_Logs');
-     Route::resource('citizenconfirm', 'CitizenConfirm');
-    
-   // });
-    ################################## directorate routes ######################################
-    ################################## Rigon routes ######################################
-  //  Route::group(['prefix' => 'directorate/Rigon'], function () {
-   
-        
-  //  });
-    ################################## Rigon routes ######################################
-    ################################## Agent routes ######################################
-    // Route::group(['prefix' => 'Agent'], function () {
-    //   Route::resource('Agent', 'AgentController');
-    // });
-
-
-    ################################## Agent routes ######################################
-    ################################## Employe routes ######################################
-    // Route::group(['prefix' => 'Employe'], function () {
-        
-    // });
-    ################################## Employe routes ######################################
-    ################################## Observer routes ######################################
-    //  Route::group(['prefix' => 'Observer'], function () {
-        
-    // });
-    ################################## Observer routes ######################################  
-     ################################## Reports routes ######################################
-    //  Route::group(['prefix' => 'Reports'], function () {
-        
-    // });
-    ################################## Reports routes ######################################    
+    });  
 });
+
+ ################################## Observer routes ######################################  
+
 
 Route::group(['namespace' => 'dashborad\observer', /*'middleware' => 'auth:Employe',*/ 'prefix' => 'observer'], function () {
   Route::get('/', 'DashboradController@index')->name('observer.dashboard');  // the first page Employe visits if authenticated
-  //Route::resource('citizen', 'CitizenController');
+  
   Route::group(['prefix' => 'citizen'], function () {
     Route::get('index/{id}',  'CitizenController@index')->name('citizen.index');
     Route::post('store', 'CitizenController@store')->name('citizes.store');
@@ -128,32 +93,17 @@ Route::group(['namespace' => 'dashborad\observer', /*'middleware' => 'auth:Emplo
     Route::get('show_All', 'CitizenController@show_All')->name('citizen.show_All');
     
  });
-  Route::group(['prefix' => 'checkBooking'], function () {
+ 
+ 
+ Route::group(['prefix' => 'checkBooking'], function () {
     Route::get('index',  'checkBookingController@index')->name('checkBooking.index');
-   // Route::post('store', 'CitizenController@store')->name('citizes.store');
-  //  Route::delete('delete/{id?}','CitizenController@destroy')->name('citizen.destroy');
-  //  Route::get('edit/{id?}', 'CitizenController@edit')->name('citizen.edit');
-  //  Route::post('update', 'CitizenController@update')->name('citizen.update');
-   // Route::get('show_All', 'CitizenController@show_All')->name('citizen.show_All');
+  });
+ 
+  
+  Route::group(['prefix' => 'checkBatch'], function () {
+    Route::get('index/{id}', 'checkBatchController@index')->name('checkBatch.index');
+    Route::post('update','checkBatchController@update')->name('checkBatch.allowBooking');
+    Route::get('show', 'checkBatchController@show')->name('checkBatch.show');
     
   });
-  
-
-  ################################## Rescriptions routes ######################################
-  //  Route::group(['prefix' => 'Rescriptions'], function () {
-    
-  // });
-  ################################## Rescriptions routes ######################################
-  ################################## Verification routes ######################################
-  //  Route::group(['prefix' => 'Verification'], function () {
-    
-  // });
-  ################################## Verification routes ######################################
-
-   ################################## Complaints routes ######################################
-  //  Route::group(['prefix' => 'Complaints'], function () {
-    
-  // });
-  ################################## Complaints routes ######################################
-   
 });

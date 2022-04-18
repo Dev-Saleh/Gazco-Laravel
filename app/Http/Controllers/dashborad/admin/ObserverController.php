@@ -96,6 +96,7 @@ class ObserverController extends Controller
     {
         try { 
             $observer = Observer::create($request->except('_token'));
+        
             $observer->save();
             if ($observer)
             return response()->json([
@@ -105,6 +106,7 @@ class ObserverController extends Controller
         }
         catch (\Exception $ex) {
             return response()->json([
+                'error'=>$ex,
                 'status' => false,
                 'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
                

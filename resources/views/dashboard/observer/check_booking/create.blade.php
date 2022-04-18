@@ -14,8 +14,8 @@
               <table class="table w-full text-gray-500 border-separate space-y-6 text-sm">
                 <thead class="bg-gray-200 text-gray-500">
                   <tr>
-                    <th class="p-3">تاريخ الكشف</th>
                     <th class="p-3 text-center">رقم الدفعه</th>
+                    <th class="p-3">تاريخ الدفعه</th>
                     <th class="p-3 text-center">رقم الكشف</th>
                     <th class="p-3 text-center">العمليات</th>
                   </tr>
@@ -23,10 +23,10 @@
                 <tbody>
                   <tr class="bg-gray-50 hover:scale-95 transform transition-all ease-in">
                     <td class="p-3 text-center">
-                      22/07/2020
+                     7359
                     </td>
                     <td class="p-3 text-center">
-                     7359
+                      22/07/2020
                     </td>
                     <td class="p-3 text-right">
                      1546
