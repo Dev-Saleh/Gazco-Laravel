@@ -48,9 +48,13 @@
                   <li class="px-4 py-2 flex justify-between items-center font-bold">الموزع
                     <span  class="Agent_name text-xs bg-gray-800 text-gray-200 px-1 rounded-full">كريم</span>
                   </li>
-                  <li class="px-4 py-2 flex justify-between items-center font-bold">هل تم المطابقه
-                    <span class="text-xs bg-red-800 text-gray-200 px-1 rounded-full">لا</span>
-                  </li>
+                  <div class="px-4 py-2 font-bold flex justify-between">
+                    <span class=" relative z-20">الصوره مطابقه</span>
+                    <label for="checkbox" class="relative  flex-inline items-center isolate  rounded-2xl">
+                      <input id="checkbox" type="checkbox" class="relative peer z-20 text-purple-600 rounded-md focus:ring-0" />
+                                           
+                  </label>
+                  </div>
         
                 </ul>
               </div>
@@ -65,7 +69,7 @@
           <!-- Table Section -->
           <div class="w-full">
             <!-- <p class="text-center font-sans mb-2 text-2xl"> Brands Table</p> -->
-            <div class=" relative overflow-y-scroll" style="height: 590px;">
+            <div class=" relative overflow-y-auto" style="height: 590px;">
               <table class="table w-full text-gray-500 border-separate space-y-6 text-sm">
                 <thead class="bg-gray-200 text-gray-500">
                   <tr>
