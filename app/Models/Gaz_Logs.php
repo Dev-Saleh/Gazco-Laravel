@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class gaz_Logs extends Model
 {
     protected $table='gaz_Logs';
-    protected $fillable = ['id','qty','directorate_id','rigons_id','stations_id','agent_id','notice','created_at'];
+    protected $fillable = ['id','qty','directorate_id','rigons_id','stations_id','agent_id','notice','validOfSell','created_at'];
     public  $timestamps = false;
     public function directorate()
     {
@@ -24,5 +24,9 @@ class gaz_Logs extends Model
     public function station()
     {
         return $this->belongsTo(Station::class,'stations_id');
+    }
+    public function getvalidOfSell()
+    {
+        return $this->validOfSell == 0 ? 'تم البيع ' : 'لم يتم البيع';
     }
 }

@@ -89,7 +89,7 @@
                 cache: false,
                 success: function (data) {
                     if (data.status == true) {
-                     // alert.show(data.msg,'success')
+                       alert(data.msg,'success')
                         $('#file-ip-1').val('');
                       
                         $('#select_directorates').val('');
@@ -149,7 +149,9 @@
                 success: function (data) {
                   console.log(data);
                      if (data.status == true) {
-                     
+                        //$('#file-ip-1-preview').attr('src','des');
+                        $('#select_directorates').focus();
+                        $('#select_rigons').focus();
                         $('#agent_id').val(data.agent.id);
                         $('#select_directorate').text(data.directorate_name);
                         $('#select_rigon').text(data.rigon_name);
@@ -189,7 +191,8 @@
                 success: function (data) {
                 console.log(data);
                     if(data.status == true){
-                       {{-- alert.show(data.msg,'success');
+                      alert(data.msg,'success');
+                       {{-- 
                         $('#rigon_id').val('');
                         $('#select_directorate').text('');
                        // $('#select_directorate').val('');

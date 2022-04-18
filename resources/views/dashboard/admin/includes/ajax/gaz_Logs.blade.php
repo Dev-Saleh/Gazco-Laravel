@@ -129,13 +129,13 @@
                 success: function (data) {
                   console.log(data);
                    if (data.status == true) {
-                       alert.show(data.msg,'success');
-                        $('#select_Stations').text('');
+                       alert(data.msg,'success');
+                       // $('#select_Stations').text('');
                         $('#qty').val('');
                         $('#created_at').val('');
-                        $('#select_Directorates').text('');
-                        $('#select_Rigons').text('');
-                        $('#select_Agents').text(''); 
+                    //    $('#select_Directorates').text('');
+                       // $('#select_Rigons').text('');
+                       // $('#select_Agents').text(''); 
                         $('#notice').val('');
                        fetch_All_Gaz_Logs(); 
                     }
@@ -164,7 +164,7 @@
                 },
                 success: function (data) {
                      if (data.status == true) {
-                     // alert.show(data.msg,'success');
+                      alert(data.msg,'success');
                     }
                     $('.offerRow'+data.id).remove();
                 }, error: function (reject) {
@@ -232,7 +232,7 @@
                 success: function (data) {
                 console.log(data);
                     if(data.status == true){
-                       alert.show(data.msg,'success');
+                       alert(data.msg,'success');
                        $('#gaz_Logs_Id').val('');
                        $('#select_Stations').text('');
                        $('#select_Station').text('');

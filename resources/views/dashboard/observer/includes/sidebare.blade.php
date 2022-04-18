@@ -44,7 +44,7 @@
           </a>
 
 
-          <a href="/html/new_category.html"
+          <a href="{{route('checkBatch.index',2)}}"
               class="flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl
