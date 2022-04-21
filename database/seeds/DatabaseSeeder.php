@@ -220,11 +220,11 @@ class DatabaseSeeder extends Seeder
             "خالد باسل سالم",
         );
         for ($i = 0; $i < count($citizenArray); $i++) {
-            $aa = Directorate::all()->random()->id;
-            $zz = Rigon::select()->where('directorate_id', $aa)->get();
-            $mm = Agent::select()->where('directorate_id', $aa)->get();
-            $qq =  $zz->random()->id;
-            $tt = $mm->random()->id;
+            // $aa = Directorate::all()->random()->id;
+            // $zz = Rigon::select()->where('directorate_id', $aa)->get();
+            // $mm = Agent::select()->where('directorate_id', $aa)->get();
+            // $qq =  $zz->random()->id;
+            // $tt = $mm->random()->id;
             Citizen::create([
                 'citizen_name' => $citizenArray[$i],
                 'mobile_num' => +967491917,

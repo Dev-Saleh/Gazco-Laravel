@@ -24,14 +24,14 @@ class LogsTableController extends Controller
    
     public function create()
     {   
-        $agentArray = array("كريم حسن القعر",
-        "معاذ عبدالله يحيى",
-        "عبدالناصر اسماعيل علي",
-        "عبدالرب احمد سالمين",
-        "ياسر احمد محمود",
-    );
+    //     $agentArray = array("كريم حسن القعر",
+    //     "معاذ عبدالله يحيى",
+    //     "عبدالناصر اسماعيل علي",
+    //     "عبدالرب احمد سالمين",
+    //     "ياسر احمد محمود",
+    // );
 
-    $aa = Directorate::all()->random()->id;
+    // $aa = Directorate::all()->random()->id;
 
     // $ss = Rigon::all()->random()->id;
     // $zz = Rigon::select()->where('directorate_id',$aa)->get();
@@ -43,15 +43,19 @@ class LogsTableController extends Controller
     
 
             // $aa = Directorate::all()->random()->id;
-            $aa = Directorate::select()->inRandomOrder()->get("id");
+            $aa = Rigon::select()->inRandomOrder()->get("id");
             
             // $zz = Rigon::select()->where('directorate_id', $aa)->get();
             // $mm = Agent::select()->where('directorate_id', $aa)->get();
             // $qq =  $zz->random()->id;
             //  $tt= $mm->random()->id;
-
+            // $aa = Directorate::all()->random()->id;
+            // $zz = Rigon::select()->where('directorate_id', $aa)->get();
+            // $mm = Agent::select()->where('directorate_id', $aa)->get();
+            // $qq =  $zz->random()->id;
+            // $tt = $mm->random()->id;
         // echo $mm;
-        return  $aa->random()->id; ;
+            return  $aa;
         // return  $zz ;
     }
 }
