@@ -78,13 +78,13 @@
       text-xs  mx-auto w-11/12">
       <ul class="space-y-4 list-disc mr-4">
         <li class="text-lg text-yellow-900">الكميه المتبقيه للحجز :
-          <span class="text-yellow-700 text-sm font-bold">
-            99
+          <span class="qtyRemaining text-yellow-700 text-sm font-bold">
+            0
           </span>
         </li>
         <li class="text-lg text-yellow-900">  رقم الدفعه الحاليه :
           <span class="NumBatch text-yellow-700 text-sm font-bold">
-            2
+            0
           </span>
         </li>
         <li class="text-lg text-yellow-900"> ملاحظات:

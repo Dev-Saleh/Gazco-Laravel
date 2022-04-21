@@ -29,4 +29,8 @@ class gaz_Logs extends Model
     {
         return $this->validOfSell == 0 ? 'تم البيع ' : 'لم يتم البيع';
     }
+    public function getallowBookig()
+    {
+       return $this->allowBookig == 0 ? 'true' : 'false';    
+    }
 }

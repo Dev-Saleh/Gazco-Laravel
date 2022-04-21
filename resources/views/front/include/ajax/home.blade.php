@@ -14,22 +14,24 @@
                 },
                 success: function (data) {
                   console.log(data);
-                      if (data.status == true && data.allowBooking=='1' && data.qtyRemaining > '0' && data.numdays==='allowBooking') { 
+                       if (data.status == true ) {  
                               
                                document.getElementById('status_msg').classList.replace('bg-gray-200','bg-green-200');
                                document.getElementById('status_msg').classList.replace('border-gray-600','border-green-600');
                                document.getElementById('status_msg').classList.replace('text-gray-900','text-green-900');
-                               $('#status_msg').text('مصرح لك بالحجز');
-                               
-                               $('.NumBatch').text(data.gaz_log.id);
-                               $('.NumBatch').val(data.gaz_log.id);
+                               $('#status_msg').text('مصرح لك بالحجز');          
+                               $('.NumBatch').text(data.lastGazLogs.id);
+                               $('.NumBatch').val(data.lastGazLogs.id);
+                               $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
                     }
                     else
                      {
-                         document.getElementById('status_msg').classList.replace('bg-gray-200','bg-red-200');
+                               document.getElementById('status_msg').classList.replace('bg-gray-200','bg-red-200');
                                document.getElementById('status_msg').classList.replace('border-gray-600','border-red-600');
                                document.getElementById('status_msg').classList.replace('text-gray-900','text-red-900');
-                               $('#status_msg').text('انت محظور يا حلو');
+                                $('#status_msg').text('انت محظور يا حلو');
+                                $('.NumBatch').text(data.lastGazLogs.id);
+                                $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
                      } 
                  
                 }, error: function (reject) {
@@ -59,8 +61,7 @@
                     if (data.status == true) {
                     alert(data.msg,'success');
                     $('#saveBooking').attr('disabled');
-                   
-
+                    $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
                     } 
                   
                 }, error: function (reject) {
