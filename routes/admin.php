@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 
 
+Route::get('/test', 'TestController@create');
 
 Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*/ 'prefix' => 'admin'], function () {
 
