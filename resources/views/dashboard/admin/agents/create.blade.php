@@ -16,7 +16,6 @@
                 class="relative cursor-pointer bg-white rounded-xl font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 border-2 border-blue-700 px-2">
                 <span>رفع صوره</span>
                 <input id="file-ip-1" name='photo' id='photo' accept="image/*" onchange="showPreviewUser(event);" type="file" class="sr-only">
-                
               </label>
             
             <div class="mt-2 flex h-48 w-48  border-2 bg-gray-200 border-gray-500 border-dashed rounded-full">
@@ -99,7 +98,7 @@
                       {{$agent->Agent_name}}
                     </td>
                     <td class="p-3 text-right">
-                      <img class="rounded-full h-12 w-12  object-cover" src="{{asset('assets/images/agents/'.$agent->photo)}}" alt="unsplash image">
+                      <img class="rounded-full h-12 w-12  object-cover" src="{{$agent->photo}}" alt="unsplash image">
                     </td>
                     <td class="p-3 text-center">
                       <span class="bg-green-400 text-gray-50 rounded-md px-2">{{$agent->directorate->directorate_name}}</span>

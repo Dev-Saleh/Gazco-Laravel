@@ -47,7 +47,7 @@
                         <td class="p-3 text-center">'+agent.id+'</td>\
                         <td class="p-3 text-center">'+agent.Agent_name+'</td>\
                         <td class="p-3 text-right">\
-                          <img class="rounded-full h-12 w-12  object-cover" src="{{asset('assets/images/agents')}}/'+agent.photo+'" alt="unsplash image">\
+                          <img class="rounded-full h-12 w-12  object-cover" src='+agent.photo+' alt="unsplash image">\
                         </td>\
                         <td class="p-3 text-center">\
                           <span class="bg-green-400 text-gray-50 rounded-md px-2">'+agent.directorate.directorate_name+'</span>\
@@ -147,20 +147,21 @@
                      'id' :agent, 
                 },
                 success: function (data) {
-                  console.log(data);
+                  
                      if (data.status == true) {
-                        //$('#file-ip-1-preview').attr('src','des');
+                       
+                        //$('#adminPhoto').attr('src',data.agent.photo);
+                        console.log(data.agent.photo);
+                        var preview = document.getElementById("file-ip-1-preview");
+                        preview.style.display = "block";
+                        $('#file-ip-1-preview').attr('src',data.agent.photo); 
                         $('#select_directorates').focus();
                         $('#select_rigons').focus();
                         $('#agent_id').val(data.agent.id);
                         $('#select_directorate').text(data.directorate_name);
                         $('#select_rigon').text(data.rigon_name);
-                        //أسئل صلوح 
-                         //$('#select_directorates').val(data.agent.directorate_id);
-                        //$('#select_rigons').val(data.agent.rigon_id);
                         $('#agent_name').val(data.agent.Agent_name);
                         $('#photo').val(data.photo);
-                       // $('#select_directorates').val('');
                         window.save_agent.style.display="none";
                         window.update_agent.style.display="inline-flex";
                     }

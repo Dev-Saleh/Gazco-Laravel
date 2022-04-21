@@ -2,6 +2,8 @@
 namespace App\Http\Controllers\dashborad\observer;
 use App\Http\Controllers\Controller;
 use App\Models\Citizen;
+use App\Models\gaz_Logs;
+use App\Models\logs_Booking;
 use App\Models\Observer;
 use Illuminate\Http\Request;
 
@@ -16,15 +18,11 @@ class checkBookingController extends Controller
     {
       try
        {
-        // $data = [];
-        // $data['observers']=Observer::with(['directorate','rigon'=>function($q){
-        //     $q->select();
-        // }])->find($request->id);
-        // $data['citizens']=Citizen::select()->get();
-       // return view('dashboard.observer.citizens.index',$data);
-       return view('dashboard.observer.check_booking.index');
-       
-    }
+            $data = [];
+            $observer=Observer::find(2);
+            $data['gaz_Logs']=gaz_Logs::select()->where('allowBookig','1')->where('qtyRemaining','0')->where('agent_id',$observer->agent_id)->get();
+            return view('dashboard.observer.check_booking.index',$data);
+       }
     catch (\Exception $ex)
      {
         return response()->json([
@@ -34,39 +32,7 @@ class checkBookingController extends Controller
      }
     
     }
-    public function show_All()
-    {
-        try
-        {
-           $citizens =Citizen::with([
-          'directorate'=>function($q)
-          {
-            $q->select('id','directorate_name');
-          }
-          ,'rigon'=>function($q)
-          {
-            $q->select('id','rigon_name');
-          }
-          ,'observer'=>function($q)
-          {
-            $q->with(['agent'=>function($q){
-                $q->select('id','Agent_name');
-            }])->select('id','agent_id')->get();
-          }
-        ],)->select('id','citizen_name','directorate_id','rigons_id','observer_id')->get();
-           return response()->json([
-            'status' => true,
-            'citizens' => $citizens,
-           ]);
-       }
-       catch (\Exception $ex)
-        {
-           return response()->json([
-               'status' => false,
-               'msg' => 'error in index',
-           ]);
-       }
-    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -87,26 +53,6 @@ class checkBookingController extends Controller
     public function store(Request $request)
     {
        
-            try { 
-                    $file =$request->attachment;
-                    $filename = uploadImage('citizens', $file);
-                    $citizen = Citizen::create($request->except('_token'));
-                    $citizen->attachment=$filename;
-                    $citizen->save();
-                    if ($citizen)
-                        return response()->json([
-                            'status' => true,
-                            'msg' => 'تم الحفظ بنجاح',
-                        ]);
-         }
-        catch (\Exception $ex) {
-            return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
-                'data'=>$request->observer_id,
-                
-            ]);
-        }
     }
 
     /**
@@ -115,9 +61,40 @@ class checkBookingController extends Controller
      * @param  \App\Models\Citizen  $citizen
      * @return \Illuminate\Http\Response
      */
-    public function show(Citizen $citizen)
+    public function show(Request $request)
     {
-        //
+        try
+            {
+              
+                    $showLogBookingsCitizen=logs_Booking::with([
+                    'citizen'=>function($q)
+                     {
+                       $q->select('id','citizen_name');
+                     }])->select()->where('NumBatch',$request->gazLogId)->get();
+               
+              if($showLogBookingsCitizen)
+                {
+                    return response()->json([
+                        'status' => true,
+                        'msg' => 'success in index',
+                        'showLogBookingsCitizen'=>$showLogBookingsCitizen,
+                    ]);
+                }
+                else 
+                {   return response()->json([
+                    'status' => false,
+                    'msg' => 'error in index',
+                ]);
+              }
+  
+            }
+        catch (\Exception $ex)
+            {
+                return response()->json([
+                    'status' => false,
+                    'msg' => 'error in index',
+                ]);
+            }
     }
 
     /**
@@ -128,32 +105,6 @@ class checkBookingController extends Controller
      */
     public function edit(Request $request)
     {
-        try{
-            $citizen = Citizen::find($request -> citizen_Id);  // search in given table id only
-            if (!$citizen)
-                return response()->json([
-                    'status' => false,
-                    'msg' => 'هذ العرض غير موجود',
-                   
-                ]);
-            $citizen =Citizen::with(['directorate','rigon','observer'=>function($q){
-                $q->select();
-            }])->find($request -> citizen_Id);
-      
-
-            return response()->json([
-                'status' => true,
-                'citizen' => $citizen,
-                
-               
-            ]); 
-          }
-          catch (\Exception $ex) {
-            return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
-            ]);
-        }
     }
 
     /**
@@ -164,36 +115,7 @@ class checkBookingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
-    {
-        try{
-            $citizen = Citizen::find($request -> id);
-            if (!$citizen)
-                return response()->json([
-                    'status' => false,
-                    'msg' => 'هذ العرض غير موجود',
-                ]);
-            if ($request->has('attachment')) {
-                $fileName = uploadImage('citizens', $request->attachment);
-                Citizen::where('id', $request -> id)
-                    ->update([
-                        'attachment' => $fileName,
-                    ]);
-            }
-            //update data  
-            $citizen->update($request->except('_token', 'attachment'));
-            return response()->json([
-                'status' => true,
-                'msg' => 'تم  التحديث بنجاح',
-                'attachment'=>$fileName,
-            ]);
-        }
-        catch (\Exception $ex) {
-            return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
-            ]);
-        }
-       
+    {  
     }
 
     /**
@@ -204,25 +126,5 @@ class checkBookingController extends Controller
      */
     public function destroy(Request $request)
     {
-        try {
-            $citizen = Citizen::find($request -> citizen_Id); 
-            if (!$citizen)
-            return response()->json([
-                'status' => false,
-                'msg' => 'فشل بالتعديل برجاء المحاوله مجددا',
-               ]);
-             $citizen->delete();
-             return response()->json([
-                'status' => true,
-                'msg' => 'تم الحذف بنجاح',
-                'id' => $request -> citizen_Id
-        ]);
-         } catch (\Exception $ex) {
-            return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
-            ]);
-          
-         }
     }
 }

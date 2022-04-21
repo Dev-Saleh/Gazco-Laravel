@@ -97,6 +97,9 @@ Route::group(['namespace' => 'dashborad\observer', /*'middleware' => 'auth:Emplo
  
  Route::group(['prefix' => 'checkBooking'], function () {
     Route::get('index',  'checkBookingController@index')->name('checkBooking.index');
+    Route::get('show',  'checkBookingController@show')->name('checkBooking.show');
+  
+    
   });
  
   

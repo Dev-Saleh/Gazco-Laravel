@@ -3,7 +3,7 @@
     <div class="text-gray-100 text-xl">
       <div class="p-2.5 mt-1 flex items-center justify-between rounded-md ">
         <div class="ml-2">
-          <img class="h-8 w-6" src="/assest/images/gaz_logo.png" alt="">
+          <img class="h-8 w-6" src="{{asset('assets/images/Dev-SL.jpeg')}}" alt="">
         </div>
         <h1 class=" text-3xl text-gray-200 font-bold">غـازكو</h1>
         <i class="bi bi-x  cursor-pointer lg:hidden" onclick="Openbar()"></i>

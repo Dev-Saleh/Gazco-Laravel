@@ -22,4 +22,9 @@ class Citizen extends Model
     {
         return $this->belongsTo(Observer::class,'observer_id');
     }
+    public function logsBooking()
+    {
+        return $this->hasMany(logs__bookings::class, 'citizen_id','id');
+    }
+
 }

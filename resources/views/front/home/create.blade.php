@@ -33,7 +33,7 @@
       <!-- Aler Section -->
       <div id="status_msg" class="border-b-4 border-gray-600 bg-gray-200 
       px-6 py-4 rounded-md justify-center
-      text-lg flex items-center mx-auto w-11/12">
+      text-lg flex items-center text-gray-900 mx-auto w-11/12">
       لا تتوفر كمية غاز للحجز حاليا
       </div>
       <!-- End Aler Section -->   
@@ -41,13 +41,21 @@
       <!-- button Section -->
    
       <div class=" p-10 mx-auto w-11/12 border-dashed border border-gray-400">
+       <form action="" method="POST" id='logBookings'>
+            @csrf 
         <div class="flex justify-center relative">
+        
+             <input type="datetime-local"style="display:none;"  value='' name="currentDate" id='currentDate' placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
+              appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
+              hover:border-blue-600 text-blue-900" />
+             <input type="text" name='citizen_id' value='1'  style="display:none;" class="citizen_id form-control">
+             <input type="text" name='NumBatch'  style="display:none;" class="NumBatch form-control">
+         
             <span class="group absolute -top-6 z-10 h-8 w-12 bg-gray-500 rounded-md flex justify-center items-center ">
               <span class="bg-white h-4 w-6" >
-                
               </span>
             </span>
-            <button type="submit"
+            <button type="submit"  id='saveBooking'
                 class="flex flex-col disabled:opacity-50 disabled:cursor-not-allowed relative h-40 w-32  justify-center py-2 px-4 border shadow-sm text-left text-xl font-medium rounded-xl text-white bg-gray-500 hover:bg-gray-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out 
                   ">
                 <span class="animate-ping flex h-3 w-3 absolute top-0 right-0 ">
@@ -56,7 +64,10 @@
                 </span>
                   أحجز دبه
             </button>
-        </div>   
+    
+         
+        </div>  
+      </form> 
       </div>
 
       <!-- End button Section -->
@@ -72,7 +83,7 @@
           </span>
         </li>
         <li class="text-lg text-yellow-900">  رقم الدفعه الحاليه :
-          <span class="text-yellow-700 text-sm font-bold">
+          <span class="NumBatch text-yellow-700 text-sm font-bold">
             2
           </span>
         </li>
