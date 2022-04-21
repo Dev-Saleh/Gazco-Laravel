@@ -21,6 +21,9 @@ class CreateLogsTable extends Migration
             $table->integer('stations_id')->unsigned();
             $table->integer('agent_id')->unsigned();
             $table->boolean('validOfSell')->default('1');
+            $table->boolean('allowBookig')->default('0');
+           // $table->integer('numberBatch')->unsigned()->nullable();
+            $table->integer('qtyRemaining')->unsigned();
             $table->longText('notice')->nullable();
             $table->foreign('directorate_id')->references('id')->on('directorates')->onDelete('cascade');
             $table->foreign('rigons_id')->references('id')->on('rigons')->onDelete('cascade');

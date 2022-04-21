@@ -21,9 +21,6 @@ class CreateObserversTable extends Migration
             $table->integer('directorate_id')->unsigned();
             $table->integer('rigons_id')->unsigned();
             $table->integer('agent_id')->unsigned();
-            $table->boolean('allowBookig')->default('0');
-            $table->integer('numberBatch')->unsigned()->nullable();
-            $table->integer('qtyOfSell')->unsigned()->nullable();
             $table->foreign('directorate_id')->references('id')->on('directorates')->onDelete('cascade');
             $table->foreign('rigons_id')->references('id')->on('rigons')->onDelete('cascade');
             $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');

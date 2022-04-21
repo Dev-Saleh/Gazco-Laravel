@@ -220,9 +220,9 @@ class AgentController extends Controller
                 'msg' => 'فشل بالتعديل برجاء المحاوله مجددا',
                ]);
  
-             $imageDelete=base_path("public/assets/images/agents/".$agent->photo);
-              if(file_exists($imageDelete))
-               unlink($imageDelete);
+             
+        
+               unlink($agent->photo->public_path);
                $agent->delete();
              return response()->json([
                 'status' => true,

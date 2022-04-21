@@ -21,19 +21,21 @@
                   </tr>
                 </thead>
                 <tbody>
+                 @if($gaz_Logs && $gaz_Logs -> count() > 0)
+                  @foreach($gaz_Logs as $gaz_Log)
                   <tr class="bg-gray-50 hover:scale-95 transform transition-all ease-in">
                     <td class="p-3 text-center">
-                     7359
+                     {{$gaz_Log->id}}
                     </td>
                     <td class="p-3 text-center">
-                      22/07/2020
+                       {{$gaz_Log->created_at}}
                     </td>
                     <td class="p-3 text-right">
-                     1546
+                      {{$gaz_Log->id}}
                     </td>
                     
                     <td class="p-3 grid items-center justify-center">
-                      <a href="#" class="text-blue-600 hover:text-blue-400">
+                      <a href="#" gazLogId={{$gaz_Log->id}} class="gazLogId text-blue-600 hover:text-blue-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                           <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                           <path fill-rule="evenodd"
@@ -43,7 +45,8 @@
                       </a>
                     </td>
                   </tr>
-                 
+                @endforeach
+                @endif
                 </tbody>
               </table>
             </div>
@@ -72,7 +75,7 @@
   
                   </tr>
                 </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
+                <tbody id='showLogBookingsCitizen' class="bg-white divide-y divide-gray-200">
                   <tr>
                     
                     <td class="text-center px-4 py-2 whitespace-nowrap">
@@ -86,33 +89,6 @@
                     </td>
                     
                   </tr> 
-                   <tr>
-                    
-                    <td class="text-center px-4 py-2 whitespace-nowrap">
-                      <div class="text-sm text-gray-700">  احمد عبدالفتاح تركي</div>  
-                    </td>
-                    <td class="text-center px-4 py-2 whitespace-nowrap">
-                      <input type="checkbox" class="confirm">
-                    </td>
-                    <td class="text-center px-4 py-2 whitespace-nowrap">
-                      <input type="checkbox" class="sms"> 
-                    </td>
-                    
-                  </tr> 
-                   <tr>
-                    
-                    <td class="text-center px-4 py-2 whitespace-nowrap">
-                      <div class="text-sm text-gray-700">مجد عيسى حمود</div>  
-                    </td>
-                    <td class="text-center px-4 py-2 whitespace-nowrap">
-                      <input type="checkbox" class="confirm">
-                    </td>
-                    <td class="text-center px-4 py-2 whitespace-nowrap">
-                      <input type="checkbox" class="sms"> 
-                    </td>
-                    
-                  </tr>     
-  
                 </tbody>
               </table>
             </div> 

@@ -17,11 +17,11 @@ class checkBatchController extends Controller
     {
       try
        {
-            $data[]='';
-          $observer=Observer::find($request->id);
-          $data['observers']= $observer;
-          
-        $data['gaz_Logs']=gaz_Logs::with([
+             $data[]='';
+           $observer=Observer::find($request->id);
+           $data['observers']= $observer;
+
+          $data['gaz_Logs']=gaz_Logs::with([
           'station'=>function($q)
             {
               $q->select('id','Station_name');
@@ -38,8 +38,8 @@ class checkBatchController extends Controller
            {
              $q->select('id','rigon_name');
            }
-         ],)->select('id','directorate_id','rigons_id','stations_id','agent_id','validOfSell','created_at')->where('validOfSell',1)->where('agent_id',$observer->agent_id)->get();
-         return view('dashboard.observer.checkBatch.index',$data);
+         ],)->select('id','directorate_id','rigons_id','stations_id','agent_id','validOfSell','created_at')->where('validOfSell','1')->where('agent_id',$observer->agent_id)->get();
+          return view('dashboard.observer.checkBatch.index',$data);
        
     }
     catch (\Exception $ex)
@@ -134,29 +134,63 @@ class checkBatchController extends Controller
     public function update(Request $request)
     {
       try{
-              $gaz_Log = gaz_Logs::find($request -> gazLogId);  // search in given table id only
-              if (!$gaz_Log)
-                  return response()->json([
-                      'status' => false,
-                      'msg' => 'هذ العرض غير موجود',
-                      'id'=>$request -> gazLogId,
-                  ]);
-              $gaz_Log->validOfSell='0';
-              $gaz_Log->update();
+              $observer=Observer::find($request->observerId);
+              $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id',$observer->agent_id)->latest()->first();
+    
+          if($lastGazLogs)
+            {   
+               if($lastGazLogs->qtyRemaining == '0')  
+                {  
+                        $gaz_Log = gaz_Logs::find($request -> gazLogId);  // search in given table id only
+                        if (!$gaz_Log)
+                            return response()->json([
+                                'status' => false,
+                                'msg' => 'هذ العرض غير موجود',
+                                'id'=>$request -> gazLogId,
+                            ]);
+                        $gaz_Log->validOfSell='0';
+                        $gaz_Log->allowBookig='1';
+                        $gaz_Log->qtyRemaining=$gaz_Log->qty;
+                        $gaz_Log->update();
 
+                        return response()->json([
+                            'status' => true,
+                            'gaz_Log' => $gaz_Log,
+                            'id'=>$request -> gazLogId,
+                        ]); 
+                  }
+                  else{
+                    // اسئل صالح اذا في كمية متبقيه
+                    //qtyRemaining الازم اعمل لها ادخال القيمه حقها نفس qty
+                    return response()->json([
+                        'status' => true,
+                        'warring' => 'هناك كميه مفتوحة الحجز',
+                        
+                    ]); 
+                }
+         }
+         else
+         {
+                $gaz_Log = gaz_Logs::find($request -> gazLogId);  // search in given table id only
+                if (!$gaz_Log)
+                    return response()->json([
+                        'status' => false,
+                        'msg' => 'هذ العرض غير موجود',
+                        'id'=>$request -> gazLogId,
+                    ]);
+                $gaz_Log->validOfSell='0';
+                $gaz_Log->allowBookig='1';
+                $gaz_Log->qtyRemaining=$gaz_Log->qty;
+                $gaz_Log->update();
 
-              $observer = Observer::find($request->observerId);
-              
-              $observer->allowBookig='1';
-              $observer->numberBatch=$request->gazLogId;
-              $observer->qtyOfSell=$gaz_Log->qty;
-              $observer->update();
-              return response()->json([
-                  'status' => true,
-                  'gaz_Log' => $gaz_Log,
-                  'id'=>$request -> gazLogId,
-              ]); 
-            }
+                return response()->json([
+                    'status' => true,
+                    'gaz_Log' => $gaz_Log,
+                    'id'=>$request -> gazLogId,
+                ]); 
+         }          
+       }
+            
             catch (\Exception $ex) {
               return response()->json([
                   'status' => false,

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class gaz_Logs extends Model
 {
     protected $table='gaz_Logs';
-    protected $fillable = ['id','qty','directorate_id','rigons_id','stations_id','agent_id','notice','validOfSell','created_at'];
+    protected $fillable = ['id','qty','directorate_id','rigons_id','stations_id','agent_id','allowBookig','qtyRemaining','notice','validOfSell','created_at'];
     public  $timestamps = false;
     public function directorate()
     {
