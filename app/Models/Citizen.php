@@ -24,7 +24,7 @@ class Citizen extends Model
     }
     public function logsBooking()
     {
-        return $this->hasMany(logs__bookings::class, 'citizen_id','id');
+        return $this->hasMany(logs_Booking::class, 'citizen_id','id');
     }
 
 }

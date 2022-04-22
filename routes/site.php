@@ -15,6 +15,12 @@ Route::group(['namespace' => 'front', /*'middleware' => 'auth:Observer',*/ 'pref
         Route::post('store', 'homeController@store')->name('logBookings.store');
         
     });
+    Route::group(['prefix' => 'checkBooking'], function () {
+        Route::get('index', 'checkBookingController@index')->name('citizencheckBooking.index');
+        Route::get('show', 'checkBookingController@show')->name('citizencheckBooking.show');
+        //Route::post('store', 'homeController@store')->name('logBookings.store');
+        
+    });
     ################################## Booking routes ######################################
     ################################## Complaints routes ######################################
     Route::group(['prefix' => 'Complaints'], function () {

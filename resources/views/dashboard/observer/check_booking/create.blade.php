@@ -76,30 +76,30 @@
                   </tr>
                 </thead>
                 <tbody id='showLogBookingsCitizen' class="bg-white divide-y divide-gray-200">
-                  <tr>
+                  {{-- <tr>
                     
                     <td class="text-center px-4 py-2 whitespace-nowrap">
                       <div class="text-sm text-gray-700">صالح عبدالله صالح</div>  
                     </td>
                     <td class="text-center px-4 py-2 whitespace-nowrap">
-                      <input type="checkbox" class="confirm">
+                      <input type="checkbox"  name='status_booking'  class="confirm">
                     </td>
                     <td class="text-center px-4 py-2 whitespace-nowrap">
                       <input type="checkbox" class="sms"> 
                     </td>
                     
-                  </tr> 
+                  </tr>  --}}
                 </tbody>
               </table>
             </div> 
             <!-- Buttons section -->
             <div class="flex justify-center gap-x-4">
-              <button type="submit"
+              <button type="submit" id='saveReciving'
               class="w-40 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-blue-500 hover:bg-blue-400 focus:outline-none
               transition-all ease-in-out ">
                تأكيد الاستلام
             </button>
-            <button type="submit"
+            <button type="submit" id='sendTestMessage'
               class="w-40 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-yellow-500 hover:bg-yellow-400
                focus:outline-none
               transition-all ease-in-out ">

@@ -44,7 +44,7 @@
             <path stroke-linecap="round" stroke-linejoin="round"
               d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
           </svg>
-          <span class="text-[15px] mr-4 text-gray-200">استعلام الحجوزات</span>
+          <span class="text-[15px] mr-4 text-gray-200"  ><a href='{{route('citizencheckBooking.index')}}'> استعلام الحجوزات</a></span>
         </div>
 
         <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-blue-600">

@@ -57,7 +57,7 @@ class homeController extends Controller
     public function store(Request $request)
     {
          try { 
-                    
+              
                 $logbookings =logs_Booking::create([
                     'booking_date' =>now(),
                     'Reciving_date'=>now(),
@@ -66,7 +66,6 @@ class homeController extends Controller
                     'NumBatch'=>$request->NumBatch,
                     'created_at'=>now()
                 ]);
-            
                $logbookings->save();
                $citizen = Citizen::find($request -> citizen_id);
                $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id',$citizen->observer->agent_id)->latest('id')->first();   
@@ -75,7 +74,7 @@ class homeController extends Controller
                     return response()->json([
                         'status' => true,
                         'msg' => 'تم الحفظ بنجاح',
-                        'data'=>$request->NumBatch,
+                        'lastGazLogs'=> $lastGazLogs,
                     ]);
                     
             }
@@ -104,61 +103,48 @@ class homeController extends Controller
         {
             $citizen = Citizen::find($request -> citizenId);
             $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id',$citizen->observer->agent_id)->latest('id')->first();
-           
-            $days='allowBooking'; 
+            $days='true'; 
+            $numdays='0';
             $lastRequest=logs_Booking::where('citizen_id',$request -> citizenId)->latest('id')->first();
             if($lastRequest)
             {
-                $numdays=date_diff($lastRequest->created_at,now());
-                if($numdays->days > '14')
-                {
-                    $days='allowBooking';
-                }
-                else $days='notAllowBooking';
+                $numdays=date_diff($lastRequest->created_at,now()); // get Number Days Between Reciving_date and current Date
+                $numdays->days > '14' ? $days='true' : $days='false';
             }
-            else $days='allowBooking';
+            else $days='true';
 
            if($lastGazLogs)
            {
-                if($lastGazLogs->qtyRemaining > '0')  
+                if($lastGazLogs->qtyRemaining > '0' && $days=='true')  
                 {  
+                   
                         return response()->json([
                             'status' => true,
-                            'msg' => 'true in index',
-                            'allowBooking'=>'1',
-                            'qtyRemaining'=>$lastGazLogs->qtyRemaining, 
-                            'gaz_log'=>$lastGazLogs,
-                            'lastRequest'=>$lastRequest, //for Test
-                            'numdays'=>$days, // get Number Days Between Reciving_date and current Date
+                            'msg' => 'allowBooking=1 , qtyRemaining='.$lastGazLogs->qtyRemaining.'numdays=more than 2 weeks (' .$numdays->days.')',
+                            'lastGazLogs'=>$lastGazLogs,
+                            'lastRequest'=>$lastRequest,
+                              //for Test
+                             
                         ]);
                 }
                 else
                 {
                         return response()->json([
-                            'status' => true,
-                            'msg' => 'true in index',
-                            'qtyRemaining'=>$lastGazLogs->qtyRemaining,
-                            'allowBooking'=>'1',
-                            'numdays'=>$days,
-                            
+                            'status' => false,
+                            'msg' => 'allowBooking=1 , qtyRemaining='.$lastGazLogs->qtyRemaining.' , numdays='.$numdays->days.'',  
+                            'lastGazLogs'=>$lastGazLogs,
                         ]);
                 }
            }
            else
            {
                 return response()->json([
-                    'status' => true,
-                    'msg' => 'true in index',
-                    'allowBooking'=>'0',
-                    'qtyRemaining'=>'0',
-                    'numdays'=>$days,
+                    'status' => false,
+                    'msg' => 'Allow Booking=0 , qtyRemaining=0 ,numdays='.$numdays->days.'',
+                    'lastGazLogs'=>$lastGazLogs,
                 ]);
            }
-            // $lastRequest=logs_Booking::where('citizen_id','1')->latest()->first();
-            // if($lastRequest)
-            // {
-            //     $numdays=date_diff($lastRequest->created_at,now());
-            // }
+      
             
             
        }

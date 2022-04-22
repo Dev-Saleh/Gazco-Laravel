@@ -35,5 +35,11 @@ class decreaseQtyRemaining
             $gaz_Logs->qtyRemaining= $gaz_Logs->qtyRemaining - 1;
             $gaz_Logs->save();
        }
+       elseif($gaz_Logs->qtyRemaining=='0') 
+       {
+            $gaz_Logs->allowBookig='0';
+            $gaz_Logs->save();
+
+       }
     }
 }
