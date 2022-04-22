@@ -32,8 +32,8 @@
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full">
                                     <input type="number" name="identity_num" id='identity_num' minlength="3" placeholder=" "
-                                        onchange="Slugify(document.getElementById('proudct_slug').value);"
-                                        id="proudct_slug"
+                                        
+                                        onchange="convertNumToIdentity(document.getElementById('identity_num').value);"
                                         class="hover:border-black pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
                                     <label for="name"
                                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">رقم
@@ -44,7 +44,7 @@
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
 
                                 <div class="relative z-0 w-full ">
-                                    <input type="number" name="citizen_password" id='citizen_password' placeholder=" " id="slugText"
+                                    <input type="number" name="citizen_password" id='citizen_password' placeholder=" " 
                                         class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none
                           hover:border-black focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
                                     <label for="password"

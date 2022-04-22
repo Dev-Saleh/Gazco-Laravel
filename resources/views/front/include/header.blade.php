@@ -8,7 +8,7 @@
       </span>
       <h1 class="font-cairo text-2xl text-blue-500 ">غـازكو</h1>
       <div class="ml-4">
-        <img class="h-8 w-6" src="{{asset('assets/images/Dev-SL.jpeg')}}" alt="">
+        <img class="h-8 w-6" src="{{asset('assets/images/gaz_logo.png')}}" alt="">
       </div>
     </nav>
     <!-- Navbar Section -->

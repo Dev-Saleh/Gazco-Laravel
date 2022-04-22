@@ -9,7 +9,7 @@
 
                   <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                     <div class="relative z-0 w-full">
-                      <input onchange="Slugify(document.getElementById('observer_name').value);" id="observer_name"
+                      <input onchange="convertStrToUser(document.getElementById('observer_name').value);" id="observer_name"
                         type="text" name="observer_name"  placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
                                  appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
                                  hover:border-blue-600 text-blue-900" />
