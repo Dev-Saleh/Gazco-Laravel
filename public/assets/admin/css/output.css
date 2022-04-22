@@ -1264,12 +1264,21 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 0.5rem;
 }
 
+<<<<<<< HEAD
 .p-10 {
   padding: 2.5rem;
 }
 
 .p-4 {
   padding: 1rem;
+=======
+.p-4 {
+  padding: 1rem;
+}
+
+.p-10 {
+  padding: 2.5rem;
+>>>>>>> 99fcfe75261f2f0950b1951593264dea48ff3397
 }
 
 .p-6 {
@@ -1977,10 +1986,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:col-span-2 {
     grid-column: span 2 / span 2;
-  }
-
-  .lg\:hidden {
-    display: none;
   }
 
   .lg\:bg-slate-900 {

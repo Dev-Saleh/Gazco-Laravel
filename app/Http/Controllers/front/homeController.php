@@ -60,14 +60,13 @@ class homeController extends Controller
               
                 $logbookings =logs_Booking::create([
                     'booking_date' =>now(),
-                    'Reciving_date'=>now(),
                     'status_booking'=>'0',
                     'citizen_id'=>$request->citizen_id,
                     'NumBatch'=>$request->NumBatch,
-                    'created_at'=>now()
+                    'created_at'=>now() // ???????????????????/
                 ]);
                $logbookings->save();
-               $citizen = Citizen::find($request -> citizen_id);
+               $citizen = Citizen::find($request -> citizen_id); //??????????
                $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id',$citizen->observer->agent_id)->latest('id')->first();   
                event(new newBooking( $lastGazLogs));
                if ($logbookings)
@@ -98,7 +97,8 @@ class homeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request)
-    {
+    {   
+        // فييييين ال RETURN ???????????????????
         try
         {
             $citizen = Citizen::find($request -> citizenId);
@@ -106,21 +106,22 @@ class homeController extends Controller
             $days='true'; 
             $numdays='0';
             $lastRequest=logs_Booking::where('citizen_id',$request -> citizenId)->latest('id')->first();
-            if($lastRequest)
+            if($lastRequest) // if have record
             {
                 $numdays=date_diff($lastRequest->created_at,now()); // get Number Days Between Reciving_date and current Date
                 $numdays->days > '14' ? $days='true' : $days='false';
             }
-            else $days='true';
+            else 
+            $days='true'; // if no have records
 
-           if($lastGazLogs)
+           if($lastGazLogs) // if has records
            {
                 if($lastGazLogs->qtyRemaining > '0' && $days=='true')  
                 {  
                    
                         return response()->json([
                             'status' => true,
-                            'msg' => 'allowBooking=1 , qtyRemaining='.$lastGazLogs->qtyRemaining.'numdays=more than 2 weeks (' .$numdays->days.')',
+                            'msg' => 'asds',
                             'lastGazLogs'=>$lastGazLogs,
                             'lastRequest'=>$lastRequest,
                               //for Test
@@ -131,12 +132,13 @@ class homeController extends Controller
                 {
                         return response()->json([
                             'status' => false,
-                            'msg' => 'allowBooking=1 , qtyRemaining='.$lastGazLogs->qtyRemaining.' , numdays='.$numdays->days.'',  
+                          //  'msg' => 'allowBooking=1 , qtyRemaining='.$lastGazLogs->qtyRemaining.' , 
+                             
                             'lastGazLogs'=>$lastGazLogs,
                         ]);
                 }
            }
-           else
+           else // if no have records
            {
                 return response()->json([
                     'status' => false,

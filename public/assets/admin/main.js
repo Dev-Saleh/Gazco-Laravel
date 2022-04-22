@@ -92,16 +92,21 @@ function showPreviewUser(event){
 
 
 
- function Slugify(text)
+ function convertNumToIdentity(numId)
  {  
-   const slugInput = document.getElementById('slugText');
-  //   |/w+ if i dont want ? ! - ....
+   const slugInput = document.getElementById('citizen_password');
+   slugInput.value = numId;
 
-   let slug = text.split(/\s+/).filter((word)=>word.trim() !== "").join('_');
-   slugInput.value = slug;
-
-  console.log(slug);
  }
+
+ function convertStrToUser(text)
+{
+ const arrText =  text.split(" ");
+      
+       const slugInput = document.getElementById('observer_username');
+       slugInput.value = arrText[0];
+
+}
 
 
 

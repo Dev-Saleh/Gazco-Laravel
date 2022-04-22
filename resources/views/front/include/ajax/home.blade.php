@@ -15,17 +15,19 @@
                 success: function (data) {
                   console.log(data);
                        if (data.status == true ) {  
-                              
+                              // في خطأ بالالوان
+                              $('.saveBooking').removeAttr("disabled");
                                document.getElementById('status_msg').classList.replace('bg-gray-200','bg-green-200');
                                document.getElementById('status_msg').classList.replace('border-gray-600','border-green-600');
                                document.getElementById('status_msg').classList.replace('text-gray-900','text-green-900');
                                $('#status_msg').text('مصرح لك بالحجز');          
-                               $('.NumBatch').text(data.lastGazLogs.id);
-                               $('.NumBatch').val(data.lastGazLogs.id);
+                               $('.NumBatch').text(data.lastGazLogs.id); //???????
+                               $('#NumBatch').val(data.lastGazLogs.id);
                                $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
                     }
                     else
                      {
+                         
                                document.getElementById('status_msg').classList.replace('bg-gray-200','bg-red-200');
                                document.getElementById('status_msg').classList.replace('border-gray-600','border-red-600');
                                document.getElementById('status_msg').classList.replace('text-gray-900','text-red-900');
@@ -60,7 +62,9 @@
                     console.log(data);
                     if (data.status == true) {
                     alert(data.msg,'success');
-                    $('#saveBooking').attr('disabled');
+                    //$('#saveBooking').attr('disabled');
+                   // $('.saveBooking').attr("disabled", true);
+                   $(selector).attr(disabled, false);
                     $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
                     } 
                   

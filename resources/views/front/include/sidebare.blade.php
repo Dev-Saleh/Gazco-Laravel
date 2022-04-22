@@ -3,10 +3,12 @@
     <div class="text-gray-100 text-xl">
       <div class="p-2.5 mt-1 flex items-center justify-between rounded-md ">
         <div class="ml-2">
-          <img class="h-8 w-6" src="{{asset('assets/images/Dev-SL.jpeg')}}" alt="">
+          <img class="h-8 w-6" src="{{asset('assets/images/gaz_logo.png')}}" alt="">
         </div>
         <h1 class=" text-3xl text-gray-200 font-bold">غـازكو</h1>
-        <i class="bi bi-x  cursor-pointer lg:hidden" onclick="Openbar()"></i>
+        <svg onclick="Openbar()" xmlns="http://www.w3.org/2000/svg" class="cursor-pointer h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+</svg>
       </div>
       <hr class="my-2 text-gray-600">
 
