@@ -30,19 +30,20 @@ class Agent extends Model
 
     public function getPhotoAttribute($val)
     {
-      
+        $photo['exsit']=file_exists(public_path('assets/images/agents/'.$val));
         if(!is_null($val) && file_exists(public_path('assets/images/agents/'.$val)) && $val!='')
            {
-                // $photo[]='';
-                // $photo['valsrc']=asset('assets/images/agents/'.$val);
-                // $photo['public_path']=public_path('assets/images/agents/'.$val);
-                // $photo['exsits']=file_exists(public_path('assets/images/agents/'.$val));
-                // return $photo;
-                return asset('assets/images/agents/'.$val);
+                  $photo['valsrc']=asset('assets/images/agents/'.$val);
+                  $photo['public_path']=public_path('assets/images/agents/'.$val);
+    
+                 return $photo;
 
            }
       else 
-              return asset('assets/images/Dev-SL.jpeg');
+           {
+                    $photo['valsrc']=''; //return image not found saleh get Image 
+                    return $photo; 
+           }                      
 
                
            

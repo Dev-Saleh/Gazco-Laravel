@@ -98,7 +98,7 @@
                       {{$agent->Agent_name}}
                     </td>
                     <td class="p-3 text-right">
-                      <img class="rounded-full h-12 w-12  object-cover" src="{{$agent->photo}}" alt="unsplash image">
+                      <img class="rounded-full h-12 w-12  object-cover" src="{{$agent->photo['valsrc']}}" alt="unsplash image">
                     </td>
                     <td class="p-3 text-center">
                       <span class="bg-green-400 text-gray-50 rounded-md px-2">{{$agent->directorate->directorate_name}}</span>

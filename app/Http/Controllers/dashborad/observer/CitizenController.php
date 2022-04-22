@@ -212,9 +212,9 @@ class CitizenController extends Controller
         }
         }
         catch (\Exception $ex) {
-            $imageDelete=base_path("public/assets/images/citizens/".$fileName);
-            if(file_exists($imageDelete))
-            unlink($imageDelete);
+            // $imageDelete=base_path("public/assets/images/citizens/".$fileName);
+            // if(file_exists($imageDelete))
+            // unlink($imageDelete);
             return response()->json([
                 'status' => false,
                 'msg' => 'فشل الحفظ برجاء المحاوله مجددا',

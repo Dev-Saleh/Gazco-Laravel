@@ -181,22 +181,36 @@ class AgentController extends Controller
                     'status' => false,
                     'msg' => 'هذ العرض غير موجود',
                 ]);
+
+        
+            //update data  
+           $agent->update($request->except('_token', 'photo'));
+         
+                  
+            $fileName="";
             if ($request->has('photo')) {
+                $getBeforeImage=Agent::select()->find($request -> id); // Before update attachment Citizen git attchment citizen for detete
+         
                 $fileName = uploadImage('agents', $request->photo);
                 Agent::where('id', $request -> id)
                     ->update([
                         'photo' => $fileName,
                     ]);
+                 
+                    if($getBeforeImage->photo['exsit'])
+                    unlink($getBeforeImage->photo['public_path']);
             }
-            //update data  
-            $agent->update($request->except('_token', 'photo'));
             return response()->json([
                 'status' => true,
                 'msg' => 'تم  التحديث بنجاح',
                 'photo'=>$fileName,
             ]);
+           
+
+            
         }
         catch (\Exception $ex) {
+       
             return response()->json([
                 'status' => false,
                 'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
@@ -221,13 +235,14 @@ class AgentController extends Controller
                ]);
  
              
-        
-               unlink($agent->photo->public_path);
+               if($agent->photo['exsit'])
+               unlink($agent->photo['public_path']);
                $agent->delete();
              return response()->json([
                 'status' => true,
                 'msg' => 'تم الحذف بنجاح',
                 'id' => $request -> id,
+             
                 
         ]);
          } catch (\Exception $ex) {
