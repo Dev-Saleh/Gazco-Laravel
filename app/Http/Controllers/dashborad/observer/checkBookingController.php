@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers\dashborad\observer;
 use App\Http\Controllers\Controller;
+use App\Events\statusBooking;
+use App\Listeners\changeStatusBooking;
 use App\Models\Citizen;
 use App\Models\gaz_Logs;
 use App\Models\logs_Booking;
@@ -21,6 +23,7 @@ class checkBookingController extends Controller
             $data = [];
             $observer=Observer::find(2);
             $data['gaz_Logs']=gaz_Logs::select()->where('allowBookig','1')->where('qtyRemaining','0')->where('agent_id',$observer->agent_id)->get();
+            
             return view('dashboard.observer.check_booking.index',$data);
        }
     catch (\Exception $ex)
@@ -116,7 +119,29 @@ class checkBookingController extends Controller
      */
     public function update(Request $request)
     {  
+        try
+        {
+            $logBooking=logs_Booking::find($request->logBookingId);
+            if( $logBooking )
+             {
+                 event(new statusBooking( $logBooking));
+                 return response()->json([
+                    'status' => true,
+                    'msg' => 'True in index',
+                ]);
+             }
+
+        }
+    catch (\Exception $ex)
+        {
+            return response()->json([
+                'status' => false,
+                'msg' => 'error in index',
+            ]);
+        }
     }
+
+    
 
     /**
      * Remove the specified resource from storage.

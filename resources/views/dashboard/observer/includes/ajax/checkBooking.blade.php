@@ -17,16 +17,16 @@
                       $('#showLogBookingsCitizen').html("");
                       $.each(data.showLogBookingsCitizen,function (key , BookingCitizen){
                         $('#showLogBookingsCitizen').append('<tr>\
-                      <td class="text-center px-4 py-2 whitespace-nowrap">\
-                      <div class="text-sm text-gray-700">'+BookingCitizen.citizen.citizen_name+'</div>\
-                      </td>\
-                    <td class="text-center px-4 py-2 whitespace-nowrap">\
-                      <input type="checkbox"  class="confirm">\
-                    </td>\
-                    <td class="text-center px-4 py-2 whitespace-nowrap">\
-                      <input type="checkbox"  class="sms">\
-                    </td>\
-                  </tr>');
+                          <td class="text-center px-4 py-2 whitespace-nowrap">\
+                          <div class="text-sm text-gray-700">'+BookingCitizen.citizen.citizen_name+'</div>\
+                          </td>\
+                        <td class="text-center px-4 py-2 whitespace-nowrap">\
+                          <input type="checkbox" name="status_booking" logBookingId='+BookingCitizen.id+'  class="confirm">\
+                        </td>\
+                        <td class="text-center px-4 py-2 whitespace-nowrap">\
+                          <input type="checkbox"  class="sms">\
+                        </td>\
+                      </tr>');
                       });
                     }
                     
@@ -39,41 +39,27 @@
    
     // End  By Ajax 
     // Start  By Ajax 
-        {{-- $(document).on('onchange', '#status_booking', function (e) {
+         $(document).on('change','.confirm', function (e) {
             e.preventDefault();
-              var gazLogId = $(this).attr('gazLogId');
+              var logBookingId = $(this).attr('logBookingId');
             $.ajax({
-                type: 'get',
-                url: "{{route('checkBooking.show')}}",
-                data: {
-                     'gazLogId' :gazLogId, 
-                     },
+                type: 'post',
+                url: "{{route('checkBooking.update')}}",
+                 data: {
+                     'logBookingId' :logBookingId, 
+                },
                 success: function (data) {
-                
+                     // console.log(data);
                      if (data.status == true) {
-                      $('#showLogBookingsCitizen').html("");
-                      $.each(data.showLogBookingsCitizen,function (key , BookingCitizen){
-                         
-                        $('#showLogBookingsCitizen').append('<tr>\
-                      <td class="text-center px-4 py-2 whitespace-nowrap">\
-                      <div class="text-sm text-gray-700">'+BookingCitizen.citizen.citizen_name+'</div>\
-                      </td>\
-                    <td class="text-center px-4 py-2 whitespace-nowrap">\
-                      <input type="checkbox"  class="confirm">\
-                    </td>\
-                    <td class="text-center px-4 py-2 whitespace-nowrap">\
-                      <input type="checkbox"  class="sms">\
-                    </td>\
-                  </tr>');
-                      });
-                   
+                       window.saveReciving.style.color='yellow';
+                       // صلوحي شغلك شكل اعمل الدي تشتي
                     }
                     
                 }, error: function (reject) {
 
                 }
             });
-        }); --}}
+        }); 
 
    
     // End  By Ajax 

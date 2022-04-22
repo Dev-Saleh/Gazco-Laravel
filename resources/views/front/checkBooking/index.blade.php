@@ -4,7 +4,7 @@
     <main class="flex flex-col h-screen space-y-4 md:mr-[300px]">
     
             <!-- begin performing Code Ajax -->
-            @include('front.include.ajax.home')
+            @include('front.include.ajax.checkBooking')
            <!-- end begin performing Code Ajax  -->
 
             <!-- begin header -->
@@ -12,7 +12,7 @@
             <!-- end header -->
 
             @include('front.checkBooking.create')
-
+            
            
 
     </main>

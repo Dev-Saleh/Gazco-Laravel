@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Events\newBooking;
+use App\Events\statusBooking;
+use App\Listeners\changeStatusBooking;
 use App\Listeners\decreaseQtyRemaining;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -22,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         newBooking::class => [
             decreaseQtyRemaining::class,
+        ],
+        statusBooking::class => [
+            changeStatusBooking::class,
         ],
     ];
 

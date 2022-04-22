@@ -76,19 +76,19 @@
                   </tr>
                 </thead>
                 <tbody id='showLogBookingsCitizen' class="bg-white divide-y divide-gray-200">
-                  <tr>
+                  {{-- <tr>
                     
                     <td class="text-center px-4 py-2 whitespace-nowrap">
                       <div class="text-sm text-gray-700">صالح عبدالله صالح</div>  
                     </td>
                     <td class="text-center px-4 py-2 whitespace-nowrap">
-                      <input type="checkbox" name='status_booking' id='status_booking' class="confirm">
+                      <input type="checkbox"  name='status_booking'  class="confirm">
                     </td>
                     <td class="text-center px-4 py-2 whitespace-nowrap">
                       <input type="checkbox" class="sms"> 
                     </td>
                     
-                  </tr> 
+                  </tr>  --}}
                 </tbody>
               </table>
             </div> 

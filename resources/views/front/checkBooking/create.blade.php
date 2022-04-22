@@ -9,10 +9,12 @@
    <!-- Combobox Section -->
    <div class="w-11/12 mx-auto flex flex-col space-y-2">
     <label for="logsId" class="text-gray-700">  ادخل رقم الدفعه :</label>
-      <select class="appearance-none p-2 rounded-lg focus:outline-none text-center" name="jbkjbk" id="logsId">
-        <option value="1">1597</option>
-        <option value="1">157</option>
-        <option value="1">197</option>
+      <select class="appearance-none p-2 rounded-lg focus:outline-none text-center" name="NumBatch" id="NumBatch">
+        @if($gazLogs && $gazLogs -> count() > 0)
+            @foreach($gazLogs as $gazLog)
+                <option value="{{$gazLog -> id }}">{{$gazLog -> id}}</option>
+            @endforeach
+        @endif
       </select>
    </div>
 
@@ -36,19 +38,11 @@
             <th scope="col" class="px-6 py-3 text-center  font-medium text-gray-900 uppercase tracking-wider">
               تاريخ و وقت الحجز
             </th>
-
             
           </tr>
-        </thead>
-        <tbody class="bg-white divide-y divide-gray-200">
-          <tr>
-            <td class="text-center p-4 whitespace-nowrap">
-              <div class="text-sm text-gray-700">صالح عبدالله صالح</div>  
-            </td>
-            <td class="text-center p-4 whitespace-nowrap">
-              <div class="text-sm text-gray-700">  22/07/2012 , 14:07 </div>  
-            </td>
-          </tr> 
+        </thead >
+        <tbody id='fetchAllCitizenBooking' class="bg-white divide-y divide-gray-200">
+        
          
         </tbody>
       </table>
