@@ -1,4 +1,4 @@
-<nav id="Navbar" class="w-full bg-gray-100 ">
+<nav id="Navbar" class="h-16 w-full bg-gray-100 ">
         <div class="px-6 py-2 m-4 bg-white  rounded-full ">
           <div class="flex  justify-between">
             <div class="flex items-center justify-between">

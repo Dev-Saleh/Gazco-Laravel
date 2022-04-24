@@ -1,4 +1,4 @@
-<article id="Content" class="px-10 bg-gray-100">
+<article id="Content" class="content-area px-10 bg-gray-100">
     <details open class="cursor-pointer text-lg font-medium leading-6 text-gray-900 ">
         <summary class="text-lg font-medium leading-6 text-gray-900 space-y-6">
             <a href="">أضافة مواطن </a>
@@ -161,7 +161,7 @@
 
             <div class=" relative overflow-y-auto" style="height: 590px;">
                 <table id="c_logs" class=" table w-full text-gray-500 border-separate space-y-6 text-sm">
-                    <thead class="bg-gray-200 text-gray-500">
+                    <thead class="bg-gray-200 text-gray-500 tableFixed">
                         <tr>
                             <th class="p-3">الرقم</th>
                             <th class="p-3 text-center">الاسم</th>

@@ -72,7 +72,7 @@ class checkBookingController extends Controller
                     $showLogBookingsCitizen=logs_Booking::with([
                     'citizen'=>function($q)
                      {
-                       $q->select('id','citizen_name');
+                       $q->select('id','citizen_name','mobile_num');
                      }])->select()->where('NumBatch',$request->gazLogId)->get();
                
               if($showLogBookingsCitizen)

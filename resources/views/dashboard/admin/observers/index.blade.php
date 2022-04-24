@@ -1,6 +1,6 @@
 @extends('layouts.admin_dashboard')
 @section('content')
-   <article id="Content" class="px-10 bg-gray-100 h-full">
+   <article id="Content" class="content-area px-10 bg-gray-100 h-full">
         <!-- Line -->
         <div class="px-4 py-4 sm:px-0">
           <h3 class="text-lg font-medium leading-6 text-gray-900">أضافة مراقبين</h3>

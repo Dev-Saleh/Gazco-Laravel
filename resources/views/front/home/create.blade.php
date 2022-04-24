@@ -25,16 +25,15 @@
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
 
-
       </div>
     </section>
       <!-- End Swiper Section -->
     <div id="Content" class="space-y-4">
       <!-- Aler Section -->
-      <div id="status_msg" class="border-b-4 border-gray-600 bg-gray-200 
+      <div id="status_msg" class="border-b-4 border-transparent bg-transparent 
       px-6 py-4 rounded-md justify-center
       text-lg flex items-center text-gray-900 mx-auto w-11/12">
-      لا تتوفر كمية غاز للحجز حاليا
+           
       </div>
       <!-- End Aler Section -->   
 
@@ -55,14 +54,14 @@
               <span class="bg-white h-4 w-6" >
               </span>
             </span>
-            <button type="submit"  id='saveBooking' disabled
+            <button type="submit"  id='saveBooking' 
                 class="saveBooking flex flex-col disabled:opacity-50 disabled:cursor-not-allowed relative h-40 w-32  justify-center py-2 px-4 border shadow-sm text-left text-xl font-medium rounded-xl text-white bg-gray-500 hover:bg-gray-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out 
                   ">
                 <span class="animate-ping flex h-3 w-3 absolute top-0 right-0 ">
                   <span class=" absolute inline-flex h-full w-full rounded-xl bg-gray-700 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-3 w-3 bg-gray-700"></span>
                 </span>
-                  أحجز دبه
+                   {{ Session::get('citizenId') }}
             </button>
     
          
@@ -79,12 +78,12 @@
       <ul class="space-y-4 list-disc mr-4">
         <li class="text-lg text-yellow-900">الكميه المتبقيه للحجز :
           <span class="qtyRemaining text-yellow-700 text-sm font-bold">
-            0
+            لا يوجد بيانات
           </span>
         </li>
         <li class="text-lg text-yellow-900">  رقم الدفعه الحاليه :
-          <span class="NumBatch text-yellow-700 text-sm font-bold">
-            0
+          <span class="numBatch text-yellow-700 text-sm font-bold">
+            لا يوجد بيانات
           </span>
         </li>
         <li class="text-lg text-yellow-900"> ملاحظات:

@@ -1,4 +1,4 @@
- <article id="Content" class="px-10 bg-gray-100 h-full">
+ <article id="Content" class="content-area px-10 bg-gray-100 h-full">
         <div class="px-4 py-4 sm:px-0">
           <h3 class="text-lg font-medium leading-6 text-gray-900">معاينة الكشوفات و فتح الحجز</h3>
         </div>
@@ -56,7 +56,7 @@
             <!-- <p class="text-center font-sans mb-2 text-2xl"> Brands Table</p> -->
             <div class=" relative overflow-y-auto" style="height: 500px;">
               <table class="table w-full text-gray-500 border-separate space-y-6 text-sm">
-                <thead class="bg-gray-200 text-gray-500">
+                <thead class="bg-gray-200 text-gray-500 tableFixed">
                   <tr>
                     <th class="p-3 text-center">رقم الدفعه</th>
                     <th class="p-3">تاريخ الكشف</th>
