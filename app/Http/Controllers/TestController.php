@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\logs_Table;
 use App\Models\Agent;
 use App\Models\Citizen;
@@ -78,15 +79,14 @@ class TestController extends Controller
         //      return 'empty';
         //  }
         //  else
-          $citizen = Citizen::find(1);
+         // $citizen = Citizen::find(1);
         // $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id',$citizen->observer->agent_id)->latest('id')->first();
-        $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id',$citizen->observer->agent_id)->latest('id')->first();
-        $lastRequest=logs_Booking::where('citizen_id',$citizen)->latest('id')->first();
-            return array($lastRequest  );
+        // $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id',$citizen->observer->agent_id)->latest('id')->first();
+        // $lastRequest=logs_Booking::where('citizen_id',$citizen)->latest('id')->first();
+      
+      //  echo session()->exists('Status');
         
-        
-
-       
+     
         // return  $zz ;
     }
 }

@@ -21,6 +21,7 @@ class CreateCitizensTable extends Migration
             $table->string('attachment')->unique();
             $table->string('citizen_password')->unique();
             $table->string('Booking')->nullable();
+            $table->boolean('checked')->default('0');
             $table->integer('directorate_id')->unsigned();
             $table->integer('rigons_id')->unsigned();
             $table->integer('observer_id')->unsigned();

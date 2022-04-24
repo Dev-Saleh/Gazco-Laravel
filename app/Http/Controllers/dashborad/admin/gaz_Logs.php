@@ -139,7 +139,18 @@ class gaz_Logs extends Controller
     public function store(Request $request)
     {
         try { 
-            $gaz_Log = ModelsGaz_Logs::create($request->except('_token'));
+            $gaz_Log = ModelsGaz_Logs::create([
+                'qty'            => $request->qty,
+                'directorate_id' => $request->directorate_id,
+                'rigons_id'      => $request->rigons_id,
+                'stations_id'    => $request->stations_id,
+                'agent_id'       => $request->agent_id,
+                'qtyRemaining'   => $request->qty,
+                'notice'         => $request->notice, 
+                'created_at'     => $request->created_at,
+
+            ]);
+        
             $gaz_Log->save();
             if ($gaz_Log)
             return response()->json([
@@ -152,6 +163,7 @@ class gaz_Logs extends Controller
             return response()->json([
                 'status' => false,
                 'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+                'error'=>$ex,
                
                
             ]);

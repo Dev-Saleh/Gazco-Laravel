@@ -47,6 +47,7 @@
                      if (data.status == true) {
                      
                        $('.citizen_name').text(data.citizen.citizen_name);
+                       $('#citizenId').text(data.citizen.id);
                        $('.observer_name').text(data.citizen.observer.observer_name);
                        $('.created_at').text(data.citizen.created_at);
                        $('.directorate_name').text(data.citizen.directorate.directorate_name);
@@ -81,6 +82,7 @@
                      if (data.status == true) {
                      
                        $('.citizen_name').text(data.citizen.citizen_name);
+                       $('#citizenId').text(data.citizen.id);
                        $('.observer_name').text(data.citizen.observer.observer_name);
                        $('.created_at').text(data.citizen.created_at);
                        $('.directorate_name').text(data.citizen.directorate.directorate_name);
@@ -96,6 +98,36 @@
  
 
   // End show citizenConfirm By Ajax 
+   // Start update citizenConfirm By Ajax 
+       
+ 
+        $(document).on('change', '#checkbox', function (e) {
+            e.preventDefault();
+             var citizenId =  $('#citizenId').text();
+             var checkbox= window.checkbox.checked;
+            $.ajax({
+                type: 'post',
+                url:"{{route('citizenConfirm.update')}}",
+                data: {
+                    '_token': "{{csrf_token()}}",
+                     'citizenId' :citizenId, 
+                     'checkbox':checkbox,
+                },
+                success: function (data) {
+                 console.log(data);
+               
+                     if (data.status == true) {
+                         alert(data.msg,'success');
+                     
+                  }
+                }, error: function (reject) {
+
+                }
+            });
+        });
+ 
+
+  // End update citizenConfirm By Ajax 
    
    
 </script>

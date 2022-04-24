@@ -168,10 +168,33 @@ class CitizenConfirm extends Controller
      * @param  \App\Models\Citizen  $citizen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Citizen $citizen)
+    public function update(Request $request)
     {
-        //
-    }
+          try {
+                  $citizen = Citizen::find($request -> citizenId); 
+                  if (!$citizen)
+                  return response()->json([
+                      'status' => false,
+                      'msg' => 'فشل بالتعديل برجاء المحاوله مجددا',
+                    ]);
+                   $citizen->checked= $request->checkbox === 'true' ? '1' : '0'; 
+                   $citizen->update();
+                  return response()->json([
+                      'status' => true,
+                      'msg' => 'تم المطابقة بنجاح',
+                      'id'=>$request -> citizenId, // for Test
+                      'checkbox'=>$citizen->checked, // for Test
+                      
+              ]);
+        } catch (\Exception $ex) {
+            return response()->json([
+                'status' => false,
+                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+            ]);
+          
+        }
+  }
+    
 
     /**
      * Remove the specified resource from storage.

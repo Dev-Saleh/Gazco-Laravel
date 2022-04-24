@@ -1,7 +1,7 @@
    <div class="flex  gap-x-10">
           <div class=" px-6 py-6 bg-white border-0 shadow-lg rounded-xl w-full">
             <div class="flex-col space-y-4">
-        
+              <input type="text" name='id' style="display:none;" class="form-control"  id="citizenId">  
               <!-- Preview Proudct Section -->
         
               <div class="grid grid-cols-4">
@@ -52,7 +52,7 @@
                     <span class=" relative z-20">الصوره مطابقه</span>
                     <label for="checkbox" class="relative  flex-inline items-center isolate  rounded-2xl">
                       <input id="checkbox" type="checkbox" class="relative peer z-20 text-purple-600 rounded-md focus:ring-0" />
-                                           
+                         
                   </label>
                   </div>
         

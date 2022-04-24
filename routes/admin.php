@@ -4,13 +4,13 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/test', 'TestController@create');
+Route::get('/test', 'TestController@create')->name('Test');
 
-Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*/ 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'dashborad\admin', 'middleware' => 'checkObserer', 'prefix' => 'admin'], function () {
 
   
-    Route::get('/', 'OverviewController@index')->name('admin.dashboard');  // the first page admin visits if authenticated
-   
+   // the first page admin visits if authenticated
+   Route::get('/', 'OverviewController@index')->name('admin.dashboard'); 
     ################################## directorate routes ######################################
   //  Route::group(['prefix' => 'directorate'], function () {
     
@@ -75,6 +75,7 @@ Route::group(['namespace' => 'dashborad\admin', /*'middleware' => 'auth:admin',*
       Route::delete('delete/{id?}','CitizenConfirm@destroy')->name('citizenConfirm.destroy');
       Route::get('edit/{id?}', 'CitizenConfirm@edit')->name('citizenConfirm.edit');
       Route::get('show', 'CitizenConfirm@show')->name('citizenConfirm.show');
+      Route::post('update', 'CitizenConfirm@update')->name('citizenConfirm.update');
       
     });  
 });

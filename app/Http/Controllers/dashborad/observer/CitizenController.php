@@ -20,7 +20,7 @@ class CitizenController extends Controller
         $data['observers']=Observer::with(['directorate','rigon'=>function($q){
             $q->select();
         }])->find($request->id);
-        $data['citizens']=Citizen::select()->get();
+        $data['citizens']=Citizen::select()->where('observer_id',$request->id)->get();
         return view('dashboard.observer.citizens.index',$data);
        
     }
