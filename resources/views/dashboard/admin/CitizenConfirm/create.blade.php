@@ -16,7 +16,12 @@
                 <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">اسم المواطن
                   <span  class="citizen_name text-xs bg-gray-800 text-gray-200 p-2 rounded-full">صالح عبدلاله صالح</span>
                 </li>
-            </ul>
+              </ul>
+              <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
+                <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> رقم الهويه 
+                  <span  class="citizen_identity text-xs bg-gray-800 text-gray-200 p-2 rounded-full"> 2149935344 </span>
+                </li>
+              </ul>
               <!-- List Details For Prooudct -->
               <div class="flex justify-between space-x-2">
         
@@ -71,7 +76,7 @@
             <!-- <p class="text-center font-sans mb-2 text-2xl"> Brands Table</p> -->
             <div class=" relative overflow-y-auto" style="height: 590px;">
               <table class="table w-full text-gray-500 border-separate space-y-6 text-sm">
-                <thead class="bg-gray-200 text-gray-500">
+                <thead class="bg-gray-200 text-gray-500 tableFixed">
                   <tr>
                     <th class="p-3">الرقم</th>
                     <th class="p-3 text-center">اسم المواطن</th>
@@ -83,7 +88,7 @@
                 <tbody id='fetchAllCitizenConfirm'>
                   @if($citizens && $citizens -> count() > 0)
                   @foreach($citizens as $citizen)
-                   <tr  class="offerRow{{$citizen -> id}}" class="bg-gray-50 hover:scale-95 transform transition-all ease-in">
+                   <tr class="offerRow{{$citizen -> id}} bg-white hover:scale-95 transform transition-all ease-in">
                     <td class="p-3 text-center">
                       {{$citizen -> id}}
                     </td>
@@ -93,24 +98,24 @@
                     <td class="p-3 text-center">
                      {{$citizen->identity_num}}
                     </td>
-                    <td class="p-3 text-center">
+                    <td class="p-3 text-center whitespace-nowrap">
                       <span class="bg-green-400 text-gray-50 rounded-md px-2">نعم</span>
                     </td>
                     <td class="p-5 flex space-x-2">
-                      <a href="#" citizenId="{{$citizen->id}}"  class="citizenConfirmDelete" class="text-gray-400  hover:text-red-400 float-left ">
+                      <a href="#" citizenId="{{$citizen->id}}" class="citizenConfirmDelete text-red-400  hover:text-red-600 float-left ">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                           stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                         </svg>
                       </a>
-                      <a href="#" citizenId="{{$citizen->id}}"  class="citizenConfirmEdit" class="text-gray-400 hover:text-yellow-400  mx-2">
+                      <a href="#" citizenId="{{$citizen->id}}" class="citizenConfirmEdit text-yellow-400 hover:text-yellow-600  mx-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                           <path
                             d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                         </svg>
                       </a>
-                      <a href="#" citizenId="{{$citizen->id}}"  class="citizenConfirmShow" class="text-gray-400 hover:text-blue-400  ml-2">
+                      <a href="#" citizenId="{{$citizen->id}}" class="citizenConfirmShow text-blue-400 hover:text-blue-600  ml-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                           <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                           <path fill-rule="evenodd"

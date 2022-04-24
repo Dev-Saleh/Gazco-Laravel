@@ -143,7 +143,7 @@ class homeController extends Controller
                 return response()->json([
                     'status' => false,
                     'msg' => 'Allow Booking=0 , qtyRemaining=0 ,numdays='.$numdays->days.'',
-                    'lastGazLogs'=>$lastGazLogs,
+                    'lastGazLogs'=>$lastGazLogs->id,
                 ]);
            }
       

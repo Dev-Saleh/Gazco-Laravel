@@ -21,10 +21,10 @@
                           <div class="text-sm text-gray-700">'+BookingCitizen.citizen.citizen_name+'</div>\
                           </td>\
                         <td class="text-center px-4 py-2 whitespace-nowrap">\
-                          <input type="checkbox" name="status_booking" logBookingId='+BookingCitizen.id+'  class="confirm">\
+                          <input class="confirm" type="checkbox" name="status_booking" logBookingId='+BookingCitizen.id+'  >\
                         </td>\
                         <td class="text-center px-4 py-2 whitespace-nowrap">\
-                          <input type="checkbox"  class="sms">\
+                          <input class="sms" type="checkbox"  mobileNum='+BookingCitizen.citizen.mobile_num+'  >\
                         </td>\
                       </tr>');
                       });

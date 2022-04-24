@@ -26,7 +26,7 @@ class TestController extends Controller
     }
 
    
-    public function create()
+    public function create(Request $request)
     {   
     //     $agentArray = array("كريم حسن القعر",
     //     "معاذ عبدالله يحيى",
@@ -79,10 +79,12 @@ class TestController extends Controller
         //  }
         //  else
           $citizen = Citizen::find(1);
+          $u = '7069293';
         // $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id',$citizen->observer->agent_id)->latest('id')->first();
-        $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id',$citizen->observer->agent_id)->latest('id')->first();
-        $lastRequest=logs_Booking::where('citizen_id',$citizen)->latest('id')->first();
-            return array($lastRequest  );
+        // $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id',$citizen->observer->agent_id)->latest('id')->first();
+        // $lastRequest=logs_Booking::where('citizen_id',$citizen)->latest('id')->first();
+        $citizenRecord = Citizen::where('identity_num',$request->identity_num)->first();
+            return array($citizenRecord  );
         
         
 

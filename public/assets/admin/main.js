@@ -1,5 +1,6 @@
-var checkboxes_sms = document.querySelectorAll(".sms");
+
 function checkAllSms(myCheckbox){
+  var checkboxes_sms = document.querySelectorAll(".sms");
     if(myCheckbox.checked == true){
       checkboxes_sms.forEach(function(checkbox){
             checkbox.checked = true;
@@ -12,8 +13,8 @@ function checkAllSms(myCheckbox){
     }
 }
 
-var checkboxes_confirm = document.querySelectorAll(".confirm");
 function checkAllConfirm(myCheckbox){
+  var checkboxes_confirm = document.querySelectorAll(".confirm");
     if(myCheckbox.checked == true){
       checkboxes_confirm.forEach(function(checkbox){
             checkbox.checked = true;

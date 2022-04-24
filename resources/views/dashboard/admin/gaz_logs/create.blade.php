@@ -135,9 +135,9 @@
 
         <div class="mx-auto w-full">
           <!-- <p class="text-center font-sans mb-2 text-2xl"> Brands Table</p> -->
-          <div class=" relative overflow-y-scroll" style="height: 590px;">
+          <div class=" relative overflow-y-auto" style="height: 590px;">
             <table class="table w-full text-gray-500 border-separate space-y-6 text-sm">
-              <thead class="bg-gray-200 text-gray-500">
+              <thead class="bg-gray-200 text-gray-500 tableFixed">
                 <tr>
                   <th class="p-3">الرقم</th>
                   <th class="p-3 text-center">المحطه</th>
@@ -150,7 +150,7 @@
               <tbody id="fetch_All_Gaz_Logs">
                 @if($gaz_Logs && $gaz_Logs -> count() > 0)
                 @foreach($gaz_Logs as $gaz_Log)
-                <tr   class="offerRow{{$gaz_Log -> id}} bg-gray-50 hover:scale-95 transform transition-all ease-in ">
+                <tr   class="offerRow{{$gaz_Log -> id}} bg-white hover:scale-95 transform transition-all ease-in ">
                   <td class="p-3 text-center">
                     {{$gaz_Log -> id}}
                   </td>
@@ -174,20 +174,20 @@
                       <button class="bg-red-200 w-14 hover:bg-red-400">N</button>
                     </div>
                     <div id="action-div" class="flex space-x-2  transition-all ease-in duration-150">
-                      <a onclick="deleteAlert();" href="#" gaz_Log_Id="{{$gaz_Log->id}}"  class="gaz_Log_Delete" class="text-gray-400  hover:text-red-400 float-left ">
+                      <a onclick="deleteAlert();" href="#" gaz_Log_Id="{{$gaz_Log->id}}" class="gaz_Log_Delete text-red-400  hover:text-red-600 float-left ">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                           stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                         </svg>
                       </a>
-                      <a href="#" gaz_Log_Id="{{$gaz_Log->id}}"  class="gaz_Log_Edit" class="text-gray-400 hover:text-yellow-400  mx-2">
+                      <a href="#" gaz_Log_Id="{{$gaz_Log->id}}" class="gaz_Log_Edit text-yellow-400 hover:text-yellow-600  mx-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                           <path
                             d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                         </svg>
                       </a>
-                      <a href="#" class="text-gray-400 hover:text-blue-400  ml-2">
+                      <a href="#" class="text-blue-400 hover:text-blue-600  ml-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                           <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                           <path fill-rule="evenodd"

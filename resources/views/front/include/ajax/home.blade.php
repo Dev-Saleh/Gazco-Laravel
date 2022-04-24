@@ -17,23 +17,23 @@
                        if (data.status == true ) {  
                               // في خطأ بالالوان
                               $('.saveBooking').removeAttr("disabled");
-                               document.getElementById('status_msg').classList.replace('bg-gray-200','bg-green-200');
-                               document.getElementById('status_msg').classList.replace('border-gray-600','border-green-600');
+                               document.getElementById('status_msg').classList.replace('bg-transparent','bg-green-200');
+                               document.getElementById('status_msg').classList.replace('border-transparent','border-green-600');
                                document.getElementById('status_msg').classList.replace('text-gray-900','text-green-900');
                                $('#status_msg').text('مصرح لك بالحجز');          
-                               $('.NumBatch').text(data.lastGazLogs.id); //???????
+                               $('numBatch').text(data.lastGazLogs.id); //???????
                                $('#NumBatch').val(data.lastGazLogs.id);
                                $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
                     }
                     else
                      {
-                         
-                               document.getElementById('status_msg').classList.replace('bg-gray-200','bg-red-200');
-                               document.getElementById('status_msg').classList.replace('border-gray-600','border-red-600');
+                            window.saveBooking.setAttribute('disabled','disabled');
+                               document.getElementById('status_msg').classList.replace('bg-transparent','bg-red-200');
+                               document.getElementById('status_msg').classList.replace('border-transparent','border-red-600');
                                document.getElementById('status_msg').classList.replace('text-gray-900','text-red-900');
                                 $('#status_msg').text('انت محظور يا حلو');
-                                $('.NumBatch').text(data.lastGazLogs.id);
-                                $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
+                                //$('numBatch').text(data.lastGazLogs.id);
+                                //$('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
                      } 
                  
                 }, error: function (reject) {
@@ -49,6 +49,7 @@
     
         $(document).on('click', '#saveBooking', function (e) {
             e.preventDefault();
+            window.saveBooking.setAttribute('disabled','disabled');
             var formData = new FormData($('#logBookings')[0]);       
             $.ajax({
                 type: 'POST',
@@ -62,9 +63,7 @@
                     console.log(data);
                     if (data.status == true) {
                     alert(data.msg,'success');
-                    //$('#saveBooking').attr('disabled');
-                   // $('.saveBooking').attr("disabled", true);
-                   $(selector).attr(disabled, false);
+               
                     $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
                     } 
                   
