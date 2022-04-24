@@ -82,11 +82,7 @@
                      if (data.status == true) {
                          
                        $('.citizen_name').text(data.citizen.citizen_name);
-<<<<<<< HEAD
-                       $('#citizenId').text(data.citizen.id);
-=======
                        $('.citizen_identity').text(data.citizen.identity_num);
->>>>>>> 99e883b7cbb56cea5fa9a3f09201685c1b49be8e
                        $('.observer_name').text(data.citizen.observer.observer_name);
                        $('.created_at').text(data.citizen.created_at);
                        $('.directorate_name').text(data.citizen.directorate.directorate_name);

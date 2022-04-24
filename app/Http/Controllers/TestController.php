@@ -79,14 +79,6 @@ class TestController extends Controller
         //      return 'empty';
         //  }
         //  else
-<<<<<<< HEAD
-         // $citizen = Citizen::find(1);
-        // $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id',$citizen->observer->agent_id)->latest('id')->first();
-        // $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id',$citizen->observer->agent_id)->latest('id')->first();
-        // $lastRequest=logs_Booking::where('citizen_id',$citizen)->latest('id')->first();
-      
-      //  echo session()->exists('Status');
-=======
           $citizen = Citizen::find(1);
           $u = '7069293';
         // $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id',$citizen->observer->agent_id)->latest('id')->first();
@@ -95,7 +87,6 @@ class TestController extends Controller
         $citizenRecord = Citizen::where('identity_num',$request->identity_num)->first();
             return array($citizenRecord  );
         
->>>>>>> 99e883b7cbb56cea5fa9a3f09201685c1b49be8e
         
      
         // return  $zz ;
