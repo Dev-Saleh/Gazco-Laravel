@@ -77,8 +77,8 @@ class RouteServiceProvider extends ServiceProvider
     {
        
         Route::/* middleware('site') -> */
-        prefix('site')
-       ->namespace($this->namespace)
+        
+       namespace($this->namespace)
        ->group(base_path('routes/site.php'));
     }
 

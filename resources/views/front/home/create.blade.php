@@ -57,11 +57,11 @@
             <button type="submit"  id='saveBooking' 
                 class="saveBooking flex flex-col disabled:opacity-50 disabled:cursor-not-allowed relative h-40 w-32  justify-center py-2 px-4 border shadow-sm text-left text-xl font-medium rounded-xl text-white bg-gray-500 hover:bg-gray-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out 
                   ">
+                  {{ session()->get('idCitizen') }}
                 <span class="animate-ping flex h-3 w-3 absolute top-0 right-0 ">
                   <span class=" absolute inline-flex h-full w-full rounded-xl bg-gray-700 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-3 w-3 bg-gray-700"></span>
                 </span>
-                   {{ Session::get('citizenId') }}
             </button>
     
          

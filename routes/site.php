@@ -1,11 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-Route::group(['namespace' => 'front', /*'middleware' => 'auth:Observer',*/ 'prefix' => 'home'], function () {
+
+Route::get('login', 'auth\loginCitizenController@login')->name('login'); 
+Route::get('logout', 'auth\loginCitizenController@logout')->name('logout'); 
+Route::post('check', 'auth\loginCitizenController@checkCitizen')->name('checkCitizen'); 
+Route::group(['namespace' => 'front', 'middleware' => 'authCitizen', 'prefix' => 'home'], function () {
     Route::get('/', 'homeController@index')->name('Main.front');  // the first page Observer visits if authenticated
     ################################## Citizen routes ######################################
     Route::group(['prefix' => 'Citizen'], function () {
-   
+       
     });
     ################################## Citizen routes ######################################
     ################################## Booking routes ######################################
@@ -26,5 +30,6 @@ Route::group(['namespace' => 'front', /*'middleware' => 'auth:Observer',*/ 'pref
     
      });
     ################################## Complaints routes ######################################
+    
  
 });

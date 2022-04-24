@@ -10,7 +10,7 @@
                 url:"{{route('Main.show')}}",
                 data: {
                     '_token': "{{csrf_token()}}",
-                     'citizenId' :'13', 
+                     'citizenId' :'7', 
                 },
                 success: function (data) {
                   console.log(data);

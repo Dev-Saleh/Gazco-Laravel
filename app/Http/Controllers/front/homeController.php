@@ -31,7 +31,7 @@ class homeController extends Controller
         {
            return response()->json([
                'status' => false,
-               'msg' => 'error in index',
+               'msg' => 'error in indexxxxxxx',
            ]);
        }
     }
@@ -142,7 +142,7 @@ class homeController extends Controller
            {
                 return response()->json([
                     'status' => false,
-                    'msg' => 'Allow Booking=0 , qtyRemaining=0 ,numdays='.$numdays->days.'',
+                    
                     'lastGazLogs'=>$lastGazLogs->id,
                 ]);
            }
@@ -154,8 +154,9 @@ class homeController extends Controller
         {
            return response()->json([
                'status' => false,
-               'msg' => 'error in index',
+               'msg' => 'error in indexxxxxxqw',
                'exceptionerrore'=>$ex,
+               'asd' => $lastGazLogs,
            ]);
        }
     }

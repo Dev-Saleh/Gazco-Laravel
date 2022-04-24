@@ -37,8 +37,9 @@
                         <p class="text-gray-500">سجل دخولك عبر بيانات البطاقه الشخصيه</p>
                     </div>
                     <div class="space-y-5">
-                    
-                        <div class="space-y-2">
+                    <form action="{{ route('checkCitizen') }}" method="POST" id='loginCitizenForm'>
+                     @csrf   
+                    <div class="space-y-2">
                             <label class="text-sm font-medium text-gray-700 tracking-wide"> الرقم الوطني</label>
                             <input name="identity_num"
                                 class=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400"
@@ -70,12 +71,14 @@
                             </div>
                         </div>
                         <div>
-                            <button id="loginCitizenBtn" type="submit"
-                                class="w-full flex justify-center bg-green-400  hover:bg-green-500 text-gray-100 p-3  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-300">
-                                Sign in
+                            <button id="loginCitizenBtn"  type="submit"
+                                class="w-full flex justify-center bg-green-400  hover:bg-green-500
+                                 text-gray-100 p-3  rounded-full tracking-wide font-semibold 
+                                  shadow-lg cursor-pointer transition ease-in duration-300">
+                               تسجيل
                             </button>
                         </div>
-                        
+                        </form> 
                     </div>
                     <div class="pt-5 text-center text-gray-400 text-xs">
                         <span>
@@ -86,13 +89,10 @@
                 </div>
             </div>
         </div>
+    
     </div>
-    <script src="{{ asset('assets/admin/jquery-3.6.0.min.js') }}"></script>
-    <script>
-        // Start
-       
-        // End
-    </script>
+    
+  
 </body>
-
+  
 </html>

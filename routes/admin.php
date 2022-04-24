@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/test', 'TestController@create')->name('Test');
 
-Route::group(['namespace' => 'dashborad\admin', 'middleware' => 'checkObserer', 'prefix' => 'admin'], function () {
+
+
+Route::group(['namespace' => 'dashborad\admin', 'prefix' => 'admin'], function () {
 
   
    // the first page admin visits if authenticated
