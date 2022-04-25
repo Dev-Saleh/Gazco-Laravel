@@ -24,7 +24,7 @@ class RequestsStation extends FormRequest
     public function rules()
     {
         return [
-            'staName' =>'required|max:25|unique:stations,staName'.$this->id,
+            'staName' =>'required|max:25|unique:stations,staName,'.$this->id,
            
         ];
     }

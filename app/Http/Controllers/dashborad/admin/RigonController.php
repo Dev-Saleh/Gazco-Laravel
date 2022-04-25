@@ -8,176 +8,148 @@ use Illuminate\Http\Request;
 
 class RigonController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
+   
     public function store(RequestsRigon $request)
     {
-        try { 
-            $rigon = Rigon::create($request->except('_token'));
-            $rigon->save();
-            if ($rigon)
-            return response()->json([
-                'status' => true,
-                'msg' => 'تم الحفظ بنجاح',
-            ]);
-            return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
-                
-            ]);
+        try 
+         { 
+                $rig = Rigon::create($request->except('_token'));
+                $rig->save();
 
-        }
-        catch (\Exception $ex) {
+                if ($rig) 
+                return response()->json([
+
+                    'status' => true,
+                    'msg' => 'تم الحفظ بنجاح',
+
+                ]);
+
+         }
+        catch (\Exception $ex) 
+        {
+
             return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+
+                'status'         => false,
+                'msg'            => 'فشل الحفظ برجاء المحاوله مجددا',
+                'exceptionError' => $ex,
            
             ]);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Rigon  $rigon
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Rigon $rigon)
+    
+    public function show()
     {
         try
         {
-           $rigons = Rigon::select()->get();
-           return response()->json([
-            'status' => true,
-            'rigons' => $rigons,
-           ]);
-       }
+            $rigons = Rigon::select('id','rigName','dirId')->orderby('id','DESC')->get();
+
+            if($rigons)
+            return response()->json([
+                'status' => true,
+                'rigons' => $rigons,
+            ]);
+        }
        catch (\Exception $ex)
         {
-           return response()->json([
-               'status' => false,
-               'msg' => 'error in index',
-           ]);
+            return response()->json([
+                'status'         =>  false,
+                'msg'            => 'error in index',
+                'exceptionError' =>  $ex,
+            ]);
        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Rigon  $rigon
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(Request $request)
     {
-        try{
-        $rigon = Rigon::find($request -> id);  // search in given table id only
-        if (!$rigon)
-            return response()->json([
-                'status' => false,
-                'msg' => 'هذ العرض غير موجود',
-               
-            ]);
+        try
+        {
 
-        $rigon = Rigon::select()->find($request ->id);
+            $rig = Rigon::with(['directorate'=>function($q)
+            {
+                $q->select('id','dirName')->get();
+            }])->select('id','rigName','dirId')->find($request ->rigId);  // search in given table id only
+           
+            if (!$rig) 
+                return response()->json([
+                    'status' => false,
+                    'msg' => 'هذ العرض غير موجود',
+                
+                ]);
       
-        return response()->json([
-            'status' => true,
-            'rigon' => $rigon,
-            'dir'   =>$rigon->directorate,
-        ]);
+            return response()->json([
+                'status' => true,
+                'rig' => $rig,
+            //  'dir'   =>$rigon->directorate,
+            ]);
       }
-      catch (\Exception $ex) {
-        return response()->json([
-            'status' => false,
-            'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
-        ]);
-    }
+      catch (\Exception $ex) 
+      {
+            return response()->json([
+                'status'         => false,
+                'msg'            => 'فشل الحفظ برجاء المحاوله مجددا',
+                'exceptionError' => $ex,
+            ]);
+      }
 
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Rigon  $rigon
-     * @return \Illuminate\Http\Response
-     */
     public function update(RequestsRigon $request)
     {
-        try{
-            $rigon = Rigon::find($request -> id);
-            if (!$rigon)
+        try
+        {
+            $rig = Rigon::find($request -> id);
+            if (!$rig)
                 return response()->json([
                     'status' => false,
                     'msg' => 'هذ العرض غير موجود',
                 ]);
+
             //update data
-            $rigon->update($request->all());
+            $rig->update($request->all());
             return response()->json([
                 'status' => true,
                 'msg' => 'تم  التحديث بنجاح',
             ]);
         }
-        catch (\Exception $ex) {
+        catch (\Exception $ex) 
+        {
             return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+                'status'         => false,
+                'msg'            => 'فشل الحفظ برجاء المحاوله مجددا',
+                'exceptionError' =>$ex,
             ]);
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Rigon  $rigon
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Request $request)
     {
-        try {
-            $rigon = Rigon::find($request -> id); 
-            if (!$rigon)
+        try 
+        {
+            $rig = Rigon::find($request -> rigId); 
+
+            if (!$rig)
             return response()->json([
                 'status' => false,
                 'msg' => 'فشل بالتعديل برجاء المحاوله مجددا',
                ]);
-             $rigon->delete();
+             $rig->delete();
              return response()->json([
                 'status' => true,
                 'msg' => 'تم الحذف بنجاح',
-                'id' => $request -> id
-        ]);
-         } catch (\Exception $ex) {
+                'id' => $request -> rigId,
+              ]);
+        } catch (\Exception $ex) 
+         {
             return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+                'status'         => false,
+                'msg'            => 'فشل الحفظ برجاء المحاوله مجددا',
+                'exceptionError' =>$ex,
             ]);
-          
          }
     }
 

@@ -19,7 +19,7 @@ class Directorate extends Model
     }
     public function rigon()
     {
-        return $this->hasMany(Rigon::class, 'directorate_id','id');
+        return $this->hasMany(Rigon::class, 'dirId','id');
     }
     public function observer()
     {

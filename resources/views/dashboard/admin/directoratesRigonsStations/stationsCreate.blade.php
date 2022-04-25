@@ -20,13 +20,13 @@
                             class="inline-flex justify-center py-2 px-4 border-blue-600 border-2 shadow-sm 
                           text-sm font-medium rounded-md text-blue-400 bg-transparent hover:bg-blue-600 hover:text-blue-50
                           focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-blue-500 w-full">
-                            Add
+                            حفظ
                         </button>
                         <button type="submit" id='updateStation' style='display:none;'
                             class="inline-flex justify-center py-2 px-4 border-blue-600 border-2 shadow-sm 
                           text-sm font-medium rounded-md text-blue-400 bg-transparent hover:bg-blue-600 hover:text-blue-50
                           focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-blue-500  w-full">
-                            Edit
+                            تعديل
                         </button>
                     </div>
                 </form>
