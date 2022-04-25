@@ -1,4 +1,4 @@
-<article id="Content" class="content-area px-10 bg-gray-100">
+
     <details open class="cursor-pointer text-lg font-medium leading-6 text-gray-900 ">
         <summary class="text-lg font-medium leading-6 text-gray-900 space-y-6">
             <a href="">أضافة مواطن </a>
