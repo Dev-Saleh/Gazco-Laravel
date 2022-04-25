@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Directorate extends Model
 {
     protected $table='directorates';
-    protected $fillable = ['id','directorate_name'];
+    protected $fillable = ['id','dirName'];
 
 
     public  $timestamps = false;

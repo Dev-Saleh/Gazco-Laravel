@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
          for($i = 0 ; $i < count($stationArray) ;$i++)
         {
             Station::create([
-                'Station_name' => $stationArray[$i],
+                'staName' => $stationArray[$i],
             ]);
         }
 
@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
         for($i = 0 ; $i < count($directorateArray) ;$i++)
         {
             Directorate::create([
-                'directorate_name' => $directorateArray[$i],
+                'dirName' => $directorateArray[$i],
             ]);
         }
 
@@ -87,8 +87,8 @@ class DatabaseSeeder extends Seeder
             {
 
                 Rigon::create([
-                    'rigon_name' => $rigon_Array[$i],
-                    'directorate_id' => $directorate_Array[$i], 
+                    'rigName' => $rigon_Array[$i],
+                    'dirId' => $directorate_Array[$i], 
                 ]);
             }
 
@@ -112,7 +112,7 @@ class DatabaseSeeder extends Seeder
         for($i = 0 ; $i < count($agentArray) ;$i++)
         {
                 $aa = Directorate::all()->random()->id;
-                $bb = Rigon::select()->where('directorate_id', $aa)->get();
+                $bb = Rigon::select()->where('dirId', $aa)->get();
                 $cc = $bb->random()->id;
             Agent::create([
                 'Agent_name' => $agentArray[$i],
@@ -174,7 +174,7 @@ class DatabaseSeeder extends Seeder
             // $mm = Agent::select()->where('directorate_id', $aa)->get();
 
             $aa = Directorate::all()->random()->id;
-            $bb = Rigon::select()->where('directorate_id', $aa)->get();
+            $bb = Rigon::select()->where('dirId', $aa)->get();
             $cc = $bb->random()->id;
             // $mm = Agent::select()->where('directorate_id', $aa)->get();
             // $tt= $mm->random()->id;
@@ -209,7 +209,7 @@ class DatabaseSeeder extends Seeder
            
             $ss = Station::all()->random()->id;
             $aa = Directorate::all()->random()->id;
-            $bb = Rigon::select()->where('directorate_id', $aa)->get();
+            $bb = Rigon::select()->where('dirId', $aa)->get();
             $cc = $bb->random()->id;
             $mm = Agent::select()->where('directorate_id', $aa)->get();
             $tt= $mm->random()->id;
@@ -255,7 +255,7 @@ class DatabaseSeeder extends Seeder
             // $tt = $mm->random()->id;
             
             $aa = Directorate::all()->random()->id;
-            $bb = Rigon::select()->where('directorate_id', $aa)->get();
+            $bb = Rigon::select()->where('dirId', $aa)->get();
             $cc = $bb->random()->id;
 
             $mm = Agent::select()->where('directorate_id', $aa)->get();

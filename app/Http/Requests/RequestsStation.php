@@ -24,7 +24,7 @@ class RequestsStation extends FormRequest
     public function rules()
     {
         return [
-            'Station_name' =>'required|max:25',
+            'staName' =>'required|max:25|unique:stations,staName'.$this->id,
            
         ];
     }
@@ -32,9 +32,9 @@ class RequestsStation extends FormRequest
     {
 
         return [
-            'Station_name.required' =>'أسم المحظة مطلوب' ,
-            'Station_name.max' =>'لايزيد عن 25 حرف',
-           // 'directorate_name.unique' =>'الاسم يجب ان يكون فريد' ,
+            'staName.required' =>'أسم المحظة مطلوب' ,
+            'staName.max' =>'لايزيد عن 25 حرف',
+            'staName.unique' =>'الاسم يجب ان يكون فريد' ,
         ];
     }
 }

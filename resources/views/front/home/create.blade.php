@@ -47,17 +47,17 @@
              <input type="datetime-local"style="display:none;"  value='' name="currentDate" id='currentDate' placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
               appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
               hover:border-blue-600 text-blue-900" />
-             <input type="text" name='citizen_id' value='13'  style="display:none;" class="citizen_id form-control">
+             <input type="text" name='citizen_id' value='{{ session()->get('idCitizen') }}'  style="display:none;" class="citizen_id form-control">
              <input type="text" name='NumBatch' id="NumBatch"  style="display:none;" class="form-control">
          
             <span class="group absolute -top-6 z-10 h-8 w-12 bg-gray-500 rounded-md flex justify-center items-center ">
               <span class="bg-white h-4 w-6" >
               </span>
             </span>
-            <button type="submit"  id='saveBooking' 
+            <button type="submit"  id='saveBooking' idCitizen="{{ session()->get('idCitizen') }}"
                 class="saveBooking flex flex-col disabled:opacity-50 disabled:cursor-not-allowed relative h-40 w-32  justify-center py-2 px-4 border shadow-sm text-left text-xl font-medium rounded-xl text-white bg-gray-500 hover:bg-gray-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out 
                   ">
-                  {{ session()->get('idCitizen') }}
+                  
                 <span class="animate-ping flex h-3 w-3 absolute top-0 right-0 ">
                   <span class=" absolute inline-flex h-full w-full rounded-xl bg-gray-700 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-3 w-3 bg-gray-700"></span>

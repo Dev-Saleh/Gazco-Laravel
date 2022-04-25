@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AuthCitizen
+class authAdmin
 {
     /**
      * Handle an incoming request.
@@ -15,14 +15,13 @@ class AuthCitizen
      */
     public function handle($request, Closure $next)
     {
-        if(session()->has('idCitizen'))
+         if(session()->has('idAdmin'))
         {
             return $next($request);
         }
         else
         {
-           return redirect()->route('login');
+           return redirect()->route('adminLogin');
         }
-       
     }
 }

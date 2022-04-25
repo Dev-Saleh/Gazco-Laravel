@@ -9,7 +9,7 @@ class Station extends Model
 {
     
     protected $table='stations';
-    protected $fillable = ['id','Station_name'];
+    protected $fillable = ['id','staName'];
     public  $timestamps = false;
 
     public function gaz_Logs()

@@ -8,167 +8,159 @@ use Illuminate\Http\Request;
 
 class StationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
+  
     public function store(RequestsStation $request)
     {
-        try { 
-            $station = Station::create($request->except('_token'));
-            $station->save();
-            if ($station)
-            return response()->json([
-                'status' => true,
-                'msg' => 'تم الحفظ بنجاح',
-            ]);
+        try 
+        { 
+
+                $station = Station::create($request->except('_token'));
+                $station->save();
+
+                if ($station)
+                return response()->json([
+                    'status' => true,
+                    'msg' => 'تم الحفظ بنجاح',
+                ]);
+
         }
-        catch (\Exception $ex) {
+        catch (\Exception $ex) 
+        {
+
             return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+                'status'        => false,
+                'msg'           => 'فشل الحفظ برجاء المحاوله مجددا',
+                'getDataForm'   => $request->all(),
+              'exceptionError'  => $ex,
+              
                
             ]);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Station  $station
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Station $station)
+  
+    public function show()
     {
         try
         {
-           $station = Station::select('id','Station_name')->get();
-           return response()->json([
-            'status' => true,
-            'stations' => $station,
-           ]);
+            $stations = Station::select('id','staName')->orderby('id','DESC')->get(); // this command work select to all Station 
+
+            if($stations) //this condation if data found return status true and return data
+            return response()->json([
+                'status' => true,
+                'stations' => $stations,
+            ]);
+
        }
        catch (\Exception $ex)
         {
            return response()->json([
-               'status' => false,
-               'msg' => 'error in index',
+               'status'        => false,
+               'msg'           => 'error in index',
+               'exceptionError'=> $ex,
            ]);
        }
     }
     
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Station  $station
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Request $request)
     {
         try{
-            $station = Station::find($request -> id);  // search in given table id only
-            if (!$station)
+
+                $sta = Station::select('id','staName')->find($request ->staId);  // search in given table id only
+                
+                // if Station Not Found return status error
+                if (!$sta)
+                    return response()->json([
+                        'status' => false,
+                        'msg' => 'هذ العرض غير موجود',
+                    
+                    ]);
+
+                // else Station Found return status true and send data by ajax
                 return response()->json([
-                    'status' => false,
-                    'msg' => 'هذ العرض غير موجود',
-                   
+                    'status' => true,
+                    'sta' => $sta,
                 ]);
-    
-            $station = Station::select()->find($request ->id);
-            return response()->json([
-                'status' => true,
-                'station' => $station,
-            ]);
           }
-          catch (\Exception $ex) {
-            return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
-            ]);
-        }
+          catch (\Exception $ex) 
+          {
+
+                return response()->json([
+                    'status'         => false,
+                    'msg'            => 'فشل الحفظ برجاء المحاوله مجددا',
+                    'exceptionError' =>$ex,
+                ]);
+         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Station  $station
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(RequestsStation $request)
     {
         try{
-            $station = Station::find($request -> id);
-            if (!$station)
+
+            $sta = Station::find($request -> id); // this line search Station by StaId
+
+            if (!$sta)
                 return response()->json([
                     'status' => false,
                     'msg' => 'هذ العرض غير موجود',
                 ]);
-            //update data
-            $station->update($request->all());
+
+           //update Station data 
+            $sta->update($request->all());
+
+            
             return response()->json([
                 'status' => true,
                 'msg' => 'تم  التحديث بنجاح',
             ]);
+
         }
-        catch (\Exception $ex) {
+        catch (\Exception $ex) 
+        {
+
             return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+                'status'         => false,
+                'msg'            => 'فشل الحفظ برجاء المحاوله مجددا',
+                'getDataForm'   => $request->all(),
+                'exceptionError' =>$ex,
+                
             ]);
         }
         
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Station  $station
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy(Request $request)
     {
-        try {
-            $station = Station::find($request -> id); 
-            if (!$station)
-            return response()->json([
-                'status' => false,
-                'msg' => 'فشل بالتعديل برجاء المحاوله مجددا',
-               ]);
-             $station->delete();
-             return response()->json([
-                'status' => true,
-                'msg' => 'تم الحذف بنجاح',
-                'id' => $request -> id
-        ]);
-         } catch (\Exception $ex) {
-            return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+        try
+         {
+
+                $sta = Station::find($request -> staId); 
+
+                if (!$sta)
+                return response()->json([
+                    'status' => false,
+                    'msg' => 'فشل بالتعديل برجاء المحاوله مجددا',
+                ]);
+
+                $sta->delete();
+
+                return response()->json([
+                    'status' => true,
+                    'msg' => 'تم الحذف بنجاح',
+                    'id' => $request -> staId
             ]);
+         }
+         catch (\Exception $ex) 
+         {
+
+                return response()->json([
+                    'status'         => false,
+                    'msg'            => 'فشل الحفظ برجاء المحاوله مجددا',
+                    'exceptionError' =>$ex,
+                ]);
         
          }
     }

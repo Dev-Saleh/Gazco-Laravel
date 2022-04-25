@@ -6,9 +6,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/test', 'TestController@create')->name('Test');
 
+Route::group(['namespace' => 'auth'],function(){
+
+  Route::get('adminLogin', 'loginAdminController@login')->name('adminLogin'); 
+  Route::get('adminLogout', 'loginAdminController@logout')->name('adminLogout'); 
+  Route::post('adminCheck', 'loginAdminController@checkAdmin')->name('adminCheckAdmin'); 
 
 
-Route::group(['namespace' => 'dashborad\admin', 'prefix' => 'admin'], function () {
+});
+Route::group(['namespace' => 'auth'],function(){
+
+  Route::get('observerLogin', 'loginObserverController@login')->name('observerLogin'); 
+  Route::get('observerLogout', 'loginObserverController@logout')->name('observerLogout'); 
+  Route::post('observerCheck', 'loginObserverController@checkAdmin')->name('observerCheckAdmin'); 
+
+
+});
+
+Route::group(['namespace' => 'dashborad\admin'/*,'middleware' => 'authAdmin'*/, 'prefix' => 'admin'], function () {
 
   
    // the first page admin visits if authenticated

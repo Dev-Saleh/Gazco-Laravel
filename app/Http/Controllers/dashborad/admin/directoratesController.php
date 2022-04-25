@@ -10,14 +10,15 @@ use Illuminate\Http\Request;
 
 class directoratesController extends Controller
 {
+    
     public function index()
     {
         try
         {
            $data = [];
-           $data['directorates'] = Directorate::select()->get();
-           $data['rigons'] = Rigon::select()->get();
-           $data['Stations'] = Station::select()->get();
+           $data['directorates'] = Directorate::select('id','dirName')->orderBy('id', 'DESC')->paginate(PAGINATION_COUNT);
+           $data['rigons'] = Rigon::select('id','rigName')->orderBy('id', 'DESC')->paginate(PAGINATION_COUNT);
+           $data['Stations'] = Station::select('id','staName')->orderBy('id', 'DESC')->paginate(PAGINATION_COUNT);           ;
            
            return view('dashboard.admin.directoratesRigonsStations.index',$data);
        }
@@ -37,9 +38,9 @@ class directoratesController extends Controller
     public function store(requestsDirectorates $request)
     {
         try { 
-                $directorate = Directorate::create($request->except('_token'));
-                $directorate->save();
-                if ($directorate)
+                $dir = Directorate::create($request->except('_token'));
+                $dir->save();
+                if ($dir)
                 return response()->json([
                     'status' => true,
                     'msgSuccess' => 'تم الحفظ بنجاح',
@@ -47,8 +48,9 @@ class directoratesController extends Controller
         }
         catch (\Exception $ex) {
             return response()->json([
-                'status' => false,
+                'status'   => false,
                 'msgError' => 'فشل الحفظ برجاء المحاوله مجددا',
+                'getDataForm'  => $request->all(),
                 'exceptionError'=>$ex,
             ]);
         }
@@ -59,8 +61,8 @@ class directoratesController extends Controller
     {
         try
         {
-           $directorates = Directorate::select('id','directorate_name')->get();
-           if($directorates)
+           $directorates = Directorate::select('id','dirName')->orderBy('id', 'DESC')->get(); // this command work select to all Directorate 
+           if($directorates)  //this condation if data found return status true and return data
             {
                 return response()->json([
                 'status' => true,
@@ -83,18 +85,20 @@ class directoratesController extends Controller
     public function edit(Request $request)
     {
         try{
-        $directorate = Directorate::find($request -> directorateId);  // search in given table id only
-        if (!$directorate)
-            return response()->json([
-                'status' => false,
-                'msgError' => 'هذ العرض غير موجود',
-            ]);
+                $dir = directorate::select('id','dirName')->find($request ->dirId);  // search in given table id only
+               
+                 // if directorate Not Found return status error
+                if (!$dir)
+                    return response()->json([
+                        'status' => false,
+                        'msgError' => 'هذ العرض غير موجود',
+                    ]);
 
-        $directorate = directorate::select('id','directorate_name')->find($request ->directorateId);
-        return response()->json([
-            'status' => true,
-            'directorate' => $directorate,
-        ]);
+               // else directorate Found return status true and send data by ajax
+                return response()->json([
+                    'status' => true,
+                    'directorate' => $dir,
+                ]);
       }
       catch (\Exception $ex) {
         return response()->json([
@@ -107,24 +111,27 @@ class directoratesController extends Controller
     }
     public function update(requestsDirectorates $request)
     {
-        try{
-            $directorate = Directorate::find($request -> id);
-            if (!$directorate)
+        try
+        {
+                $dir = Directorate::find($request -> id); // this line search Directorate by dirId
+                if (!$dir) // if directorate Not found
+                    return response()->json([
+                        'status' => false,
+                        'msgError' => 'هذ العرض غير موجود',
+                    ]);
+                //update directorate data 
+                $dir->update($request->all());
                 return response()->json([
-                    'status' => false,
-                    'msgError' => 'هذ العرض غير موجود',
+                    'status' => true,
+                    'msgSuccess' => 'تم  التحديث بنجاح',
                 ]);
-            //update data
-            $directorate->update($request->all());
-            return response()->json([
-                'status' => true,
-                'msgSuccess' => 'تم  التحديث بنجاح',
-            ]);
         }
         catch (\Exception $ex) {
             return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+                'status'         => false,
+                'msg'            => 'فشل الحفظ برجاء المحاوله مجددا',
+                'getDataForm'    => $request->all(),
+                'exceptionError' => $ex,
             ]);
         }
         
@@ -132,19 +139,19 @@ class directoratesController extends Controller
     public function destroy(Request $request)
     {
         try {
-                $directorate = Directorate::find($request -> directorateId); 
-                if (!$directorate)
+                $dir = Directorate::find($request -> dirId); 
+                if (!$dir)
                 return response()->json([
                     'status' => false,
                     'msgError' => 'اسم المديرية غير موجود',
                 ]);
 
-                $directorate->delete(); 
+                $dir->delete(); 
 
                 return response()->json([
                     'status' => true,
                     'msgSuccess' => 'تم الحذف بنجاح',
-                    'directorateId' => $request -> directorateId,
+                    'dirId' => $request -> dirId,
             ]);
          } catch (\Exception $ex) {
             return response()->json([

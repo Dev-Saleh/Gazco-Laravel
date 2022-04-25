@@ -13,27 +13,27 @@
                     url: "{{route('directorate.fetchNewDirectorate')}}",
                     dataType:"json",
                     success: function (data) {   
-                     // console.log(data);
+                      console.log(data);
                     $('#fetchAllDirectorates').html("");
                     $('#select_directorates').html("");
-                      $.each(data.directorates, function (key , directorate) {
-                        $('#fetchAllDirectorates').append('<tr  class="offerRow'+directorate.id+' bg-gray-100 hover:scale-95 transform transition-all ease-in">\
-                                  <td class="p-3">'+directorate.id+'</td>\
-                                  <td class="p-3 text-center">'+directorate.directorate_name+'</td>\
-                                  <td class="p-3 flex justify-evenly ">\
-                                    <a href="#"  directorateId="'+directorate.id+'" class="directorateDelete text-gray-400  hover:text-red-400  ">\
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
-                                      </svg>\
-                                    </a>\
-                                    <a href="#" directorateId="'+directorate.id+'"  class="directorateEdit text-gray-400 hover:text-yellow-100  ">\
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"   d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
-                                      </svg>\
-                                    </a>\
-                                  </td>\
-                                </tr>');
-                          $('#select_directorates').append('<option value='+directorate.id+'>'+directorate.directorate_name+'</option>');
+                      $.each(data.directorates, function (key , dir) {
+                        $('#fetchAllDirectorates').append('<tr class="offerRow'+dir.id+' bg-gray-50 hover:scale-95 transform transition-all ease-in">\
+                                                <td class="p-3">'+dir.id+'</td>\
+                                                <td class="p-3 text-center">'+dir.dirName+'</td>\
+                                                <td class="p-3 flex justify-evenly ">\
+                                                    <a href="#" dirId="'+dir.id+'" class="directorateDelete text-red-400  hover:text-red-600  ">\
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
+                                                        </svg>\
+                                                    </a>\
+                                                    <a href="#" dirId="'+dir.id +'" class="directorateEdit text-yellow-400 hover:text-yellow-600  ">\
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">\
+                                                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />\
+                                                        </svg>\
+                                                    </a>\
+                                                </td>\
+                                            </tr>');
+                          $('#select_directorates').append('<option value='+dir.id+'>'+dir.dirName+'</option>');
                       });
                     
                     
@@ -46,7 +46,7 @@
     // Start Add Directorate By Ajax 
         $(document).on('click', '#saveDirectorate', function (e) {
             e.preventDefault();
-            var formData = new FormData($('#directorateForm')[0]);       
+            var formData = new FormData($('#dirForm')[0]);       
             $.ajax({
                 type: 'POST',
                 enctype: 'multipart/form-data',
@@ -56,11 +56,12 @@
                 contentType: false,
                 cache: false,
                 success: function (data) {
+                  console.log(data);
                    if (data.status == true) {
                      fetchNewDirectorate();
                       alert(data.msgSuccess,'success');
-                        $('#directorateId').val('');
-                        $('#directorateName').val('');
+                        $('#dirId').val('');
+                        $('#dirName').val('');
                         
                      }
                     else alert(data.msgError,'error');
@@ -80,17 +81,17 @@
    
         $(document).on('click', '.directorateDelete', function (e) {
             e.preventDefault();
-              var directorateId = $(this).attr('directorateId');
+              var dirId = $(this).attr('dirId');
             $.ajax({
                 type: 'delete',
                 url:"{{route('directorate.destroy')}}",             
                 data: {
-                     'directorateId' :directorateId, 
+                     'dirId' :dirId, 
                 },
                 success: function (data) {
                      if (data.status == true) {
                       alert(data.msgSuccess,'success');
-                      $('.offerRow'+data.directorateId).remove();
+                      $('.offerRow'+data.dirId).remove();
                     }
                     else alert(data.msgError,'success');
                 }, error: function (reject) {
@@ -106,18 +107,18 @@
   
         $(document).on('click', '.directorateEdit', function (e) {
             e.preventDefault();
-              var directorateId = $(this).attr('directorateId');
+              var dirId = $(this).attr('dirId');
             $.ajax({
                 type: 'post',
                 url:"{{route('directorate.edit')}}",
                 data: {
-                     'directorateId' :directorateId, 
+                     'dirId' :dirId, 
                 },
                 success: function (data) {
                   
                      if (data.status == true) {
-                        $('#directorateId').val(data.directorate.id);
-                        $('#directorateName').val(data.directorate.directorate_name);
+                        $('#dirId').val(data.directorate.id);
+                        $('#dirName').val(data.directorate.dirName);
                         window.saveDirectorate.style.display="none";
                         window.updateDirectorate.style.display="inline-flex";
                     }
@@ -137,7 +138,7 @@
 
         $(document).on('click', '#updateDirectorate', function (e) {
             e.preventDefault();
-              var formData = new FormData($('#directorateForm')[0]); 
+              var formData = new FormData($('#dirForm')[0]); 
               
             $.ajax({
                 type: 'post',
@@ -151,8 +152,8 @@
 
                     if(data.status == true){
                         alert(data.msgSuccess,'success');
-                        $('#directorateId').val('');
-                        $('#directorateName').val('');
+                        $('#dirId').val('');
+                        $('#dirName').val('');
                         window.saveDirectorate.style.display="inline-flex";
                         window.updateDirectorate.style.display="none";
                         fetchNewDirectorate();
@@ -354,25 +355,25 @@
                     dataType:"json",
 
                     success: function (data) {     
-                      console.log(data) ;
+                    //  console.log(data) ;
                     $('#fetch_All_Stations').html("");
-                      $.each(data.stations, function (key , station) {
-                        $('#fetch_All_Stations').append('<tr class="offerRow'+station.id+' bg-gray-100 hover:scale-95 transform transition-all ease-in">\
-                                  <td class="p-3">'+station.id+'</td>\
-                                  <td class="p-3 text-center">'+station.Station_name+'</td>\
-                                  <td class="p-3 flex justify-evenly ">\
-                                    <a href="#" station="'+station.id+'"  class="station_delete btn btn-danger" class="text-gray-400  hover:text-red-400  ">\
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
-                                      </svg>\
-                                    </a>\
-                                    <a href="#" station="'+station.id+'"  id="station_edit" class="text-gray-400 hover:text-yellow-100  ">\
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
-                                      </svg>\
-                                    </a>\
-                                  </td>\
-                                </tr>'); 
+                      $.each(data.stations, function (key , sta) {
+                        $('#fetch_All_Stations').append('<tr class="offerRow'+sta.id+'bg-gray-50 hover:scale-95 transform transition-all ease-in">\
+                                                <td class="p-3">'+sta.id+'</td>\
+                                                <td class="p-3 text-center">'+sta.staName+'</td>\
+                                                <td class="p-3 flex justify-evenly ">\
+                                                <a href="#" staId="'+sta.id+'"  class="stationDelete text-red-400  hover:text-red-600  ">\
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"   d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
+                                                        </svg>\
+                                                    </a>\
+                                                    <a href="#" staId="'+sta.id+'"  class="stationEdit text-yellow-400 hover:text-yellow-600  ">\
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">\
+                                                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />\
+                                                        </svg>\
+                                                    </a>\
+                                                </td>\
+                                            </tr>'); 
                        });
                     }
                 });
@@ -382,9 +383,9 @@
 
     // Start Add Station By Ajax 
   
-        $(document).on('click', '#save_station', function (e) {
+        $(document).on('click', '#saveStation', function (e) {
             e.preventDefault();
-            var formData = new FormData($('#stationForm')[0]);       
+            var formData = new FormData($('#staForm')[0]);       
             $.ajax({
                 type: 'POST',
                 enctype: 'multipart/form-data',
@@ -394,11 +395,11 @@
                 contentType: false,
                 cache: false,
                 success: function (data) {
-                  console.log(data);
+                
                    if (data.status == true) {
                       alert(data.msg,'success')
-                        $('#station_id').val('');
-                        $('#station_name').val('');
+                        $('#staId').val(''); 
+                        $('#staName').val('');
                         fetch_All_Stations();
                     }
                   
@@ -415,15 +416,15 @@
 
     // Start Deleteing Station By Ajax 
   
-        $(document).on('click', '.station_delete', function (e) {
+        $(document).on('click', '.stationDelete', function (e) {
             e.preventDefault();
-              var station = $(this).attr('station');
+              var staId = $(this).attr('staId');
             $.ajax({
                 type: 'delete',
                 url: "{{route('station.destroy')}}",
                 data: {
                     '_token': "{{csrf_token()}}",
-                     'id' :station, 
+                     'staId' :staId, 
                 },
                 success: function (data) {
                      if (data.status == true) {
@@ -443,23 +444,23 @@
     //  Start edit Station By Ajax 
        
  
-        $(document).on('click', '#station_edit', function (e) {
+        $(document).on('click', '.stationEdit', function (e) {
             e.preventDefault();
-              var station = $(this).attr('station');
+              var staId = $(this).attr('staId');
             $.ajax({
                 type: 'get',
                 url:"{{route('station.edit')}}",
                 data: {
                     '_token': "{{csrf_token()}}",
-                     'id' :station, 
+                     'staId' :staId, 
                 },
                 success: function (data) {
-              
+                    
                      if (data.status == true) {
-                        $('#station_id').val(data.station.id);
-                        $('#station_name').val(data.station.Station_name);
-                        window.save_station.style.display="none";
-                        window.update_station.style.display="inline-flex";
+                        $('#staId').val(data.sta.id);
+                        $('#staName').val(data.sta.staName);
+                        window.saveStation.style.display="none";
+                        window.updateStation.style.display="inline-flex";
                     }
                  
                 }, error: function (reject) {
@@ -475,11 +476,11 @@
     //  Start Update Station By Ajax 
  
 
-        $(document).on('click', '#update_station', function (e) {
+        $(document).on('click', '#updateStation', function (e) {
             e.preventDefault();
-              var formData = new FormData($('#stationForm')[0]); 
-              
-            $.ajax({
+                var formData = new FormData($('#staForm')[0]); 
+                         
+             $.ajax({
                 type: 'post',
                 enctype: 'multipart/form-data',
                 url: "{{route('station.update')}}",
@@ -488,13 +489,13 @@
                 contentType: false,
                 cache: false,
                 success: function (data) {
-
+                console.log(data);
                     if(data.status == true){
                        alert(data.msg,'success');
-                        $('#station_id').val('');
-                        $('#station_name').val('');
-                        window.save_station.style.display="inline-flex";
-                        window.update_station.style.display="none";
+                        $('#staId').val('');
+                        $('#staName').val('');
+                        window.saveStation.style.display="inline-flex";
+                        window.updateStation.style.display="none";
                         fetch_All_Stations();
                     }
                 }, error: function (reject) {
@@ -503,12 +504,10 @@
                         $("#" + key + "_error").text(val[0]);
                     }); 
                 }
-                });
+                });  
+            
             
         });
-      
-
-
 
     // End Update Station By Ajax 
 

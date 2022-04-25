@@ -46,13 +46,6 @@ class citizenAuthController extends Controller
          }
         else           
             return array($request,['error']);
-          
-           
-        
-       
-       
-       
-       
 
     }
  

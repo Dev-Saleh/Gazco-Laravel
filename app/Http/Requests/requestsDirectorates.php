@@ -24,17 +24,16 @@ class requestsDirectorates extends FormRequest
     public function rules()
     {
         return [
-            'directorate_name' =>'required|max:25',
-           
+            'dirName' =>'required|max:25|unique:directorates,dirName,'.$this -> id,
         ];
     }
     public function messages()
     {
 
         return [
-            'directorate_name.required' =>'أسم المديرية مطلوب' ,
-            'directorate_name.max' =>'لايزيد عن 25 حرف',
-           // 'directorate_name.unique' =>'الاسم يجب ان يكون فريد' ,
+            'dirName.required' =>'أسم المديرية مطلوب' ,
+            'dirName.max' =>'لايزيد عن 25 حرف',
+            'dirName.unique' =>'الاسم يجب ان يكون فريد' ,
         ];
     }
 }

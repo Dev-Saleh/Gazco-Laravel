@@ -15,9 +15,9 @@ class CreateRigonsTable extends Migration
     {
         Schema::create('rigons', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('rigon_name')->unique();
-            $table->integer('directorate_id')->unsigned();
-            $table->foreign('directorate_id')->references('id')->on('directorates')->onDelete('cascade');
+            $table->string('rigName')->unique();
+            $table->integer('dirId')->unsigned();
+            $table->foreign('dirId')->references('id')->on('directorates')->onDelete('cascade');
             $table->timestamps();
         });
     }

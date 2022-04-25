@@ -31,7 +31,7 @@ class homeController extends Controller
         {
            return response()->json([
                'status' => false,
-               'msg' => 'error in indexxxxxxx',
+               'msg' => 'error in index',
            ]);
        }
     }

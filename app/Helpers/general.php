@@ -1,6 +1,6 @@
 <?php
 
-define('PAGINATION_COUNT', 10);
+define('PAGINATION_COUNT', 3);
 
 
 function uploadImage($folder,$image){

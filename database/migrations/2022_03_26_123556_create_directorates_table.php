@@ -15,7 +15,7 @@ class CreateDirectoratesTable extends Migration
     {
         Schema::create('directorates', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('directorate_name')->unique();
+            $table->string('dirName')->unique();
             $table->timestamps();
         });
     }

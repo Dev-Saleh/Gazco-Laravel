@@ -8,12 +8,14 @@ use Illuminate\Http\Request;
 
 class loginCitizenController extends Controller
 {
-    function login()
+
+   public  function login()
     {
         return view('auth.loginCitizenPage.index');
     }
 
-    function logout()
+
+   public function logout()
     {
         if(session()->has('idCitizen'))
         {
@@ -23,7 +25,9 @@ class loginCitizenController extends Controller
         }
     }
 
-    public function checkCitizen(Request $request){
+    public function checkCitizen(Request $request)
+    {
+
         $citizenInfo = Citizen::select()->where('identity_num',$request->identity_num)->first();
 
         if($citizenInfo)
@@ -35,18 +39,16 @@ class loginCitizenController extends Controller
             }
             else
             {
-                echo "الرقم السري خاطى";
+                redirect()->route('login')->with(['error' => "الرقم السري خاطى"]);
             }
         }
         else
         {
-             echo "الرقم الوطني خاطى";
+            redirect()->route('login')->with(['error' => "الرقم الوطني خاطى"]);
+             
         }
-
-              
     }
 
     
-
 
 }
