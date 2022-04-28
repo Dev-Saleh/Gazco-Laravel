@@ -11,13 +11,13 @@ class employee extends Model
     public  $timestamps = false;
 
   
-     function getempRoleAttribute($val)
+    public function getempRoleAttribute($valRole)
     {
-        return  $val  == '0' ?  "User"   : "Admin" ;
+        return  $valRole  == 0 ?  "User"   : "Admin" ;
     }
     
 
-  function getempPhotoAttribute($val)
+    public function getempPhotoAttribute($val)
     {
         $empPhoto['exsit']=file_exists(public_path('assets/images/employees/'.$val));
         if(!is_null($val) && file_exists(public_path('assets/images/employees/'.$val)) && $val!='')
@@ -29,12 +29,13 @@ class employee extends Model
            }
       else 
            {
-                    $empPhoto['valsrc']=''; //return image not found saleh get Image 
+                    $empPhoto['valsrc']='Ali'; //return image not found saleh get Image 
                     return $empPhoto; 
            }                      
 
                
            
     }
+    
   
 }

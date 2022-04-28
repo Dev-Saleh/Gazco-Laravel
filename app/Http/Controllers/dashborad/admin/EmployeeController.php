@@ -17,8 +17,9 @@ class EmployeeController extends Controller
         try
         {
             $data = [];
-            $data['employees']=employee::select('id','empUserName','empRole','empPhoto')->orderby('id','DESC')->get();
-            return view('dashboard.admin.employees.index',$data);
+            $data['employees']=employee::select()->get();
+   
+             return view('dashboard.admin.employees.index',$data);
        }
        catch (\Exception $ex)
         {
@@ -71,13 +72,11 @@ class EmployeeController extends Controller
     
             try
             {
-               $employees =employee::get();
+               $employees =employee::select('id','empUserName','empRole','empPhoto')->orderby('id','DESC')->get();
                if($employees)
                return response()->json([
                 'status' => true,
                 'employees' => $employees,
-    
-        
                ]);
            }
            catch (\Exception $ex)

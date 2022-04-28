@@ -15,14 +15,16 @@
                     success: function (data) {     
                    
                     $('#fetchEmployees').html("");
+                    
                     console.log(data) ;
-                      $.each(data.employees, function (key , emp) {
-                           
+                   
+                   $.each(data.employees, function (key , emp) {
+                    
                     $('#fetchEmployees').append('<tr  class="offerRow'+emp.id+' bg-white hover:scale-95 transform transition-all ease-in">\
                     <td class="p-3 text-center">'+emp.id+'</td>\
                     <td class="p-3 text-center">'+emp.empUserName+'</td>\
                     <td class="p-3 text-right">\
-                      <img class="rounded-full h-12 w-12  object-cover" src="" alt="unsplash image">\
+                      <img class="rounded-full h-12 w-12  object-cover" src='+emp.empPhoto['valsrc']+' alt="unsplash image">\
                     </td>\
                     <td class="p-3 text-center whitespace-nowrap">\
                       <span class="bg-green-400 text-gray-50 rounded-md px-2">'+emp.empRole+'</span>\
@@ -41,7 +43,7 @@
                     </td>\
                   </tr>');
                       });
-                    }
+                    } 
                 });
         }
 
