@@ -11,6 +11,7 @@ use App\Models\gaz_Logs;
 use App\Models\logs_Booking;
 use App\Models\Observer;
 use App\Models\Rigon;
+use Directory;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -87,8 +88,13 @@ class TestController extends Controller
         // $citizenRecord = Citizen::where('identity_num',$request->identity_num)->first();
 
         // $citizenInfo = Citizen::select()->where('identity_num','7069293')->get();
-        $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id','8')->latest('id')->first();
-            return array($lastGazLogs  );
+        // $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id','8')->latest('id')-
+        
+        $lastAgent = Agent::get()->last();
+            $dirLast = Directorate::select()->where('id',$lastAgent->directorate_id)->get();
+        $agents =Agent::get()->last();
+        
+            return array($lastAgent, $dirLast);
         
         
      

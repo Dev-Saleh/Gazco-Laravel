@@ -1,6 +1,20 @@
 @section('script')
 <script>
-    
+     $(document).on('click', '#sendTestMessage', function(e) {
+        e.preventDefault();
+
+        var checkboxesAll = document.querySelectorAll(".sms");
+         const mobilesCitizen = [];
+            checkboxesAll.forEach(function(checkbox) {
+              if( checkbox.checked == true ){
+                 let text = checkbox.getAttribute("mobilenum");    
+                    mobilesCitizen.push(text)}
+                    });
+                    console.log(mobilesCitizen);
+              
+  
+    });
+
     // Start   By Ajax 
         $(document).on('click', '.gazLogId', function (e) {
             e.preventDefault();

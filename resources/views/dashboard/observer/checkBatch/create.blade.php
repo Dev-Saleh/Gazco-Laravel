@@ -27,11 +27,6 @@
                 </li>
               </ul>
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
-                <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> رقم الكشف :
-                  <span class=" text-xs bg-gray-800 text-gray-200 p-2 rounded-full">  7548 </span>
-                </li>
-              </ul>
-              <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                 <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">من محطة : 
                   <span class="stationName text-xs bg-gray-800 text-gray-200 p-2 rounded-full">  بير احمد</span>
                 </li>
