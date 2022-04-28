@@ -3,6 +3,16 @@
 namespace App\Http\Controllers;
 
 
+use NumberFormatter;
+
+use Illuminate\Support\Facades\Mail;
+use App\Notifications\PaymentReceived;
+use Illuminate\Support\Facades\Notification;
+
+
+use Nexmo\Laravel\Facade\Nexmo;
+
+
 use App\logs_Table;
 use App\Models\Agent;
 use App\Models\Citizen;
@@ -27,7 +37,26 @@ class TestController extends Controller
         return view('front.checkBooking.index');
     }
 
-   
+    public function sendSms(Request $request)
+    {
+        $basic  = new \Vonage\Client\Credentials\Basic("bbd927f5", "Jr0KNpOnEGjKMgTN");
+        $client = new \Vonage\Client($basic);
+
+
+        $response = $client->sms()->send(
+            new \Vonage\SMS\Message\SMS("967734043538", 'Gazco', 'مرحبا مزوني دبة الغاز وصلتك تعال استلمها يكلب')
+        );
+        
+        $message = $response->current();
+        
+        if ($message->getStatus() == 0) {
+            echo "The message was sent successfully\n";
+        } else {
+            echo "The message failed with status: " . $message->getStatus() . "\n";
+        }
+        echo "Message has been sent successfuly";
+    }
+
     public function create(Request $request)
     {   
     //     $agentArray = array("كريم حسن القعر",

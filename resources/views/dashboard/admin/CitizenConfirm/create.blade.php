@@ -99,7 +99,7 @@
                      {{$citizen->identity_num}}
                     </td>
                     <td class="p-3 text-center whitespace-nowrap">
-                      <span class="bg-green-400 text-gray-50 rounded-md px-2">نعم</span>
+                      <span class="bg-red-400 text-gray-50 rounded-md px-2">{{ $citizen->checked }}</span>
                     </td>
                     <td class="p-5 flex space-x-2">
                       <a href="#" citizenId="{{$citizen->id}}" class="citizenConfirmDelete text-red-400  hover:text-red-600 float-left ">

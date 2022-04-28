@@ -4,7 +4,7 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/test', 'TestController@create')->name('Test');
+Route::get('/test', 'TestController@sendSms')->name('Test');
 
 Route::group(['namespace' => 'auth'],function(){
 
@@ -127,6 +127,7 @@ Route::group(['namespace' => 'dashborad\observer','middleware' => 'authObserver'
     Route::get('index/{id}',  'checkBookingController@index')->name('checkBooking.index');
     Route::get('show',  'checkBookingController@show')->name('checkBooking.show');
     Route::post('update',  'checkBookingController@update')->name('checkBooking.update');
+    Route::post('sendSms',  'SendingMessageController@sendSms')->name('sendSms');
   
     
   });
@@ -138,4 +139,8 @@ Route::group(['namespace' => 'dashborad\observer','middleware' => 'authObserver'
     Route::get('show', 'checkBatchController@show')->name('checkBatch.show');
     
   });
+
+  
+
+
 });

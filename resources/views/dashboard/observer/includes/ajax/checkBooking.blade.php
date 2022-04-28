@@ -11,6 +11,25 @@
                     mobilesCitizen.push(text)}
                     });
                     console.log(mobilesCitizen);
+         $.ajax({
+                type: 'POST',
+                enctype: 'multipart/form-data',
+                url: "{{route('sendSms')}}",
+                data: mobilesCitizen,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (data) {
+                    console.log(data);
+                    if (data.status == true) {
+                    
+                    
+                    } 
+                  
+                }, error: function (reject) {
+                }
+            });
+        });            
               
   
     });
