@@ -38,7 +38,7 @@ class AgentController extends Controller
         try
         {
        
-           $rigons = Rigon::select()->where('directorate_id',$request->directorate_id)->get();
+           $rigons = Rigon::select()->where('dirId',$request->directorate_id)->get();
            return response()->json([
             'status' => true,
             'rigons' => $rigons,
@@ -57,20 +57,22 @@ class AgentController extends Controller
     {
         try
         {
-           $agents =Agent::with(['directorate'=>function($q){
-            $q->select('id','directorate_name');
-        }])->get();
-           return response()->json([
-            'status' => true,
-            'agents' => $agents,
-           ]);
+            $agents =Agent::with(['directorate'=>function($q){
+                $q->select('id','dirName');
+            }])->get();
+            
+            return response()->json([
+                'status' => true,
+                'agents' => $agents,
+            ]);
        }
        catch (\Exception $ex)
         {
-           return response()->json([
-               'status' => false,
-               'msg' => 'error in index',
-           ]);
+            return response()->json([
+                'status' => false,
+                'msg' => 'error in index',
+                'exceptionError'=>$ex,
+            ]);
        }
     }
 
@@ -153,8 +155,8 @@ class AgentController extends Controller
             return response()->json([
                 'status' => true,
                 'agent' => $agent,
-                'directorate_name'=>$agent->directorate->directorate_name,
-                'rigon_name' =>$agent->rigon->rigon_name,
+                'dirName'=>$agent->directorate->dirName,
+                'rigName' =>$agent->rigon->rigName,
             ]); 
           }
           catch (\Exception $ex) {

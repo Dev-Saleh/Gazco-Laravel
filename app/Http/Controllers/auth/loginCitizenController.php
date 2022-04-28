@@ -28,7 +28,7 @@ class loginCitizenController extends Controller
     public function checkCitizen(Request $request)
     {
 
-        $citizenInfo = Citizen::select()->where('identity_num',$request->identity_num)->first();
+        $citizenInfo = Citizen::select()->where('identity_num',$request->identity_num)->where('checked','1')->first();
 
         if($citizenInfo)
         {
@@ -39,12 +39,12 @@ class loginCitizenController extends Controller
             }
             else
             {
-                redirect()->route('login')->with(['error' => "الرقم السري خاطى"]);
+               return redirect()->route('login')->with(['error' => "الرقم السري خاطى"]);
             }
         }
         else
         {
-            redirect()->route('login')->with(['error' => "الرقم الوطني خاطى"]);
+           return redirect()->route('login')->with(['error' => "الرقم الوطني خاطى"]);
              
         }
     }

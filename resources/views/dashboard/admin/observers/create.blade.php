@@ -68,7 +68,7 @@
                                     <option value="" id='select_directorate' selected disabled hidden></option>
                                     @if ($directorates && $directorates->count() > 0)
                                         @foreach ($directorates as $directorate)
-                                            <option value="{{ $directorate->id }}">{{ $directorate->directorate_name }}
+                                            <option value="{{ $directorate->id }}">{{ $directorate->dirName }}
                                             </option>
                                         @endforeach
                                     @endif
@@ -165,11 +165,11 @@
                                         {{ $observer->observer_name }}
                                     </td>
                                     <td class="p-3 text-center">
-                                        {{ $observer->directorate->directorate_name }}
+                                        {{ $observer->directorate->dirName }}
                                     </td>
 
                                     <td class="p-3 text-center">
-                                        {{ $observer->rigon->rigon_name }}
+                                        {{ $observer->rigon->rigName }}
                                     </td>
                                     <td class="p-3 text-center whitespace-nowrap">
                                         <span

@@ -20,8 +20,8 @@
                         $('#fetch_All_Citizens').append('<tr  class="offerRow'+citizen.id+'" class="bg-gray-50 hover:scale-95 transform transition-all ease-in">\
                             <td class="p-3 text-center">'+citizen.id+'</td>\
                             <td class="p-3 text-center">'+citizen.citizen_name+'</td>\
-                            <td class="p-3 text-center">'+citizen.directorate.directorate_name+'</td>\
-                            <td class="p-3 text-center">'+citizen.rigon.rigon_name+'</td>\
+                            <td class="p-3 text-center">'+citizen.directorate.dirName+'</td>\
+                            <td class="p-3 text-center">'+citizen.rigon.rigName+'</td>\
                             <td class="p-3 text-center">\
                             <span class="bg-green-400 text-gray-50 rounded-md px-2">'+citizen.observer.agent.Agent_name+'</span>\
                             </td>\
@@ -141,9 +141,9 @@
                        $('#identity_num').val(data.citizen.identity_num);
                        $('#citizen_password').val(data.citizen.citizen_password);
                        $('#mobile_num').val(data.citizen.mobile_num);
-                       $('#select_Directorate').text(data.citizen.directorate.directorate_name);
+                       $('#select_Directorate').text(data.citizen.directorate.dirName);
                        $('#select_Directorate').val(data.citizen.directorate_id);
-                       $('#select_Rigon').text(data.citizen.rigon.rigon_name);
+                       $('#select_Rigon').text(data.citizen.rigon.rigName);
                       // $('#file-ip-1').src('assets/images/citizens/'.data.citizen.attachment);
                       
                         window.save_Citizen.style.display="none";

@@ -40,11 +40,11 @@ class CitizenController extends Controller
            $citizens =Citizen::with([
           'directorate'=>function($q)
           {
-            $q->select('id','directorate_name');
+            $q->select('id','dirName');
           }
           ,'rigon'=>function($q)
           {
-            $q->select('id','rigon_name');
+            $q->select('id','rigName');
           }
           ,'observer'=>function($q)
           {
@@ -146,11 +146,11 @@ class CitizenController extends Controller
              $citizen=Citizen::with([
                 'directorate'=>function($q)
                 {
-                  $q->select('id','directorate_name');
+                  $q->select('id','dirName');
                 }
                 ,'rigon'=>function($q)
                 {
-                  $q->select('id','rigon_name');
+                  $q->select('id','rigName');
                 }
                 ,'observer'=>function($q)
                 {

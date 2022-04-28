@@ -14,16 +14,9 @@ Route::group(['namespace' => 'auth'],function(){
 
 
 });
-Route::group(['namespace' => 'auth'],function(){
-
-  Route::get('observerLogin', 'loginObserverController@login')->name('observerLogin'); 
-  Route::get('observerLogout', 'loginObserverController@logout')->name('observerLogout'); 
-  Route::post('observerCheck', 'loginObserverController@checkAdmin')->name('observerCheckAdmin'); 
 
 
-});
-
-Route::group(['namespace' => 'dashborad\admin'/*,'middleware' => 'authAdmin'*/, 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'prefix' => 'admin'], function () {
 
   
    // the first page admin visits if authenticated
@@ -65,6 +58,15 @@ Route::group(['namespace' => 'dashborad\admin'/*,'middleware' => 'authAdmin'*/, 
         Route::get('show_All', 'AgentController@show_All')->name('agent.show_All');
         
       });
+      Route::group(['prefix' => 'employee'], function () {
+        Route::get('index', 'EmployeeController@index')->name('employee.index');
+        Route::post('store', 'EmployeeController@store')->name('employee.store');
+        Route::delete('delete/{id?}', 'EmployeeController@destroy')->name('employee.destroy');
+        Route::get('edit/{id?}', 'EmployeeController@edit')->name('employee.edit');
+        Route::post('update', 'EmployeeController@update')->name('employee.update');
+        Route::get('show', 'EmployeeController@show')->name('employee.show');
+        
+      });
       Route::group(['prefix' => 'observer'], function () {
         Route::get('index', 'ObserverController@index')->name('observer.index');
         Route::post('store', 'ObserverController@store')->name('observer.store');
@@ -98,9 +100,16 @@ Route::group(['namespace' => 'dashborad\admin'/*,'middleware' => 'authAdmin'*/, 
 });
 
  ################################## Observer routes ######################################  
+ Route::group(['namespace' => 'auth'],function(){
+
+  Route::get('observerLogin', 'loginObserverController@login')->name('observerLogin'); 
+  Route::get('observerLogout', 'loginObserverController@logout')->name('observerLogout'); 
+  Route::post('observerCheck', 'loginObserverController@checkObserver')->name('checkObserver'); 
 
 
-Route::group(['namespace' => 'dashborad\observer', /*'middleware' => 'auth:Employe',*/ 'prefix' => 'observer'], function () {
+});
+
+Route::group(['namespace' => 'dashborad\observer','middleware' => 'authObserver', 'prefix' => 'observer'], function () {
   Route::get('/', 'DashboradController@index')->name('observer.dashboard');  // the first page Employe visits if authenticated
   
   Route::group(['prefix' => 'citizen'], function () {
@@ -115,7 +124,7 @@ Route::group(['namespace' => 'dashborad\observer', /*'middleware' => 'auth:Emplo
  
  
  Route::group(['prefix' => 'checkBooking'], function () {
-    Route::get('index',  'checkBookingController@index')->name('checkBooking.index');
+    Route::get('index/{id}',  'checkBookingController@index')->name('checkBooking.index');
     Route::get('show',  'checkBookingController@show')->name('checkBooking.show');
     Route::post('update',  'checkBookingController@update')->name('checkBooking.update');
   

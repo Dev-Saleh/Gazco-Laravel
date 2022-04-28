@@ -10,7 +10,7 @@
             src="Assets/unlock.svg"
             class="hidden   lg:block w-1/2 hover:scale-150 transition-all duration-500 transform mx-auto"
         />
-        <form action="{{ route('adminCheckAdmin') }}" method="POST" id='logAdminForm'>
+        <form action="{{ route('checkObserver') }}" method="POST" id='logObserverForm'>
              @csrf   
             <img src="Assets/avatar.svg" class="w-32" />
             <h2
@@ -22,7 +22,7 @@
             <i class="fa fa-user absolute text-yellow-500 text-xl"></i>
             <input
                 type="text"
-                placeholder="username" name='empUserName' id='empUserName'
+                placeholder="username" name='observer_username' id='obsUserName'
                 class="pr-8 border-b-2 font-display focus:outline-none focus:border-yellow-500 transition-all duration-500 capitalize text-lg"
             />
             </div>
@@ -30,14 +30,14 @@
             <i class="fa fa-lock absolute text-yellow-500 text-xl"></i>
             <input
                 type="password"
-                placeholder="password" name='empPassword' id='empPassword'
+                placeholder="password" name='observer_password' id='obsPassword'
                 class="pr-8 border-b-2 font-display focus:outline-none focus:border-yellow-500 transition-all duration-500 capitalize text-lg"
             />
             </div>
             <a href="#" class="self-end mt-4 text-gray-600 font-bold"
             >Forgot password?</a
             >
-            <button id='loginEmployees' class="py-3 px-20 bg-primarycolor rounded-full text-white font-bold uppercase text-lg mt-4 transform hover:translate-y-1 transition-all duration-500 focus:bg-yellow-700">
+            <button id='loginObserver' class="py-3 px-20 bg-primarycolor rounded-full text-white font-bold uppercase text-lg mt-4 transform hover:translate-y-1 transition-all duration-500 focus:bg-yellow-700">
              تسجيل  
             </button>
         </form>

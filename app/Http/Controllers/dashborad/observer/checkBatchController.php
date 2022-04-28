@@ -17,14 +17,14 @@ class checkBatchController extends Controller
     {
       try
        {
-             $data[]='';
+           $data[]='';
            $observer=Observer::find($request->id);
            $data['observers']= $observer;
 
           $data['gaz_Logs']=gaz_Logs::with([
           'station'=>function($q)
             {
-              $q->select('id','Station_name');
+              $q->select('id','staName');
             }
            ,'agent'=>function($q)
            {
@@ -32,11 +32,11 @@ class checkBatchController extends Controller
            }
            ,'directorate'=>function($q)
            {
-             $q->select('id','directorate_name');
+             $q->select('id','dirName');
            }
            ,'rigon'=>function($q)
            {
-             $q->select('id','rigon_name');
+             $q->select('id','rigName');
            }
          ],)->select('id','directorate_id','rigons_id','stations_id','agent_id','validOfSell','created_at')->where('validOfSell','1')->where('agent_id',$observer->agent_id)->get();
           return view('dashboard.observer.checkBatch.index',$data);

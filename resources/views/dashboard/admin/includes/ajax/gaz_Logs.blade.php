@@ -16,9 +16,9 @@
                       $.each(data.gaz_Logs, function (key , gaz_Log) {
                         $('#fetch_All_Gaz_Logs').append('<tr class="offerRow'+gaz_Log.id+'" class="bg-gray-50 hover:scale-95 transform transition-all ease-in ">\
                   <td class="p-3 text-center">'+gaz_Log.id+'</td>\
-                  <td class="p-3 text-center">'+gaz_Log.station.Station_name+'</td>\
-                  <td class="p-3 text-center">'+gaz_Log.directorate.directorate_name+'</td>\
-                  <td class="p-3 text-center">'+gaz_Log.rigon.rigon_name+'</td>\
+                  <td class="p-3 text-center">'+gaz_Log.station.staName+'</td>\
+                  <td class="p-3 text-center">'+gaz_Log.directorate.dirName+'</td>\
+                  <td class="p-3 text-center">'+gaz_Log.rigon.rigName+'</td>\
                   <td class="p-3 text-center">\
                     <span class="bg-green-400 text-gray-50 rounded-md px-2">'+gaz_Log.agent.Agent_name+'</span>\
                   </td>\
@@ -74,7 +74,7 @@
                    if (data.status == true) {
                        $('#select_Rigons').html("");
                         $.each(data.rigons, function (key , rigon) {
-                        $('#select_Rigons').append('<option value='+rigon.id+'>'+rigon.rigon_name+'</option>');
+                        $('#select_Rigons').append('<option value='+rigon.id+'>'+rigon.rigName+'</option>');
                         });
                     }
                   
@@ -193,13 +193,13 @@
                   console.log(data);
                      if (data.status == true) {
                        $('#gaz_Logs_Id').val(data.gaz_Log.id);
-                       $('#select_Station').text(data.gaz_Log.station.Station_name);
+                       $('#select_Station').text(data.gaz_Log.station.staName);
                       // $('#select_Stations').val(data.gaz_Log.stations_id);
                        $('#qty').val(data.gaz_Log.qty);
                        $('#created_at').text(data.gaz_Log.created_at);
-                       $('#select_Directorate').text(data.gaz_Log.directorate.directorate_name);
+                       $('#select_Directorate').text(data.gaz_Log.directorate.dirName);
                       // $('#select_Directorate').val(data.gaz_Log.directorate_id);
-                       $('#select_Rigon').text(data.gaz_Log.rigon.rigon_name);
+                       $('#select_Rigon').text(data.gaz_Log.rigon.rigName);
                        $('#select_Agent').text(data.gaz_Log.agent.Agent_name);
                        $('#notice').val(data.gaz_Log.notice);
                         window.save_Gaz_Logs.style.display="none";

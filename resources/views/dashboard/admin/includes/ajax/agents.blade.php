@@ -20,7 +20,7 @@
                    if (data.status == true) {
                        $('#select_rigons').html("");
                         $.each(data.rigons, function (key , rigon) {
-                        $('#select_rigons').append('<option value='+rigon.id+'>'+rigon.rigon_name+'</option>');
+                        $('#select_rigons').append('<option value='+rigon.id+'>'+rigon.rigName+'</option>');
                         });
                     }
                   
@@ -50,7 +50,7 @@
                           <img class="rounded-full h-12 w-12  object-cover" src='+agent.photo['valsrc']+' alt="unsplash image">\
                         </td>\
                         <td class="p-3 text-center">\
-                          <span class="bg-green-400 text-gray-50 rounded-md px-2">'+agent.directorate.directorate_name+'</span>\
+                          <span class="bg-green-400 text-gray-50 rounded-md px-2">'+agent.directorate.dirName+'</span>\
                         </td>\
                         <td class="p-5 flex space-x-2">\
                           <a href="#"  agent="'+agent.id+'"  class="agent_delete btn btn-danger" class="text-gray-400  hover:text-red-400 float-left ">\
@@ -147,7 +147,7 @@
                      'id' :agent, 
                 },
                 success: function (data) {
-                  
+                  console.log(data);
                      if (data.status == true) {
                         var preview = document.getElementById("file-ip-1-preview");
                         preview.style.display = "block";
@@ -155,8 +155,8 @@
                         $('#select_directorates').focus();
                         $('#select_rigons').focus();
                         $('#agent_id').val(data.agent.id);
-                        $('#select_directorate').text(data.directorate_name);
-                        $('#select_rigon').text(data.rigon_name);
+                        $('#select_directorate').text(data.dirName);
+                        $('#select_rigon').text(data.rigName);
                         $('#agent_name').val(data.agent.Agent_name);
                         $('#photo').val(data.photo);
                         window.save_agent.style.display="none";

@@ -21,7 +21,7 @@
                                         <option value="" id='select_Station' selected disabled hidden></option>
                                         @if ($stations && $stations->count() > 0)
                                             @foreach ($stations as $station)
-                                                <option value="{{ $station->id }}">{{ $station->Station_name }}
+                                                <option value="{{ $station->id }}">{{ $station->staName }}
                                                 </option>
                                             @endforeach
                                         @endif
@@ -75,7 +75,7 @@
                                         @if ($directorates && $directorates->count() > 0)
                                             @foreach ($directorates as $directorate)
                                                 <option value="{{ $directorate->id }}">
-                                                    {{ $directorate->directorate_name }}</option>
+                                                    {{ $directorate->dirName }}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -190,14 +190,14 @@
                                             {{ $gaz_Log->id }}
                                         </td>
                                         <td class="p-3 text-center">
-                                            {{ $gaz_Log->station->Station_name }}
+                                            {{ $gaz_Log->station->staName }}
                                         </td>
                                         <td class="p-3 text-center">
-                                            {{ $gaz_Log->directorate->directorate_name }}
+                                            {{ $gaz_Log->directorate->dirName }}
                                         </td>
 
                                         <td class="p-3 text-center">
-                                            {{ $gaz_Log->rigon->rigon_name }}
+                                            {{ $gaz_Log->rigon->rigName }}
                                         </td>
                                         <td class="p-3 text-center">
                                             <span
