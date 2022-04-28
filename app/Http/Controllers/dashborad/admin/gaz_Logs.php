@@ -48,7 +48,7 @@ class gaz_Logs extends Controller
         try
         {
        
-           $rigons = Rigon::select()->where('directorate_id',$request->directorate_Id)->whereHas('agent')->get();
+           $rigons = Rigon::select()->where('dirId',$request->directorate_Id)->whereHas('agent')->get();
            return response()->json([
             'status' => true,
             'rigons' => $rigons,
@@ -89,7 +89,7 @@ class gaz_Logs extends Controller
            $gaz_Logs =ModelsGaz_Logs::with([
            'station'=>function($q)
             {
-              $q->select('id','Station_name');
+              $q->select('id','staName');
             }
           ,'agent'=>function($q)
           {
@@ -97,11 +97,11 @@ class gaz_Logs extends Controller
           }
           ,'directorate'=>function($q)
           {
-            $q->select('id','directorate_name');
+            $q->select('id','dirName');
           }
           ,'rigon'=>function($q)
           {
-            $q->select('id','rigon_name');
+            $q->select('id','rigName');
           }
         ],)->select('id','directorate_id','rigons_id','stations_id','agent_id')->get();
            return response()->json([

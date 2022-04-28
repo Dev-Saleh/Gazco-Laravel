@@ -12,44 +12,43 @@ class loginObserverController extends Controller
 
    public  function login()
     {
-        //return view('auth.loginAdminPage.index');
+        return view('auth.loginObserverPage.index');
     }
 
 
    public function logout()
     {
-        // if(session()->has('idAdmin'))
-        // {
-        //     session()->forget("idAdmin");
-        //     return view('auth.loginAdminPage.index');
+        if(session()->has('obsId'))
+        {
+            session()->forget("obsId");
+            return view('auth.loginObserverPage.index');
         
-        // }
+        }
     }
 
-    public function checkadmin(Request $request)
+    public function checkObserver(Request $request)
     {
 
-        //  $observerInfo = Observer::select()->where('observer_name',$request->observer_name)->first();
+          $obsInfo = Observer::where('observer_username',$request->observer_username)->first();
 
-        // if($observerInfo)
-        // {
-        //     if($observerInfo->observer_password == $request->observer_password)
-        //     {
-        //        session()->put('idObserver',$observerInfo->id);
-        //        // return redirect()->route('Main.front');
-        //     }
-        //     else
-        //     {
-        //        // redirect()->route('adminLogin')->with(['error' => "الرقم السري خاطى"]);
-        //     }
-        // }
-        // else
-        // {
-        //     //redirect()->route('adminLogin')->with(['error' => "الرقم الوطني خاطى"]);
+        if($obsInfo)
+        {
+             if($obsInfo->observer_password == $request->observer_password)
+             {
+               session()->put('obsId',$obsInfo->id);
+               session()->put('obsUserName',$obsInfo->observer_username);
+           
+               return redirect()->route('observer.dashboard');
+             }
+        
+            else
+            {
+               return  redirect()->route('observerLogin')->with(['error' => "الرقم السري خاطى"]);
+            }
+        }
+        else return redirect()->route('observerLogin')->with(['error' => "أسم المستخدم خاطى"]);
              
-        // }
-    }
-
+        
     
-
+    }
 }

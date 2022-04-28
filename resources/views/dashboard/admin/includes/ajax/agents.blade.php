@@ -10,17 +10,16 @@
             $.ajax({
                 type: 'get',
                 enctype: 'multipart/form-data',
-                url: "{{ route('agent.Show_rigons') }}",
-                data: {
-                    'directorate_id': directorate_id,
-                },
-                success: function(data) {
-
-                    if (data.status == true) {
-                        $('#select_rigons').html("");
-                        $.each(data.rigons, function(key, rigon) {
-                            $('#select_rigons').append('<option value=' + rigon.id + '>' + rigon
-                                .rigon_name + '</option>');
+                url: "{{route('agent.Show_rigons')}}",
+              data: {
+                     'directorate_id' :directorate_id, 
+                    },
+                success: function (data) {
+                  
+                   if (data.status == true) {
+                       $('#select_rigons').html("");
+                        $.each(data.rigons, function (key , rigon) {
+                        $('#select_rigons').append('<option value='+rigon.id+'>'+rigon.rigName+'</option>');
                         });
                     }
 
@@ -51,7 +50,7 @@
                             </td>\
                             <td class="p-3 text-center">\
                               <span class="bg-green-400 text-gray-50 rounded-md px-2">' + agent.directorate
-                            .directorate_name + '</span>\
+                            .dirName + '</span>\
                             </td>\
                             <td class="p-5 flex space-x-2">\
                               <a href="#"  agent="' + agent.id + '"  class="agent_delete text-yellow-400 hover:text-yellow-600 float-left ">\
@@ -191,8 +190,8 @@
                         $('#select_directorates').focus();
                         $('#select_rigons').focus();
                         $('#agent_id').val(data.agent.id);
-                        $('#select_directorate').text(data.directorate_name);
-                        $('#select_rigon').text(data.rigon_name);
+                        $('#select_directorate').text(data.dirName);
+                        $('#select_rigon').text(data.rigName);
                         $('#agent_name').val(data.agent.Agent_name);
                         $('#photo').val(data.photo);
                         window.save_agent.style.display = "none";

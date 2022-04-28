@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rigon extends Model
 {
     protected $table='rigons';
-    protected $fillable = ['id','rigon_name','directorate_id'];
+    protected $fillable = ['id','rigName','dirId'];
 
     public  $timestamps = false;
     public function agent()
@@ -18,7 +18,7 @@ class Rigon extends Model
     }
     public function directorate()
     {
-        return $this->belongsTo(ModelsDirectorate::class,'directorate_id');
+        return $this->belongsTo(ModelsDirectorate::class,'dirId');
     }
     public function observer()
     {

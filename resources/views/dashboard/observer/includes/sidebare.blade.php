@@ -6,7 +6,7 @@
               </div>
           </div>
           <a href="" class="text-white text-xl font-semibold hover:text-gray-300">
-              ماهر | مراقب
+              {{session()->get('obsUserName')}} | مراقب
           </a>
       </div>
       <nav class=" text-base font-semibold pt-3">
@@ -20,7 +20,10 @@
               <i class="fas fa-tachometer-alt mr-3"></i>
               نظره عامه
           </a>
-          <a href="{{ route('citizen.index',2) }}"  
+          @php 
+          $obsId=session()->get('obsId');
+          @endphp
+          <a href="{{ route('citizen.index' , $obsId)}}"  
               class=" text-base font-semibold flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl
@@ -31,7 +34,7 @@
               <i class="fas fa-table mr-3"></i>
               المواطنين
           </a>
-          <a href="{{route('checkBooking.index')}}"
+          <a href="{{route('checkBooking.index',$obsId)}}"
               class=" text-base font-semibold flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl
@@ -44,7 +47,7 @@
           </a>
 
 
-          <a href="{{route('checkBatch.index',2)}}"
+          <a href="{{route('checkBatch.index' ,$obsId)}}"
               class="flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl

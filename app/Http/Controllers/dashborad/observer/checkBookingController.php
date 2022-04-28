@@ -21,7 +21,7 @@ class checkBookingController extends Controller
       try
        {
             $data = [];
-            $observer=Observer::find(8);
+            $observer=Observer::find($request->id);
             $data['gaz_Logs']=gaz_Logs::select()->where('allowBookig','1')->where('qtyRemaining','0')->where('agent_id',$observer->agent_id)->get();
             
             return view('dashboard.observer.check_booking.index',$data);

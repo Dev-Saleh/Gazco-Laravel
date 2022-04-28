@@ -4,6 +4,7 @@ namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Citizen;
+use App\Models\employee;
 use Illuminate\Http\Request;
 
 class loginAdminController extends Controller
@@ -11,42 +12,46 @@ class loginAdminController extends Controller
 
    public  function login()
     {
-        //return view('auth.loginAdminPage.index');
+        return view('auth.loginAdminPage.index');
     }
 
 
    public function logout()
     {
-        // if(session()->has('idAdmin'))
-        // {
-        //     session()->forget("idAdmin");
-        //     return view('auth.loginAdminPage.index');
+        if(session()->has('empId'))
+        {
+            session()->forget("empId");
+            return view('auth.loginAdminPage.index');
         
-        // }
+        }
+       
     }
 
     public function checkadmin(Request $request)
     {
 
-        // $citizenInfo = Citizen::select()->where('identity_num',$request->identity_num)->first();
+        $empIfo = employee::select()->where('empUserName',$request->empUserName)->first();
 
-        // if($citizenInfo)
-        // {
-        //     if($citizenInfo->citizen_password == $request->citizen_password)
-        //     {
-        //        session()->put('idCitizen',$citizenInfo->id);
-        //         return redirect()->route('Main.front');
-        //     }
-        //     else
-        //     {
-        //         redirect()->route('adminLogin')->with(['error' => "الرقم السري خاطى"]);
-        //     }
-        // }
-        // else
-        // {
-        //     redirect()->route('adminLogin')->with(['error' => "الرقم الوطني خاطى"]);
+        if($empIfo)
+        {
+            if($empIfo->empPassword == $request->empPassword)
+            {
+               session()->put('empId',$empIfo->id);
+               session()->put('empUserName',$empIfo->empUserName);
+               session()->put('empPhoto',$empIfo->empPhoto['valsrc']);
+               
+                return redirect()->route('admin.dashboard');
+            }
+            else
+            {
+               return redirect()->route('adminLogin')->with(['error' => "الرقم السري خاطى"]);
+            }
+        }
+        else
+        {
+           return  redirect()->route('adminLogin')->with(['error' => "الرقم الوطني خاطى"]);
              
-        // }
+        }
     }
 
     

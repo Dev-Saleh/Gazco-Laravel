@@ -108,7 +108,7 @@ class StationController extends Controller
                 ]);
 
            //update Station data 
-            $sta->update($request->all());
+            $sta->update($request->except('_token'));
 
             
             return response()->json([

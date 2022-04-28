@@ -43,7 +43,7 @@ class ObserverController extends Controller
         try
         {
        
-           $rigons = Rigon::select()->where('directorate_id',$request->directorate_id)->get();
+           $rigons = Rigon::select()->where('dirId',$request->directorate_id)->get();
            return response()->json([
             'status' => true,
             'rigons' => $rigons,

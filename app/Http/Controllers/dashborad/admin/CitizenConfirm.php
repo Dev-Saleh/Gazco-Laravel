@@ -20,11 +20,11 @@ class CitizenConfirm extends Controller
           $data['citizens'] =Citizen::with([
           'directorate'=>function($q)
           {
-            $q->select('id','directorate_name');
+            $q->select('id','dirName');
           }
           ,'rigon'=>function($q)
           {
-            $q->select('id','rigon_name');
+            $q->select('id','rigName');
           }
           ,'observer'=>function($q)
           {
@@ -86,11 +86,11 @@ class CitizenConfirm extends Controller
              $citizen=Citizen::with([
                 'directorate'=>function($q)
                 {
-                  $q->select('id','directorate_name');
+                  $q->select('id','dirName');
                 }
                 ,'rigon'=>function($q)
                 {
-                  $q->select('id','rigon_name');
+                  $q->select('id','rigName');
                 }
                 ,'observer'=>function($q)
                 {
@@ -133,11 +133,11 @@ class CitizenConfirm extends Controller
              $citizen=Citizen::with([
                 'directorate'=>function($q)
                 {
-                  $q->select('id','directorate_name');
+                  $q->select('id','dirName');
                 }
                 ,'rigon'=>function($q)
                 {
-                  $q->select('id','rigon_name');
+                  $q->select('id','rigName');
                 }
                 ,'observer'=>function($q)
                 {
@@ -190,6 +190,7 @@ class CitizenConfirm extends Controller
             return response()->json([
                 'status' => false,
                 'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+                'exceptionError'=>$ex,
             ]);
           
         }

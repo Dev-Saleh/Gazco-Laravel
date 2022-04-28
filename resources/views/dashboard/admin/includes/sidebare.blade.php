@@ -5,11 +5,11 @@
       <div class="p-6 flex items-center flex-col">
         <div class="avatar ">
           <div class="rounded-3xl w-24 h-24">
-            <img class="rounded-full"  id='adminPhoto' src="{{asset('assets/images/Dev-SL.jpeg')}}">
+            <img class="rounded-full"  id='adminPhoto' src="{{session()->get('empPhoto')}}">
           </div>
         </div>
         <a href="" class="text-white text-xl font-semibold hover:text-gray-300">
-          باعباد | مسوؤل
+          {{session()->get('empUserName')}} | مسوؤل
         </a>
       </div>
       <nav class=" text-base font-semibold pt-3">
@@ -72,7 +72,7 @@
           <i class="fas fa-cogs mr-3"></i>
           المديريه والمربعات
         </a>
-        <a href="/html/New_User.html" class="flex items-center text-white 
+        <a href="{{route('employee.index')}}" class="flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl
                 hover:text-yellow-100

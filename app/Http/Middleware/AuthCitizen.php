@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Citizen;
 use Closure;
 
 class AuthCitizen
@@ -17,7 +18,10 @@ class AuthCitizen
     {
         if(session()->has('idCitizen'))
         {
+            $idCitizen=Citizen::find(session()->get('idCitizen'));
+            if($idCitizen)
             return $next($request);
+            else return redirect()->route('login');
         }
         else
         {

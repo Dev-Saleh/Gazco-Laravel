@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Observer;
 use Closure;
 
 class authObserver
@@ -15,15 +16,19 @@ class authObserver
      */
     public function handle($request, Closure $next)
     {
-    
-        // if(session()->has('idObserver'))
-        // {
-             return $next($request);
-        // }
-        // else
-        // {
-        //     return redirect()->route('login');
-        // }
+
+
+        if(session()->has('obsId'))
+        {
+            $obsId=Observer::find(session()->get('obsId'));
+            if($obsId)
+            return $next($request);
+            else return redirect()->route('observerLogin');
+        }
+         else
+         {
+             return redirect()->route('observerLogin');
+         }
         
     }
 }

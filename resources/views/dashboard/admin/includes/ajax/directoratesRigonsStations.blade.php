@@ -179,7 +179,7 @@
 
     //  Start fetch All Rigon 
 
-      function fetchrigon()
+      function fetchRigon()
         {
             $.ajax({
                     type: 'get',
@@ -189,23 +189,23 @@
                     success: function (data) { 
                         
                     $('#fetch_Allrigon').html("");
-                      $.each(data.rigons, function (key , rigon) {
-                        $('#fetch_Allrigon').append('<tr  class="offerRow'+rigon.id+' bg-gray-100 hover:scale-95 transform transition-all ease-in">\
-                                  <td class="p-3">'+rigon.id+'</td>\
-                                  <td class="p-3 text-center">'+rigon.rigon_name+'</td>\
-                                  <td class="p-3 flex justify-evenly ">\
-                                    <a href="#"  rigon="'+rigon.id+'"  class="rigon_delete btn btn-danger" class="text-gray-400  hover:text-red-400  ">\
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
-                                      </svg>\
-                                    </a>\
-                                    <a href="#" rigon="'+rigon.id+'"  id="rigon_edit" class="text-gray-400 hover:text-yellow-100  ">\
-                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"   d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
-                                      </svg>\
-                                    </a>\
-                                  </td>\
-                                </tr>');
+                      $.each(data.rigons, function (key , rig) {
+                        $('#fetch_Allrigon').append('<tr class="offerRow'+rig.id+' bg-gray-50 hover:scale-95 transform transition-all ease-in">\
+                                                     <td class="p-3">'+rig.id+'</td>\
+                                                     <td class="p-3 text-center">'+rig.rigName+'</td>\
+                                                     <td class="p-3 flex justify-evenly ">\
+                                                         <a href="#" rigId="'+rig.id+'" class="rigonDelete text-red-400  hover:text-red-600  ">\
+                                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
+                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
+                                                             </svg>\
+                                                         </a>\
+                                                         <a href="#" rigId="'+rig.id+'" class="rigonEdit text-yellow-400 hover:text-yellow-600  ">\
+                                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"   fill="currentColor">\
+                                                                 <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />\
+                                                             </svg>\
+                                                         </a>\
+                                                     </td>\
+                                                    </tr>');
                       });
                     }
                 });
@@ -215,9 +215,9 @@
 
     // Start Add Rigon By Ajax 
 
-        $(document).on('click', '#save_rigon', function (e) {
+        $(document).on('click', '#saveRigon', function (e) {
             e.preventDefault();
-            var formData = new FormData($('#rigonForm')[0]);        
+            var formData = new FormData($('#rigForm')[0]);        
             $.ajax({
                 type: 'POST',
                 enctype: 'multipart/form-data',
@@ -230,10 +230,10 @@
                   console.log(data);
                    if (data.status == true) {
                       alert(data.msg,'success');
-                        $('#rigon_id').val('');
+                        $('#rigId').val('');
                         $('#select_directorate').val('');
-                        $('#rigon_name').val('');
-                       fetchrigon();
+                        $('#rigName').val('');
+                        fetchRigon();
                     }
                   
                 }, error: function (reject) {
@@ -249,15 +249,15 @@
 
     //  Start Deleteing Rigon By Ajax 
 
-        $(document).on('click', '.rigon_delete', function (e) {
+        $(document).on('click', '.rigonDelete', function (e) {
             e.preventDefault();
-              var rigon = $(this).attr('rigon');
+              var rigId = $(this).attr('rigId');
             $.ajax({
                 type: 'delete',
                 url: "{{route('rigon.destroy')}}",
                 data: {
                     '_token': "{{csrf_token()}}",
-                     'id' :rigon, 
+                     'rigId' :rigId, 
                 },
                 success: function (data) {
                      if (data.status == true) {
@@ -265,7 +265,10 @@
                     }
                     $('.offerRow'+data.id).remove();
                 }, error: function (reject) {
-
+                   var response = $.parseJSON(reject.responseText);
+                    $.each(response.errors, function (key, val) {
+                        $("#" + key + "_error").text(val[0]);
+                    }); 
                 }
             });
         });
@@ -275,28 +278,34 @@
 
     //  Start edit Rigon By Ajax 
        
-        $(document).on('click', '#rigon_edit', function (e) {
+        $(document).on('click', '.rigonEdit', function (e) {
             e.preventDefault();
-              var rigon = $(this).attr('rigon');
+              var rigId = $(this).attr('rigId');
             $.ajax({
                 type: 'get',
                 url:"{{route('rigon.edit')}}",
                 data: {
                     '_token': "{{csrf_token()}}",
-                     'id' :rigon, 
+                     'rigId' :rigId, 
                 },
                 success: function (data) {
-                 
+                 console.log(data);
                      if (data.status == true) {
-                        $('#rigon_id').val(data.rigon.id);
-                        $('#select_directorate').text(data.dir.directorate_name);
+                        $('#rigId').val(data.rig.id);
+                        $('#select_directorate').text(data.rig.directorate.dirName);
                        // $('#select_directorate').val(data.dir.directorate_id);
-                        $('#rigon_name').val(data.rigon.rigon_name);
-                        window.save_rigon.style.display="none";
-                        window.update_rigon.style.display="inline-flex";
+                        $('#rigName').val(data.rig.rigName);
+
+
+                        window.saveRigon.style.display="none";
+                        window.updateRigon.style.display="inline-flex";
                     }
                  
                 }, error: function (reject) {
+                     var response = $.parseJSON(reject.responseText);
+                    $.each(response.errors, function (key, val) {
+                        $("#" + key + "_error").text(val[0]);
+                    }); 
 
                 }
             });
@@ -307,9 +316,9 @@
     // Start Update Rigon By Ajax 
  
 
-        $(document).on('click', '#update_rigon', function (e) {
+        $(document).on('click', '#updateRigon', function (e) {
             e.preventDefault();
-              var formData = new FormData($('#rigonForm')[0]); 
+              var formData = new FormData($('#rigForm')[0]); 
               
             $.ajax({
                 type: 'post',
@@ -323,13 +332,13 @@
 
                     if(data.status == true){
                        alert(data.msg,'success');
-                        $('#rigon_id').val('');
+                        $('#rigId').val('');
                         $('#select_directorate').text('');
                        // $('#select_directorate').val('');
-                        $('#rigon_name').val('');
-                        window.save_rigon.style.display="inline-flex";
-                        window.update_rigon.style.display="none";
-                        fetchrigon();
+                        $('#rigName').val('');
+                        window.saveRigon.style.display="inline-flex";
+                        window.updateRigon.style.display="none";
+                        fetchRigon();
                     }
                 }, error: function (reject) {
                     var response = $.parseJSON(reject.responseText);

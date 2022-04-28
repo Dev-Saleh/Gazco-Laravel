@@ -39,7 +39,7 @@
                    <option value="" id='select_directorate' selected disabled hidden></option>
                   @if($directorates && $directorates -> count() > 0)
                   @foreach($directorates as $directorate)
-                        <option value="{{$directorate -> id }}">{{$directorate -> directorate_name}}</option>
+                        <option value="{{$directorate -> id }}">{{$directorate -> dirName}}</option>
                     @endforeach
                  @endif
                 </select>
@@ -101,7 +101,7 @@
                       <img class="rounded-full h-12 w-12  object-cover" src="{{$agent->photo['valsrc']}}" alt="unsplash image">
                     </td>
                     <td class="p-3 text-center whitespace-nowrap">
-                      <span class="bg-green-400 text-gray-50 rounded-md px-2">{{$agent->directorate->directorate_name}}</span>
+                      <span class="bg-green-400 text-gray-50 rounded-md px-2">{{$agent->directorate->dirName}}</span>
                     </td>
                     <td class="p-3 grid grid-cols-2 justify-center">
                       <a href="#"  agent="{{$agent->id}}"  class="agent_delete  text-red-400  hover:text-red-600  ">

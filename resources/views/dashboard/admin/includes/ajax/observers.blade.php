@@ -17,8 +17,8 @@
                           $('#fetch_Allobserver').append('<tr class="offerRow'+observer.id+' class="bg-gray-50 hover:scale-95 transform transition-all ease-in">\
                           <td class="p-3 text-center">'+observer.id+'</td>\
                           <td class="p-3 text-center">'+observer.observer_name+'</td>\
-                          <td class="p-3 text-center">'+observer.directorate.directorate_name+'</td>\
-                          <td class="p-3 text-center">'+observer.rigon.rigon_name+'</td>\
+                          <td class="p-3 text-center">'+observer.directorate.dirName+'</td>\
+                          <td class="p-3 text-center">'+observer.rigon.rigName+'</td>\
                           <td class="p-3 text-center">\
                           <span class="bg-green-400 text-gray-50 rounded-md px-2">'+observer.agent.Agent_name+'</span>\
                           </td>\
@@ -69,7 +69,7 @@
                    if (data.status == true) {
                        $('#select_rigons').html("");
                         $.each(data.rigons, function (key , rigon) {
-                        $('#select_rigons').append('<option value='+rigon.id+'>'+rigon.rigon_name+'</option>');
+                        $('#select_rigons').append('<option value='+rigon.id+'>'+rigon.rigName+'</option>');
                         });
                     }
                   
@@ -193,9 +193,9 @@
                         $('#observer_username').val(data.observer.observer_username);
                         $('#observer_password').val(data.observer.observer_password);
                         $('#select_directorates').val(data.observer.directorate_id);
-                        $('#select_directorate').text(data.observer.directorate.directorate_name);
+                        $('#select_directorate').text(data.observer.directorate.dirName);
                         $('#select_rigons').val(data.observer.rigons_id);
-                        $('#select_rigon').text(data.observer.rigon.rigon_name);
+                        $('#select_rigon').text(data.observer.rigon.rigName);
                         $('#select_agents').val(data.observer.agent_id);
                         $('#select_agent').text(data.observer.agent.Agent_name); 
                         window.save_observer.style.display="none";
