@@ -16,11 +16,11 @@
                    
                     $('#fetchEmployees').html("");
                     
-                    console.log(data) ;
                    
+                   console.log(data.emp) ;
                    $.each(data.employees, function (key , emp) {
-                    
-                    $('#fetchEmployees').append('<tr  class="offerRow'+emp.id+' bg-white hover:scale-95 transform transition-all ease-in">\
+                     
+                    {{-- $('#fetchEmployees').append('<tr  class="offerRow'+emp.id+' bg-white hover:scale-95 transform transition-all ease-in">\
                     <td class="p-3 text-center">'+emp.id+'</td>\
                     <td class="p-3 text-center">'+emp.empUserName+'</td>\
                     <td class="p-3 text-right">\
@@ -41,7 +41,7 @@
                         </svg>\
                       </a>\
                     </td>\
-                  </tr>');
+                  </tr>'); --}}
                       });
                     } 
                 });

@@ -17,8 +17,7 @@ class EmployeeController extends Controller
         try
         {
             $data = [];
-            $data['employees']=employee::select()->get();
-   
+            $data['employees']=employee::select('id','empUserName','empRole','empPhoto')->orderby('id','DESC')->get();
              return view('dashboard.admin.employees.index',$data);
        }
        catch (\Exception $ex)
@@ -36,6 +35,7 @@ class EmployeeController extends Controller
         
         try
          { 
+
             $file =$request->empPhoto;
             $filename = uploadImage('employees', $file);
             $emp = employee::create($request->except('_token'));
@@ -49,8 +49,8 @@ class EmployeeController extends Controller
                         
                     ]);
 
-        }
-        catch (\Exception $ex) 
+         }
+         catch (\Exception $ex) 
         {
 
             $imageDelete=base_path("public/assets/images/employees/".$filename);
@@ -72,13 +72,17 @@ class EmployeeController extends Controller
     
             try
             {
-               $employees =employee::select('id','empUserName','empRole','empPhoto')->orderby('id','DESC')->get();
-               if($employees)
+               
+               $emp =employee::find(52);
+               $data['emp']=[$emp->empRole,$emp->empPhoto,$emp->id,$emp->empUserName,$emp->empFullName,$emp->empPassword];
+               
+               if($emp)
                return response()->json([
                 'status' => true,
-                'employees' => $employees,
+                'emp' =>$data,
+
                ]);
-           }
+            }
            catch (\Exception $ex)
             {
                return response()->json([
