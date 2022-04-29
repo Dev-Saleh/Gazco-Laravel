@@ -29,7 +29,8 @@ class AgentController extends Controller
         {
            return response()->json([
                'status' => false,
-               'msg' => 'error in index',
+               'msg' => $ex,
+
            ]);
        }
     }
@@ -101,10 +102,19 @@ class AgentController extends Controller
                    $agent = Agent::create($request->except('_token'));
                    $agent->photo=$filename;
                    $agent->save();
+
+                   // كود صلوحي بدون نسخ ولصق الحاصل
+
+                   $lastAgent = Agent::get()->last();
+                   $lastDir = Directorate::select()->where('id',$lastAgent->directorate_id)->get()->first();
+
              if ($agent)
                 return response()->json([
                     'status' => true,
                     'msg' => 'تم الحفظ بنجاح', 
+                    'lastAgent' => $lastAgent,
+                    'lastDir' => $lastDir,
+
                     
                 ]);
 

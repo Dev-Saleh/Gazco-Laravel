@@ -1,6 +1,39 @@
 @section('script')
 <script>
-    
+     $(document).on('click', '#sendTestMessage', function(e) {
+        e.preventDefault();
+
+        var checkboxesAll = document.querySelectorAll(".sms");
+         const mobilesCitizen = [];
+            checkboxesAll.forEach(function(checkbox) {
+              if( checkbox.checked == true ){
+                 let text = checkbox.getAttribute("mobilenum");    
+                    mobilesCitizen.push(text)}
+                    });
+                    console.log(mobilesCitizen);
+         $.ajax({
+                type: 'POST',
+                enctype: 'multipart/form-data',
+                url: "{{route('sendSms')}}",
+                data: mobilesCitizen,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (data) {
+                    console.log(data);
+                    if (data.status == true) {
+                    
+                    
+                    } 
+                  
+                }, error: function (reject) {
+                }
+            });
+        });            
+              
+  
+    });
+
     // Start   By Ajax 
         $(document).on('click', '.gazLogId', function (e) {
             e.preventDefault();

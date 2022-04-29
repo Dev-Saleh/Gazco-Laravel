@@ -3,6 +3,16 @@
 namespace App\Http\Controllers;
 
 
+use NumberFormatter;
+
+use Illuminate\Support\Facades\Mail;
+use App\Notifications\PaymentReceived;
+use Illuminate\Support\Facades\Notification;
+
+
+use Nexmo\Laravel\Facade\Nexmo;
+
+
 use App\logs_Table;
 use App\Models\Agent;
 use App\Models\Citizen;
@@ -11,6 +21,7 @@ use App\Models\gaz_Logs;
 use App\Models\logs_Booking;
 use App\Models\Observer;
 use App\Models\Rigon;
+use Directory;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -26,7 +37,26 @@ class TestController extends Controller
         return view('front.checkBooking.index');
     }
 
-   
+    public function sendSms(Request $request)
+    {
+        $basic  = new \Vonage\Client\Credentials\Basic("bbd927f5", "Jr0KNpOnEGjKMgTN");
+        $client = new \Vonage\Client($basic);
+
+
+        $response = $client->sms()->send(
+            new \Vonage\SMS\Message\SMS("967734043538", 'Gazco', 'مرحبا مزوني دبة الغاز وصلتك تعال استلمها يكلب')
+        );
+        
+        $message = $response->current();
+        
+        if ($message->getStatus() == 0) {
+            echo "The message was sent successfully\n";
+        } else {
+            echo "The message failed with status: " . $message->getStatus() . "\n";
+        }
+        echo "Message has been sent successfuly";
+    }
+
     public function create(Request $request)
     {   
     //     $agentArray = array("كريم حسن القعر",
@@ -87,8 +117,13 @@ class TestController extends Controller
         // $citizenRecord = Citizen::where('identity_num',$request->identity_num)->first();
 
         // $citizenInfo = Citizen::select()->where('identity_num','7069293')->get();
-        $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id','8')->latest('id')->first();
-            return array($lastGazLogs  );
+        // $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id','8')->latest('id')-
+        
+        $lastAgent = Agent::get()->last();
+            $dirLast = Directorate::select()->where('id',$lastAgent->directorate_id)->get();
+        $agents =Agent::get()->last();
+        
+            return array($lastAgent, $dirLast);
         
         
      

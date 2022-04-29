@@ -62,7 +62,7 @@
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full mb-5">
-                                <select name="directorate_id" value="" id='select_directorates'
+                                <select name="directorate_id" value="" id='select_directorates' onchange="f('select_rigons');" 
                                     onclick="this.setAttribute('value', this.value);"
                                     class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                                     <option value="" id='select_directorate' selected disabled hidden></option>
@@ -82,7 +82,7 @@
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full mb-5">
-                                <select name="rigons_id" value="" id='select_rigons'
+                                <select name="rigons_id" value="" id='select_rigons' onchange="f('select_agents');"
                                     onclick="this.setAttribute('value', this.value);"
                                     class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                                     <option value="" id='select_rigon'></option>

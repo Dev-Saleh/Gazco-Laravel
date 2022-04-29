@@ -76,7 +76,8 @@
 
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full mb-5">
-                                    <select name="directorate_id"  value="{{$observers->directorate_id}}" id='select_directorates'  onclick="this.setAttribute('value', this.value);"
+                                    <select name="directorate_id"  value="{{$observers->directorate_id}}" id='select_directorates' 
+                                    onchange="f('select_rigons');" onclick="this.setAttribute('value', this.value);"
                                         class="hover:border-black  pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-black appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                                        <option value="{{$observers->directorate_id}}" id='select_directorate'>{{$observers->directorate->dirName}}</option>
                                     </select>
@@ -159,7 +160,7 @@
 
         <div class="mx-auto w-full scroll-m-10">
 
-            <div class=" relative overflow-y-auto" style="height: 590px;">
+            <div class=" relative overflow-y-auto" style="height: 550px;">
                 <table id="c_logs" class=" table w-full text-gray-500 border-separate space-y-6 text-sm">
                     <thead class="bg-gray-200 text-gray-500 tableFixed">
                         <tr>
@@ -174,7 +175,7 @@
                     <tbody id='fetch_All_Citizens'>
                       @if($citizens && $citizens -> count() > 0)
                       @foreach($citizens as $citizen)
-                        <tr  class="offerRow{{$citizen -> id}}" class="bg-gray-50 hover:scale-95 transform transition-all ease-in">
+                        <tr  class="offerRow{{$citizen -> id}} bg-white hover:scale-95 transform transition-all ease-in">
                             <td class="p-3 text-center">
                                 {{$citizen -> id}}
                             </td>
@@ -197,14 +198,14 @@
                                     <button class="bg-red-200 w-14 hover:bg-red-400">N</button>
                                 </div>
                                 <div id="action-div" class="flex justify-center">
-                                    <a onclick="deleteAlert();" href="#" citizen_Id="{{$citizen->id}}"  class="citizen_Delete" class="text-red-500  hover:text-red-400  ">
+                                    <a onclick="deleteAlert();" href="#" citizen_Id="{{$citizen->id}}"  class="citizen_Delete text-red-400  hover:text-red-600  ">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                         </svg>
                                     </a>
-                                    <a href="#"  citizen_Id="{{$citizen->id}}"  class="citizen_Edit" class="text-yellow-500 hover:text-yellow-400 mx-2 ">
+                                    <a href="#"  citizen_Id="{{$citizen->id}}"  class="citizen_Edit text-yellow-400 hover:text-yellow-600 mx-2 ">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                             viewBox="0 0 20 20" fill="currentColor">
                                             <path

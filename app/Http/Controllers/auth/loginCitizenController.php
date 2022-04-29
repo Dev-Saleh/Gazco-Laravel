@@ -28,14 +28,22 @@ class loginCitizenController extends Controller
     public function checkCitizen(Request $request)
     {
 
-        $citizenInfo = Citizen::select()->where('identity_num',$request->identity_num)->where('checked','1')->first();
+        $citizenInfo = Citizen::select()->where('identity_num',$request->identity_num)->first();
 
         if($citizenInfo)
         {
             if($citizenInfo->citizen_password == $request->citizen_password)
-            {
-               session()->put('idCitizen',$citizenInfo->id);
-                return redirect()->route('Main.front');
+            {   
+                if($citizenInfo->checked == 'نعم')
+                {
+                    session()->put('idCitizen',$citizenInfo->id);
+                    return redirect()->route('Main.front');
+                }
+                else
+                {
+                    return redirect()->route('login')->with(['error' => "المعذره لم يتم التحقق من بياناتك"]);
+                }
+              
             }
             else
             {

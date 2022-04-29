@@ -54,7 +54,7 @@
                                     hover:border-blue-600 text-blue-900" />
                                     <label for="name"
                                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">تاريخ
-                                        الكشف</label>
+                                        الدفعه</label>
                                     <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
                                 </div>
                             </div>
@@ -68,8 +68,8 @@
 
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full mb-5">
-                                    <select name="directorate_id" value="" id='select_Directorates'
-                                        onclick="this.setAttribute('value', this.value);"
+                                    <select name="directorate_id" value="" id='select_Directorates' onchange="f('select_Rigons');" 
+                                        onclick="this.setAttribute('value', this.value);" 
                                         class="hover:border-blue-600  pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-blue-900 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200">
                                         <option value="" id='select_Directorate' selected disabled hidden></option>
                                         @if ($directorates && $directorates->count() > 0)
@@ -90,8 +90,8 @@
 
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full mb-5">
-                                    <select name="rigons_id" value="" id='select_Rigons'
-                                        onclick="this.setAttribute('value', this.value);"
+                                    <select name="rigons_id" value="" id='select_Rigons' onchange="f('select_Agents');"
+                                        onclick="this.setAttribute('value', this.value);" 
                                         class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                                         <option value="" id='select_Rigon' selected disabled hidden></option>
                                     </select>
@@ -104,10 +104,10 @@
 
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full mb-5">
-                                    <select name="agent_id" value="" id='select_Agents'
-                                        onclick="this.setAttribute('value', this.value);"
+                                    <select name="agent_id" value="" id='select_Agents' 
+                                         onclick="this.setAttribute('value', this.value);"
                                         class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                                        <option value="" id='select_Agent' selected disabled hidden></option>
+                                        <option value="A" id='select_Agent' selected disabled hidden></option>
                                     </select>
                                     <label for="select"
                                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الموزع

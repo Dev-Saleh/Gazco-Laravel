@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Citizen extends Model
 {
     protected $table='citizens';
-    protected $fillable = ['id','citizen_name','mobile_num','identity_num','attachment','citizen_password','Booking','directorate_id','rigons_id','observer_id','created_at'];
+    protected $fillable = ['id','citizen_name','mobile_num','identity_num','attachment','citizen_password','checked','directorate_id','rigons_id','observer_id','created_at'];
     public  $timestamps = false;
     public function directorate()
     {
@@ -25,6 +25,10 @@ class Citizen extends Model
     public function logsBooking()
     {
         return $this->hasMany(logs_Booking::class, 'citizen_id','id');
+    }
+    public function getCheckedAttribute($val)
+    {
+        return $val == '0' ? 'لا' : 'نعم';
     }
 
 }

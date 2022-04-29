@@ -32,7 +32,7 @@ class CitizenConfirm extends Controller
                 $q->select('id','Agent_name');
             }])->select('id','agent_id')->get();
           }
-        ])->select('id','citizen_name','identity_num','directorate_id','rigons_id','observer_id')->get();
+        ])->select('id','citizen_name','identity_num','directorate_id','rigons_id','observer_id','checked')->where('checked','0')->get();
          return view('dashboard.admin.CitizenConfirm.index',$data); 
 
        }
