@@ -81,6 +81,9 @@
                
                      if (data.status == true) {
                          
+                           
+                      
+                       $('#attachment').attr('src', data.citizen.attachment['valsrc']);
                        $('.citizen_name').text(data.citizen.citizen_name);
                        $('.citizen_identity').text(data.citizen.identity_num);
                        $('#citizenId').text(data.citizen.id);

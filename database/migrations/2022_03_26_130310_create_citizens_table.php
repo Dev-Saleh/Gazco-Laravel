@@ -15,18 +15,18 @@ class CreateCitizensTable extends Migration
     {
         Schema::create('citizens', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('citizen_name')->unique();
-            $table->integer('mobile_num')->unsigned();
-            $table->integer('identity_num')->unsigned();
+            $table->string('citName')->unique();
+            $table->integer('mobileNum')->unsigned();
+            $table->integer('identityNum')->unsigned();
             $table->string('attachment')->unique();
-            $table->string('citizen_password')->unique();
+            $table->string('citPassword')->unique();
             $table->boolean('checked')->default('0');
-            $table->integer('directorate_id')->unsigned();
-            $table->integer('rigons_id')->unsigned();
-            $table->integer('observer_id')->unsigned();
-            $table->foreign('directorate_id')->references('id')->on('directorates')->onDelete('cascade');
-            $table->foreign('rigons_id')->references('id')->on('rigons')->onDelete('cascade');
-            $table->foreign('observer_id')->references('id')->on('observers')->onDelete('cascade');
+            $table->integer('dirId')->unsigned();
+            $table->integer('rigId')->unsigned();
+            $table->integer('obsId')->unsigned();
+            $table->foreign('dirId')->references('id')->on('directorates')->onDelete('cascade');
+            $table->foreign('rigId')->references('id')->on('rigons')->onDelete('cascade');
+            $table->foreign('obsId')->references('id')->on('observers')->onDelete('cascade');
             $table->timestamps();
         });
     }

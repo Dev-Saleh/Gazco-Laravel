@@ -22,15 +22,15 @@ class Rigon extends Model
     }
     public function observer()
     {
-        return $this->hasMany(Observer::class, 'rigons_id','id');
+        return $this->hasMany(Observer::class, 'rigId','id');
     }
     public function citizen()
     {
-        return $this->hasMany(Citizen::class, 'rigons_id','id');
+        return $this->hasMany(Citizen::class, 'rigId','id');
     }
-    public function gaz_Logs()
+    public function gazLogs()
     {
-        return $this->hasMany(gaz_Logs::class, 'rigons_id','id');
+        return $this->hasMany(gazLogs::class, 'rigId','id');
     }
     
 

@@ -9,14 +9,14 @@ class logs_Booking extends Model
     protected $table='logs__bookings';
 	
    
-    protected $fillable =['id','booking_date','Reciving_date','status_booking','citizen_id','NumBatch','created_at','updated_at'];
+    protected $fillable =['id','RecivingDate','statusBooking','citId','numBatch','created_at','updated_at'];
     public  $timestamps = true;
     public function citizen()
     {
-        return $this->belongsTo(Citizen::class,'citizen_id');
+        return $this->belongsTo(Citizen::class,'citId');
     }
     public function getStatusBooking(){
-        return  $this -> status_booking  == 0 ?  'غير مفعل'   : 'مفعل' ;
+        return  $this -> statusBooking  == 0 ?  'غير مفعل'   : 'مفعل' ;
     }
   
   

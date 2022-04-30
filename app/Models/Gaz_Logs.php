@@ -6,31 +6,31 @@ use Illuminate\Database\Eloquent\Model;
 
 class gaz_Logs extends Model
 {
-    protected $table='gaz_Logs';
-    protected $fillable = ['id','qty','directorate_id','rigons_id','stations_id','agent_id','allowBookig','qtyRemaining','notice','validOfSell','created_at'];
+    protected $table='gazLogs';
+    protected $fillable = ['id','qty','dirid','rigId','staId','agentId','allowBooking','qtyRemaining','notice','validOfSell','created_at'];
     public  $timestamps = false;
     public function directorate()
     {
-        return $this->belongsTo(Directorate::class,'directorate_id');
+        return $this->belongsTo(Directorate::class,'dirId');
     }
     public function agent()
     {
-        return $this->belongsTo(Agent::class,'agent_id');
+        return $this->belongsTo(Agent::class,'agentId');
     }
     public function rigon()
     {
-        return $this->belongsTo(Rigon::class,'rigons_id');
+        return $this->belongsTo(Rigon::class,'rigId');
     }
     public function station()
     {
-        return $this->belongsTo(Station::class,'stations_id');
+        return $this->belongsTo(Station::class,'staId');
     }
     public function getvalidOfSell()
     {
         return $this->validOfSell == 0 ? 'تم البيع ' : 'لم يتم البيع';
     }
-    public function getallowBookig()
+    public function getallowBooking()
     {
-       return $this->allowBookig == 0 ? 'true' : 'false';    
+       return $this->allowBooking == 0 ? 'true' : 'false';    
     }
 }

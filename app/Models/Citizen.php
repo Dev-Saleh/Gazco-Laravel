@@ -8,27 +8,45 @@ use Illuminate\Database\Eloquent\Model;
 class Citizen extends Model
 {
     protected $table='citizens';
-    protected $fillable = ['id','citizen_name','mobile_num','identity_num','attachment','citizen_password','checked','directorate_id','rigons_id','observer_id','created_at'];
+    protected $fillable = ['id','citName','mobileNum','identityNum','attachment','citPassword','checked','dirId','rigId','obsId','created_at'];
     public  $timestamps = false;
     public function directorate()
     {
-        return $this->belongsTo(Directorate::class,'directorate_id');
+        return $this->belongsTo(Directorate::class,'dirId');
     }
     public function rigon()
     {
-        return $this->belongsTo(Rigon::class,'rigons_id');
+        return $this->belongsTo(Rigon::class,'rigId');
     }
     public function observer()
     {
-        return $this->belongsTo(Observer::class,'observer_id');
+        return $this->belongsTo(Observer::class,'obsId');
     }
-    public function logsBooking()
+    public function logBookings()
     {
-        return $this->hasMany(logs_Booking::class, 'citizen_id','id');
+        return $this->hasMany(logBookings::class, 'citId','id');
     }
     public function getCheckedAttribute($val)
     {
         return $val == '0' ? 'لا' : 'نعم';
+    }
+    public function getattachmentAttribute($val)
+    {
+        $attachment['exsit']=file_exists(public_path('assets/images/citizens/'.$val));
+        if(!is_null($val) && file_exists(public_path('assets/images/citizens/'.$val)) && $val!='')
+           {
+                  $attachment['valsrc']=asset('assets/images/citizens/'.$val);
+                  $attachment['public_path']=public_path('assets/images/citizens/'.$val);
+    
+                 return $attachment;
+
+           }
+      else 
+           {
+                    $attachment['valsrc']=''; //return image not found saleh get Image 
+                    return $attachment; 
+           }                                  
+           
     }
 
 }

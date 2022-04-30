@@ -28,11 +28,11 @@ class loginCitizenController extends Controller
     public function checkCitizen(Request $request)
     {
 
-        $citizenInfo = Citizen::select()->where('identity_num',$request->identity_num)->first();
+        $citizenInfo = Citizen::select()->where('identityNum',$request->identityNum)->first();
 
         if($citizenInfo)
         {
-            if($citizenInfo->citizen_password == $request->citizen_password)
+            if($citizenInfo->citPassword == $request->citPassword)
             {   
                 if($citizenInfo->checked == 'نعم')
                 {

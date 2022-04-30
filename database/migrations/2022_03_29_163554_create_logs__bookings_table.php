@@ -13,14 +13,13 @@ class CreateLogsBookingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('logs__bookings', function (Blueprint $table) {
+        Schema::create('logbookings', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('booking_date')->nullable();
-            $table->date('Reciving_date')->nullable();
-            $table->boolean('status_booking');
-            $table->integer('citizen_id')->unsigned();
-            $table->integer('NumBatch')->unsigned();
-            $table->foreign('citizen_id')->references('id')->on('citizens')->onDelete('cascade');
+            $table->date('recivingDate')->nullable();
+            $table->boolean('statusBooking');
+            $table->integer('citId')->unsigned();
+            $table->integer('numBatch')->unsigned();
+            $table->foreign('citId')->references('id')->on('citizens')->onDelete('cascade');
             $table->timestamps();
         });
     }

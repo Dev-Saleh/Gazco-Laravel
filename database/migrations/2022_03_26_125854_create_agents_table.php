@@ -15,13 +15,13 @@ class CreateAgentsTable extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Agent_name')->unique();
-            $table->string('Agent_password')->unique()->nullable();
-            $table->string('photo');
-            $table->integer('directorate_id')->unsigned();
-            $table->integer('rigons_id')->unsigned();
-            $table->foreign('directorate_id')->references('id')->on('directorates')->onDelete('cascade');
-            $table->foreign('rigons_id')->references('id')->on('rigons')->onDelete('cascade');
+            $table->string('agentName')->unique();
+            $table->string('agentPassword')->unique()->nullable();
+            $table->string('Photo');
+            $table->integer('dirId')->unsigned();
+            $table->integer('rigId')->unsigned();
+            $table->foreign('dirId')->references('id')->on('directorates')->onDelete('cascade');
+            $table->foreign('rigId')->references('id')->on('rigons')->onDelete('cascade');
          
             $table->timestamps();
         });

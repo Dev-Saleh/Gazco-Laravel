@@ -9,28 +9,29 @@
         <div class="">
             <form action="#" method="POST" id='observerForm'>
                 @csrf
-                <input type="text" name='id' style="display:none;" class="form-control" id="observer_id">
+                <input type="text" name='id' style="display:none;" class="form-control" id="obsId">
                 <div class="px-4 py-5 bg-white space-y-6 sm:p-6 rounded-xl ">
                     <!-- GRID ONE -->
                     <div class="grid grid-cols-6 gap-4">
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full">
-                                <input onchange="convertStrToUser(document.getElementById('observer_name').value);"
-                                    id="observer_name" type="text" name="observer_name" placeholder=" " required
+                                <input onchange="convertStrToUser(document.getElementById('obsName').value);"
+                                    id="obsName" type="text" name="obsName" placeholder=" " required
                                     class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
                                  appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
                                  hover:border-blue-600 text-blue-900" />
                                 <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اسم
                                     المراقب</label>
                                 <span class="text-sm text-red-600 hidden" id="error">الاسم مطلوب !</span>
+                               <small id='obsName_error' style='color:red'></small>
                             </div>
                         </div>
 
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full">
-                                <input type="text" name="observer_username" id="observer_username" placeholder=" "
+                                <input type="text" name="obsUserName" id="obsUserName" placeholder=" "
                                     required
                                     class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
                                  appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
@@ -38,12 +39,13 @@
                                 <label for="name"
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Username</label>
                                 <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
+                                <small id='obsUserName_error' style='color:red'></small>
                             </div>
                         </div>
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full">
-                                <input type="text" name="observer_password" id="observer_password" placeholder=" "
+                                <input type="text" name="obsPassword" id="obsPassword" placeholder=" "
                                     required
                                     class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
                                   appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
@@ -51,6 +53,7 @@
                                 <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الرقم
                                     السري</label>
                                 <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
+                                <small id='obsPassword_error' style='color:red'></small>
                             </div>
                         </div>
 
@@ -62,13 +65,13 @@
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full mb-5">
-                                <select name="directorate_id" value="" id='select_directorates' onchange="f('select_rigons');" 
+                                <select name="dirId" value="" id='select_directorates' onchange="f('select_rigons');" 
                                     onclick="this.setAttribute('value', this.value);"
                                     class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                                     <option value="" id='select_directorate' selected disabled hidden></option>
                                     @if ($directorates && $directorates->count() > 0)
-                                        @foreach ($directorates as $directorate)
-                                            <option value="{{ $directorate->id }}">{{ $directorate->dirName }}
+                                        @foreach ($directorates as $dir)
+                                            <option value="{{ $dir->id }}">{{ $dir->dirName }}
                                             </option>
                                         @endforeach
                                     @endif
@@ -76,13 +79,14 @@
                                 <label for="select"
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المديريه</label>
                                 <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+                               <small id='dirId_error' style='color:red'></small>
                             </div>
                         </div>
 
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full mb-5">
-                                <select name="rigons_id" value="" id='select_rigons' onchange="f('select_agents');"
+                                <select name="rigId" value="" id='select_rigons' onchange="f('select_agents');"
                                     onclick="this.setAttribute('value', this.value);"
                                     class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                                     <option value="" id='select_rigon'></option>
@@ -90,35 +94,32 @@
                                 <label for="select"
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المربع</label>
                                 <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+                                  <small id='rigId_error' style='color:red'></small>
                             </div>
                         </div>
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full mb-5">
-                                <select name="agent_id" value="" id='select_agents'
+                                <select name="agentId" value="" id='select_agents'
                                     onclick="this.setAttribute('value', this.value);"
                                     class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                                     <option value="" id='select_agent' selected disabled hidden></option>
-                                    @if ($agents && $agents->count() > 0)
-                                        @foreach ($agents as $agent)
-                                            <option value="{{ $agent->id }}">{{ $agent->Agent_name }}</option>
-                                        @endforeach
-                                    @endif
                                 </select>
                                 <label for="select"
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الموزع
                                     المراقب</label>
                                 <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+                                  <small id='agentId_error' style='color:red'></small>
                             </div>
                         </div>
                     </div>
                     <!-- GRID THREE -->
                     <div class="mt-1 px-4 py-3 bg-transparent text-center sm:px-6  rounded-3xl">
-                        <button type="submit" id='save_observer'
+                        <button type="submit" id='saveObserver'
                             class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             أضافه
                         </button>
-                        <button type="submit" id='update_observer' style='display:none;'
+                        <button type="submit" id='updateObserver' style='display:none;'
                             class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             تعديل
                         </button>
@@ -153,27 +154,27 @@
                             <th class="p-3 text-left">العمليات</th>
                         </tr>
                     </thead>
-                    <tbody id='fetch_Allobserver'>
+                    <tbody id='fetchLastObserver'>
                         @if ($observers && $observers->count() > 0)
-                            @foreach ($observers as $observer)
+                            @foreach ($observers as $obs)
                                 <tr
-                                    class="offerRow{{ $observer->id }} bg-white hover:scale-95 transform transition-all ease-in">
+                                    class="offerRow{{ $obs->id }} bg-white hover:scale-95 transform transition-all ease-in">
                                     <td class="p-3 text-center">
-                                        {{ $observer->id }}
+                                        {{ $obs->id }}
                                     </td>
                                     <td class="p-3 text-center">
-                                        {{ $observer->observer_name }}
+                                        {{ $obs->obsName }}
                                     </td>
                                     <td class="p-3 text-center">
-                                        {{ $observer->directorate->dirName }}
+                                        {{ $obs->directorate->dirName }}
                                     </td>
 
                                     <td class="p-3 text-center">
-                                        {{ $observer->rigon->rigName }}
+                                        {{ $obs->rigon->rigName }}
                                     </td>
                                     <td class="p-3 text-center whitespace-nowrap">
                                         <span
-                                            class="bg-green-400 text-gray-50 rounded-md px-2">{{ $observer->agent->Agent_name }}</span>
+                                            class="bg-green-400 text-gray-50 rounded-md px-2">{{ $obs->agent->agentName }}</span>
                                     </td>
                                     <td class="p-1 transition-all ease-in duration-150">
                                         <div id="delete-alert"
@@ -183,8 +184,8 @@
                                         </div>
                                         <div id="action-div"
                                             class="flex space-x-2  transition-all ease-in duration-150">
-                                            <a onclick="deleteAlert();" href="#" observer="{{ $observer->id }}"
-                                                class="observer_delete text-red-400  hover:text-red-600 float-left ">
+                                            <a onclick="deleteAlert();" href="#" obsId="{{ $obs->id }}"
+                                                class="observerDelete text-red-400  hover:text-red-600 float-left ">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -192,8 +193,8 @@
                                                         d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                 </svg>
                                             </a>
-                                            <a href="#" observer="{{ $observer->id }}" id="observer_edit"
-                                                class="text-yellow-400 hover:text-yellow-600  mx-2">
+                                            <a href="#" obsId="{{ $obs->id }}" 
+                                                class="observerEdit text-yellow-400 hover:text-yellow-600  mx-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                                     viewBox="0 0 20 20" fill="currentColor">
                                                     <path

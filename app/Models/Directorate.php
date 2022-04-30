@@ -15,7 +15,7 @@ class Directorate extends Model
 
     public function agent()
     {
-        return $this->hasMany(Agent::class, 'directorate_id','id');
+        return $this->hasMany(Agent::class, 'dirId','id');
     }
     public function rigon()
     {
@@ -23,15 +23,15 @@ class Directorate extends Model
     }
     public function observer()
     {
-        return $this->hasMany(Observer::class, 'directorate_id','id');
+        return $this->hasMany(Observer::class, 'dirId','id');
     }
     public function citizen()
     {
-        return $this->hasMany(Citizen::class, 'directorate_id','id');
+        return $this->hasMany(Citizen::class, 'dirId','id');
     }
-    public function gaz_Logs()
+    public function gazLogs()
     {
-        return $this->hasMany(gaz_Logs::class, 'directorate_id','id');
+        return $this->hasMany(gazLogs::class, 'dirId','id');
     }
 
 }

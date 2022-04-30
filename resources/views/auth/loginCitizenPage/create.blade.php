@@ -22,7 +22,7 @@
                      @csrf   
                     <div class="space-y-2">
                             <label class="text-sm font-medium text-gray-700 tracking-wide"> الرقم الوطني</label>
-                            <input name="identity_num"
+                            <input name="identityNum"
                                 class=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400"
                                 type="text" placeholder="ادخل الرقم الوطني">
                         </div>
@@ -31,7 +31,7 @@
                             <label class="mb-5 text-sm font-medium text-gray-700 tracking-wide">
                                 كلمة السر
                             </label>
-                            <input name="citizen_password"
+                            <input name="citPassword"
                                 class="w-full content-center text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400"
                                 type="password" placeholder="غالبا تكون كلمة السر مثل الرقم الوطني">
                                

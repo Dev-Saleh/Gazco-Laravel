@@ -29,14 +29,14 @@ class loginObserverController extends Controller
     public function checkObserver(Request $request)
     {
 
-          $obsInfo = Observer::where('observer_username',$request->observer_username)->first();
+          $obsInfo = Observer::where('obsUserName',$request->obsUserName)->first();
 
         if($obsInfo)
         {
-             if($obsInfo->observer_password == $request->observer_password)
+             if($obsInfo->obsPassword == $request->obsPassword)
              {
                session()->put('obsId',$obsInfo->id);
-               session()->put('obsUserName',$obsInfo->observer_username);
+               session()->put('obsUserName',$obsInfo->obsUserName);
            
                return redirect()->route('observer.dashboard');
              }

@@ -6,13 +6,13 @@
 
         $(document).on('change', '#select_directorates', function(e) {
             e.preventDefault();
-            var directorate_id = window.select_directorates.value;
+            var dirId = window.select_directorates.value;
             $.ajax({
                 type: 'get',
                 enctype: 'multipart/form-data',
                 url: "{{route('agent.Show_rigons')}}",
               data: {
-                     'directorate_id' :directorate_id, 
+                     'dirId' :dirId, 
                     },
                 success: function (data) {
                   
@@ -31,52 +31,38 @@
         });
 
         // End select rigon by Ajax 
-        // Start fetch All Agent  
-        function fetchagent() {
-            $.ajax({
-                type: 'get',
-                url: "{{ route('agent.show_All') }}",
-                dataType: "json",
-
-                success: function(data) {
-                    console.log(data.agents);
-                    $('#fetch_Allagent').html("");
-                    $.each(data.agents, function(key, agent) {
-                        $('#fetch_Allagent').append('<tr class="offerRow' + agent.id + ' bg-white hover:scale-95 transform transition-all ease-in">\
-                            <td class="p-3 text-center">' + agent.id + '</td>\
-                            <td class="p-3 text-center flex-wrap">' + agent.Agent_name + '</td>\
+        // Start fetch last Agent  
+        function fetchLastAgent($lastAgent,$Photo) 
+        {
+            $('#fetchLastAgent').prepend('<tr class="offerRow' + $lastAgent.id + ' animate__animated animate__fadeInRight  bg-white hover:scale-95 transform transition-all ease-in">\
+                            <td class="p-3 text-center">' + $lastAgent.id + '</td>\
+                            <td class="p-3 text-center">' + $lastAgent.agentName + '</td>\
                             <td class="p-3 text-right">\
-                              <img class="rounded-full h-12 w-12  object-cover" src=' + agent.photo['valsrc'] + ' alt="unsplash image">\
+                              <img class="rounded-full h-12 w-12  object-cover" src=' + $Photo['valsrc'] + ' alt="unsplash image">\
                             </td>\
                             <td class="p-3 text-center">\
-                              <span class="bg-green-400 text-gray-50 rounded-md px-2">' + agent.directorate
-                            .dirName + '</span>\
+                              <span class="bg-green-400 text-gray-50 rounded-md px-2">' + $lastAgent.directorate.dirName + '</span>\
                             </td>\
                             <td class="p-5 flex space-x-2">\
-                              <a href="#"  agent="' + agent.id + '"  class="agent_delete text-yellow-400 hover:text-yellow-600 float-left ">\
+                              <a href="#"  agentId="' + $lastAgent.id + '"  class="agentDelete text-red-400 hover:text-red-600 float-left ">\
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
                                 </svg>\
                               </a>\
-                              <a href="#" agent="' + agent.id + '"  id="agent_edit text-yellow-400 hover:text-yellow-600 mx-2">\
+                              <a href="#" agentId="' + $lastAgent.id + '"  class="agentEdit text-yellow-400 hover:text-yellow-600 mx-2">\
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">\
                                   <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />\
                                 </svg>\
                               </a>\
                             </td>\
                           </tr>');
-
-                    });
-
-
-                }
-            });
+                        
         }
 
-        // End fetch All Agent 
+        // End fetch last Agent 
         // Start Add Agent By Ajax 
 
-        $(document).on('click', '#save_agent', function(e) {
+        $(document).on('click', '#saveAgent', function(e) {
             e.preventDefault();
             var formData = new FormData($('#agentForm')[0]);
             $.ajax({
@@ -88,37 +74,17 @@
                 contentType: false,
                 cache: false,
                 success: function(data) {
-                   console.log(data.lastDir);
+                   console.log(data);
                     if (data.status == true) {
-                        $('#fetch_Allagent').prepend('<tr class="offerRow' + data.lastAgent.id + ' animate__animated animate__fadeInRight  bg-white hover:scale-95 transform transition-all ease-in">\
-                            <td class="p-3 text-center">' + data.lastAgent.id + '</td>\
-                            <td class="p-3 text-center">' + data.lastAgent.Agent_name + '</td>\
-                            <td class="p-3 text-right">\
-                              <img class="rounded-full h-12 w-12  object-cover" src=' + data.lastAgent.photo['valsrc'] + ' alt="unsplash image">\
-                            </td>\
-                            <td class="p-3 text-center">\
-                              <span class="bg-green-400 text-gray-50 rounded-md px-2">' + data.lastDir.directorate_name + '</span>\
-                            </td>\
-                            <td class="p-5 flex space-x-2">\
-                              <a href="#"  agent="' + data.lastAgent.id + '"  class="agent_delete text-red-400 hover:text-red-600 float-left ">\
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
-                                </svg>\
-                              </a>\
-                              <a href="#" agent="' + data.lastAgent.id + '"  class="agent_edit text-yellow-400 hover:text-yellow-600 mx-2">\
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">\
-                                  <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />\
-                                </svg>\
-                              </a>\
-                            </td>\
-                          </tr>');
-                        
+                      
+                      fetchLastAgent(data.lastAgent,data.Photo);
+                      
                         $('#file-ip-1-preview').css('display','none');
                         $('#select_directorates').val('');
                         $('#select_rigons').val('');
-                        $('#agent_name').val('');
+                        $('#agentName').val('');
                         alertt(data.msg, 'success');
-                        //fetchagent();
+                      
                     }
 
                 },
@@ -133,23 +99,20 @@
 
         // End Add Agent By Ajax 
         // Start Deleteing Agent By Ajax 
-        $(document).on('click', '.agent_delete', function(e) {
-
-           
+        $(document).on('click', '.agentDelete', function(e) { 
             e.preventDefault();
-            var agent = $(this).attr('agent');
+            var agentId = $(this).attr('agentId');
             $.ajax({
                 type: 'delete',
                 url: "{{ route('agent.destroy') }}",
                 data: {
-                    '_token': "{{ csrf_token() }}",
-                    'id': agent,
-                },
+                         'agentId': agentId,
+                      },
 
                 success: function(data) {
                     console.log(data);
 
-                    $('.offerRow'+data.id).addClass("animate__fadeOutLeft");
+                    $('.offerRow'+data.agentId).addClass("animate__fadeOutLeft");
                  
                     if (data.status == true) {
 
@@ -157,7 +120,7 @@
                     }
 
                       sleep(400).then(() => {
-                          $('.offerRow' + data.id).remove();
+                          $('.offerRow' + data.agentId).remove();
                       });
                 },
                 error: function(reject) {
@@ -171,31 +134,31 @@
         // Start edit Agent By Ajax 
 
 
-        $(document).on('click', '#agent_edit', function(e) {
+        $(document).on('click', '.agentEdit', function(e) {
             e.preventDefault();
-            var agent = $(this).attr('agent');
+            var agentId = $(this).attr('agentId');
             $.ajax({
                 type: 'get',
                 url: "{{ route('agent.edit') }}",
                 data: {
                     '_token': "{{ csrf_token() }}",
-                    'id': agent,
+                    'agentId': agentId,
                 },
                 success: function(data) {
-
+                    console.log(data);
                     if (data.status == true) {
                         var preview = document.getElementById("file-ip-1-preview");
                         preview.style.display = "block";
-                        $('#file-ip-1-preview').attr('src', data.agent.photo['valsrc']);
+                        $('#file-ip-1-preview').attr('src', data.photo.valsrc);
                         $('#select_directorates').focus();
                         $('#select_rigons').focus();
-                        $('#agent_id').val(data.agent.id);
-                        $('#select_directorate').text(data.dirName);
-                        $('#select_rigon').text(data.rigName);
-                        $('#agent_name').val(data.agent.Agent_name);
-                        $('#photo').val(data.photo);
-                        window.save_agent.style.display = "none";
-                        window.update_agent.style.display = "inline-flex";
+                        $('#agentId').val(data.agent.id);
+                        $('#select_directorate').text(data.agent.directorate.dirName);
+                        $('#select_rigon').text(data.agent.rigon.rigName);
+                        $('#agentName').val(data.agent.agentName);
+                        $('#Photo').val(data.Photo);
+                        window.saveAgent.style.display = "none";
+                        window.updateAgent.style.display = "inline-flex";
                     }
 
                 },
@@ -210,7 +173,7 @@
         // Start Update Agent By Ajax 
 
 
-        $(document).on('click', '#update_agent', function(e) {
+        $(document).on('click', '#updateAgent', function(e) {
             e.preventDefault();
             var formData = new FormData($('#agentForm')[0]);
 
@@ -226,9 +189,10 @@
                     console.log(data);
                     if (data.status == true) {
                         alert(data.msg, 'success');
-                        window.save_agent.style.display = "inline-flex";
-                        window.update_agent.style.display = "none";
-                        fetchagent();
+                        window.saveAgent.style.display = "inline-flex";
+                        window.updateAgent.style.display = "none";
+                        $('.offerRow' + data.agentId).remove(); // حدف الحقل السابق الدي قبل التعديل 
+                        fetchLastAgent(data.lastAgent,data.Photo); // اضافة اخر حقل
                     }
                 },
                 error: function(reject) {

@@ -12,8 +12,8 @@ class Station extends Model
     protected $fillable = ['id','staName'];
     public  $timestamps = false;
 
-    public function gaz_Logs()
+    public function gazLogs()
     {
-        return $this->hasMany(gaz_Logs::class, 'stations_id','id');
+        return $this->hasMany(gazLogs::class, 'staId','id');
     }
 }

@@ -9,43 +9,40 @@ use Illuminate\Database\Eloquent\Model;
 class Agent extends Model
 {
     protected $table='agents';
-    protected $fillable = ['id','Agent_name','Agent_password','photo','directorate_id','rigons_id','directorate_name'];
+    protected $fillable = ['id','agentName','agentPassword','Photo','dirId','rigId'];
     public  $timestamps = false;
     public function directorate()
     {
-        return $this->belongsTo(Directorate::class,'directorate_id');
+        return $this->belongsTo(Directorate::class,'dirId');
     }
     public function rigon()
     {
-        return $this->belongsTo(Rigon::class,'rigons_id');
+        return $this->belongsTo(Rigon::class,'rigId');
     }
     public function observer()
     {
-        return $this->hasMany(Observer::class, 'agent_id','id');
+        return $this->hasMany(Observer::class, 'agentId','id');
     }
-    public function gaz_Logs()
+    public function gazLogs()
     {
-        return $this->hasMany(gaz_Logs::class, 'agent_id','id');
+        return $this->hasMany(gazLogs::class, 'agentId','id');
     }
 
     public function getPhotoAttribute($val)
     {
-        $photo['exsit']=file_exists(public_path('assets/images/agents/'.$val));
+        $Photo['exsit']=file_exists(public_path('assets/images/agents/'.$val));
         if(!is_null($val) && file_exists(public_path('assets/images/agents/'.$val)) && $val!='')
            {
-                  $photo['valsrc']=asset('assets/images/agents/'.$val);
-                  $photo['public_path']=public_path('assets/images/agents/'.$val);
-    
-                 return $photo;
+                  $Photo['valsrc']=asset('assets/images/agents/'.$val);
+                  $Photo['public_path']=public_path('assets/images/agents/'.$val);
+                   return $Photo;
 
            }
       else 
            {
-                    $photo['valsrc']=''; //return image not found saleh get Image 
-                    return $photo; 
-           }                      
-
-               
+                    $Photo['valsrc']=''; //return image not found saleh get Image 
+                    return $Photo; 
+           }                                     
            
     }
 

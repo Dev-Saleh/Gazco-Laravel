@@ -11,9 +11,9 @@ class employee extends Model
     public  $timestamps = false;
 
   
-    public function getempRoleAttribute($val)
+    public function getempRoleAttribute($value)
     {
-        return  $val  == 0 ?  "User"   : "Admin" ;
+        return  $value  == 0 ?  "User"   : "Admin" ;
     }
     
 

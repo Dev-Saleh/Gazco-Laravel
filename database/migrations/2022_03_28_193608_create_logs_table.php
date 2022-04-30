@@ -13,22 +13,21 @@ class CreateLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gaz_Logs', function (Blueprint $table) {
+        Schema::create('gazLogs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('qty')->nullable();
-            $table->integer('directorate_id')->unsigned();
-            $table->integer('rigons_id')->unsigned();
-            $table->integer('stations_id')->unsigned();
-            $table->integer('agent_id')->unsigned();
+            $table->integer('dirId')->unsigned();
+            $table->integer('rigId')->unsigned();
+            $table->integer('staId')->unsigned();
+            $table->integer('agentId')->unsigned();
             $table->boolean('validOfSell')->default('1');
-            $table->boolean('allowBookig')->default('0');
-           // $table->integer('numberBatch')->unsigned()->nullable();
+            $table->boolean('allowBooking')->default('0');
             $table->integer('qtyRemaining')->unsigned();
             $table->longText('notice')->nullable();
-            $table->foreign('directorate_id')->references('id')->on('directorates')->onDelete('cascade');
-            $table->foreign('rigons_id')->references('id')->on('rigons')->onDelete('cascade');
-            $table->foreign('stations_id')->references('id')->on('stations')->onDelete('cascade');
-            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
+            $table->foreign('dirId')->references('id')->on('directorates')->onDelete('cascade');
+            $table->foreign('rigId')->references('id')->on('rigons')->onDelete('cascade');
+            $table->foreign('staId')->references('id')->on('stations')->onDelete('cascade');
+            $table->foreign('agentId')->references('id')->on('agents')->onDelete('cascade');
             $table->timestamps();
            
         });

@@ -9,59 +9,76 @@ use Illuminate\Http\Request;
 
 class ObserverController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
-        //
+        
         try
         {
-           $data = [];
-           $data['directorates']=Directorate::whereHas('rigon')->get();
-           $data['rigons'] = Rigon::select()->get();
-           $data['agents']=Agent::select()->get();
-           $data['observers']=Observer::select()->get();
-         
+           
+           $data['directorates']=Directorate::whereHas('rigon')->select('id','dirName')->orderby('id','DESC')->get();
+           
+           $data['observers']=Observer::with(
+            [
+               'directorate'=>function($q)
+               {
+                  $q->select('id','dirName')->get();
+               },
+
+                'rigon'=>function($q)
+                {
+                    $q->select('id','rigName')->get();
+                },
+
+                'agent'=>function($q)
+                {
+                    $q->select('id','agentName')->get();
+                }
+            ]
+           )->select('id','obsName','dirId','rigId','agentId')->orderby('id','DESC')->get();
            
            return view('dashboard.admin.observers.index',$data);
        }
        catch (\Exception $ex)
         {
            return response()->json([
-               'status' => false,
-               'msg' => 'error in index',
+               'status'          => false,
+               'msg'             => 'error in index',
+               'exceptionError'  =>$ex,
            ]);
-       }
+        }
 
         
     }
-    public function show_rigons(Request $request)
+    public function showRigons(Request $request)
     {
         try
         {
        
-           $rigons = Rigon::select()->where('dirId',$request->directorate_id)->get();
+           $rigons = Rigon::select('id','rigName')->where('dirId',$request->dirId)->get();
+
+           if($rigons)
            return response()->json([
             'status' => true,
             'rigons' => $rigons,
            ]);
-       }
+
+        }
        catch (\Exception $ex)
         {
            return response()->json([
-               'status' => false,
-               'msg' => 'error in index',
+               'status'         => false,
+               'msg'            => 'error in showRigons',
+               'exceptionError' => $ex,
            ]);
-       }
+        }
     }
-    public function show_Agents(Request $request)
+    public function showAgents(Request $request)
     {
         try
         {
-           $agents = Agent::select()->where('rigons_id',$request->rigons_Id)->get();
+           $agents = Agent::select('id','agentName')->where('rigId',$request->rigId)->orderby('id','DESC')->get();
+           if($agents)
            return response()->json([
             'status' => true,
             'agents' => $agents,
@@ -70,129 +87,148 @@ class ObserverController extends Controller
        catch (\Exception $ex)
         {
            return response()->json([
-               'status' => false,
-               'msg' => 'error in index',
+               'status'          => false,
+               'msg'             => 'error in showAgents',
+               'exceptionError'  => $ex,
            ]);
        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function storeObservers(Request $request)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        try { 
-            $observer = Observer::create($request->except('_token'));
-        
-            $observer->save();
-            if ($observer)
+        try
+         { 
+            $obs = Observer::create($request->except('_token'));
+            $obs->save();
+            $lastobserver = Observer::with(
+                [
+                   'directorate'=>function($q)
+                   {
+                      $q->select('id','dirName')->get();
+                   },
+    
+                    'rigon'=>function($q)
+                    {
+                        $q->select('id','rigName')->get();
+                    },
+    
+                    'agent'=>function($q)
+                    {
+                        $q->select('id','agentName')->get();
+                    }
+                ]
+               )->select('id','obsName','dirId','rigId','agentId')->get()->last();
+         
+            if ($obs)
             return response()->json([
                 'status' => true,
                 'msg' => 'تم الحفظ بنجاح',
+                'lastObserver'=> $lastobserver,
             ]);
         }
         catch (\Exception $ex) {
             return response()->json([
-                'error'=>$ex,
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
-               
+                'status'         => false,
+                'msg'            => 'فشل الحفظ برجاء المحاوله مجددا',
+                'exceptionError' => $ex,
             ]);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Observer  $observer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Observer $observer)
-    {
-        //
-    }
-    public function show_All()
+    public function showAllObservers()
     {
         try
         {
            
-            $observers=Observer::with(['directorate','agent','rigon'=>function($q){
-                $q->select();
-            }])->get();
-           
+            $observers=Observer::with(
+                [
+                   'directorate'=>function($q)
+                   {
+                      $q->select('id','dirName')->get();
+                   },
+    
+                    'rigon'=>function($q)
+                    {
+                        $q->select('id','rigName')->get();
+                    },
+    
+                    'agent'=>function($q)
+                    {
+                        $q->select('id','agentName')->get();
+                    }
+                ]
+               )->select('id','obsName','dirId','rigId','agentId')->get();
+               
+           if($observers)
            return response()->json([
             'status' => true,
             'observers' => $observers,
         
            ]);
+
        }
        catch (\Exception $ex)
         {
            return response()->json([
-               'status' => false,
-               'msg' => 'error in index',
+               'status'         => false,
+               'msg'            => 'error in showAll',
+               'exceptionError' =>$ex,
            ]);
        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Observer  $observer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Request $request)
+    
+    public function editObservers(Request $request)
     {
-        try{
-            $observer = Observer::find($request -> id);  // search in given table id only
+        try
+        {
+            $observer = Observer::with(
+                [
+                   'directorate'=>function($q)
+                   {
+                      $q->select('id','dirName')->get();
+                   },
+    
+                    'rigon'=>function($q)
+                    {
+                        $q->select('id','rigName')->get();
+                    },
+    
+                    'agent'=>function($q)
+                    {
+                        $q->select('id','agentName')->get();
+                    }
+                ]
+               )->select('id','obsName','obsUserName','obsPassword','dirId','rigId','agentId')->find($request->obsId); // search in given table id only
             if (!$observer)
                 return response()->json([
                     'status' => false,
                     'msg' => 'هذ العرض غير موجود',
                    
                 ]);
-    
-            $observer =Observer::with(['directorate','agent','rigon'=>function($q){
-                $q->select();
-            }])->find($request -> id);
 
             return response()->json([
                 'status' => true,
-                'observer' => $observer,
+                'obs' => $observer,
                
             ]); 
+
           }
-          catch (\Exception $ex) {
+          catch (\Exception $ex) 
+          {
             return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+                'status'         => false,
+                'msg'            => 'فشل بالتعديل برجاء المحاوله مجددا',
+                'exceptionError' => $ex,
             ]);
-        }
+          }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Observer  $observer
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request)
+   
+    public function updateObservers(Request $request)
     {
-        try{
+        try
+        {
             $observer = Observer::find($request -> id);
             if (!$observer)
                 return response()->json([
@@ -202,44 +238,67 @@ class ObserverController extends Controller
          
             //update data  
             $observer->update($request->except('_token'));
+            $lastobserverUpdate = Observer::with(
+                [
+                   'directorate'=>function($q)
+                   {
+                      $q->select('id','dirName')->get();
+                   },
+    
+                    'rigon'=>function($q)
+                    {
+                        $q->select('id','rigName')->get();
+                    },
+    
+                    'agent'=>function($q)
+                    {
+                        $q->select('id','agentName')->get();
+                    }
+                ]
+               )->select('id','obsName','obsPassword','dirId','rigId','agentId')->find($request->id);
+         
             return response()->json([
-                'status' => true,
-                'msg' => 'تم  التحديث بنجاح',
+                'status'             => true,
+                'msg'                => 'تم  التحديث بنجاح',
+                'lastobserverUpdate' => $lastobserverUpdate,
+                'obsId'              => $request->id,
             ]);
         }
-        catch (\Exception $ex) {
+        catch (\Exception $ex) 
+        {
+
             return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+                'status'         => false,
+                'msg'            => 'فشل بالتحديث برجاء المحاوله مجددا',
+                'exceptionError' => $ex,
             ]);
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Observer  $observer
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Request $request)
+    
+    public function destroyObservers(Request $request)
     {
-        try {
-            $observer = Observer::find($request -> id); 
-            if (!$observer)
+        try 
+        {
+                $obs = Observer::find($request -> obsId); 
+                if (!$obs)
+                return response()->json([
+                    'status' => false,
+                    'msg' => 'فشل بالحدف برجاء المحاوله مجددا',
+                ]);
+                $obs->delete();
+                return response()->json([
+                    'status' => true,
+                    'msg' => 'تم الحذف بنجاح',
+                    'obsId' => $request -> obsId,
+            ]);
+         } 
+         catch (\Exception $ex) 
+         {
             return response()->json([
-                'status' => false,
-                'msg' => 'فشل بالتعديل برجاء المحاوله مجددا',
-               ]);
-             $observer->delete();
-             return response()->json([
-                'status' => true,
-                'msg' => 'تم الحذف بنجاح',
-                'id' => $request -> id
-        ]);
-         } catch (\Exception $ex) {
-            return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+                'status'         => false,
+                'msg'            => 'فشل بالحدف برجاء المحاوله مجددا',
+                'exceptionError' => $ex,
             ]);
           
          }

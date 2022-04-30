@@ -15,15 +15,15 @@ class CreateObserversTable extends Migration
     {
         Schema::create('observers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('observer_name')->unique();
-            $table->string('observer_username')->unique();
-            $table->string('observer_password')->unique();
-            $table->integer('directorate_id')->unsigned();
-            $table->integer('rigons_id')->unsigned();
-            $table->integer('agent_id')->unsigned();
-            $table->foreign('directorate_id')->references('id')->on('directorates')->onDelete('cascade');
-            $table->foreign('rigons_id')->references('id')->on('rigons')->onDelete('cascade');
-            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
+            $table->string('obsName')->unique();
+            $table->string('obsUserName')->unique();
+            $table->string('obsPassword')->unique();
+            $table->integer('dirId')->unsigned();
+            $table->integer('rigId')->unsigned();
+            $table->integer('agentId')->unsigned();
+            $table->foreign('dirId')->references('id')->on('directorates')->onDelete('cascade');
+            $table->foreign('rigId')->references('id')->on('rigons')->onDelete('cascade');
+            $table->foreign('agentId')->references('id')->on('agents')->onDelete('cascade');
             $table->timestamps();
       
         });

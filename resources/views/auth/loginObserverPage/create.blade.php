@@ -22,7 +22,7 @@
             <i class="fa fa-user absolute text-yellow-500 text-xl"></i>
             <input
                 type="text"
-                placeholder="username" name='observer_username' id='obsUserName'
+                placeholder="username" name='obsUserName' id='obsUserName'
                 class="pr-8 border-b-2 font-display focus:outline-none focus:border-yellow-500 transition-all duration-500 capitalize text-lg"
             />
             </div>
@@ -30,7 +30,7 @@
             <i class="fa fa-lock absolute text-yellow-500 text-xl"></i>
             <input
                 type="password"
-                placeholder="password" name='observer_password' id='obsPassword'
+                placeholder="password" name='obsPassword' id='obsPassword'
                 class="pr-8 border-b-2 font-display focus:outline-none focus:border-yellow-500 transition-all duration-500 capitalize text-lg"
             />
             </div>

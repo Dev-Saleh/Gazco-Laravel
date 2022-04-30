@@ -72,14 +72,13 @@ class EmployeeController extends Controller
     
             try
             {
-               
-               $emp =employee::find(52);
-               $data['emp']=[$emp->empRole,$emp->empPhoto,$emp->id,$emp->empUserName,$emp->empFullName,$emp->empPassword];
-               
-               if($emp)
+               $emp= employee::get()->last();
+               $lastemp =['id'=>$emp->id,'empPhoto'=>$emp->empPhoto,'empUserName'=>$emp->empUserName,'empRole'=>$emp->empRole];
+            
+               if($lastemp)
                return response()->json([
                 'status' => true,
-                'emp' =>$data,
+                'lastemp' =>$lastemp,
 
                ]);
             }
@@ -162,6 +161,8 @@ class EmployeeController extends Controller
                 'status' => true,
                 'msg' => 'تم  التحديث بنجاح',
                 'empPhoto'=>$fileName,
+                'lastemp'=>$emp,
+                'empId'=>$request->id,
             ]);
             
         }

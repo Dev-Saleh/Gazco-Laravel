@@ -69,13 +69,13 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
       });
       Route::group(['prefix' => 'observer'], function () {
         Route::get('index', 'ObserverController@index')->name('observer.index');
-        Route::post('store', 'ObserverController@store')->name('observer.store');
-        Route::delete('delete/{id?}','ObserverController@destroy')->name('observer.destroy');
-        Route::get('edit/{id?}', 'ObserverController@edit')->name('observer.edit');
-        Route::get('show_rigons/{id?}', 'ObserverController@show_rigons')->name('observer.Show_rigons');
-        Route::get('show_Agents/{id?}', 'ObserverController@show_Agents')->name('observer.show_Agents');
-        Route::post('update', 'ObserverController@update')->name('observer.update');
-        Route::get('show_All', 'ObserverController@show_All')->name('observer.show_All');
+        Route::post('store', 'ObserverController@storeObservers')->name('observer.store');
+        Route::delete('delete/{id?}','ObserverController@destroyObservers')->name('observer.destroy');
+        Route::get('edit/{id?}', 'ObserverController@editObservers')->name('observer.edit');
+        Route::get('showRigons/{id?}', 'ObserverController@showRigons')->name('observer.Show_rigons');
+        Route::get('showAgents/{id?}', 'ObserverController@showAgents')->name('observer.show_Agents');
+        Route::post('update', 'ObserverController@updateObservers')->name('observer.update');
+        Route::get('showAllObservers', 'ObserverController@showAllObservers')->name('observer.show_All');
         
     });
       Route::group(['prefix' => 'gaz_Logs'], function () {

@@ -115,11 +115,11 @@ class DatabaseSeeder extends Seeder
                 $bb = Rigon::select()->where('dirId', $aa)->get();
                 $cc = $bb->random()->id;
             Agent::create([
-                'Agent_name' => $agentArray[$i],
-                'photo' => 'sfd.jpg',
+                'agentName' => $agentArray[$i],
+                'Photo' => 'sfd.jpg',
 
-                'directorate_id' =>$aa,
-                'rigons_id' => $cc,
+                'dirId' =>$aa,
+                'rigId' => $cc,
             ]);
         }
 
@@ -181,12 +181,12 @@ class DatabaseSeeder extends Seeder
             
             
             Observer::create([
-                'observer_name' => $observerArray[$i],
-                'observer_username' =>  $observerUsers[$i],
-                'observer_password' => rand(9999, 999999),
-                'directorate_id' => $aa,
-                'rigons_id' => $cc,
-                'agent_id' => $agentsId[$i],
+                'obsName' => $observerArray[$i],
+                'obsUserName' =>  $observerUsers[$i],
+                'obsPassword' => rand(9999, 999999),
+                'dirId' => $aa,
+                'rigId' => $cc,
+                'agentId' => $agentsId[$i],
                 
 
             ]);
@@ -211,7 +211,7 @@ class DatabaseSeeder extends Seeder
             $aa = Directorate::all()->random()->id;
             $bb = Rigon::select()->where('dirId', $aa)->get();
             $cc = $bb->random()->id;
-            $mm = Agent::select()->where('directorate_id', $aa)->get();
+            $mm = Agent::select()->where('dirId', $aa)->get();
             $tt= $mm->random()->id;
 
             gaz_Logs::create([
@@ -258,25 +258,24 @@ class DatabaseSeeder extends Seeder
             $bb = Rigon::select()->where('dirId', $aa)->get();
             $cc = $bb->random()->id;
 
-            $mm = Agent::select()->where('directorate_id', $aa)->get();
+            $mm = Agent::select()->where('dirId', $aa)->get();
             $ag = $mm->random()->id;
 
-            $ob = Observer::select()->where('agent_id', $ag)->get();
+            $ob = Observer::select()->where('agentId', $ag)->get();
             $obb = $ob->random()->id;
 
 
 
 
             Citizen::create([
-                'citizen_name' => $citizenArray[$i],
-                'mobile_num' => +967491917,
-                'identity_num' => rand(999999, 9999999),
+                'citName' => $citizenArray[$i],
+                'mobileNum' => +967491917,
+                'identityNum' => rand(999999, 9999999),
                 'attachment' => Str::random(10),
-                'citizen_password' => rand(9999, 99999),
-                'Booking' => 'مدري حق اش',
-                'directorate_id' => $aa,
-                'rigons_id' => $cc,
-                'observer_id' =>$obb,
+                'citPassword' => rand(9999, 99999),
+                'dirId' => $aa,
+                'rigId' => $cc,
+                'obsId' =>$obb,
 
             ]);
         }
