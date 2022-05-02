@@ -42,7 +42,7 @@
           المراقبين
         </a>
 
-        <a href="{{route('gaz_Logs.index')}}" class="flex items-center text-white 
+        <a href="{{route('gazLogs.index')}}" class="flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl
                 hover:text-yellow-100

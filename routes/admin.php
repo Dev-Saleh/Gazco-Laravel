@@ -78,21 +78,20 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
         Route::get('showAllObservers', 'ObserverController@showAllObservers')->name('observer.show_All');
         
     });
-      Route::group(['prefix' => 'gaz_Logs'], function () {
-        Route::get('index',  'gaz_Logs@index')->name('gaz_Logs.index');
-        Route::post('store', 'gaz_Logs@store')->name('gaz_Logs.store');
-        Route::delete('delete/{id?}','gaz_Logs@destroy')->name('gaz_Logs.destroy');
-        Route::get('edit/{id?}', 'gaz_Logs@edit')->name('gaz_Logs.edit');
-        Route::get('show_Rigons/{id?}', 'gaz_Logs@show_Rigons')->name('gaz_Logs.show_Rigons');
-        Route::get('show_Agents/{id?}', 'gaz_Logs@show_Agents')->name('gaz_Logs.show_Agents');
-        Route::post('update', 'gaz_Logs@update')->name('gaz_Logs.update');
-        Route::get('show_All', 'gaz_Logs@show_All')->name('gaz_Logs.show_All');
+      Route::group(['prefix' => 'gazLogs'], function () {
+        Route::get('index',  'gazLogsController@index')->name('gazLogs.index');
+        Route::post('store', 'gazLogsController@store')->name('gazLogs.store');
+        Route::delete('delete/{id?}','gazLogsController@destroy')->name('gazLogs.destroy');
+        Route::get('edit/{id?}', 'gazLogsController@edit')->name('gazLogs.edit');
+        Route::get('showRigons/{id?}', 'gazLogsController@showRigons')->name('gazLogs.showRigons');
+        Route::get('showAgents/{id?}', 'gazLogsController@showAgents')->name('gazLogs.showAgents');
+        Route::post('update', 'gazLogsController@update')->name('gazLogs.update');
+      
         
     });
     Route::group(['prefix' => 'citizenConfirm'], function () {
       Route::get('index',  'CitizenConfirm@index')->name('citizenConfirm.index');
       Route::delete('delete/{id?}','CitizenConfirm@destroy')->name('citizenConfirm.destroy');
-      Route::get('edit/{id?}', 'CitizenConfirm@edit')->name('citizenConfirm.edit');
       Route::get('show', 'CitizenConfirm@show')->name('citizenConfirm.show');
       Route::post('update', 'CitizenConfirm@update')->name('citizenConfirm.update');
       

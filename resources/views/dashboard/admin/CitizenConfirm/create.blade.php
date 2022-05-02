@@ -1,7 +1,7 @@
    <div class="flex  gap-x-10">
           <div class=" px-6 py-6 bg-white border-0 shadow-lg rounded-xl w-full">
             <div class="flex-col space-y-4">
-              <input type="text" name='id' style="display:none;" class="form-control"  id="citizenId">  
+              <input type="text" name='id' style="display:none;" class="form-control"  id="citId">  
               <!-- Preview Proudct Section -->
         
               <div class="grid grid-cols-4">
@@ -14,12 +14,12 @@
               <!-- END Preview Proudct Section -->
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                 <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">اسم المواطن
-                  <span  class="citizen_name text-xs bg-gray-800 text-gray-200 p-2 rounded-full">صالح عبدلاله صالح</span>
+                  <span  class="citName text-xs bg-gray-800 text-gray-200 p-2 rounded-full">صالح عبدلاله صالح</span>
                 </li>
               </ul>
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                 <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> رقم الهويه 
-                  <span  class="citizen_identity text-xs bg-gray-800 text-gray-200 p-2 rounded-full"> 2149935344 </span>
+                  <span  class="identityNum text-xs bg-gray-800 text-gray-200 p-2 rounded-full"> 2149935344 </span>
                 </li>
               </ul>
               <!-- List Details For Prooudct -->
@@ -27,10 +27,10 @@
         
                 <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                   <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">بواسطة من ؟
-                    <span  class="observer_name text-xs bg-gray-800 text-gray-200 px-1 rounded-full">Dev SL</span>
+                    <span  class="obsName text-xs bg-gray-800 text-gray-200 px-1 rounded-full">Dev SL</span>
                   </li>
                   <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">تاريخ الاضافه
-                    <span  class="observer_name text-xs bg-gray-800 text-gray-200 px-1 rounded-full">12/2021</span>
+                    <span  class="dateAdd text-xs bg-gray-800 text-gray-200 px-1 rounded-full">12/2021</span>
                   </li>
         
                   <li class="px-4 py-2 flex justify-between items-center font-bold">عدد الحجوزات
@@ -44,14 +44,14 @@
         
                 <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                   <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">المديريه
-                    <span class="directorate_name text-xs bg-gray-800 text-gray-200 px-1 rounded-full">خور مكسر</span>
+                    <span class="dirName text-xs bg-gray-800 text-gray-200 px-1 rounded-full">خور مكسر</span>
                   </li>
                   <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">المربع
-                    <span  class="rigon_name text-xs bg-gray-800 text-gray-200 px-1 rounded-full">اكتوبر</span>
+                    <span  class="rigName text-xs bg-gray-800 text-gray-200 px-1 rounded-full">اكتوبر</span>
                   </li>
         
                   <li class="px-4 py-2 flex justify-between items-center font-bold">الموزع
-                    <span  class="Agent_name text-xs bg-gray-800 text-gray-200 px-1 rounded-full">كريم</span>
+                    <span  class="agentName text-xs bg-gray-800 text-gray-200 px-1 rounded-full">كريم</span>
                   </li>
                   <div class="px-4 py-2 font-bold flex justify-between">
                     <span class=" relative z-20">الصوره مطابقه</span>
@@ -87,35 +87,29 @@
                 </thead>
                 <tbody id='fetchAllCitizenConfirm'>
                   @if($citizens && $citizens -> count() > 0)
-                  @foreach($citizens as $citizen)
-                   <tr class="offerRow{{$citizen -> id}} bg-white hover:scale-95 transform transition-all ease-in">
+                  @foreach($citizens as $cit)
+                   <tr class="offerRow{{$cit -> id}} bg-white hover:scale-95 transform transition-all ease-in">
                     <td class="p-3 text-center">
-                      {{$citizen -> id}}
+                      {{$cit -> id}}
                     </td>
                     <td class="p-1 text-base text-center">
-                    {{$citizen->citizen_name}}
+                    {{$cit->citName}}
                      </td>
                     <td class="p-3 text-center">
-                     {{$citizen->identity_num}}
+                     {{$cit->identityNum}}
                     </td>
                     <td class="p-3 text-center whitespace-nowrap">
-                      <span class="bg-red-400 text-gray-50 rounded-md px-2">{{ $citizen->checked }}</span>
+                      <span class="bg-red-400 text-gray-50 rounded-md px-2">{{ $cit->checked }}</span>
                     </td>
                     <td class="p-5 flex space-x-2">
-                      <a href="#" citizenId="{{$citizen->id}}" class="citizenConfirmDelete text-red-400  hover:text-red-600 float-left ">
+                      <a href="#" citId="{{$cit -> id}}" class="citizenConfirmDelete text-red-400  hover:text-red-600 float-left ">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                           stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                         </svg>
                       </a>
-                      <a href="#" citizenId="{{$citizen->id}}" class="citizenConfirmEdit text-yellow-400 hover:text-yellow-600  mx-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                          <path
-                            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                        </svg>
-                      </a>
-                      <a href="#" citizenId="{{$citizen->id}}" class="citizenConfirmShow text-blue-400 hover:text-blue-600  ml-2">
+                      <a href="#" citId="{{$cit -> id}}" class="citizenConfirmShow text-blue-400 hover:text-blue-600  ml-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                           <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                           <path fill-rule="evenodd"

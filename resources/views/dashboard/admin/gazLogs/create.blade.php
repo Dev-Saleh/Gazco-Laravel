@@ -7,21 +7,21 @@
             <br>
             <div class="">
 
-                <form action="" method="POST" id='gaz_Logs_Form'>
+                <form action="" method="POST" id='gazLogsForm'>
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6 rounded-xl ">
                         @csrf
-                        <input type="text" name='id' style="display:none;" class="form-control" id="gaz_Logs_Id">
+                        <input type="text" name='id' style="display:none;" class="form-control" id="gazLogId">
                         <!-- GRID ONE -->
                         <div class="grid grid-cols-6 gap-4">
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full">
-                                    <select name="stations_id" value="" id='select_Stations'
+                                    <select name="staId" value="" id='select_Stations'
                                         onclick="this.setAttribute('value', this.value);"
                                         class="hover:border-blue-600  pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-blue-900 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200">
                                         <option value="" id='select_Station' selected disabled hidden></option>
                                         @if ($stations && $stations->count() > 0)
-                                            @foreach ($stations as $station)
-                                                <option value="{{ $station->id }}">{{ $station->staName }}
+                                            @foreach ($stations as $sta)
+                                                <option value="{{ $sta->id }}">{{ $sta->staName }}
                                                 </option>
                                             @endforeach
                                         @endif
@@ -31,6 +31,7 @@
                                         المحطه</label>
                                     <span class="text-sm text-red-600 hidden" id="error">Option has to be
                                         selected</span>
+                                   <small id='staId_error' style='color:red'></small>
 
                                 </div>
                             </div>
@@ -42,6 +43,7 @@
                                     <label for="name"
                                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الكميه</label>
                                     <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
+                                    <small id='qty_error' style='color:red'></small>
                                 </div>
                             </div>
 
@@ -56,6 +58,7 @@
                                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">تاريخ
                                         الدفعه</label>
                                     <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
+                                    <small id='created_at_error' style='color:red'></small>
                                 </div>
                             </div>
 
@@ -68,14 +71,14 @@
 
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full mb-5">
-                                    <select name="directorate_id" value="" id='select_Directorates' onchange="f('select_Rigons');" 
+                                    <select name="dirId" value="" id='select_Directorates' onchange="f('select_Rigons');" 
                                         onclick="this.setAttribute('value', this.value);" 
                                         class="hover:border-blue-600  pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-blue-900 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200">
                                         <option value="" id='select_Directorate' selected disabled hidden></option>
                                         @if ($directorates && $directorates->count() > 0)
-                                            @foreach ($directorates as $directorate)
-                                                <option value="{{ $directorate->id }}">
-                                                    {{ $directorate->dirName }}</option>
+                                            @foreach ($directorates as $dir)
+                                                <option value="{{ $dir->id }}">
+                                                    {{ $dir->dirName }}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -83,6 +86,7 @@
                                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المديريه</label>
                                     <span class="text-sm text-red-600 hidden" id="error">Option has to be
                                         selected</span>
+                                   <small id='dirId_error' style='color:red'></small>
                                 </div>
                             </div>
 
@@ -90,7 +94,7 @@
 
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full mb-5">
-                                    <select name="rigons_id" value="" id='select_Rigons' onchange="f('select_Agents');"
+                                    <select name="rigId" value="" id='select_Rigons' onchange="f('select_Agents');"
                                         onclick="this.setAttribute('value', this.value);" 
                                         class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                                         <option value="" id='select_Rigon' selected disabled hidden></option>
@@ -99,12 +103,13 @@
                                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المربع</label>
                                     <span class="text-sm text-red-600 hidden" id="error">Option has to be
                                         selected</span>
+                                   <small id='rigId_error' style='color:red'></small>
                                 </div>
                             </div>
 
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full mb-5">
-                                    <select name="agent_id" value="" id='select_Agents' 
+                                    <select name="agentId" value="" id='select_Agents' 
                                          onclick="this.setAttribute('value', this.value);"
                                         class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                                         <option value="A" id='select_Agent' selected disabled hidden></option>
@@ -114,6 +119,7 @@
                                     </label>
                                     <span class="text-sm text-red-600 hidden" id="error">Option has to be
                                         selected</span>
+                                       <small id='agentId_error' style='color:red'></small>
                                 </div>
                             </div>
 
@@ -135,14 +141,15 @@
                             sm:text-sm border border-gray-300 rounded-md h-full"
                                         placeholder="انت موقف راجع الاداره"></textarea>
                                 </div>
+                                <small id='notice_error' style='color:red'></small>
                             </div>
                             <div>
                                 <div class="p-20 bg-transparent text-center sm:px-6  rounded-3xl">
-                                    <button type="submit" id='save_Gaz_Logs'
+                                    <button type="submit" id='saveGazLogs'
                                         class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                         ارسال الدفعه
                                     </button>
-                                    <button type="submit" id='update_Gaz_Logs' style='display:none;'
+                                    <button type="submit" id='updateGazLogs' style='display:none;'
                                         class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                         تعديل الدفعه
                                     </button>
@@ -153,9 +160,6 @@
                 </form>
             </div>
         </details>
-
-
-
         <br>
         <br>
 
@@ -181,27 +185,27 @@
                                 <th class="p-3 text-center">العمليات</th>
                             </tr>
                         </thead>
-                        <tbody id="fetch_All_Gaz_Logs">
-                            @if ($gaz_Logs && $gaz_Logs->count() > 0)
-                                @foreach ($gaz_Logs as $gaz_Log)
+                        <tbody id="fetchLestGazLog">
+                            @if ($gazLogs && $gazLogs->count() > 0)
+                                @foreach ($gazLogs as $gazLog)
                                     <tr
-                                        class="offerRow{{ $gaz_Log->id }} bg-white hover:scale-95 transform transition-all ease-in ">
+                                        class="offerRow{{ $gazLog->id }} bg-white hover:scale-95 transform transition-all ease-in ">
                                         <td class="p-3 text-center">
-                                            {{ $gaz_Log->id }}
+                                            {{ $gazLog->id }}
                                         </td>
                                         <td class="p-3 text-center">
-                                            {{ $gaz_Log->station->staName }}
+                                            {{ $gazLog->station->staName }}
                                         </td>
                                         <td class="p-3 text-center">
-                                            {{ $gaz_Log->directorate->dirName }}
+                                            {{ $gazLog->directorate->dirName }}
                                         </td>
 
                                         <td class="p-3 text-center">
-                                            {{ $gaz_Log->rigon->rigName }}
+                                            {{ $gazLog->rigon->rigName }}
                                         </td>
                                         <td class="p-3 text-center">
                                             <span
-                                                class="bg-green-400 text-gray-50 rounded-md px-2">{{ $gaz_Log->agent->Agent_name }}</span>
+                                                class="bg-green-400 text-gray-50 rounded-md px-2">{{ $gazLog->agent->agentName }}</span>
                                         </td>
                                         <td class="p-1 transition-all ease-in duration-150 flex  justify-center">
                                             <div id="delete-alert"
@@ -211,8 +215,8 @@
                                             </div>
                                             <div id="action-div"
                                                 class="flex space-x-2  transition-all ease-in duration-150">
-                                                <a onclick="deleteAlert();" href="#" gaz_Log_Id="{{ $gaz_Log->id }}"
-                                                    class="gaz_Log_Delete text-red-400  hover:text-red-600 float-left ">
+                                                <a onclick="deleteAlert();" href="#" gazLogId="{{ $gazLog->id }}"
+                                                    class="gazLogDelete text-red-400  hover:text-red-600 float-left ">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -220,8 +224,8 @@
                                                             d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                     </svg>
                                                 </a>
-                                                <a href="#" gaz_Log_Id="{{ $gaz_Log->id }}"
-                                                    class="gaz_Log_Edit text-yellow-400 hover:text-yellow-600  mx-2">
+                                                <a href="#" gazLogId="{{ $gazLog->id }}"
+                                                    class="gazLogEdit text-yellow-400 hover:text-yellow-600  mx-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                                         viewBox="0 0 20 20" fill="currentColor">
                                                         <path

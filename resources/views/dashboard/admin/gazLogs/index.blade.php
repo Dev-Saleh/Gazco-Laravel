@@ -5,10 +5,10 @@
 
         <!-- End Line -->
      <!-- Adding logs -->
-        @include('dashboard.admin.gaz_Logs.create')   
+        @include('dashboard.admin.gazLogs.create')   
      <!-- END Adding logs -->
       <!-- Start Code Ajax -->
-        @include('dashboard.admin.includes.ajax.gaz_Logs')
+        @include('dashboard.admin.includes.ajax.gazLogs')
       <!-- End Code Ajax -->
    
       </article>

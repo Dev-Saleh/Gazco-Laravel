@@ -4,23 +4,30 @@
  // ########################## ( citizenConfirm SECTION ) ##############################
  
     // Start Deleteing citizenConfirm By Ajax 
-        $(document).on('click', '.citizenConfirmDelete', function (e) {
-            e.preventDefault();
-              var citizenId = $(this).attr('citizenId');
+        $(document).on('click', '.citizenConfirmDelete', function (e) 
+        {
+              e.preventDefault();
+              var citId = $(this).attr('citId');
+
             $.ajax({
                 type: 'delete',
                 url: "{{route('citizenConfirm.destroy')}}",
-                data: {
-                    '_token': "{{csrf_token()}}",
-                     'citizenId' :citizenId, 
+                data: 
+                {
+                     'citId' :citId, 
                 },
-                success: function (data) {
-                  console.log(data);
-                     if (data.status == true) {
+                success: function (data) 
+                {
+                   console.log(data); //for Test
+
+                  if (data.status == true)
+                    {
                      // alert.show(data.msg,'success');
                     }
-                    $('.offerRow'+data.id).remove();
-                }, error: function (reject) {
+
+                   $('.offerRow'+data.citId).remove();
+                }, error: function (reject) 
+                {
 
                 }
             });
@@ -28,73 +35,42 @@
 
    
     // End Deleting citizenConfirm By Ajax 
-    // Start edit citizenConfirm By Ajax 
-       
- 
-        $(document).on('click', '.citizenConfirmEdit', function (e) {
-            e.preventDefault();
-             var citizenId = $(this).attr('citizenId');
-            $.ajax({
-                type: 'get',
-                url:"{{route('citizenConfirm.edit')}}",
-                data: {
-                    '_token': "{{csrf_token()}}",
-                     'citizenId' :citizenId, 
-                },
-                success: function (data) {
-                 console.log(data);
-               
-                     if (data.status == true) {
-                     
-                       $('.citizen_name').text(data.citizen.citizen_name);
-                       $('#citizenId').text(data.citizen.id);
-                       $('.observer_name').text(data.citizen.observer.observer_name);
-                       $('.created_at').text(data.citizen.created_at);
-                       $('.directorate_name').text(data.citizen.directorate.dirName);
-                       $('.rigon_name').text(data.citizen.rigon.rigName);
-                       $('.Agent_name').text(data.citizen.observer.agent.Agent_name);
-                     
-                  }
-                }, error: function (reject) {
-
-                }
-            });
-        });
- 
-
-  // End edit citizenConfirm By Ajax 
    // Start show citizenConfirm By Ajax 
        
  
-        $(document).on('click', '.citizenConfirmShow', function (e) {
-            e.preventDefault();
-             var citizenId = $(this).attr('citizenId');
+        $(document).on('click', '.citizenConfirmShow', function (e) 
+        {
+             e.preventDefault();
+             var citId = $(this).attr('citId');
+
             $.ajax({
                 type: 'get',
                 url:"{{route('citizenConfirm.show')}}",
-                data: {
-                    '_token': "{{csrf_token()}}",
-                     'citizenId' :citizenId, 
-                },
-                success: function (data) {
-                 console.log(data);
+                data:
+                 {
+                     'citId' :citId, 
+                 },
+                success: function (data) 
+                {
+                     console.log(data); //for Test
                
-                     if (data.status == true) {
+                     if (data.status == true) 
+                     {
                          
-                           
-                      
                        $('#attachment').attr('src', data.citizen.attachment['valsrc']);
-                       $('.citizen_name').text(data.citizen.citizen_name);
-                       $('.citizen_identity').text(data.citizen.identity_num);
-                       $('#citizenId').text(data.citizen.id);
-                       $('.observer_name').text(data.citizen.observer.observer_name);
-                       $('.created_at').text(data.citizen.created_at);
-                       $('.directorate_name').text(data.citizen.directorate.dirName);
-                       $('.rigon_name').text(data.citizen.rigon.rigName);
-                       $('.Agent_name').text(data.citizen.observer.agent.Agent_name);
+                       $('.citName').text(data.citizen.citName);
+                       $('.identityNum').text(data.citizen.identityNum);
+                       $('#citId').text(data.citizen.id);
+                       $('.obsName').text(data.citizen.observer.obsName);
+                       $('.dateAdd').text(data.citizen.created_at);
+                       $('.dirName').text(data.citizen.directorate.dirName);
+                       $('.rigName').text(data.citizen.rigon.rigName);
+                       $('.agentName').text(data.citizen.observer.agent.agentName);
+
                      
-                  }
-                }, error: function (reject) {
+                    }
+                }, error: function (reject) 
+                {
 
                 }
             });
@@ -105,26 +81,33 @@
    // Start update citizenConfirm By Ajax 
        
  
-        $(document).on('change', '#checkbox', function (e) {
-            e.preventDefault();
-             var citizenId =  $('#citizenId').text();
+        $(document).on('change', '#checkbox', function (e)
+         {
+            
+             e.preventDefault();
+             var citId =  $('#citId').text();
              var checkbox= window.checkbox.checked;
+
             $.ajax({
                 type: 'post',
                 url:"{{route('citizenConfirm.update')}}",
-                data: {
-                    '_token': "{{csrf_token()}}",
-                     'citizenId' :citizenId, 
-                     'checkbox':checkbox,
+                data: 
+                {
+                     'citId' :citId, 
+                     'checkbox'  :checkbox,
                 },
-                success: function (data) {
-                 console.log(data);
+                success: function (data) 
+                {
+                     console.log(data);
                
-                     if (data.status == true) {
+                     if (data.status == true) 
+                     {
                          alert(data.msg,'success');
+                         $('.offerRow'+data.citId).remove();
                      
-                  }
-                }, error: function (reject) {
+                     }
+                }, error: function (reject) 
+                {
 
                 }
             });

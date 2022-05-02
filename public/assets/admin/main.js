@@ -105,7 +105,7 @@ function showPreviewUser(event){
 {
  const arrText =  text.split(" ");
       
-       const slugInput = document.getElementById('observer_username');
+       const slugInput = document.getElementById('obsUserName');
        slugInput.value = arrText[0];
 
 }

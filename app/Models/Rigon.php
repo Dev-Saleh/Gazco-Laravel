@@ -14,7 +14,7 @@ class Rigon extends Model
     public  $timestamps = false;
     public function agent()
     {
-        return $this->hasMany(Agent::class, 'rigons_id','id');
+        return $this->hasMany(Agent::class, 'rigId','id');
     }
     public function directorate()
     {

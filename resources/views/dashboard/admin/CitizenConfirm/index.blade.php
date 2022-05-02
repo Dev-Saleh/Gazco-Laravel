@@ -10,7 +10,7 @@
 
         <!-- End Line -->
        <!-- Adding CitizenConfirm -->
-        @include('dashboard.admin.CitizenConfirm.create')   
+        @include('dashboard.admin.citizenConfirm.create')   
        <!-- END Adding CitizenConfirm -->
         <!-- Start Code Ajax -->
         @include('dashboard.admin.includes.ajax.citizenConfirm')

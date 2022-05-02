@@ -4,10 +4,10 @@ namespace App;
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
-class gaz_Logs extends Model
+class gazLogs extends Model
 {
     protected $table='gazLogs';
-    protected $fillable = ['id','qty','dirid','rigId','staId','agentId','allowBooking','qtyRemaining','notice','validOfSell','created_at'];
+    protected $fillable = ['id','qty','dirId','rigId','staId','agentId','allowBooking','qtyRemaining','notice','validOfSell','created_at'];
     public  $timestamps = false;
     public function directorate()
     {

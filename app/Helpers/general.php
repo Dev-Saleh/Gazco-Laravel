@@ -5,6 +5,8 @@ define('PAGINATION_COUNT', 3);
 
 function uploadImage($folder,$image){
     $image->store('/', $folder);
+   // $imageResize=Image::make($image->getRealPath());
+   // $imageResize->resize(300,300);
     $filename = $image->hashName();
     return  $filename;
  }
