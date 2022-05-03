@@ -75,10 +75,11 @@ class CitizenController extends Controller
        
            try
                { 
-                    $attachment =$request->attachment;
-                    $filename=saveImage($attachment,'assets/images/citizens/');
+                    $attachment =$request->attachment;  
+                    $filename = uploadImageAndResize('citizens', $attachment , $width='220', $height='190');
+                  
                     $citizen = Citizen::create($request->except('_token'));
-
+ 
                     $citizen->attachment=$filename;
       
                     $citizen->save();
@@ -220,7 +221,7 @@ class CitizenController extends Controller
                     {
 
                         $getBeforeImage=Citizen::select('attachment')->find($request -> id); // Before update attachment Citizen git attchment citizen for detete
-                        $fileName=saveImage($request->attachment,'assets/images/citizens/');
+                        $fileName=uploadImageAndResize('citizens', $request->attachment , $width='220', $height='190');
                         Citizen::where('id', $request -> id)
                             ->update(
                               [
