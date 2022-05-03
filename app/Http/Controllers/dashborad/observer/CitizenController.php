@@ -3,6 +3,8 @@ namespace App\Http\Controllers\dashborad\observer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\requestsCitizen;
 use App\Models\Citizen;
+
+use Image;
 use App\Models\Observer;
 use Illuminate\Http\Request;
 use Symfony\Component\CssSelector\Node\SelectorNode;
@@ -14,7 +16,7 @@ class CitizenController extends Controller
     {
       try
          {
-        
+  
             $data['observers']=Observer::with(
             [
                 'directorate'=>function($q)
@@ -74,11 +76,13 @@ class CitizenController extends Controller
        
            try
                { 
-                    $file =$request->attachment;
-                    $filename = uploadImage('citizens', $file);
-
+                    $attachment =$request->attachment;
+                    $filename = uploadImage('citizens', $attachment);
+                   
                     $citizen = Citizen::create($request->except('_token'));
+
                     $citizen->attachment=$filename;
+      
                     $citizen->save();
                     
                     $lastCitizenAdd=Citizen::with(
@@ -162,7 +166,7 @@ class CitizenController extends Controller
                       }
                     ]
                   )->select('id','citName','identityNum','citPassword','mobileNum','attachment','dirId','rigId','obsId')->find($request -> citId);
-              
+                $image=$citizen->attachment;
                 if (!$citizen)
                   return response()->json(
                     [
@@ -174,8 +178,9 @@ class CitizenController extends Controller
                 
                 return response()->json(
                   [
-                    'status' => true,
-                    'citizen' => $citizen,        
+                    'status'  => true,
+                    'citizen' => $citizen,  
+                 
                   ]
                 ); 
             }
