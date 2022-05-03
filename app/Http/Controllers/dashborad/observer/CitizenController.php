@@ -3,8 +3,7 @@ namespace App\Http\Controllers\dashborad\observer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\requestsCitizen;
 use App\Models\Citizen;
-
-use Image;
+use Intervention\Image\Facades\Image;
 use App\Models\Observer;
 use Illuminate\Http\Request;
 use Symfony\Component\CssSelector\Node\SelectorNode;
@@ -77,8 +76,7 @@ class CitizenController extends Controller
            try
                { 
                     $attachment =$request->attachment;
-                    $filename = uploadImage('citizens', $attachment);
-                   
+                    $filename=saveImage($attachment,'assets/images/citizens/');
                     $citizen = Citizen::create($request->except('_token'));
 
                     $citizen->attachment=$filename;
@@ -114,6 +112,7 @@ class CitizenController extends Controller
                             'status'         => true,
                             'msg'            => 'تم الحفظ بنجاح',
                             'lastCitizenAdd' => $lastCitizenAdd,
+                            
                          ]
                         );
                    
@@ -221,8 +220,7 @@ class CitizenController extends Controller
                     {
 
                         $getBeforeImage=Citizen::select('attachment')->find($request -> id); // Before update attachment Citizen git attchment citizen for detete
-                        $fileName = uploadImage('citizens', $request->attachment);
-
+                        $fileName=saveImage($request->attachment,'assets/images/citizens/');
                         Citizen::where('id', $request -> id)
                             ->update(
                               [
