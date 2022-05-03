@@ -2,211 +2,206 @@
 namespace App\Http\Controllers\dashborad\observer;
 use App\Http\Controllers\Controller;
 use App\Models\Citizen;
-use App\Models\gaz_Logs;
+
+use App\Models\gazLogs;
 use App\Models\Observer;
 use Illuminate\Http\Request;
 
 class checkBatchController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-      try
-       {
-           $data[]='';
-           $observer=Observer::find($request->id);
-           $data['observers']= $observer;
-
-          $data['gaz_Logs']=gaz_Logs::with([
-          'station'=>function($q)
-            {
-              $q->select('id','staName');
-            }
-           ,'agent'=>function($q)
-           {
-             $q->select('id','Agent_name');
-           }
-           ,'directorate'=>function($q)
-           {
-             $q->select('id','dirName');
-           }
-           ,'rigon'=>function($q)
-           {
-             $q->select('id','rigName');
-           }
-         ],)->select('id','directorate_id','rigons_id','stations_id','agent_id','validOfSell','created_at')->where('validOfSell','1')->where('agent_id',$observer->agent_id)->get();
-          return view('dashboard.observer.checkBatch.index',$data);
-       
-    }
-    catch (\Exception $ex)
-     {
-        return response()->json([
-            'status' => false,
-            'msg' => 'error in index',
-        ]);
-     }
     
-    }
-    public function show_All()
-    {
-       
-    }
+    
+  public function index(Request $request)
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+   {
+                try
+                {
+                    
+                    $observer=Observer::find($request->id);
+                    $data['observers']= $observer;
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-       
-           
-    }
+                    $data['gazLogs']=gazLogs::with(
+                    [
+                        'station'=>function($q)
+                        {
+                            $q->select('id','staName');
+                        }
+                        ,'agent'=>function($q)
+                        {
+                            $q->select('id','agentName');
+                        }
+                        ,'directorate'=>function($q)
+                        {
+                            $q->select('id','dirName');
+                        }
+                        ,'rigon'=>function($q)
+                        {
+                            $q->select('id','rigName');
+                        }
+                    ]
+                    )->select('id','dirId','rigId','staId','agentId','validOfSell','created_at')->where('validOfSell','1')->where('agentId',$observer->agentId)->get();
+                   
+                    return view('dashboard.observer.checkBatch.index',$data);
+                
+                }
+                catch (\Exception $ex)
+                {
+                    return response()->json(
+                    [
+                        'status'         => false,
+                        'msg'            => 'error In Function Index',
+                        'exceptionError' => $ex,
+                    ]);
+                }
+                
+   }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Citizen  $citizen
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Request $request)
     {
-        try{
-            $gaz_Log = gaz_Logs::find($request -> checkBatchId);  // search in given table id only
-            if (!$gaz_Log)
-                return response()->json([
-                    'status' => false,
-                    'msg' => 'هذ العرض غير موجود',
+        try
+          {
+
+            $gazLog = gazLogs::with(
+                [
+                    'station'=>function($q)
+                    {
+                        $q->select('id','staName');
+                    }
+                    ,'agent'=>function($q)
+                    {
+                        $q->select('id','agentName');
+                    }
+                    ,'directorate'=>function($q)
+                    {
+                        $q->select('id','dirName');
+                    }
+                    ,'rigon'=>function($q)
+                    {
+                        $q->select('id','rigName');
+                    }
+                ]
+                )->select('id','dirId','rigId','staId','agentId','validOfSell','qty','created_at')->where('validOfSell','1')->find($request -> checkBatchId);  // search in given table id only
+          
+                if (!$gazLog)
+                return response()->json(
+                    [
+                        'status'  => false,
+                        'msg'     =>'Not Found Any Batch In table gaz Log',
                    
-                ]);
-            $gaz_Log =gaz_Logs::with(['directorate','agent','rigon','station'=>function($q){
-                $q->select();
-            }])->find($request -> checkBatchId);
-         
-
-            return response()->json([
-                'status' => true,
-                'gaz_Log' => $gaz_Log,
-               
-            ]); 
-          }
-          catch (\Exception $ex) {
-            return response()->json([
-                'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
-            ]);
-        }
+                    ]
+                );
+    
+            return response()->json(
+                [
+                    'status' => true,
+                    'gazLog' => $gazLog,
+                ]
+             );
+         }
+          catch(\Exception $ex)
+            {
+                    return response()->json(
+                        [
+                            'status'          => false,
+                            'msg'             => 'Error In Function Show',
+                            'ExceptionError ' => $ex,
+                       ]
+                );
+            }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Citizen  $citizen
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Request $request)
-    {
-       
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Citizen  $citizen
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request)
     {
-      try{
-              $observer=Observer::find($request->observerId);
-              $lastGazLogs=gaz_Logs::where('allowBookig','1')->where('agent_id',$observer->agent_id)->latest()->first();
-    
-          if($lastGazLogs)
-            {   
-               if($lastGazLogs->qtyRemaining == '0')  
-                {  
-                        $gaz_Log = gaz_Logs::find($request -> gazLogId);  // search in given table id only
-                        if (!$gaz_Log)
-                            return response()->json([
-                                'status' => false,
-                                'msg' => 'هذ العرض غير موجود',
-                                'id'=>$request -> gazLogId,
-                            ]);
-                        $gaz_Log->validOfSell='0';
-                        $gaz_Log->allowBookig='1';
-                        $gaz_Log->qtyRemaining=$gaz_Log->qty;
-                        $gaz_Log->update();
+      try
+            {
+                  $obs=Observer::find($request->obsId);
+                  
+                  // الخظوه الاوله : نستعلم على اخر كشف 
+                 
+                  $lastGazLogs=gazLogs::where('allowBooking','1')->where('agentId',$obs->agentId)->latest()->first();
 
-                        return response()->json([
-                            'status' => true,
-                            'gaz_Log' => $gaz_Log,
-                            'id'=>$request -> gazLogId,
-                        ]); 
-                  }
-                  else{
-                    // اسئل صالح اذا في كمية متبقيه
-                    //qtyRemaining الازم اعمل لها ادخال القيمه حقها نفس qty
-                    return response()->json([
-                        'status' => true,
-                        'warring' => 'هناك كميه مفتوحة الحجز',
-                        
-                    ]); 
+                  if($lastGazLogs)  //هذا الشرط لتاكذا اذا هناك كشف اذا نعم
+                    {   
+                       if($lastGazLogs->qtyRemaining == '0')  // هذا الشرط اذا الكمية المفتوحه للحجز تساوي صفر بمعني كملته اذا نعم نفتح حجز جديد
+                            {  
+                                    $gazLog = gazLogs::find($request -> gazLogId);  // نتاكذا من الكشف المرسل هل هو موجد في جدول الكشوفات
+                                   
+                                    if (!$gazLog) // هذا الشرط اذا الكشف المرسل لا نرسل رساله حظاء 
+                                        return response()->json(
+                                          [
+                                            'status'    => false,
+                                            'msg'       => 'This gaz Log Not Found Error In Function Update',
+                                            'gazLogId'  =>$request -> gazLogId, //for Test
+                                          ]
+                                       );
+
+                                    //اذا الكشف المرسل موجود نعمل تحديث
+                                   
+                                    $gazLog->validOfSell='0';
+                                    $gazLog->allowBooking='1';
+                                    $gazLog->qtyRemaining=$gazLog->qty;
+                                    $gazLog->update();
+
+                                    return response()->json(
+                                      [
+                                        'status'       => true,
+                                        'gazLog'       => $gazLog,  //For Test
+                                        'gazLogId'     => $request -> gazLogId, //For Delete Row Form Table
+                                      ]
+                                    ); 
+                            }
+                        else
+                            {
+                                    // اسئل صالح اذا في كمية متبقيه
+                                    //qtyRemaining الازم اعمل لها ادخال القيمه حقها نفس qty
+                                    return response()->json(
+                                    [
+                                        'status' => true,
+                                        'warring' => 'هناك كميه مفتوحة الحجز',
+                                        
+                                    ]
+                                   ); 
+                           }
                 }
-         }
-         else
-         {
-                $gaz_Log = gaz_Logs::find($request -> gazLogId);  // search in given table id only
-                if (!$gaz_Log)
-                    return response()->json([
-                        'status' => false,
-                        'msg' => 'هذ العرض غير موجود',
-                        'id'=>$request -> gazLogId,
-                    ]);
-                $gaz_Log->validOfSell='0';
-                $gaz_Log->allowBookig='1';
-                $gaz_Log->qtyRemaining=$gaz_Log->qty;
-                $gaz_Log->update();
+                else  // هنا اذا لم تكن كميه مفتوحه الحجز
+                {
+                        $gazLog = gazLogs::find($request -> gazLogId);  // نتاكذا من الكشف المرسل هل هو موجد في جدول الكشوفات
+                        
+                        if (!$gazLog) // هذا الشرط اذا الكشف المرسل لا نرسل رساله حظاء
+                            return response()->json(
+                            [
+                                'status'     => false,
+                                'msg'        => 'This gaz Log Not Found Error In Function Update',
+                                'gazLogId'   => $request -> gazLogId, //for Test
+                            ]);
 
-                return response()->json([
-                    'status' => true,
-                    'gaz_Log' => $gaz_Log,
-                    'id'=>$request -> gazLogId,
-                ]); 
-         }          
-       }
+                           //اذا الكشف المرسل موجود نعمل تحديث
+
+                            $gazLog->validOfSell='0';
+                            $gazLog->allowBooking='1';
+                            $gazLog->qtyRemaining=$gazLog->qty;
+                            $gazLog->update();
+
+                        return response()->json(
+                        [
+                            'status'   => true,
+                            'gazLog'   => $gazLog, //for Test
+                            'gazLogId' => $request -> gazLogId, ////For Delete Row Form Table
+                        ]); 
+                }          
+            }
             
-            catch (\Exception $ex) {
-              return response()->json([
-                  'status' => false,
-                  'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
-              ]);
-          }
+            catch (\Exception $ex) 
+            {
+                return response()->json(
+                [
+                    'status'          => false,
+                    'msg'             => 'Error In Function Update',
+                    'exceptionError'  => $ex,          
+                ]);
+            }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Citizen  $citizen
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Request $request)
-    {
-        
-    }
+    
 }

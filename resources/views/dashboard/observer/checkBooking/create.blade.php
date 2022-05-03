@@ -21,21 +21,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if ($gaz_Logs && $gaz_Logs->count() > 0)
-                            @foreach ($gaz_Logs as $gaz_Log)
+                        @if ($gazLogs && $gazLogs->count() > 0)
+                            @foreach ($gazLogs as $gazLog)
                                 <tr class="bg-gray-50 hover:scale-95 transform transition-all ease-in">
                                     <td class="p-3 text-center">
-                                        {{ $gaz_Log->id }}
+                                        {{ $gazLog->id }}
                                     </td>
                                     <td class="p-3 text-center">
-                                        {{ $gaz_Log->created_at }}
+                                        {{ $gazLog->created_at }}
                                     </td>
                                     <td class="p-3 text-right">
-                                        {{ $gaz_Log->id }}
+                                        {{ $gazLog->id }}
                                     </td>
 
                                     <td class="p-3 grid items-center justify-center">
-                                        <a href="#" gazLogId={{ $gaz_Log->id }}
+                                        <a href="#" gazLogId={{ $gazLog->id }}
                                             class="gazLogId text-blue-600 hover:text-blue-400">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                                 viewBox="0 0 20 20" fill="currentColor">

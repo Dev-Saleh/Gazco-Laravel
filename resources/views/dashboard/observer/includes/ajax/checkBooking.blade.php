@@ -51,13 +51,13 @@
                       $.each(data.showLogBookingsCitizen,function (key , BookingCitizen){
                         $('#showLogBookingsCitizen').append('<tr>\
                           <td class="text-center px-4 py-2 whitespace-nowrap">\
-                          <div class="text-sm text-gray-700">'+BookingCitizen.citizen.citizen_name+'</div>\
+                          <div class="text-sm text-gray-700">'+BookingCitizen.citizen.citName+'</div>\
                           </td>\
                         <td class="text-center px-4 py-2 whitespace-nowrap">\
                           <input class="confirm" type="checkbox" name="status_booking" logBookingId='+BookingCitizen.id+'  >\
                         </td>\
                         <td class="text-center px-4 py-2 whitespace-nowrap">\
-                          <input class="sms" type="checkbox"  mobileNum='+BookingCitizen.citizen.mobile_num+'  >\
+                          <input class="sms" type="checkbox"  mobileNum='+BookingCitizen.citizen.mobileNum+'  >\
                         </td>\
                       </tr>');
                       });

@@ -8,17 +8,17 @@
         </summary>
         <br>
         <div class="">
-            <form action="#" method="POST" id="citize_Form">
+            <form action="#" method="POST" id="citForm">
               @csrf 
-          <input type="text" name='id' style="display:none;" class="form-control"  id="citizen_Id"> 
-            <input type="text" name='observer_id' value="{{$observers->id}}" style="display:none;" class="form-control"  id="observer_Id"> 
+          <input type="text" name='id' style="display:none;" class="form-control"  id="citId"> 
+            <input type="text" name='obsId' value="{{$observers->id}}" style="display:none;" class="form-control"  id="observer_Id"> 
                 <div class="">
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6 rounded-xl ">
                         <!-- GRID ONE -->
                         <div class="grid grid-cols-6 gap-4">
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full">
-                                    <input type="text" name="citizen_name" id='citizen_name' placeholder=" " required
+                                    <input type="text" name="citName" id='citName' placeholder=" " required
                                         class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
                                    appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200
                                    hover:border-black text-black" />
@@ -26,12 +26,13 @@
                                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اسم
                                         المواطن</label>
                                     <span class="text-sm text-red-600 hidden" id="error">الاسم مطلوب !</span>
+                                   <small id='citName_error' style='color:red'></small>
                                 </div>
                             </div>
 
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full">
-                                    <input type="number" name="identity_num" id='identity_num' minlength="3" placeholder=" "
+                                    <input type="number" name="identityNum" id='identityNum' minlength="3" placeholder=" "
                                         
                                         onchange="convertNumToIdentity(document.getElementById('identity_num').value);"
                                         class="hover:border-black pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
@@ -39,18 +40,20 @@
                                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">رقم
                                         الهويه</label>
                                     <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
+                                     <small id='identityNum_error' style='color:red'></small>
                                 </div>
                             </div>
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
 
                                 <div class="relative z-0 w-full ">
-                                    <input type="number" name="citizen_password" id='citizen_password' placeholder=" " 
+                                    <input type="number" name="citPassword" id='citPassword' placeholder=" " 
                                         class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none
                           hover:border-black focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
                                     <label for="password"
                                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الرقم السري
                                     </label>
                                     <span class="text-sm text-red-600 hidden" id="error">Password is required</span>
+                                    <small id='citPassword_error' style='color:red'></small>
                                 </div>
                             </div>
 
@@ -63,7 +66,7 @@
 
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full">
-                                    <input type="number" name="mobile_num" id='mobile_num' placeholder=" "
+                                    <input type="number" name="mobileNum" id='mobileNum' placeholder=" "
                                         onchange="Slugify(document.getElementById('proudct_slug').value);"
                                         id="proudct_slug"
                                         class="hover:border-black pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
@@ -71,20 +74,22 @@
                                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">رقم
                                         الجوال</label>
                                     <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
+                                   <small id='mobileNum_error' style='color:red'></small>
                                 </div>
                             </div>
 
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full mb-5">
-                                    <select name="directorate_id"  value="{{$observers->directorate_id}}" id='select_directorates' 
+                                    <select name="dirId"  value="{{$observers->dirId}}" id='select_directorates' 
                                     onchange="f('select_rigons');" onclick="this.setAttribute('value', this.value);"
                                         class="hover:border-black  pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-black appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                                       <option value="{{$observers->directorate_id}}" id='select_directorate'>{{$observers->directorate->dirName}}</option>
+                                       <option value="{{$observers->dirId}}" id='select_directorate'>{{$observers->directorate->dirName}}</option>
                                     </select>
                                     <label for="select"
                                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المديريه</label>
                                     <span class="text-sm text-red-600 hidden" id="error">Option has to be
                                         selected</span>
+                                  <small id='dirId_error' style='color:red'></small>
                                 </div>
                             </div>
 
@@ -92,14 +97,15 @@
 
                             <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                                 <div class="relative z-0 w-full mb-5">
-                                    <select name="rigons_id" id='select_rigons' value="{{$observers->rigons_id}}" onclick="this.setAttribute('value', this.value);"
+                                    <select name="rigId" id='select_rigons' value="{{$observers->rigId}}" onclick="this.setAttribute('value', this.value);"
                                         class="hover:border-black pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-black appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                                        <option value="{{$observers->rigons_id}}" >{{$observers->rigon->rigName}}</option>
+                                        <option value="{{$observers->rigId}}" >{{$observers->rigon->rigName}}</option>
                                     </select>
                                     <label for="select"
                                         class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">المربع</label>
                                     <span class="text-sm text-red-600 hidden" id="error">Option has to be
                                         selected</span>
+                                   <small id='rigId_error' style='color:red'></small>
                                 </div>
                             </div>
 
@@ -126,16 +132,17 @@
                                     <img class="rounded w-full h-48 object-cover" src="" id="file-ip-1-preview" alt=""
                                         style="display: none;" class="w-52 h-28">
                                 </div>
+                                  <small id='attachment_error' style='color:red'></small>
 
                             </div>
 
                             <div>
                                 <div class="p-20 bg-transparent text-center sm:px-6  rounded-3xl">
-                                    <button type="submit" id='save_Citizen'
+                                    <button type="submit" id='saveCitizen'
                                         class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
                                         تسجيل المواطن
                                     </button>
-                                     <button type="submit" id='update_Citizen'  style='display:none;'
+                                     <button type="submit" id='updateCitizen'  style='display:none;'
                                         class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
                                         تعديل المواطن
                                      </button>
@@ -172,25 +179,25 @@
                             <th class="p-3 text-center">العمليات</th>
                         </tr>
                     </thead>
-                    <tbody id='fetch_All_Citizens'>
+                    <tbody id='fetchLastCitizen'>
                       @if($citizens && $citizens -> count() > 0)
-                      @foreach($citizens as $citizen)
-                        <tr  class="offerRow{{$citizen -> id}} bg-white hover:scale-95 transform transition-all ease-in">
+                      @foreach($citizens as $cit)
+                        <tr  class="offerRow{{$cit -> id}} bg-white hover:scale-95 transform transition-all ease-in">
                             <td class="p-3 text-center">
-                                {{$citizen -> id}}
+                                {{$cit -> id}}
                             </td>
                             <td class="p-3 text-center">
-                                {{$citizen -> citizen_name}}
+                                {{$cit -> citName}}
                             </td>
                             <td class="p-3 text-center">
-                                 {{$citizen -> directorate->dirName}}
+                                 {{$cit -> directorate->dirName}}
                             </td>
 
                             <td class="p-3 text-center">
-                                {{$citizen -> rigon->rigName}}
+                                {{$cit -> rigon->rigName}}
                             </td>
                             <td class="p-3 text-center">
-                                <span class="bg-green-400 text-gray-50 rounded-md px-2">{{$citizen->observer->agent->Agent_name}}</span>
+                                <span class="bg-green-400 text-gray-50 rounded-md px-2">{{$cit->observer->agent->agentName}}</span>
                             </td>
                             <td class="p-3 text-center ">
                                 <div id="delete-alert" class=" h-10 w-28 rounded-full overflow-hidden hidden">
@@ -198,14 +205,14 @@
                                     <button class="bg-red-200 w-14 hover:bg-red-400">N</button>
                                 </div>
                                 <div id="action-div" class="flex justify-center">
-                                    <a onclick="deleteAlert();" href="#" citizen_Id="{{$citizen->id}}"  class="citizen_Delete text-red-400  hover:text-red-600  ">
+                                    <a onclick="deleteAlert();" href="#" citId="{{$cit->id}}"  class="citizenDelete text-red-400  hover:text-red-600  ">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                         </svg>
                                     </a>
-                                    <a href="#"  citizen_Id="{{$citizen->id}}"  class="citizen_Edit text-yellow-400 hover:text-yellow-600 mx-2 ">
+                                    <a href="#"  citId="{{$cit->id}}"  class="citizenEdit text-yellow-400 hover:text-yellow-600 mx-2 ">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                             viewBox="0 0 20 20" fill="currentColor">
                                             <path

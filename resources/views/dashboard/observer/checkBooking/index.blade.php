@@ -2,7 +2,7 @@
 @section('content')
    
        <!-- Adding CitizenConfirm -->
-        @include('dashboard.observer.check_booking.create')   
+        @include('dashboard.observer.checkBooking.create')   
        <!-- END Adding CitizenConfirm -->
        <!-- Start Code Ajax -->
         @include('dashboard.observer.includes.ajax.checkBooking')

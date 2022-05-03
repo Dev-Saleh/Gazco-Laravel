@@ -5,7 +5,7 @@ use App\Models\Citizen;
 use App\Models\Observer;
 use App\Models\Rigon;
 use App\Models\Directorate;
-use App\Models\gaz_Logs;
+use App\Models\gazLogs;
 use App\Models\Station;
 use Illuminate\Database\Seeder;
 
@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
 
             ################################ ( STATION SEEDER ) ##########################
 
-        $stationArray = array("الفيوش","البريقه","بئر احمد","بئر فضل","العريش");
+        $stationArray = array("البريقه","بئر احمد","بئر فضل","العريش");
          for($i = 0 ; $i < count($stationArray) ;$i++)
         {
             Station::create([
@@ -214,16 +214,16 @@ class DatabaseSeeder extends Seeder
             $mm = Agent::select()->where('dirId', $aa)->get();
             $tt= $mm->random()->id;
 
-            gaz_Logs::create([
+            gazLogs::create([
                 'qty' => rand(90,100),
                 'qtyRemaining' => rand(90,100),
-                'directorate_id' => $aa,
-                'rigons_id' => $cc,
-                'stations_id' => $ss,
-                'agent_id' => $tt,
+                'dirId' => $aa,
+                'rigId' => $cc,
+                'staId' => $ss,
+                'agentId' => $tt,
                 'notice' => 'أنت موقف راجع الاداره',
                 'validOfSell' => rand(0, 1),
-                'allowBookig' => '0',
+                'allowBooking' => '0',
                
                 
 

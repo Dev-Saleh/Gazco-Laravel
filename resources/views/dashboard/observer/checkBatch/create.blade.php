@@ -10,7 +10,7 @@
           <!-- List Details For Logs -->
           <div class=" flex flex-col items-center justify-center space-y-4 px-6 py-6 bg-white border-0 shadow-lg rounded-xl w-full">
             <div class="flex-col space-y-4 w-full">
-              <input type="text" name='observer_id' value="{{$observers->id}}" style="display:none;" class="observer_Id form-control"> 
+              <input type="text" name='obsId' value="{{$observers->id}}" style="display:none;" class="obsId form-control"> 
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                 <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> الكشف للموزع : 
                   <span class="agentName text-xs bg-gray-800 text-gray-200 p-2 rounded-full">كريم حسن العقر</span>
@@ -18,7 +18,7 @@
               </ul>
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                 <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> تاريخ الكشف :
-                  <span class="createdAt text-xs bg-gray-800 text-gray-200 p-2 rounded-full">  22/17/1394</span>
+                  <span class="created_at text-xs bg-gray-800 text-gray-200 p-2 rounded-full">  22/17/1394</span>
                 </li>
               </ul>
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
@@ -28,7 +28,7 @@
               </ul>
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                 <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">من محطة : 
-                  <span class="stationName text-xs bg-gray-800 text-gray-200 p-2 rounded-full">  بير احمد</span>
+                  <span class="staName text-xs bg-gray-800 text-gray-200 p-2 rounded-full">  بير احمد</span>
                 </li>
               </ul>
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
@@ -60,20 +60,20 @@
                   </tr>
                 </thead>
                 <tbody>
-                   @if($gaz_Logs && $gaz_Logs -> count() > 0)
-                  @foreach($gaz_Logs as $gaz_Log)
-                  <tr class="bg-gray-50 hover:scale-95 transform transition-all ease-in">
+                   @if($gazLogs && $gazLogs -> count() > 0)
+                  @foreach($gazLogs as $gazLog)
+                  <tr class="offerRow{{$gazLog -> id}} bg-gray-50 hover:scale-95 transform transition-all ease-in">
                     <td class="p-3 text-center">
-                     {{$gaz_Log->id}} 
+                     {{$gazLog->id}} 
                     </td>
                     <td class="p-3 text-center">
-                  {{$gaz_Log->created_at}}
+                  {{$gazLog->created_at}}
                     </td>
                      <td class="p-3 text-center">
-                      <span class="bg-green-400 text-gray-50 rounded-md px-2">{{$gaz_Log->getvalidOfSell()}}</span>
+                      <span class="bg-green-400 text-gray-50 rounded-md px-2">{{$gazLog->getvalidOfSell()}}</span>
                     </td>
                     <td class="p-3 grid items-center justify-center">
-                      <a href="#" checkBatchId='{{$gaz_Log->id}}' class="checkBatchShow text-blue-600 hover:text-blue-400">
+                      <a href="#" checkBatchId='{{$gazLog->id}}' class="checkBatchShow text-blue-600 hover:text-blue-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                           <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                           <path fill-rule="evenodd"
