@@ -46,7 +46,7 @@ class checkBookingController extends Controller
                     [
                       'citizen'=>function($q)
                         {
-                            $q->select('id','citizenName','mobileNum');
+                            $q->select('id','citName','mobileNum');
                         }
                     ]
                 )->where('NumBatch',$request->gazLogId)->get();

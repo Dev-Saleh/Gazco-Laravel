@@ -31,7 +31,7 @@ class changeStatusBooking
     }
     function changeStatusBooking($logBookings)
     {
-        $logBookings->status_booking= $logBookings->status_booking=='0' ? '1':'0';
+        $logBookings->statusBooking= $logBookings->statusBooking=='0' ? '1':'0';
         $logBookings->save();
        
     }

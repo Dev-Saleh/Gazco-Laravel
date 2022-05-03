@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Models\gaz_Logs;
+use App\Models\gazLogs;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -20,10 +21,10 @@ class newBooking
      *
      * @return void
      */
-    public $gaz_Logs;
-    public function __construct(gaz_Logs $gaz_Logs)
+    public $gazLogs;
+    public function __construct(gazLogs $gazLogs)
     {
-        $this->gaz_Logs=$gaz_Logs;
+        $this->gazLogs=$gazLogs;
     }
 
     /**

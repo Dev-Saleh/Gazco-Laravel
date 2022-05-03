@@ -26,19 +26,19 @@ class decreaseQtyRemaining
      */
     public function handle(newBooking $event)
     {
-        $this->updateQtyRemaining($event->gaz_Logs);
+        $this->updateQtyRemaining($event->gazLogs);
     }
-    function updateQtyRemaining($gaz_Logs)
+    function updateQtyRemaining($gazLogs)
     {
-       if($gaz_Logs->qtyRemaining > '0') 
+       if($gazLogs->qtyRemaining > '0') 
        {
-            $gaz_Logs->qtyRemaining= $gaz_Logs->qtyRemaining - 1;
-            $gaz_Logs->save();
+            $gazLogs->qtyRemaining= $gazLogs->qtyRemaining - 1;
+            $gazLogs->save();
        }
-       elseif($gaz_Logs->qtyRemaining=='0') 
+       elseif($gazLogs->qtyRemaining=='0') 
        {
-            $gaz_Logs->allowBookig='0';
-            $gaz_Logs->save();
+            $gazLogs->allowBooking='0';
+            $gazLogs->save();
 
        }
     }

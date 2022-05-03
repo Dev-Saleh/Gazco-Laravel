@@ -4,6 +4,7 @@ namespace App\Events;
 
 
 use App\Models\logs_Booking;
+use App\Models\logsBooking;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -22,7 +23,7 @@ class statusBooking
      * @return void
      */
     public $logBookings;
-    public function __construct(logs_Booking $logBookings)
+    public function __construct(logsBooking $logBookings)
     {
         $this->logBookings=$logBookings;
     }

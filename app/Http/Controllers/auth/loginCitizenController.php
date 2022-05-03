@@ -52,7 +52,7 @@ class loginCitizenController extends Controller
         }
         else
         {
-           return redirect()->route('login')->with(['error' => "الرقم الوطني خاطى"]);
+            return redirect()->route('login')->with(['error' => "الرقم الوطني خاطى"]);
              
         }
     }

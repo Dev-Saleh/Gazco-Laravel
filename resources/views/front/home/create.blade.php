@@ -47,8 +47,8 @@
              <input type="datetime-local"style="display:none;"  value='' name="currentDate" id='currentDate' placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
               appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
               hover:border-blue-600 text-blue-900" />
-             <input type="text" name='citizen_id' value='{{ session()->get('idCitizen') }}'  style="display:none;" class="citizen_id form-control">
-             <input type="text" name='NumBatch' id="NumBatch"  style="display:none;" class="form-control">
+             <input type="text" name='citId' value='{{ session()->get('idCitizen') }}'  style="display:none;" class="citId form-control">
+             <input type="text" name='numBatch' id="numBatch"  style="display:none;" class="form-control">
          
             <span class="group absolute -top-6 z-10 h-8 w-12 bg-gray-500 rounded-md flex justify-center items-center ">
               <span class="bg-white h-4 w-6" >
