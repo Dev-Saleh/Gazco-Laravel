@@ -37,6 +37,7 @@ class loginAdminController extends Controller
             if($empIfo->empPassword == $request->empPassword)
             {
                session()->put('empId',$empIfo->id);
+               session()->put('empRole',$empIfo->empRole);
                session()->put('empUserName',$empIfo->empUserName);
                session()->put('empPhoto',$empIfo->empPhoto['valsrc']);
                
