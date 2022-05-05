@@ -27,7 +27,7 @@ class Agent extends Model
     {
         return $this->hasMany(gazLogs::class, 'agentId','id');
     }
-
+    
     public function getPhotoAttribute($val)
     {
         $Photo['exsit']=file_exists(public_path('assets/images/agents/'.$val));
@@ -35,14 +35,15 @@ class Agent extends Model
            {
                   $Photo['valsrc']=asset('assets/images/agents/'.$val);
                   $Photo['public_path']=public_path('assets/images/agents/'.$val);
-                   return $Photo;
+    
+                 return $Photo;
 
            }
       else 
            {
                     $Photo['valsrc']=''; //return image not found saleh get Image 
                     return $Photo; 
-           }                                     
+           }                                  
            
     }
 

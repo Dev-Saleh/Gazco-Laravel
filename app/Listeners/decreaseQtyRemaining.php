@@ -39,7 +39,6 @@ class decreaseQtyRemaining
        {
             $gazLogs->allowBooking='0';
             $gazLogs->save();
-
        }
     }
 }

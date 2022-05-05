@@ -15,7 +15,7 @@ function checkAllSms(myCheckbox){
 }
 //  لتحديد جميع التشيك بوكس
 function checkAllConfirm(myCheckbox){
-  var checkboxes_confirm = document.querySelectorAll(".confirm");
+  var checkboxes_confirm = document.querySelectorAll("#confirm");
     if(myCheckbox.checked == true){
       checkboxes_confirm.forEach(function(checkbox){
             checkbox.checked = true;

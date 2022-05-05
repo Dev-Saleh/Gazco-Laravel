@@ -166,7 +166,7 @@ class CitizenController extends Controller
                       }
                     ]
                   )->select('id','citName','identityNum','citPassword','mobileNum','attachment','dirId','rigId','obsId')->find($request -> citId);
-                $image=$citizen->attachment;
+             
                 if (!$citizen)
                   return response()->json(
                     [

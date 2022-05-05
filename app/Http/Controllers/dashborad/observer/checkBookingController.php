@@ -8,6 +8,7 @@ use App\Models\gazLogs;
 use App\Models\logsBooking;
 use App\Models\Observer;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\ArrayItem;
 
 class checkBookingController extends Controller
 {
@@ -18,7 +19,13 @@ class checkBookingController extends Controller
         {
        
                 $observer=Observer::find($request->id);
-                $data['gazLogs']=gazLogs::select('id','created_at')->where('allowBooking','1')->where('qtyRemaining','0')->where('agentId',$observer->agentId)->get();
+                $data['gazLogs']=gazLogs::select('id','created_at')->where(
+                    [
+                         ['validOfSell','1']
+                        ,['allowBooking','0']
+                        ,['qtyRemaining','0']
+                        ,['agentId',$observer->agentId]
+                    ])->get();
                 
                 return view('dashboard.observer.checkBooking.index',$data);
         }
@@ -49,7 +56,7 @@ class checkBookingController extends Controller
                             $q->select('id','citName','mobileNum');
                         }
                     ]
-                )->where('NumBatch',$request->gazLogId)->get();
+                )->select('id','citId','statusBooking')->where('NumBatch',$request->gazLogId)->get();
                
               if($showLogBookingsCitizen)
                 {
@@ -74,24 +81,45 @@ class checkBookingController extends Controller
             }
     }
 
-   
+   //في داله التحديث لما اكذا استلام كل المواطنين لازم اغير خاصيه صالح البيع في جدول الكشوفات الي 0
     public function update(Request $request)
     {  
         try
             {
-                $logBooking=logsBooking::find($request->logBookingId);
-                
-                if( $logBooking )
-                {
-                   
-                    event(new statusBooking( $logBooking));
-                    
-                    return response()->json([
-                        'status' => true,
-                        'msg' => 'Update',
-                    ]);
+            
+                $logBookingsId=[];
+                if(isset($request->logBookingId))
+                { 
+                    foreach( $request->logBookingId as $logBookingId)
+                        {
+                        
+                            $update= logsBooking::where([['id',$logBookingId],['statusBooking','0']])->update(['statusBooking'=>'1']);
+                            if($update)
+                            {
+                                $data=logsBooking::with(
+                                [
+                                    'citizen'=>function($q)
+                                        {
+                                            $q->select('id','citName','mobileNum');
+                                        }
+                                ]
+                                )->select('id','citId','statusBooking')->where('id',$logBookingId)->get();
+                               
+                                foreach ($data as $key => $value) 
+                                {
+                                    $logBookingsId=$value;
+                                }
+                             }
+                        }
+                        
+                        return response()->json(
+                        [
+                            'status' => true,
+                            'msg'    => 'Update',
+                            'logBookingsId'=>$logBookingsId,
+                        ]);
                 }
-
+                
             }
          catch (\Exception $ex)
             {

@@ -9,7 +9,7 @@
           </div>
         </div>
         <a href="" class="text-white text-xl font-semibold hover:text-gray-300">
-          {{session()->get('empUserName')}} | مسوؤل
+          {{session()->get('empUserName')}} | {{session()->get('empRole')}}
         </a>
       </div>
       <nav class=" text-base font-semibold pt-3">
