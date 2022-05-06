@@ -21,7 +21,7 @@ class checkBookingController extends Controller
                 $observer=Observer::find($request->id);
                 $data['gazLogs']=gazLogs::select('id','created_at')->where(
                     [
-                         ['validOfSell','1']
+                         ['validOfSell','0']
                         ,['allowBooking','0']
                         ,['qtyRemaining','0']
                         ,['agentId',$observer->agentId]
@@ -87,9 +87,7 @@ class checkBookingController extends Controller
         try
             {
             
-                $logBookingsId=[];
-                if(isset($request->logBookingId))
-                { 
+                   $logBookingsId=[];
                     foreach( $request->logBookingId as $logBookingId)
                         {
                         
@@ -103,30 +101,31 @@ class checkBookingController extends Controller
                                             $q->select('id','citName','mobileNum');
                                         }
                                 ]
-                                )->select('id','citId','statusBooking')->where('id',$logBookingId)->get();
+                                )->select('id','citId','statusBooking','numBatch')->where('id',$logBookingId)->get();
                                
                                 foreach ($data as $key => $value) 
                                 {
-                                    $logBookingsId=$value;
+                                    array_push($logBookingsId,$value);
                                 }
+
+
                              }
-                        }
-                        
-                        return response()->json(
+                            }   
+                    return response()->json(
                         [
                             'status' => true,
-                            'msg'    => 'Update',
+                            'msg'    => 'Update Success',
                             'logBookingsId'=>$logBookingsId,
+                        
                         ]);
-                }
-                
+            
             }
          catch (\Exception $ex)
             {
                 return response()->json(
                 [
                     'status'          => false,
-                    'msg'             => 'error in index',
+                    'msg'             => 'Error In Function Update',
                     'exceptionError'  => $ex,
                 ]);
             }

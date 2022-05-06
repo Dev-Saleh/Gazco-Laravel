@@ -148,7 +148,8 @@ class checkBatchController extends Controller
                     {
                         $gazLog = gazLogs::find($request -> gazLogId)->update(
                             [
-                                'allowBooking'=>'1'
+                                'allowBooking'=>'1',
+                                'validOfSell' =>'0' 
                             ]);  // نتاكذا من الكشف المرسل هل هو موجد في جدول الكشوفات
                     
                             if (!$gazLog) // هذا الشرط اذا الكشف المرسل لا نرسل رساله حظاء
