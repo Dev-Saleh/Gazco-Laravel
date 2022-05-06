@@ -20,10 +20,8 @@
               <i class="fas fa-tachometer-alt mr-3"></i>
               نظره عامه
           </a>
-          @php 
-          $obsId=session()->get('obsId');
-          @endphp
-          <a href="{{ route('citizen.index' , $obsId)}}"  
+          
+          <a href="{{ route('citizen.index')}}"  
               class=" text-base font-semibold flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl
@@ -34,7 +32,7 @@
               <i class="fas fa-table mr-3"></i>
               المواطنين
           </a>
-          <a href="{{route('checkBooking.index',$obsId)}}"
+          <a href="{{route('checkBooking.index')}}"
               class=" text-base font-semibold flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl
@@ -47,7 +45,7 @@
           </a>
 
 
-          <a href="{{route('checkBatch.index' ,$obsId)}}"
+          <a href="{{route('checkBatch.index')}}"
               class="flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl

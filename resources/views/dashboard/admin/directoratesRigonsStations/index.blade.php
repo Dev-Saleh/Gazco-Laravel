@@ -20,9 +20,22 @@
       <!-- Adding Station -->
         @include('dashboard.admin.directoratesRigonsStations.stationsCreate')  
       <!-- END Adding Station -->
-      <!-- Start Code Ajax -->
-        @include('dashboard.admin.includes.ajax.directoratesRigonsStations');
-      <!-- End Code Ajax -->
+
+
+         @section('script')
+
+            <!-- Start Code Ajax -->
+              @include('dashboard.admin.includes.ajax.directoratesRigonsStations.directorates')
+            <!-- End Code Ajax -->
+            <!-- Start Code Ajax -->
+              @include('dashboard.admin.includes.ajax.directoratesRigonsStations.rigons')
+            <!-- End Code Ajax -->
+            <!-- Start Code Ajax -->
+              @include('dashboard.admin.includes.ajax.directoratesRigonsStations.stations')
+            <!-- End Code Ajax -->
+            
+          @stop
+
             </div>
       </article>
   @stop

@@ -17,7 +17,7 @@ class checkBatchController extends Controller
                 try
                 {
                     
-                    $observer=Observer::find($request->id);
+                    $observer=Observer::find(session()->get('obsId'));
                     $data['observers']= $observer;
 
                     $data['gazLogs']=gazLogs::with(

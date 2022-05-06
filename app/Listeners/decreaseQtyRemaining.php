@@ -32,13 +32,11 @@ class decreaseQtyRemaining
     {
        if($gazLogs->qtyRemaining > '0') 
        {
-            $gazLogs->qtyRemaining= $gazLogs->qtyRemaining - 1;
-            $gazLogs->save();
+            $gazLogs->decrement('qtyRemaining');
+            
+            if($gazLogs->qtyRemaining=='0') 
+            $gazLogs->update(['allowBooking'=>'0']);
        }
-       elseif($gazLogs->qtyRemaining=='0') 
-       {
-            $gazLogs->allowBooking='0';
-            $gazLogs->save();
-       }
+       
     }
 }

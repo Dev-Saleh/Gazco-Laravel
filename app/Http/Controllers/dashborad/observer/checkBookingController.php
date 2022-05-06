@@ -18,7 +18,7 @@ class checkBookingController extends Controller
       try
         {
        
-                $observer=Observer::find($request->id);
+                $observer=Observer::find(session()->get('obsId'));
                 $data['gazLogs']=gazLogs::select('id','created_at')->where(
                     [
                          ['validOfSell','0']
@@ -41,9 +41,6 @@ class checkBookingController extends Controller
         }
     
     }
-    
-
-   
     public function show(Request $request)
     {
         try
