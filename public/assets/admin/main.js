@@ -37,8 +37,8 @@ function alertt(msg,st)
 {
       clearTimeout(this.hideTimeout);
       this.el = document.createElement("div");
-      this.el.className = "p-4 rounded-md text-lg flex items-center mx-auto w-96 top-10 z-10 absolute left-0 right-0 ";
-      document.body.appendChild(this.el);
+      this.el.className = "p-4 rounded-md text-lg flex items-center mx-auto w-96 top-10 z-10 fixed left-0 right-0 ";
+      document.body.prepend(this.el);
       this.el.textContent = msg;
 
 

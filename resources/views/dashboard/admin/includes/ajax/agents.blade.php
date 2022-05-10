@@ -34,7 +34,7 @@
         // Start fetch last Agent  
         function fetchLastAgent($lastAgent,$Photo) 
         {
-            $('#fetchLastAgent').prepend('<tr class="offerRow' + $lastAgent.id + ' animate__animated animate__fadeInRight  bg-white hover:scale-95 transform transition-all ease-in">\
+            $('#fetchLastAgent').prepend('<tr class="offerRow' + $lastAgent.id + ' animate-fadeInRight bg-white hover:scale-95 transform transition-all ease-in">\
                             <td class="p-3 text-center">' + $lastAgent.id + '</td>\
                             <td class="p-3 text-center">' + $lastAgent.agentName + '</td>\
                             <td class="p-3 text-right">\
@@ -43,7 +43,7 @@
                             <td class="p-3 text-center">\
                               <span class="bg-green-400 text-gray-50 rounded-md px-2">' + $lastAgent.directorate.dirName + '</span>\
                             </td>\
-                            <td class="p-5 flex space-x-2">\
+                            <td class="p-3 grid grid-cols-2 justify-center">\
                               <a href="#"  agentId="' + $lastAgent.id + '"  class="agentDelete text-red-400 hover:text-red-600 float-left ">\
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
@@ -112,7 +112,7 @@
                 success: function(data) {
                     console.log(data);
 
-                    $('.offerRow'+data.agentId).addClass("animate__fadeOutLeft");
+                    $('.offerRow'+data.agentId).addClass("animate-fadeInLeft");
                  
                     if (data.status == true) {
 
