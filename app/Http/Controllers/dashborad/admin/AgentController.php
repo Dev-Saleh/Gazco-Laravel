@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class AgentController extends Controller
 {
+   
     
     public function index()
     {
@@ -19,16 +20,22 @@ class AgentController extends Controller
 
             $data['directorates'] =Directorate::whereHas('rigon')->select('id','dirName')->orderby('id','DESC')->get();          
 
-            $data['agents']=Agent::with(['directorate'=>function($q){
-                $q->select('id','dirName')->get();
-            }])->select('id','agentName','Photo','dirId')->get();
+            $data['agents']=Agent::with(
+             [
+               'directorate'=>function($q)
+                {
+                    $q->select('id','dirName')->get();
+                }
+             ]
+            )->select('id','agentName','Photo','dirId')->orderByDesc('id')->get();
 
             return view('dashboard.admin.agents.index',$data);
         }
        catch (\Exception $ex)
         {
-           return response()->json([
-               'status' => false,
+           return response()->json(
+           [
+               'status'         => false,
                'exceptionError' => $ex,
            ]);
         }
@@ -127,11 +134,19 @@ class AgentController extends Controller
         try
         {
 
-            $agent = Agent::with(['directorate'=>function($q){
-                $q->select('id','dirName')->get();
-            },'rigon'=>function($q){
-                $q->select('id','rigName')->get();
-            }])->select('id','agentName','Photo','dirId','rigId')->find($request->agentId);
+            $agent = Agent::with(
+             [
+                 
+                'directorate'=>function($q)
+                    {
+                        $q->select('id','dirName')->get();
+                    }
+                ,'rigon'=>function($q)
+                    {
+                        $q->select('id','rigName')->get();
+                    }
+             ]
+            )->select('id','agentName','Photo','dirId','rigId')->find($request->agentId);
             
             if (!$agent)
                 return response()->json([

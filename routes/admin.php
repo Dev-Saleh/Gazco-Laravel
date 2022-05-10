@@ -112,7 +112,7 @@ Route::group(['namespace' => 'dashborad\observer','middleware' => 'authObserver'
   Route::get('/', 'DashboradController@index')->name('observer.dashboard');  // the first page Employe visits if authenticated
   
   Route::group(['prefix' => 'citizen'], function () {
-    Route::get('index/{id}',  'CitizenController@index')->name('citizen.index');
+    Route::get('index',  'CitizenController@index')->name('citizen.index');
     Route::post('store', 'CitizenController@store')->name('citizes.store');
     Route::delete('delete/{id?}','CitizenController@destroy')->name('citizen.destroy');
     Route::get('edit/{id?}', 'CitizenController@edit')->name('citizen.edit');
@@ -123,7 +123,7 @@ Route::group(['namespace' => 'dashborad\observer','middleware' => 'authObserver'
  
  
  Route::group(['prefix' => 'checkBooking'], function () {
-    Route::get('index/{id}',  'checkBookingController@index')->name('checkBooking.index');
+    Route::get('index',  'checkBookingController@index')->name('checkBooking.index');
     Route::get('show',  'checkBookingController@show')->name('checkBooking.show');
     Route::post('update',  'checkBookingController@update')->name('checkBooking.update');
     Route::post('sendSms',  'SendingMessageController@sendSms')->name('sendSms');
@@ -133,7 +133,7 @@ Route::group(['namespace' => 'dashborad\observer','middleware' => 'authObserver'
  
   
   Route::group(['prefix' => 'checkBatch'], function () {
-    Route::get('index/{id}', 'checkBatchController@index')->name('checkBatch.index');
+    Route::get('index', 'checkBatchController@index')->name('checkBatch.index');
     Route::post('update','checkBatchController@update')->name('checkBatch.allowBooking');
     Route::get('show', 'checkBatchController@show')->name('checkBatch.show');
     

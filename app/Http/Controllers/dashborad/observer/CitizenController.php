@@ -27,7 +27,7 @@ class CitizenController extends Controller
                     $q->select('id','rigName');
                 }
             ]
-            )->select('id','dirId','rigId')->find($request->id);
+            )->select('id','dirId','rigId')->find(session()->get('obsId'));
 
             $data['citizens']=Citizen::with(
                 [
@@ -51,8 +51,8 @@ class CitizenController extends Controller
                       )->select('id','agentId','obsName')->get();
                   }
                 ]
-                )->select('id','citName','dirId','rigId','obsId')->where('obsId',$request->id)->get();  // search in given table id only
- 
+                )->select('id','citName','dirId','rigId','obsId')->where('obsId',session()->get('obsId'))->get();  // search in given table id only
+             
             return view('dashboard.observer.citizens.index',$data);
        
          }
@@ -63,6 +63,7 @@ class CitizenController extends Controller
                 'status'         => false,
                 'msg'            => 'Error In Function Index',
                 'exceptionError' => $ex,
+                
             ]
             );
          }
@@ -166,7 +167,7 @@ class CitizenController extends Controller
                       }
                     ]
                   )->select('id','citName','identityNum','citPassword','mobileNum','attachment','dirId','rigId','obsId')->find($request -> citId);
-                $image=$citizen->attachment;
+             
                 if (!$citizen)
                   return response()->json(
                     [

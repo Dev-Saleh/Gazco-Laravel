@@ -102,13 +102,14 @@
         $(document).on('click', '.agentDelete', function(e) { 
             e.preventDefault();
             var agentId = $(this).attr('agentId');
+            if(confirm('هل تريد الحذف'))  // هذا رساله العامه حق جافا سكربت 
             $.ajax({
                 type: 'delete',
                 url: "{{ route('agent.destroy') }}",
-                data: {
+                data: 
+                {
                          'agentId': agentId,
-                      },
-
+                },
                 success: function(data) {
                     console.log(data);
 
