@@ -94,7 +94,7 @@
                 <tbody id='fetchLastAgent'>
                   @if($agents && $agents -> count() > 0)
                   @foreach($agents as $agent)
-                  <tr class="offerRow{{$agent -> id}} animate__animated bg-white hover:scale-95 transform transition-all ease-in">
+                  <tr class="offerRow{{$agent -> id}} bg-white hover:scale-95 transform transition-all ease-in">
                     <td class="p-3 text-center">
                       {{$agent->id}}
                     </td>
