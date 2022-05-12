@@ -21,13 +21,14 @@ class requestsCitizen extends FormRequest
      *
      * @return array
      */
+   // 'mobileNum'     =>'required|max:12|min:12|unique:citizens,mobileNum,'.$this -> id,
     public function rules()
     {
         return [
             'citName'       =>'required|max:35|unique:citizens,citName,'.$this -> id,
             'identityNum'   =>'required|max:30|unique:citizens,identityNum,'.$this -> id,
             'citPassword'   =>'required|max:30|min:6|unique:citizens,citPassword,'.$this -> id,
-            'mobileNum'     =>'required|max:9|min:9|unique:citizens,mobileNum,'.$this -> id,
+            'mobileNum'     =>'required|unique:citizens,mobileNum,'.$this -> id,
             'attachment'    =>'required|mimes:jpg,jpeg,png',
             'dirId'         =>'required|exists:directorates,id',
             'rigId'         =>'required|exists:rigons,id',
@@ -50,10 +51,7 @@ class requestsCitizen extends FormRequest
             'citPassword.min'            => 'رقم الهوية لايقل عن 6 رقم',
             'citPassword.unique'         => 'رمز السري يجب ان يكون فريد' ,
             'mobileNum.required'         => 'رقم الجوال مطلوب' ,
-            'mobileNum.max'              => 'رقم الجوال لايزيد عن 9 رقم',
-            'mobileNum.min'              => 'رقم الجوال لايقل عن 9 رقم',
             'mobileNum.unique'           => 'رقم الجوال يجب ان يكون فريد' ,
-           
            
             'attachment.mimes'    =>  'لامتداد غير مناسب',
             'attachment.required' =>'الصوره مطلوبه',

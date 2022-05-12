@@ -2,17 +2,11 @@
 
 
 namespace App\Http\Controllers\dashborad\observer;
-
 use App\Http\Controllers\Controller;
-
-
-
 use NumberFormatter;
-
 use Illuminate\Support\Facades\Mail;
 use App\Notifications\PaymentReceived;
 use Illuminate\Support\Facades\Notification;
-
 use Illuminate\Http\Request;
 use Nexmo\Laravel\Facade\Nexmo;
 class SendingMessageController extends Controller
@@ -23,23 +17,55 @@ class SendingMessageController extends Controller
     // }
     public function sendSms(Request $request)
     {
-        $basic  = new \Vonage\Client\Credentials\Basic("bbd927f5", "Jr0KNpOnEGjKMgTN");
-        $client = new \Vonage\Client($basic);
+
+        foreach($request->mobilesCitizen as $number) 
+        {
+                // Nexmo::message()->send([
+                //       'to'   => $number,
+                //       'from' => 'DBSMazen',
+                //       'text' => 'Hello Motaze',
+                //   ]);
+
+ 
+
+            $basic  = new \Vonage\Client\Credentials\Basic("dc27f7f7", "zxSVqS8FrnISAGdM");
+            $client = new \Vonage\Client($basic);
 
 
-        $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("967734043538", 'Gazco', 'مرحبا مزوني دبة الغاز وصلتك تعال استلمها يكلب')
-        );
-        
-        $message = $response->current();
-        
-        if ($message->getStatus() == 0) {
-            echo "The message was sent successfully\n";
-        } else {
-            echo "The message failed with status: " . $message->getStatus() . "\n";
-        }
-        echo "Message has been sent successfuly";
+             $client->sms()->send(
+                new \Vonage\SMS\Message\SMS( $number, 'DBSMazen', 'معتز حبيبي')
+            );
+            
+    //         $message = $response->current();
+            
+    //         if ($message->getStatus() == 0) 
+    //         {
+    //                 return response()->json(
+    //                     [
+    //                         'status' => true,
+    //                         'msg'    => "The message was sent successfully\n",
+                        
+    //                     ]);
+    //         } 
+    //         else
+    //          {
+    //                 return response()->json(
+    //                     [
+    //                         'status' => true,
+    //                         'msg'    => "The message failed with status: " . $message->getStatus() . "\n",
+                        
+    //                     ]);
+    //         }
+    
+    //         return response()->json(
+    //             [
+    //                 'status' => true,
+    //                 'msg'    =>  "Message has been sent successfuly",
+    //             ]);
+    //    }
     }
+       echo 'Message has been sent successfuly';
        
     }
 
+}

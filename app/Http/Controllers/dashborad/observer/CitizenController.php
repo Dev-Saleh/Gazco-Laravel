@@ -171,9 +171,9 @@ class CitizenController extends Controller
                 if (!$citizen)
                   return response()->json(
                     [
-                      'status'   => false,
-                      'msg'      => 'The Citizen Not Found Error In Function Edit',
-                     'citId'     => $request->citId,
+                       'status'   => false,
+                       'msg'      => 'The Citizen Not Found Error In Function Edit',
+                       'citId'     => $request->citId,
                     ]
                   );
                 
