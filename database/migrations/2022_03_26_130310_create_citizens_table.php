@@ -16,7 +16,7 @@ class CreateCitizensTable extends Migration
         Schema::create('citizens', function (Blueprint $table) {
             $table->increments('id');
             $table->string('citName')->unique();
-            $table->integer('mobileNum')->unsigned();
+            $table->string('mobileNum')->unique();
             $table->integer('identityNum')->unsigned();
             $table->string('attachment')->unique();
             $table->string('citPassword')->unique();
