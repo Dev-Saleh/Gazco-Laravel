@@ -2,47 +2,46 @@
 <script>
      $(document).on('click', '#sendTestMessage', function(e) 
      {
-       
-        e.preventDefault();
-        var checkboxesAll = document.querySelectorAll(".sms");
-         const mobilesCitizen = [];
-            checkboxesAll.forEach(function(checkbox)
-             {
-                  if( checkbox.checked == true )
+              e.preventDefault();
+              var checkboxesAll = document.querySelectorAll(".sms");
+              const mobilesCitizen = [];
+                  checkboxesAll.forEach(function(checkbox)
                   {
-                    let text = checkbox.getAttribute("mobilenum");    
-                        mobilesCitizen.push(text)
-                  }
-              });
-             console.log(mobilesCitizen);
-
-         $.ajax(
+                        if( checkbox.checked == true )
+                        {
+                          let text = checkbox.getAttribute("mobilenum");    
+                              mobilesCitizen.push(text)
+                        }
+                    });
+                   
+         if(mobilesCitizen.length)
            {
-                type: 'POST',
-                enctype: 'multipart/form-data',
-                url: "{{route('sendSms')}}",
-                data:
-                       {
-                         'mobilesCitizens':mobilesCitizen 
-                      },
-                processData: false,
-                contentType: false,
-                cache: false,
+              $.ajax
+              ({
+                      type: 'POST',
+                      url: "{{route('sendSms')}}",
+                      data:
+                            {
+                                  // 'mobilesCitizen':mobilesCitizen 
+                                  'mobilesCitizen':['967730147461','967738776516']
+
+                            },
                 success: function (data) 
-                {
-                    console.log(data);
-                    if (data.status == true)
-                   {
-                    
-                    
-                    } 
-                  
-                }
-                , error: function (reject) 
-                {
-                }
-            });
-        });            
+                      {
+                          console.log(data);
+                          if (data.status == true)
+                          {
+                          
+                          
+                          } 
+                        
+                      }
+                      , error: function (reject) 
+                      {
+                      }
+              });
+           }
+       });            
 
     // Start   By Ajax 
         $(document).on('click', '.gazLogId', function (e) 
@@ -158,7 +157,7 @@
                 }
             });
            }
-        });            
+     });            
      
    
     // End  By Ajax 
