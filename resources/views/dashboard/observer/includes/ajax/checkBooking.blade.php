@@ -21,7 +21,10 @@
                 type: 'POST',
                 enctype: 'multipart/form-data',
                 url: "{{route('sendSms')}}",
-                data: mobilesCitizen,
+                data:
+                       {
+                         'mobilesCitizens':mobilesCitizen 
+                      },
                 processData: false,
                 contentType: false,
                 cache: false,

@@ -14,7 +14,7 @@
   <body dir="rtl">
    
 
-          @include('auth.loginObserverPage.create');
+          @include('auth.loginObserverPage.create')
 
 
   <script src="{{ asset('assets/admin/jquery-3.6.0.min.js') }}"></script>

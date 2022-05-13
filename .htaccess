@@ -1,0 +1,2 @@
+<ifModule mod_headers.c> Header set Connection keep-alive </ifModule>
+Header set Connection keep-alive

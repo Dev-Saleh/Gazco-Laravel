@@ -14,7 +14,7 @@
   <body dir="rtl">
    
 
-          @include('auth.loginAdminPage.create');
+          @include('auth.loginAdminPage.create')
 
 
   <script src="{{ asset('assets/admin/jquery-3.6.0.min.js') }}"></script>

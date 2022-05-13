@@ -1,20 +1,25 @@
     <img
-        src="Assets/wave.png"
-        class="fixed hidden lg:block inset-0 h-full transform rotate-180"
-        style="z-index: -1;"
+        src={{ asset('assets/images/loginLogo/waveAdmin.png') }}
+        class="fixed  lg:block h-full transform rotate-0 left-0 -z-10"
+        
+        />
+    <img
+        src={{ asset('assets/images/loginLogo/waveAdmin.png') }}
+        class="fixed  lg:block h-full transform rotate-180 -z-10"
+        
         />
         <div
-        class="w-screen h-screen flex flex-col justify-center items-center lg:grid lg:grid-cols-2"
+        class="w-screen h-screen flex flex-col justify-center items-center lg:grid lg:grid-cols-2 overflow-hidden"
         >
         <img
-            src="Assets/unlock.svg"
-            class="hidden   lg:block w-1/2 hover:scale-150 transition-all duration-500 transform mx-auto"
+            src={{ asset('assets/images/loginLogo/illustrasionAdmin.svg') }}
+            class="  lg:block w-1/2 hover:scale-150 transition-all duration-500 transform mx-auto"
         />
         <form action="{{ route('adminCheckAdmin') }}" method="POST" id='logAdminForm'>
              @csrf   
-            <img src="Assets/avatar.svg" class="w-32" />
+            <img src={{ asset('assets/images/loginLogo/avatar.svg') }} class="w-32" />
             <h2
-            class="my-8 font-display font-bold text-3xl text-gray-700 text-center"
+            class="my-8 font-display font-bold text-3xl text-gray-700 text-right"
             >
             مرحبا بك في غازكو
             </h2>
@@ -34,10 +39,8 @@
                 class="pr-8 border-b-2 font-display focus:outline-none focus:border-yellow-500 transition-all duration-500 capitalize text-lg"
             />
             </div>
-            <a href="#" class="self-end mt-4 text-gray-600 font-bold"
-            >Forgot password?</a
-            >
-            <button id='loginEmployees' class="py-3 px-20 bg-primarycolor rounded-full text-white font-bold uppercase text-lg mt-4 transform hover:translate-y-1 transition-all duration-500 focus:bg-yellow-700">
+           
+            <button id='loginEmployees' class="py-3 px-20 bg-yellow-500 rounded-full text-white font-bold uppercase text-lg mt-4 transform hover:translate-y-1 transition-all duration-500 focus:bg-yellow-700">
              تسجيل  
             </button>
         </form>

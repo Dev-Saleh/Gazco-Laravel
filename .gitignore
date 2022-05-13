@@ -3,8 +3,6 @@
 /public/storage
 /storage/*.key
 /vendor
-/database/seeds/*.php
-/database/seeds/DatabaseSeeder.php
 
 .env
 .env.backup
@@ -13,5 +11,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-/public/assets/images/ 
+# /public/assets/images/ 
 /public/assets/admin/css/output.css 
+app/Http/Controllers/TestController.php
