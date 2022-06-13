@@ -103,182 +103,182 @@
       width: 120px;
       right: 470px;
     }
-  </style>
+</style>
   
 
-          <div class="p-6 w-full">
-  
-            <nav class="navBtn w-full h-12">
-              <a href="#">الدفعات</a>
-              <a href="#">المواطنين</a>
-              <a href="#">المراقبين</a>
-              <a href="#">الموزعين</a>
-              <a href="#">المديريات</a>
-              <div class="animation"></div>
-            </nav>
-  
-            <div class="containerSlides h-full w-full p-5">
-              <div id="batchReport" class="slide bg-slate-800 ">
-                <div class="p-6 grid grid-cols-5 gap-x-10 ">
-  
-                  <div class="select_wrap w-full relative select-none">
-                    <ul class="default_option rounded relative  bg-purple-100">
-                      <li class="p-3">
-                        <div class="option">
-                          <p id="valueSelect">الكل</p>
-                        </div>
-                      </li>
-                    </ul>
-                    <ul
-                      class="select_ul opacity-0 absolute transition-opacity duration-300  left-0 w-full rounded  top-14 bg-white">
-                      <li class=" p-2  hover:bg-purple-200">
-                        <div class="">
-                          <p>المعلا</p>
-                        </div>
-                      </li>
-                      <li class=" p-2 hover:bg-purple-200">
-                        <div class="">
-                          <p>عدن</p>
-                        </div>
-                      </li>
-                      <li class=" p-2 hover:bg-purple-200">
-                        <div class="">
-                          <p>خور مكسر</p>
-                        </div>
-                      </li>
-                      <li class=" p-2 hover:bg-purple-200">
-                        <div class="">
-                          <p>التواهي</p>
-                        </div>
-                      </li>
-  
-                    </ul>
+              <div class="p-6 w-full">
+      
+                <nav class="navBtn w-full h-12">
+                  <a href="#">الدفعات</a>
+                  <a href="#">المواطنين</a>
+                  <a href="#">المراقبين</a>
+                  <a href="#">الموزعين</a>
+                  <a href="#">المديريات</a>
+                  <div class="animation"></div>
+                </nav>
+      
+                <div class="containerSlides h-full w-full p-5">
+                  <div id="batchReport" class="slide bg-slate-800 ">
+                    <div class="p-6 grid grid-cols-5 gap-x-10 ">
+      
+                      <div class="select_wrap w-full relative select-none">
+                        <ul class="default_option rounded relative  bg-purple-100">
+                          <li class="p-3">
+                            <div class="option">
+                              <p id="valueSelect">الكل</p>
+                            </div>
+                          </li>
+                        </ul>
+                        <ul
+                          class="select_ul opacity-0 absolute transition-opacity duration-300  left-0 w-full rounded  top-14 bg-white">
+                          <li class=" p-2  hover:bg-purple-200">
+                            <div class="">
+                              <p>المعلا</p>
+                            </div>
+                          </li>
+                          <li class=" p-2 hover:bg-purple-200">
+                            <div class="">
+                              <p>عدن</p>
+                            </div>
+                          </li>
+                          <li class=" p-2 hover:bg-purple-200">
+                            <div class="">
+                              <p>خور مكسر</p>
+                            </div>
+                          </li>
+                          <li class=" p-2 hover:bg-purple-200">
+                            <div class="">
+                              <p>التواهي</p>
+                            </div>
+                          </li>
+      
+                        </ul>
+                      </div>
+                      <div class="select_wrap w-full relative select-none">
+                        <ul class="default_option rounded relative  bg-purple-100">
+                          <li class="p-3">
+                            <div class="option">
+                              <p id="valueSelect">الكل</p>
+                            </div>
+                          </li>
+                        </ul>
+                        <ul
+                          class="select_ul opacity-0 absolute transition-opacity duration-300  left-0 w-full rounded  top-14 bg-white">
+                          <li class=" p-2  hover:bg-purple-200">
+                            <div class="">
+                              <p>جبل قوارير</p>
+                            </div>
+                          </li>
+                          <li class=" p-2 hover:bg-purple-200">
+                            <div class="">
+                              <p>كاسترو</p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="select_wrap w-full relative select-none">
+                        <ul class="default_option rounded relative  bg-purple-100">
+                          <li class="p-3">
+                            <div class="option">
+                              <p id="valueSelect">الكل</p>
+                            </div>
+                          </li>
+                        </ul>
+                        <ul
+                          class="select_ul opacity-0 absolute transition-opacity duration-300  left-0 w-full rounded  top-14 bg-white">
+                          <li class=" p-2  hover:bg-purple-200">
+                            <div class="">
+                              <p> كريم العقر</p>
+                            </div>
+                          </li>
+                          <li class=" p-2 hover:bg-purple-200">
+                            <div class="">
+                              <p>مصعب خالد</p>
+                            </div>
+                          </li>
+                          <li class=" p-2 hover:bg-purple-200">
+                            <div class="">
+                              <p> معتز حسن</p>
+                            </div>
+                          </li>
+      
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                  <div class="select_wrap w-full relative select-none">
-                    <ul class="default_option rounded relative  bg-purple-100">
-                      <li class="p-3">
-                        <div class="option">
-                          <p id="valueSelect">الكل</p>
-                        </div>
-                      </li>
-                    </ul>
-                    <ul
-                      class="select_ul opacity-0 absolute transition-opacity duration-300  left-0 w-full rounded  top-14 bg-white">
-                      <li class=" p-2  hover:bg-purple-200">
-                        <div class="">
-                          <p>جبل قوارير</p>
-                        </div>
-                      </li>
-                      <li class=" p-2 hover:bg-purple-200">
-                        <div class="">
-                          <p>كاسترو</p>
-                        </div>
-                      </li>
-                    </ul>
+      
+                  <div id="citizenReport" class="slide bg-purple-400 hidden">
+      
                   </div>
-                  <div class="select_wrap w-full relative select-none">
-                    <ul class="default_option rounded relative  bg-purple-100">
-                      <li class="p-3">
-                        <div class="option">
-                          <p id="valueSelect">الكل</p>
-                        </div>
-                      </li>
-                    </ul>
-                    <ul
-                      class="select_ul opacity-0 absolute transition-opacity duration-300  left-0 w-full rounded  top-14 bg-white">
-                      <li class=" p-2  hover:bg-purple-200">
-                        <div class="">
-                          <p> كريم العقر</p>
-                        </div>
-                      </li>
-                      <li class=" p-2 hover:bg-purple-200">
-                        <div class="">
-                          <p>مصعب خالد</p>
-                        </div>
-                      </li>
-                      <li class=" p-2 hover:bg-purple-200">
-                        <div class="">
-                          <p> معتز حسن</p>
-                        </div>
-                      </li>
-  
-                    </ul>
+                  <div id="citizenReport" class="slide bg-red-400 hidden">
+      
                   </div>
+      
                 </div>
+      
               </div>
-  
-              <div id="citizenReport" class="slide bg-purple-400 hidden">
-  
-              </div>
-              <div id="citizenReport" class="slide bg-red-400 hidden">
-  
-              </div>
-  
-            </div>
-  
-          </div>
-  
-  
-        
-      </main>
-    </div>
-    <script src="/js/jquery.min.js"></script>
-    <script>
-      $(".default_option").click(function () {
-        $(this).parent().toggleClass("active");
-        $(this).parent().removeClass("hidden");
-  
-      })
-  
-      $(".select_ul li").click(function () {
-        var currentele = $(this).html();
-        $(".default_option li").html(currentele);
-        $(this).parents(".select_wrap").removeClass("active");
-      })
-    </script>
-    <script>
-  
-  
-      const allSideMenu = document.querySelectorAll('.sidebar a');
-      console.log(allSideMenu);
-      allSideMenu.forEach(item => {
-        // const li = item.parentElement;
-  
-        item.addEventListener('click', function () {
-          allSideMenu.forEach(i => {
-            i.classList.remove('bg-indigo-500');
-          })
-          item.classList.add('bg-indigo-500');
-        })
-      });
-  
-  
-  
-  
-      /* NAVBAR Of Reports*/
-      const btns = document.querySelectorAll('.navBtn a');
-      const slides = document.querySelectorAll('.containerSlides .slide')
-      console.log(btns);
-      console.log(slides);
-      btns.forEach(btn => {
-        // const li = item.parentElement;
-        btn.addEventListener('click', function () {
-          btns.forEach(b => {
-            b.style.backgroundColor = "";
-          })
-          btn.style.backgroundColor = "#1abc9c";
-          
-          slides.addEventListener('click', function () { 
+      
+      
             
-            slides.forEach(s => {
-              s.classList.remove('hidden');
+          </main>
+        </div>
+  <script src="/js/jquery.min.js"></script>
+                <script>
+                  $(".default_option").click(function () {
+                    $(this).parent().toggleClass("active");
+                    $(this).parent().removeClass("hidden");
               
-            })
-          })
-        })
-      });
-      /* NAVBAR Of Reports*/
-  
-    </script>
- 
-  
+                  })
+              
+                  $(".select_ul li").click(function () {
+                    var currentele = $(this).html();
+                    $(".default_option li").html(currentele);
+                    $(this).parents(".select_wrap").removeClass("active");
+                  })
+                </script>
+                <script>
+              
+              
+                  const allSideMenu = document.querySelectorAll('.sidebar a');
+                  console.log(allSideMenu);
+                  allSideMenu.forEach(item => {
+                    // const li = item.parentElement;
+              
+                    item.addEventListener('click', function () {
+                      allSideMenu.forEach(i => {
+                        i.classList.remove('bg-indigo-500');
+                      })
+                      item.classList.add('bg-indigo-500');
+                    })
+                  });
+              
+              
+              
+              
+                  /* NAVBAR Of Reports*/
+                  const btns = document.querySelectorAll('.navBtn a');
+                  const slides = document.querySelectorAll('.containerSlides .slide')
+                  console.log(btns);
+                  console.log(slides);
+                  btns.forEach(btn => {
+                    // const li = item.parentElement;
+                    btn.addEventListener('click', function () {
+                      btns.forEach(b => {
+                        b.style.backgroundColor = "";
+                      })
+                      btn.style.backgroundColor = "#1abc9c";
+                      
+                      slides.addEventListener('click', function () { 
+                        
+                        slides.forEach(s => {
+                          s.classList.remove('hidden');
+                          
+                        })
+                      })
+                    })
+                  });
+                  /* NAVBAR Of Reports*/
+          
+  </script>
+    
+      

@@ -6,9 +6,9 @@
         <!-- Adding observers -->
         @include('dashboard.admin.reports.create')   
         <!-- END Adding observers -->
-         <!-- Start Code Ajax -->
+        <!-- Start Code Ajax -->
           @include('dashboard.admin.includes.ajax.reports')
         <!-- End Code Ajax -->
 
-   </article>
+    </article>
       @stop
