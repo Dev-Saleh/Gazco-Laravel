@@ -34,7 +34,7 @@ class TestController extends Controller
     public function index()
     {
         //
-        return view('front.checkBooking.index');
+        return view('dashboard.admin.reports.index');
     }
 
     public function sendSms(Request $request)

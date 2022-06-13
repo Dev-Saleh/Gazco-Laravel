@@ -3,10 +3,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SendSMSController;
+
  
 
 
-Route::get('/test', 'TestController@sendSms')->name('Test');
+Route::get('/test', 'ReeportController@index')->name('Test');
 
 Route::group(['namespace' => 'auth'],function(){
 
@@ -97,6 +98,10 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
       Route::get('show', 'CitizenConfirm@show')->name('citizenConfirm.show');
       Route::post('update', 'CitizenConfirm@update')->name('citizenConfirm.update');
       
+    });  
+    Route::group(['prefix' => 'reports'], function () {
+      Route::get('index',  'ReportsController@index')->name('reports.index');
+     
     });  
 });
 

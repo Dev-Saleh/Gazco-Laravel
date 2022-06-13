@@ -87,7 +87,7 @@
           <i class="fas fa-tablet-alt mr-3"></i>
           المستخدمين
         </a>
-        <a href="" class="
+        <a href="" class=" {{ 'admin/reports/index' == request()->path() ? 'bg-yellow-500' : '' }}
         flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl
