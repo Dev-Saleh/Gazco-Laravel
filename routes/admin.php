@@ -101,6 +101,8 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
     });  
     Route::group(['prefix' => 'reports'], function () {
       Route::get('index',  'ReportsController@index')->name('reports.index');
+      Route::get('batchReport',  'ReportsController@batchReport')->name('reports.batchReport');
+      Route::get('citizenReport',  'ReportsController@citizenReport')->name('reports.citizenReport');
      
     });  
 });

@@ -23,5 +23,35 @@ class ReportsController extends Controller
            ]);
         }
     }
+    public function batchReport()
+    {
+        try
+        {
+            return view('dashboard.admin.reports.batchReport');
+        }
+       catch (\Exception $ex)
+        {
+           return response()->json(
+           [
+               'status'         => false,
+               'exceptionError' => $ex,
+           ]);
+        }
+    }
+    public function citizenReport()
+    {
+        try
+        {
+            return view('dashboard.admin.reports.citizenReport');
+        }
+       catch (\Exception $ex)
+        {
+           return response()->json(
+           [
+               'status'         => false,
+               'exceptionError' => $ex,
+           ]);
+        }
+    }
   
 }
