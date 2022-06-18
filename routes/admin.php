@@ -18,8 +18,8 @@ Route::group(['namespace' => 'auth'],function(){
 
 });
 
-
-Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'prefix' => 'admin'], function () {
+// 'middleware' => 'authAdmin',
+Route::group(['namespace' => 'dashborad\admin', 'prefix' => 'admin'], function () {
 
   
    // the first page admin visits if authenticated
