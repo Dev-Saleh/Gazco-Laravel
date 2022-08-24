@@ -137,7 +137,7 @@
           </div>
           <ul class="todo-list">
             <li class="completed">
-              <p>طيزي توجعي</p>
+              <p> دفلوبر نيكسمو </p>
               <i class='bx bx-dots-vertical-rounded'></i>
             </li>
             <li class="completed">

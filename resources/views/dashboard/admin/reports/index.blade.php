@@ -1,7 +1,7 @@
 @extends('layouts.admin_dashboard')
 @section('content')
 
-   <article id="Content" class="content-area p-0 bg-gray-100 h-full">
+   <article id="Content" class=" p-0 bg-gray-100 h-full">
       
      <style>
                 .select_wrap .icon-arrow:before {
@@ -136,7 +136,7 @@
         </div>
         <!-- End nvabar of Reports -->
         
-        <div class="containerSlides h-full w-full p-6">
+        <div class="containerSlides w-full p-6">
 
 
           @yield('view')
@@ -144,9 +144,9 @@
         
         </div>
         
-
-            </main>
-          </div>
+    </article>    
+  </main>
+ </div>
       <script src="/js/jquery.min.js"></script>
       <script>
         const dropSelect = (ds) => {
@@ -210,5 +210,5 @@
                       /* NAVBAR Of Reports*/
               
       </script>
-  </article>
+  
  @stop

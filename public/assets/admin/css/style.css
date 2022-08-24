@@ -106,15 +106,14 @@
     --light-orange: #FFE0D3;
   }
 
-  
-
-
+  /* table style */
+ 
   
 #content   .table-data {
 	display: flex;
 	flex-wrap: wrap;
   grid-gap: 24px;
-	margin-top: 24px;
+
 	width: 100%;
 	color: var(--dark);
 }
@@ -154,7 +153,7 @@
 	border-bottom: 1px solid var(--grey);
 }
 #content   .table-data .order table td {
-	padding: 16px 0;
+	padding: 10px 0;
 }
 #content   .table-data .order table tr td:first-child {
 	display: flex;
@@ -170,6 +169,7 @@
 }
 #content   .table-data .order table tbody tr:hover {
 	background: var(--grey);
+  
 }
 #content   .table-data .order table tr td .status {
 	font-size: 10px;
@@ -218,3 +218,4 @@
 #content   .table-data .todo .todo-list li:last-child {
 	margin-bottom: 0;
 }
+ /* END table style */

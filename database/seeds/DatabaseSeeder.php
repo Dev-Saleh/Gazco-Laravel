@@ -269,7 +269,7 @@ class DatabaseSeeder extends Seeder
 
             Citizen::create([
                 'citName' => $citizenArray[$i],
-                'mobileNum' => +967491917,
+                'mobileNum' => +rand(9999, 99999),
                 'identityNum' => rand(999999, 9999999),
                 'attachment' => Str::random(10),
                 'citPassword' => rand(9999, 99999),
