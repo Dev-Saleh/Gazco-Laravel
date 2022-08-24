@@ -125,17 +125,21 @@
 
         <div class="grid grid-cols-2 grid-rows-2 gap-10 p-4 h-full ">
 
-          <div class="rounded-tr-none rounded-full bg-teal-500 w-full h-40">
-
+          <div class="group rounded-tr-none rounded-full bg-teal-500 w-full h-40 flex flex-col justify-center items-center space-y-2 hover:animate-wiggle">
+                  <p class="text-teal-900 text-lg">عدد الدفعات</p>
+                  <span class="text-teal-200 text-base bg-teal-700 rounded-full rounded-tr-none p-2 py-1 group-hover:animate-bounce">19</span>
           </div>
-          <div class="rounded-tl-none rounded-full bg-sky-500 w-full h-40">
-
+          <div class="group rounded-tl-none rounded-full bg-purple-500 w-full h-40 flex flex-col justify-center items-center space-y-2 hover:animate-wiggle">
+            <p class="text-purple-900 text-lg">اجمالي الدفعات</p>
+            <span class="text-purple-200 text-base bg-purple-700 rounded-full rounded-tl-none p-2 py-1 group-hover:animate-bounce">11</span>
           </div>
-          <div class="rounded-tr-none rounded-full bg-teal-500 w-full h-40">
-
+          <div class="group rounded-tr-none rounded-full bg-yellow-500 w-full h-40 flex flex-col justify-center items-center space-y-2 hover:animate-wiggle">
+            <p class="text-yellow-900 text-lg"> التي تم فتح الحجز</p>
+            <span class="text-yellow-200 text-base bg-yellow-700 rounded-full rounded-tr-none p-2 py-1 group-hover:animate-bounce">10</span>
           </div>
-          <div class="rounded-tl-none rounded-full bg-sky-500 w-full h-40">
-
+          <div  class="group rounded-tl-none rounded-full bg-sky-500 w-full h-40 flex flex-col justify-center items-center space-y-2 hover:animate-wiggle">
+            <p class="text-sky-900 text-lg"> اي شي</p>
+            <span class="text-sky-200 text-base bg-sky-700 rounded-full rounded-tl-none p-2 py-1 group-hover:animate-bounce">00</span>
           </div>
         </div>
       </div>
