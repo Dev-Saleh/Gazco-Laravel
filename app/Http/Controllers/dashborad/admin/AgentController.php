@@ -230,8 +230,10 @@ class AgentController extends Controller
    
     public function destroy(Request $request)
     {
+        //Test for push to git hup
         try 
         {
+
                 $agent = Agent::find($request -> agentId); 
                 if (!$agent)
                 return response()->json([
