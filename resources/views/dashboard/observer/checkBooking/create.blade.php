@@ -9,6 +9,28 @@
 
         <!-- Table Section -->
         <div class="mx-auto w-full">
+              {{-- START SEARCH FORM --}}
+          <div class="flex mx-auto w-full  my-4">
+                      
+               
+            <select id="filterSearch" class="bg-gray-50 border h-8 border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-40 p-1">
+                <option selected>بحث الكل</option>
+                <option value="cn">الاسم</option>
+                <option value="cn">الرقم الوطني</option>
+                <option value="dr">المديريه</option>
+                <option value="sq">المربع</option>
+            </select>
+       
+            <div class="relative w-full">
+                <button type="submit" class="h-8 absolute top-0 left-0 px-2 text-sm font-medium text-white bg-blue-700 rounded-l-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <span class="sr-only">بحث</span>
+                </button>
+                <input type="search" id="search-dropdown" class="h-8 block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-l-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-50 focus:border-blue-500  dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="ابحث عن اسم او رقم او تاريخ ..." required="">
+            </div>
+            
+        </div>
+           {{-- END SEARCH FORM --}}
             <!-- <p class="text-center font-sans mb-2 text-2xl"> Brands Table</p> -->
             <div class=" relative overflow-y-auto" style="height: 500px;">
                 <table class="table w-full text-gray-500 border-separate space-y-6 text-sm">
@@ -56,6 +78,23 @@
         <!-- End Table Section -->
 
         <div class="flex flex-col space-y-4 w-full">
+                  {{-- START SEARCH FORM --}}
+          <div class="flex mx-auto w-full rounded-full bg-white p-4">
+                      
+               
+            <select id="filterSearch" class="bg-gray-50 border h-8 border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-40 p-1">
+                <option selected>بحث الكل</option>
+                <option value="cn">الاسم</option>
+                <option value="cn">الرقم الوطني</option>
+    
+            </select>
+       
+            <div class="relative w-full">
+                <input type="search" id="search-dropdown" class="h-8 block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-l-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-50 focus:border-blue-500" placeholder="ابحث عن اسم او رقم المواطن ..." required="">
+            </div>
+            
+        </div>
+           {{-- END SEARCH FORM --}}
             <div class=" bg-white border-b rounded-xl border-gray-200 overflow-y-auto w-full" style="height: 500px;">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">

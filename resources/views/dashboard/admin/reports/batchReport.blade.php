@@ -154,8 +154,30 @@
         <div class="order">
           <div class="head">
             <h3>تصدير بصيغة</h3>
-            <i class='bx bx-search bg-red-100 p-1 rounded-full'><img src="" alt=""></i>
-            <i class='bx bx-filter bg-green-100 p-1 rounded-full'><link type="image/png" sizes="32x32" rel="icon" href=".../icons8-pdf-32.png"></i>
+              {{-- START SEARCH FORM --}}
+          <div class="flex mx-auto w-full">
+                      
+               
+            <select id="filterSearch" class="bg-gray-50 border h-8 border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-30 p-1">
+                <option selected>بحث الكل</option>
+                <option value="cn">الاسم</option>
+                <option value="cn">الرقم الوطني</option>
+                <option value="dr">المديريه</option>
+                <option value="sq">المربع</option>
+            </select>
+       
+            <div class="relative w-full">
+                <button type="submit" class="h-8 absolute top-0 left-0 px-2 text-sm font-medium text-white bg-blue-700 rounded-l-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 ">
+                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                
+                </button>
+                <input type="search" id="search-dropdown" class="h-8 block p-1 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-l-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-50 focus:border-blue-500 " placeholder="ابحث عن اسم او رقم او تاريخ ..." required="">
+            </div>
+            
+        </div>
+           {{-- END SEARCH FORM --}}
+            <button class='h-8 w-8 bg-red-100 p-1 rounded-full'><img src="{{ asset('assets/images/pdf.png') }}" alt="PDF"></button>
+            <button class='h-8 w-8 bg-green-100 p-1 rounded-full'><img src="{{ asset('assets/images/sheets.png') }}" alt="Excel"></button>
           </div>
         <div class=" relative overflow-y-auto h-[300px]">
           <table class="table">
