@@ -33,9 +33,9 @@
         @include('dashboard.admin.includes.sidebare')
         <!-- end sidebar -->
         <main id="main" class="flex flex-col font-tajawal overflow-y-auto mr-72 w-full ">
-             <!-- begin sidebar -->
+        <!-- begin header -->
         @include('dashboard.admin.includes.header')
-        <!-- end sidebar -->
+        <!-- end header -->
             @yield('content')
         </main>
     </div>
