@@ -12,7 +12,7 @@
 
             </div>
             <div class="col-span-6 h-8">
-             @yield('searchContent')
+           
             </div>
             <div class="col-span-3 flex flex-row-reverse ">
                 <button type="button" class="left-0 h-8 w-8 rounded-full">

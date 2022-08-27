@@ -1,6 +1,6 @@
 @extends('layouts.admin_dashboard')
 @section('content')
-@include('dashboard.admin.includes.header')
+
   <article id="Content" class="p-10 bg-gray-100 h-full flex flex-col">
     <div id="containerStatus" class="mb-4 grid grid-cols-8 gap-x-7 w-full">
       <div class="  col-span-2 group box1 relative h-28 w-full bg-white rounded-md shadow-sm flex items-center" on>

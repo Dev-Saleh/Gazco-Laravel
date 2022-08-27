@@ -1,6 +1,4 @@
-      <!-- search Agent -->
-        @include('dashboard.admin.includes.search')   
-      <!-- END search Agent -->
+
 @extends('layouts.admin_dashboard')
 @section('content')
   <article id="Content" class="content-area px-20 bg-gray-100 h-full">
