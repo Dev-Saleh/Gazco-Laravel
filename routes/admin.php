@@ -59,6 +59,7 @@ Route::group(['namespace' => 'dashborad\admin', 'prefix' => 'admin'], function (
         Route::get('show_rigons/{id?}', 'AgentController@show_rigons')->name('agent.Show_rigons');
         Route::post('update', 'AgentController@update')->name('agent.update');
         Route::get('show_All', 'AgentController@show_All')->name('agent.show_All');
+        Route::post('search', 'AgentController@search')->name('agent.search');
         
       });
       Route::group(['prefix' => 'employee'], function () {
@@ -79,6 +80,7 @@ Route::group(['namespace' => 'dashborad\admin', 'prefix' => 'admin'], function (
         Route::get('showAgents/{id?}', 'ObserverController@showAgents')->name('observer.show_Agents');
         Route::post('update', 'ObserverController@updateObservers')->name('observer.update');
         Route::get('showAllObservers', 'ObserverController@showAllObservers')->name('observer.show_All');
+        Route::post('search', 'ObserverController@search')->name('observer.search');
         
     });
       Route::group(['prefix' => 'gazLogs'], function () {

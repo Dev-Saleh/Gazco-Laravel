@@ -1,5 +1,4 @@
-@extends('layouts.admin_dashboard')
-@section('headerContent')
+
 <nav id="Navbar" class="h-16 w-full bg-gray-100 ">
     <div class="px-6 py-2 mx-4 mt-4 bg-white  rounded-full ">
         <div class="grid grid-cols-12 ">
@@ -22,4 +21,3 @@
         </div>
     </div>
 </nav>
-@stop

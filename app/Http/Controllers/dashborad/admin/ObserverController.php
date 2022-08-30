@@ -5,6 +5,7 @@ use App\Models\Agent;
 use App\Models\Directorate;
 use App\Models\Observer;
 use App\Models\Rigon;
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
 
 class ObserverController extends Controller
@@ -303,6 +304,177 @@ class ObserverController extends Controller
           
          }
     }
+    public function search(Request $request)
+    {
+        
+        try
+        { 
+            if($request->filterObsSearch=="all")
+            $resultSearch=Observer::with
+            (
+                [
+                    'directorate'=>function($q)
+                    {
+                        $q->select('id','dirName')->get();
+                    },
+    
+                    'rigon'=>function($q)
+                    {
+                        $q->select('id','rigName')->get();
+                    },
+    
+                    'agent'=>function($q)
+                    {
+                        $q->select('id','agentName')->get();
+                    }
+                ]
+            )
+                 ->select('id','obsName','obsPassword','dirId','rigId','agentId')
+                 ->where('obsName','Like','%'.$request->textObsSearch.'%')
+                 ->orwhere('id','Like','%'.$request->textObsSearch.'%')
+                 ->orwherehas('directorate',function($q) use($request){$q->where('dirName','Like','%'.$request->textObsSearch.'%');})
+                 ->orwherehas('rigon',function($q) use($request){$q->where('rigName','Like','%'.$request->textObsSearch.'%');})
+                 ->orwherehas('agent',function($q) use($request){$q->where('agentName','Like','%'.$request->textObsSearch.'%');})
+                 ->get();
+
+          else if($request->filterObsSearch=="obsName")
+                $resultSearch=Observer::with
+                (
+                    [
+                        'directorate'=>function($q)
+                        {
+                            $q->select('id','dirName')->get();
+                        },
+        
+                        'rigon'=>function($q)
+                        {
+                            $q->select('id','rigName')->get();
+                        },
+        
+                        'agent'=>function($q)
+                        {
+                            $q->select('id','agentName')->get();
+                        }
+                    ]
+                )
+                ->select('id','obsName','obsPassword','dirId','rigId','agentId')
+                ->where('obsName','Like','%'.$request->textObsSearch.'%')->get();
+
+            else if($request->filterObsSearch=="id")
+                $resultSearch=Observer::with
+                (
+                    [
+                        'directorate'=>function($q)
+                        {
+                            $q->select('id','dirName')->get();
+                        },
+        
+                        'rigon'=>function($q)
+                        {
+                            $q->select('id','rigName')->get();
+                        },
+        
+                        'agent'=>function($q)
+                        {
+                            $q->select('id','agentName')->get();
+                        }
+                    ]
+                )
+                    ->select('id','obsName','obsPassword','dirId','rigId','agentId')
+                    ->where('id','Like','%'.$request->textObsSearch.'%')->get();
+
+                    
+            else if($request->filterObsSearch=="dirId")
+                $resultSearch=Observer::with
+                (
+                    [
+                      'directorate'=>function($q)
+                        {
+                            $q->select('id','dirName')->get();
+                        },
+        
+                        'rigon'=>function($q)
+                        {
+                            $q->select('id','rigName')->get();
+                        },
+        
+                        'agent'=>function($q)
+                        {
+                            $q->select('id','agentName')->get();
+                        }
+                    ]
+                )
+                    ->select('id','obsName','obsPassword','dirId','rigId','agentId')
+                    ->wherehas('directorate',function($q) use($request){$q->where('dirName','Like','%'.$request->textObsSearch.'%');})->get();
+                
+           else if($request->filterObsSearch=="rigId")
+                $resultSearch=Observer::with
+                (
+                  [
+                      'directorate'=>function($q)
+                        {
+                            $q->select('id','dirName')->get();
+                        },
+        
+                       'rigon'=>function($q)
+                        {
+                            $q->select('id','rigName')->get();
+                        },
+        
+                       'agent'=>function($q)
+                        {
+                            $q->select('id','agentName')->get();
+                        }
+                  ]
+                )
+                  ->select('id','obsName','obsPassword','dirId','rigId','agentId')
+                  ->wherehas('rigon',function($q) use($request){$q->where('rigName','Like','%'.$request->textObsSearch.'%');})->get();
+                
+            else if($request->filterObsSearch="agentId")
+                $resultSearch=Observer::with
+                (
+                    [
+                        'directorate'=>function($q)
+                        {
+                            $q->select('id','dirName')->get();
+                        },
+        
+                        'rigon'=>function($q)
+                        {
+                            $q->select('id','rigName')->get();
+                        },
+        
+                        'agent'=>function($q)
+                        {
+                            $q->select('id','agentName')->get();
+                        }
+                    ]
+                )
+                  ->select('id','obsName','obsPassword','dirId','rigId','agentId')
+                  ->wherehas('agent',function($q) use($request){$q->where('agentName','Like','%'.$request->textObsSearch.'%');})
+                  ->get();
+             
+                if ($resultSearch)
+                return response()->json
+                (
+                  [
+                        'status'       => true,
+                        'msg'          => 'تم الحفظ بنجاح', 
+                        'resultSearch' =>  $resultSearch, 
+                  ]
+                );
+
+        }
+        catch (\Exception $ex)
+         {
+            return response()->json([
+                'status'             => false,
+                'msg'                => 'فشل الحفظ برجاء المحاوله مجددا',
+                'exceptionError'     => $ex,
+            ]);
+         }
+    }
+
     
 
 }

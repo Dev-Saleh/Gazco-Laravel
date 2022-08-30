@@ -210,5 +210,59 @@
 
 
         // End Update Agent By Ajax
+        // Start Search Agent By Ajax 
+
+        $(document).on('keyup', '#search-dropdown', function(e) {
+            e.preventDefault();
+            var formData = new FormData($('#agentSearch')[0]);
+            $.ajax({
+                type: 'Post',
+                enctype: 'multipart/form-data',
+                url: "{{ route('agent.search') }}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(data) {
+                   console.log(data.resultSearch);
+                    if (data.status == true)
+                    {
+                        $('#fetchLastAgent').html("");
+                        $.each(data.resultSearch, function (key , resultSearch) {
+                         $('#fetchLastAgent').prepend('<tr class="offerRow' + resultSearch.id + ' animate-fadeInRight bg-white hover:scale-95 transform transition-all ease-in">\
+                            <td class="p-3 text-center">' + resultSearch.id + '</td>\
+                            <td class="p-3 text-center">' + resultSearch.agentName + '</td>\
+                            <td class="p-3 text-right">\
+                              <img class="rounded-full h-12 w-12  object-cover" src=' + "تت" + ' alt="unsplash image">\
+                            </td>\
+                            <td class="p-3 text-center">\
+                              <span class="bg-green-400 text-gray-50 rounded-md px-2">' + resultSearch.directorate.dirName + '</span>\
+                            </td>\
+                            <td class="p-3 grid grid-cols-2 justify-center">\
+                              <a href="#"  agentId="' + resultSearch.id + '"  class="agentDelete text-red-400 hover:text-red-600 float-left ">\
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
+                                </svg>\
+                              </a>\
+                              <a href="#" agentId="' + resultSearch.id + '"  class="agentEdit text-yellow-400 hover:text-yellow-600 mx-2">\
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">\
+                                  <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />\
+                                </svg>\
+                              </a>\
+                            </td>\
+                          </tr>');
+                        });
+                    
+                    }
+
+                },
+                error: function(reject) {
+                    console.log(data);
+                   
+                }
+            });
+        });
+
+        // End Search Agent By Ajax 
     </script>
 @stop

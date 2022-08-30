@@ -128,6 +128,135 @@ class AgentController extends Controller
             ]);
          }
     }
+    public function search(Request $request)
+    {
+        
+        try
+        { 
+
+                 if($request->filterSearch=='all')
+                    $resultSearch=Agent::with
+                    (
+                        [
+                            'directorate'=>function($q)
+                            {
+                                 $q->select('id','dirName')->get();
+                            }
+                        ]
+                     )
+                        ->select('id','Photo','agentName','dirId')
+                        ->where('agentName','Like','%'.$request->inputSearch.'%')
+                        ->orwhere('id','Like','%'.$request->inputSearch.'%')
+                        ->orwherehas
+                        (
+                            'directorate',function($q) use($request)
+                                {
+                                    $q->where('dirName','Like','%'.$request->inputSearch.'%');
+                                }
+                        )
+                        ->orwherehas
+                        (
+                            'rigon',function($q) use($request)
+                            {
+                                $q->where('rigName','Like','%'.$request->inputSearch.'%');
+                            }
+                        )
+                       ->get();
+
+                   else if($request->filterSearch=='agentName')
+                   $resultSearch=Agent::with
+                   (
+                       [
+                         'directorate'=>function($q)
+                           {
+                              $q->select('id','dirName')->get();
+                           }
+                        ]
+                    )
+                    ->select('id','Photo','agentName','dirId')
+                    ->where('agentName','Like','%'.$request->inputSearch.'%')
+                    ->get();
+
+                    else if( $request->filterSearch=='dirId' )
+                    {
+                        $resultSearch=Agent::with
+                        (
+                            [
+                                'directorate'=>function($q)
+                                    {
+                                      $q->select('id','dirName')->get();
+                                    }
+                            ]
+                        )
+                         ->select('id','Photo','agentName','dirId')
+                         ->wherehas
+                             (
+                                'directorate',function($q) use($request)
+                                    {
+                                        $q->where('dirName','Like','%'.$request->inputSearch.'%');
+                                    }
+                              )
+                        ->get();  
+                    }                           
+                 
+                    else if( $request->filterSearch=='rigId' )
+                    $resultSearch=Agent::with
+                    (
+                        [
+                            'directorate'=>function($q)
+                                {
+                                    $q->select('id','dirName')->get();
+                                }
+                        ]
+                    )
+                    ->select('id','Photo','agentName','dirId')
+                    ->wherehas
+                    (
+                        'rigon',function($q) use($request)
+                          {
+                             $q->where('rigName','Like','%'.$request->inputSearch.'%');
+                          }
+                    )
+                    ->get(); 
+                   
+                    else if( $request->filterSearch=='id' )
+                      $resultSearch=Agent::with
+                      (
+                          [
+                              'directorate'=>function($q)
+                             {
+                                $q->select('id','dirName')->get();
+                             }
+                         ]
+                       )
+                       ->select('id','Photo','agentName','dirId')
+                       ->where('id','Like','%'.$request->inputSearch.'%')
+                       ->get();   
+    
+
+            if ($resultSearch)
+                return response()->json
+                (
+                    [
+                        'status'        => true,
+                        'msg'           => 'تم الحفظ بنجاح', 
+                        'resultSearch'  =>  $resultSearch,
+                        //'Photo'       => $resultSearch->Photo,
+                    
+                    ]
+                );
+ 
+        }
+        catch (\Exception $ex)
+         {
+            return response()->json([
+                'status'             => false,
+                'msg'                => 'فشل الحفظ برجاء المحاوله مجددا',
+                'exceptionError'     => $ex,
+            ]);
+         }
+    }
+
 
     public function edit(Request $request)
     {
