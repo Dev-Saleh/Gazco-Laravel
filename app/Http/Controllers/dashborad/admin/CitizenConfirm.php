@@ -190,4 +190,130 @@ class CitizenConfirm extends Controller
                 
               }
       }
+      public function search(Request $request)
+    {
+        
+        try
+        { 
+
+                 if($request->filterCitConfirmSearch=='all')
+                    $resultSearch=Citizen::with(
+                      [
+                        'directorate'=>function($q)
+                        {
+                          $q->select('id','dirName');
+                        }
+                        ,'rigon'=>function($q)
+                        {
+                          $q->select('id','rigName');
+                        }
+                        ,'observer'=>function($q)
+                        {
+                            $q->with(
+                            [
+                              'agent'=>function($q)
+                              {
+                                $q->select('id','agentName');
+                              }
+                            ]
+                            )->select('id','agentId','obsName')->get();
+                        }
+                      ])
+                      ->select('id','attachment','citName','created_at','identityNum','dirId','rigId','obsId','checked')
+                      ->where('citName','Like','%'.$request->textCitConfirmSearch.'%')
+                      ->orwhere('identityNum','Like','%'.$request->textCitConfirmSearch.'%')
+                      ->orwhere('id','Like','%'.$request->textCitConfirmSearch.'%')
+                      ->orwherehas
+                        (
+                            'directorate',function($q) use($request)
+                                {
+                                    $q->where('dirName','Like','%'.$request->textCitConfirmSearch.'%');
+                                }
+                        )
+                        ->orwherehas
+                        (
+                            'rigon',function($q) use($request)
+                                {
+                                    $q->where('rigName','Like','%'.$request->textCitConfirmSearch.'%');
+                                }
+                        )
+                        ->get();      
+                else if($request->filterCitConfirmSearch=='citName')
+                    $resultSearch=Citizen::with(
+                      [
+                        'directorate'=>function($q)
+                        {
+                          $q->select('id','dirName');
+                        }
+                        ,'rigon'=>function($q)
+                        {
+                          $q->select('id','rigName');
+                        }
+                        ,'observer'=>function($q)
+                        {
+                            $q->with(
+                            [
+                              'agent'=>function($q)
+                              {
+                                $q->select('id','agentName');
+                              }
+                            ]
+                            )->select('id','agentId','obsName')->get();
+                        }
+                      ])
+                      ->select('id','attachment','citName','created_at','identityNum','dirId','rigId','obsId','checked')
+                      ->where('citName','Like','%'.$request->textCitConfirmSearch.'%')
+                      ->get(); 
+
+                else if($request->filterCitConfirmSearch=='identityNum')
+                    $resultSearch=Citizen::with(
+                      [
+                        'directorate'=>function($q)
+                        {
+                          $q->select('id','dirName');
+                        }
+                        ,'rigon'=>function($q)
+                        {
+                          $q->select('id','rigName');
+                        }
+                        ,'observer'=>function($q)
+                        {
+                            $q->with(
+                            [
+                              'agent'=>function($q)
+                              {
+                                $q->select('id','agentName');
+                              }
+                            ]
+                            )->select('id','agentId','obsName')->get();
+                        }
+                      ])
+                      ->select('id','attachment','citName','created_at','identityNum','dirId','rigId','obsId','checked')
+                      ->where('identityNum','Like','%'.$request->textCitConfirmSearch.'%')
+                      ->get();      
+       
+                
+            if ($resultSearch)
+                return response()->json
+                (
+                    [
+                        'status'        => true,
+                        'msg'           => 'تم الحفظ بنجاح', 
+                        'resultSearch'  =>  $resultSearch,
+                        //'Photo'       => $resultSearch->Photo,
+                    ]
+                );
+ 
+        }
+        catch (\Exception $ex)
+         {
+            return response()->json([
+                'status'             => false,
+                'msg'                => 'فشل الحفظ برجاء المحاوله مجددا',
+                'exceptionError'     => $ex,
+            ]);
+         }
+    }
+
+
 }
