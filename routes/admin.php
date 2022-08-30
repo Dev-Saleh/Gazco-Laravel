@@ -91,7 +91,7 @@ Route::group(['namespace' => 'dashborad\admin', 'prefix' => 'admin'], function (
         Route::get('showRigons/{id?}', 'gazLogsController@showRigons')->name('gazLogs.showRigons');
         Route::get('showAgents/{id?}', 'gazLogsController@showAgents')->name('gazLogs.showAgents');
         Route::post('update', 'gazLogsController@update')->name('gazLogs.update');
-      
+        Route::post('search', 'gazLogsController@search')->name('gazLogs.search');
         
     });
     Route::group(['prefix' => 'citizenConfirm'], function () {
