@@ -1,4 +1,4 @@
-        <details open class="cursor-pointer text-lg font-medium leading-6 text-gray-900 ">
+        <details open class="cursor-auto text-lg font-medium leading-6 text-gray-900 ">
             <summary class="text-lg font-medium leading-6 text-gray-900 space-y-6">
                 <a href=""> إرسال دفعه جديده </a>
                 <div class="border-t border-gray-200">
@@ -96,7 +96,7 @@
                                 <div class="relative z-0 w-full mb-5">
                                     <select name="rigId" value="" id='select_Rigons' onchange="f('select_Agents');"
                                         onclick="this.setAttribute('value', this.value);" 
-                                        class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+                                        class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-indigo-500 border-gray-200">
                                         <option value="" id='select_Rigon' selected disabled hidden></option>
                                     </select>
                                     <label for="select"
@@ -111,7 +111,7 @@
                                 <div class="relative z-0 w-full mb-5">
                                     <select name="agentId" value="" id='select_Agents' 
                                          onclick="this.setAttribute('value', this.value);"
-                                        class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+                                        class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-indigo-500 border-gray-200">
                                         <option value="A" id='select_Agent' selected disabled hidden></option>
                                     </select>
                                     <label for="select"
@@ -145,12 +145,17 @@
                             </div>
                             <div>
                                 <div class="p-20 bg-transparent text-center sm:px-6  rounded-3xl">
-                                    <button type="submit" id='saveGazLogs'
-                                        class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                        ارسال الدفعه
+                                    <button type="submit" id='saveGazLogs'>
+                                        <a class="  rounded-lg relative w-72 inline-block px-8 py-3 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring" href="/download">
+                                            <span class="absolute inset-x-0 top-0 h-full transition-all bg-indigo-600 group-hover:h-[1px] group-active:bg-indigo-500"></span>
+                                          
+                                            <span class="relative text-sm font-medium text-indigo-50 transition-colors group-hover:text-indigo-500">
+                                               ارسال الدفعه
+                                            </span>
+                                          </a>                                      
                                     </button>
                                     <button type="submit" id='updateGazLogs' style='display:none;'
-                                        class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-indigo-500 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                         تعديل الدفعه
                                     </button>
                                 </div>
@@ -164,7 +169,7 @@
         <br>
 
 
-        <details class="cursor-default text-lg font-medium leading-6 text-gray-900">
+        <details class="cursor-auto text-lg font-medium leading-6 text-gray-900">
             <summary class="text-lg font-medium leading-6 text-gray-900 space-y-6">
                 <a href="#c_logs">سجل الدفعات </a>
                 <div class="border-t border-gray-200">

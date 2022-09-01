@@ -3,7 +3,7 @@
         <div class="flex  justify-between">
             <div class="flex items-center justify-between">
                 <div class="text-xl font-semibold text-gray-700 mr-2">
-                    <a class="text-2xl font-bold font-cairo text-gray-700  hover:text-blue-600 text-right "
+                    <a class="text-2xl font-bold font-cairo text-gray-700  hover:text-emerald-600 text-right "
                         href="#">غـازكو</a>
                 </div>
 

@@ -13,34 +13,38 @@
               <input type="text" name='obsId' value="{{$observers->id}}" style="display:none;" class="obsId form-control"> 
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                 <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> الكشف للموزع : 
-                  <span class="agentName text-xs bg-gray-800 text-gray-200 p-2 rounded-full">كريم حسن العقر</span>
+                  <span class="agentName text-xs bg-gray-800 text-gray-200 p-2 rounded-full"></span>
                 </li>
               </ul>
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                 <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> تاريخ الكشف :
-                  <span class="created_at text-xs bg-gray-800 text-gray-200 p-2 rounded-full">  22/17/1394</span>
+                  <span class="created_at text-xs bg-gray-800 text-gray-200 p-2 rounded-full"> </span>
                 </li>
               </ul>
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                 <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">رقم الدفعه : 
-                  <span  class="gazLogId text-xs bg-gray-800 text-gray-200 p-2 rounded-full"> 7514 </span>
+                  <span  class="gazLogId text-xs bg-gray-800 text-gray-200 p-2 rounded-full">  </span>
                 </li>
               </ul>
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                 <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">من محطة : 
-                  <span class="staName text-xs bg-gray-800 text-gray-200 p-2 rounded-full">  بير احمد</span>
+                  <span class="staName text-xs bg-gray-800 text-gray-200 p-2 rounded-full">  </span>
                 </li>
               </ul>
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                 <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> الكميه :
-                  <span class="qty text-xs bg-gray-800 text-gray-200 p-2 rounded-full"> 100 </span>
+                  <span class="qty text-xs bg-gray-800 text-gray-200 p-2 rounded-full">  </span>
                 </li>
               </ul>
             </div>
-            <button type="submit" 
-              class="allowBooking w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-green-500 hover:bg-green-400 focus:outline-none
-              focus:transform focus:scale-95 ">
-              فتح حجز لهذا الكشف
+            <button type="submit">
+              <a class="allowBooking relative inline-block group focus:outline-none focus:ring" href="">
+                <span class="absolute inset-0 transition-transform translate-x-1.5 translate-y-1.5 bg-emerald-400 group-hover:translate-y-0 group-hover:translate-x-0"></span>
+            
+                <span class="relative inline-block px-8 py-3 text-sm font-bold tracking-widest text-black uppercase border-2 border-current group-active:text-opacity-75">
+                     فتح الحجز  
+                </span>
+            </a>
             </button>
           </div>
         <!-- END  Details For Logs -->

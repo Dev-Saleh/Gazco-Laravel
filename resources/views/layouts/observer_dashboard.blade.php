@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Tajawal&display=swap" rel="stylesheet">
-    <link rel="stylesheet"   href="{{asset('assets/admin/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
     <link rel="stylesheet"  href="{{asset('assets/admin/css/output.css')}}">
     <link rel="stylesheet"  href="{{asset('assets/admin/css/input.css')}}">
     <meta charset="UTF-8">

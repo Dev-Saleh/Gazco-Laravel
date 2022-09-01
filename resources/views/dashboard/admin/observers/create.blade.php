@@ -67,7 +67,7 @@
                             <div class="relative z-0 w-full mb-5">
                                 <select name="dirId" value="" id='select_directorates' onchange="f('select_rigons');" 
                                     onclick="this.setAttribute('value', this.value);"
-                                    class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+                                    class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-indigo-500 border-gray-200">
                                     <option value="" id='select_directorate' selected disabled hidden></option>
                                     @if ($directorates && $directorates->count() > 0)
                                         @foreach ($directorates as $dir)
@@ -88,7 +88,7 @@
                             <div class="relative z-0 w-full mb-5">
                                 <select name="rigId" value="" id='select_rigons' onchange="f('select_agents');"
                                     onclick="this.setAttribute('value', this.value);"
-                                    class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+                                    class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-indigo-500 border-gray-200">
                                     <option value="" id='select_rigon'></option>
                                 </select>
                                 <label for="select"
@@ -102,7 +102,7 @@
                             <div class="relative z-0 w-full mb-5">
                                 <select name="agentId" value="" id='select_agents'
                                     onclick="this.setAttribute('value', this.value);"
-                                    class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+                                    class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-indigo-500 border-gray-200">
                                     <option value="" id='select_agent' selected disabled hidden></option>
                                 </select>
                                 <label for="select"
@@ -115,13 +115,23 @@
                     </div>
                     <!-- GRID THREE -->
                     <div class="mt-1 px-4 py-3 bg-transparent text-center sm:px-6  rounded-3xl">
-                        <button type="submit" id='saveObserver'
-                            class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            أضافه
+                        <button type="submit" id='saveObserver'>
+                        <a class="rounded-lg relative w-72 inline-block p-2 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring" href="/download">
+                            <span class="absolute inset-x-0 top-0 h-full transition-all bg-indigo-600 group-hover:h-[1px] group-active:bg-indigo-500"></span>
+                          
+                            <span class="relative text-sm font-medium text-indigo-50 transition-colors group-hover:text-indigo-500">
+                              أضافة المراقب
+                            </span>
+                          </a>
                         </button>
-                        <button type="submit" id='updateObserver' style='display:none;'
-                            class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            تعديل
+                        <button type="submit" id='updateObserver' style='display:none;'>
+                             <a class="  rounded-lg relative w-72 inline-block px-8 py-3 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring" href="/download">
+                            <span class="absolute inset-x-0 top-0 h-full transition-all bg-indigo-600 group-hover:h-[1px] group-active:bg-indigo-500"></span>
+                          
+                            <span class="relative text-sm font-medium text-indigo-50 transition-colors group-hover:text-indigo-500">
+                               تعديل المراقب
+                            </span>
+                          </a>
                         </button>
                     </div>
 

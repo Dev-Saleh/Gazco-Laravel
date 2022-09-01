@@ -40,21 +40,21 @@
                   <small id='empUserName_error' style='color:red'></small>
             </div>
 
-              <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
-                            <div class="relative z-0 w-full">
-                                <input type="text" name="empPassword" id="empPassword" placeholder=" "
-                                    required
-                                    class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
-                                  appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
-                                  hover:border-blue-600 text-blue-900" />
-                                <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الرقم
-                                    السري</label>
-                                <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
-                                 <small id='empPassword_error' style='color:red'></small>
-                            </div>
+            
+                        <div class="relative z-0 w-full">
+                            <input type="text" name="empPassword" id="empPassword" placeholder=" "
+                                required
+                                class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
+                              appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
+                              hover:border-blue-600 text-blue-900" />
+                            <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الرقم
+                                السري</label>
+                            <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
+                              <small id='empPassword_error' style='color:red'></small>
                         </div>
+                    
 
-                    <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
+                    
                       <div class="relative z-0 w-full mb-5">
                           <select name="empRole" value="" id='empRole'
                               onclick="this.setAttribute('value', this.value);"
@@ -67,18 +67,27 @@
                           <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
                             <small id='empRole_error' style='color:red'></small>
                       </div>
-                  </div>
+                  
 
 
-              <button id='saveEmployee' type="submit"
-                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-72">
-                أضافه
+              <button id='saveEmployee' type="submit">
+                <a class="rounded-lg relative w-72 inline-block p-2 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring" href="/download">
+                  <span class="absolute inset-x-0 top-0 h-full transition-all bg-indigo-600 group-hover:h-[1px] group-active:bg-indigo-500"></span>
+                
+                  <span class="relative text-sm font-medium text-indigo-50 transition-colors group-hover:text-indigo-500">
+                    أضافة الموظف
+                  </span>
+                </a>
               </button>
 
-              <button type="submit"   id='updateEmployee'  style='display:none;' class="inline-flex justify-center py-2 px-4 border-blue-600 border-2 shadow-sm 
-                  text-sm font-medium rounded-md text-blue-400 bg-transparent hover:bg-blue-600 hover:text-blue-50
-                  focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-blue-500  w-full">
-                   تعديل
+              <button type="submit"   id='updateEmployee'  style='display:none;'>
+                <a class="rounded-lg relative w-72 inline-block p-2 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring" href="/download">
+                  <span class="absolute inset-x-0 top-0 h-full transition-all bg-indigo-600 group-hover:h-[1px] group-active:bg-indigo-500"></span>
+                
+                  <span class="relative text-sm font-medium text-indigo-50 transition-colors group-hover:text-indigo-500">
+                    تعديل الموظف
+                  </span>
+                </a>
                 </button>
 
             </div>

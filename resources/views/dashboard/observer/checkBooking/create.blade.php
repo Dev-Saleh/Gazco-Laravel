@@ -77,9 +77,9 @@
         </div>
         <!-- End Table Section -->
 
-        <div class="flex flex-col space-y-4 w-full">
+        <div class="flex flex-col space-y-4 w-full pb-4">
                   {{-- START SEARCH FORM --}}
-          <div class="flex mx-auto w-full rounded-full bg-white p-4">
+          <div class="flex mx-auto w-full rounded-full bg-white p-4 shadow-sm">
                       
                
             <select id="filterSearch" class="bg-gray-50 border h-8 border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-40 p-1">
@@ -95,7 +95,7 @@
             
         </div>
            {{-- END SEARCH FORM --}}
-            <div class=" bg-white border-b rounded-xl border-gray-200 overflow-y-auto w-full" style="height: 500px;">
+            <div class=" bg-white border-b rounded-xl border-gray-200 overflow-y-auto w-full" style="height: 450px;">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
@@ -137,17 +137,24 @@
                 </table>
             </div>
             <!-- Buttons section -->
-            <div class="flex justify-center gap-x-4">
-                <button type="submit" id='saveReciving'
-                    class="w-40 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-blue-500 hover:bg-blue-400 focus:outline-none
-              transition-all ease-in-out ">
-                    تأكيد الاستلام
+            <div class="flex justify-center gap-x-4  mx-auto w-full rounded-full bg-white p-4 shadow-sm">
+                <button type="submit" id='saveReciving'>
+                    <a class="relative inline-block group focus:outline-none focus:ring" href="/download">
+                        <span class="absolute inset-0 transition-transform translate-x-1.5 translate-y-1.5 bg-emerald-400 group-hover:translate-y-0 group-hover:translate-x-0"></span>
+                    
+                        <span class="relative inline-block px-8 py-3 text-sm font-bold tracking-widest text-black uppercase border-2 border-current group-active:text-opacity-75">
+                              تأكيد استلام الدبه
+                        </span>
+                    </a>
                 </button>
-                <button type="submit" id='sendTestMessage'
-                    class="w-40 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-yellow-500 hover:bg-yellow-400
-               focus:outline-none
-              transition-all ease-in-out ">
-                    ارسال رساله نصيه
+                <button type="submit" id='sendTestMessage'>
+                    <a class="relative inline-block group focus:outline-none focus:ring" href="/download">
+                        <span class="absolute inset-0 transition-transform translate-x-1.5 translate-y-1.5 bg-yellow-400 group-hover:translate-y-0 group-hover:translate-x-0"></span>
+                    
+                        <span class="relative inline-block px-8 py-3 text-sm font-bold tracking-widest text-black uppercase border-2 border-current group-active:text-opacity-75">
+                             ارسال رساله نصيه
+                        </span>
+                    </a>                 
                 </button>
             </div>
         </div>

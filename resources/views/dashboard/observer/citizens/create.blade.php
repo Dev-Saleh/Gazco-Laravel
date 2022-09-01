@@ -1,5 +1,5 @@
 
-    <details open class="cursor-pointer text-lg font-medium leading-6 text-gray-900 ">
+    <details open class="cursor-auto text-lg font-medium leading-6 text-gray-900 ">
         <summary class="text-lg font-medium leading-6 text-gray-900 space-y-6">
             <a href="">أضافة مواطن </a>
 
@@ -138,14 +138,30 @@
 
                             <div>
                                 <div class="p-20 bg-transparent text-center sm:px-6  rounded-3xl">
-                                    <button type="submit" id='saveCitizen'
-                                        class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
-                                        تسجيل المواطن
+                                    <!-- Base -->
+
+
+  
+  
+                                    <button type="submit" id='saveCitizen'>
+                                        <a class="relative inline-block group focus:outline-none focus:ring" href="/download">
+                                            <span class="absolute inset-0 transition-transform translate-x-1.5 translate-y-1.5 bg-emerald-400 group-hover:translate-y-0 group-hover:translate-x-0"></span>
+                                        
+                                            <span class="relative inline-block px-8 py-3 text-sm font-bold tracking-widest text-black uppercase border-2 border-current group-active:text-opacity-75">
+                                                تسجيل المواطن
+                                            </span>
+                                        </a>
                                     </button>
-                                     <button type="submit" id='updateCitizen'  style='display:none;'
-                                        class="w-72 inline-flex justify-center py-2 px-4 border bg-transparent shadow-sm text-sm font-medium rounded-3xl text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
-                                        تعديل المواطن
+                                     <button type="submit" id='updateCitizen'  style='display:none;'>
+                                        <a class="relative inline-block group focus:outline-none focus:ring" href="/download">
+                                            <span class="absolute inset-0 transition-transform translate-x-1.5 translate-y-1.5 bg-emerald-400 group-hover:translate-y-0 group-hover:translate-x-0"></span>
+                                        
+                                            <span class="relative inline-block px-8 py-3 text-sm font-bold tracking-widest text-black uppercase border-2 border-current group-active:text-opacity-75">
+                                                تعديل المواطن
+                                            </span>
+                                        </a>
                                      </button>
+                                     
                                 </div>
                             </div>
                         </div>
@@ -157,7 +173,7 @@
 
 
     <br>
-    <details class="cursor-pointer ">
+    <details class="cursor-auto ">
         <summary class="text-lg font-medium leading-6 text-gray-900 space-y-6">
             <a href="#c_logs">سجل المواطنين </a>
             <div class="border-t border-gray-200">

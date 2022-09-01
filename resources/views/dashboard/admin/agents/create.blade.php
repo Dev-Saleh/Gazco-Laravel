@@ -5,80 +5,91 @@
       <div class=" py-4 border-t border-gray-200">
   </div>
 <!-- END Line -->
-      <div dir="rtl" id="container" class="flex">
-          <div class="ml-10 p-6 bg-white border-0 shadow-lg rounded-xl w-full h-full">
-          <form action="" method="POST" id='agentForm'>
-           @csrf 
-          <input type="text" name='id' style="display:none;" class="form-control"  id="agentId">    
-            <div class="flex-col items-center justify-center flex space-y-4">
-
-              <label for="file-ip-1"
-                class="relative cursor-pointer bg-white rounded-xl font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 border-2 border-blue-700 px-2">
-                <span>رفع صوره</span>
-                <input id="file-ip-1" name='Photo' id='agentPhoto' accept="image/*" onchange="showPreviewUser(event);" type="file" class="sr-only">
-              </label>
-            
-            <div class="mt-2 flex h-48 w-48  border-2 bg-gray-200 border-gray-500 border-dashed rounded-full">
-                <img class="rounded-full w-48 h-48 object-cover" src="" class='image' id="file-ip-1-preview" alt=""
-                    style="display: none;" class="w-52 h-28">
-                   <small id='Photo_error' style='color:red'></small>
-            </div>
-
-              <div class="relative z-0 w-full mb-5">
-                <input type="text" name="agentName" id='agentName' placeholder=" " required
-                  class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
-                <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اسم الموزع</label>
-                <span class="text-sm text-red-600 hidden" id="error">اسم الموزع مطلوب !</span>
-                <small id='agentName_error' style='color:red'></small>
-            </div>
+  <div dir="rtl" id="container" class="flex">
 
 
+        <div class="ml-10 p-6 bg-white border-0 shadow-lg rounded-xl w-full h-full">
+                <form action="" method="POST" id='agentForm'>
+                @csrf 
+                <input type="text" name='id' style="display:none;" class="form-control"  id="agentId">    
+                  <div class="flex-col items-center justify-center flex space-y-8">
 
-              <div class="relative z-0 w-full mb-5">
-                <select name="dirId" value="" id='select_directorates' 
-                 onclick="this.setAttribute('value', this.value);" onchange="f('select_rigons');"
-                  class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                   <option value="" id='select_directorate' selected disabled hidden></option>
-                  @if($directorates && $directorates -> count() > 0)
-                  @foreach($directorates as $dir)
-                        <option value="{{$dir -> id }}">{{$dir -> dirName}}</option>
-                    @endforeach
-                 @endif
-                </select>
-               <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اختر المديريه</label>
-                <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
-                <small id='dirId_error' style='color:red'></small>
-            </div>
+                    <label for="file-ip-1"
+                      class="relative cursor-pointer bg-white rounded-xl font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500 border-2 border-blue-700 px-2">
+                      <span>رفع صوره</span>
+                      <input id="file-ip-1" name='Photo' id='agentPhoto' accept="image/*" onchange="showPreviewUser(event);" type="file" class="sr-only">
+                    </label>
+                  
+                    <div class="mt-2 flex h-48 w-48  border-2 bg-gray-100 border-gray-500 border-dashed rounded-full">
+                        <img class="rounded-full w-48 h-48 object-cover" src="" class='image' id="file-ip-1-preview" alt=""
+                            style="display: none;" class="w-52 h-28">
+                          <small id='Photo_error' style='color:red'></small>
+                    </div>
 
-              <div class="relative z-0 w-full mb-5">
-                <select name="rigId" value="" id='select_rigons'  onclick="this.setAttribute('value', this.value);"
-                  class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                  <option value="" id='select_rigon' selected disabled hidden></option>
-                </select>
-                <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-slate-500">اختر المربع</label>
-                <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
-                <small id='rigId_error' style='color:red'></small>
-            </div>
+                      <div class="relative z-0 w-full mb-5">
+                        <input type="text" name="agentName" id='agentName' placeholder=" " required
+                          class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
+                        <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اسم الموزع</label>
+                        <span class="text-sm text-red-600 hidden" id="error">اسم الموزع مطلوب !</span>
+                        <small id='agentName_error' style='color:red'></small>
+                    </div>
 
 
-              <button id='saveAgent' type="submit"
-                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-72">
-                أضافه
-              </button>
-              <button type="submit"   id='updateAgent'  style='display:none;' class="inline-flex justify-center py-2 px-4 border-blue-600 border-2 shadow-sm 
-                  text-sm font-medium rounded-md text-blue-400 bg-transparent hover:bg-blue-600 hover:text-blue-50
-                  focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-blue-500  w-full">
-                   تعديل
-                </button>
 
-            </div>
+                      <div class="relative z-0 w-full mb-5">
+                        <select name="dirId" value="" id='select_directorates' 
+                        onclick="this.setAttribute('value', this.value);" onchange="f('select_rigons');"
+                          class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+                          <option value="" id='select_directorate' selected disabled hidden></option>
+                          @if($directorates && $directorates -> count() > 0)
+                          @foreach($directorates as $dir)
+                                <option value="{{$dir -> id }}">{{$dir -> dirName}}</option>
+                            @endforeach
+                        @endif
+                        </select>
+                      <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اختر المديريه</label>
+                        <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+                        <small id='dirId_error' style='color:red'></small>
+                      </div>
+
+                      <div class="relative z-0 w-full mb-5">
+                        <select name="rigId" value="" id='select_rigons'  onclick="this.setAttribute('value', this.value);"
+                          class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+                          <option value="" id='select_rigon' selected disabled hidden></option>
+                        </select>
+                        <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-slate-500">اختر المربع</label>
+                        <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
+                        <small id='rigId_error' style='color:red'></small>
+                    </div>
+
+
+                      <button id='saveAgent' type="submit">
+                        <a class="  rounded-lg relative w-72 inline-block px-8 py-3 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring" href="/download">
+                          <span class="absolute inset-x-0 top-0 h-full transition-all bg-indigo-600 group-hover:h-[1px] group-active:bg-indigo-500"></span>
+                        
+                          <span class="relative text-sm font-medium text-indigo-50 transition-colors group-hover:text-indigo-500">
+                            أضافة الوكيل
+                          </span>
+                        </a>
+                      </button>
+                      <button type="submit"   id='updateAgent'  style='display:none;' class="">
+                          <a class="w-72 relative inline-block px-8 py-3 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring" href="/download">
+                            <span class="absolute inset-x-0 bottom-0 h-full transition-all bg-indigo-600 group-hover:h-[1px] group-active:bg-indigo-500"></span>
+                          
+                            <span class="relative text-sm font-medium text-indigo-50 transition-colors group-hover:text-indigo-500">
+                              تعديل الوكيل
+                            </span>
+                          </a>
+                      </button>
+
+              </div>
             </form>
-          </div>
+        </div>
     
-          <!--ENd Details& View Section -->
+         
 
     <!-- Table Section -->
-    <div class="mx-auto w-full">
+      <div class="mx-auto w-full">
           {{-- START SEARCH FORM --}}
         <form action="" method="Post" id='agentSearch'>
            @csrf 
@@ -104,6 +115,7 @@
             
         </div>
            {{-- END SEARCH FORM --}}
+
         <!-- <p class="text-center font-sans mb-2 text-2xl"> Brands Table</p> -->
         <div class=" relative overflow-y-auto overflow-x-hidden" style="height: 550px;">
             <table class="table w-full text-gray-500 border-separate space-y-6 text-sm">
@@ -152,9 +164,11 @@
                   </tr>
                  @endforeach
                  @endif
-                 </tbody>
-              </table>
-            </div>
-          </div>
-    </div>
+                </tbody>
+            </table>
+        </div>
+      </div>
+
+
+  </div>
 
