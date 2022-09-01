@@ -91,7 +91,7 @@ Route::group(['namespace' => 'dashborad\admin', 'prefix' => 'admin'], function (
         Route::get('showRigons/{id?}', 'gazLogsController@showRigons')->name('gazLogs.showRigons');
         Route::get('showAgents/{id?}', 'gazLogsController@showAgents')->name('gazLogs.showAgents');
         Route::post('update', 'gazLogsController@update')->name('gazLogs.update');
-      
+        Route::post('search', 'gazLogsController@search')->name('gazLogs.search');
         
     });
     Route::group(['prefix' => 'citizenConfirm'], function () {
@@ -99,6 +99,7 @@ Route::group(['namespace' => 'dashborad\admin', 'prefix' => 'admin'], function (
       Route::delete('delete/{id?}','CitizenConfirm@destroy')->name('citizenConfirm.destroy');
       Route::get('show', 'CitizenConfirm@show')->name('citizenConfirm.show');
       Route::post('update', 'CitizenConfirm@update')->name('citizenConfirm.update');
+      Route::post('search', 'CitizenConfirm@search')->name('citizenConfirm.search');
       
     });  
     Route::group(['prefix' => 'reports'], function () {

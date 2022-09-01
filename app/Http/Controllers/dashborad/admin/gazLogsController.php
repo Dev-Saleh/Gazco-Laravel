@@ -292,4 +292,221 @@ class gazLogsController extends Controller
             
             }
     }
+    public function search(Request $request)
+    {
+        
+        try
+        { 
+
+                 if($request->filterGazLogsSearch=='all')
+                    $resultSearch=gazLogs::with(
+                      [
+                         'station'=>function($q)
+                         {
+                           $q->select('id','staName')->get();
+                         }
+                         ,'agent'=>function($q)
+                         {
+                           $q->select('id','agentName')->get();
+                         }
+                         ,'directorate'=>function($q)
+                         {
+                           $q->select('id','dirName')->get();
+                         }
+                         ,'rigon'=>function($q)
+                         {
+                           $q->select('id','rigName')->get();
+                         }
+                       ])->select('id','dirId','rigId','staId','agentId')
+                       ->where('id','Like','%'.$request->textGazLogsSearch.'%')
+                       ->orwherehas
+                        (
+                            'station',function($q) use($request)
+                                {
+                                    $q->where('staName','Like','%'.$request->textGazLogsSearch.'%');
+                                }
+                        )
+                       ->orwherehas
+                        (
+                            'agent',function($q) use($request)
+                                {
+                                    $q->where('agentName','Like','%'.$request->textGazLogsSearch.'%');
+                                }
+                        )
+                        ->orwherehas
+                        (
+                            'directorate',function($q) use($request)
+                                {
+                                    $q->where('dirName','Like','%'.$request->textGazLogsSearch.'%');
+                                }
+                        )
+                        ->orwherehas
+                        (
+                            'rigon',function($q) use($request)
+                            {
+                                $q->where('rigName','Like','%'.$request->textGazLogsSearch.'%');
+                            }
+                        )
+                       ->get();
+
+                   else if($request->filterGazLogsSearch=='staName')
+                      $resultSearch=gazLogs::with(
+                        [
+                           'station'=>function($q)
+                           {
+                             $q->select('id','staName')->get();
+                           }
+                           ,'agent'=>function($q)
+                           {
+                             $q->select('id','agentName')->get();
+                           }
+                           ,'directorate'=>function($q)
+                           {
+                             $q->select('id','dirName')->get();
+                           }
+                           ,'rigon'=>function($q)
+                           {
+                             $q->select('id','rigName')->get();
+                           }
+                         ])
+                         ->select('id','dirId','rigId','staId','agentId')
+                         ->orwherehas
+                         (
+                             'station',function($q) use($request)
+                                 {
+                                     $q->where('staName','Like','%'.$request->textGazLogsSearch.'%');
+                                 }
+                         )->get();
+                        
+
+                   else if($request->filterGazLogsSearch=='numberId')
+                      $resultSearch=gazLogs::with(
+                        [
+                           'station'=>function($q)
+                           {
+                             $q->select('id','staName')->get();
+                           }
+                           ,'agent'=>function($q)
+                           {
+                             $q->select('id','agentName')->get();
+                           }
+                           ,'directorate'=>function($q)
+                           {
+                             $q->select('id','dirName')->get();
+                           }
+                           ,'rigon'=>function($q)
+                           {
+                             $q->select('id','rigName')->get();
+                           }
+                         ])->select('id','dirId','rigId','staId','agentId')
+                         ->where('id','Like','%'.$request->textGazLogsSearch.'%')->get();
+                        
+
+                    else if( $request->filterGazLogsSearch=='dirName' )
+                      $resultSearch=gazLogs::with(
+                      [
+                         'station'=>function($q)
+                         {
+                           $q->select('id','staName')->get();
+                         }
+                         ,'agent'=>function($q)
+                         {
+                           $q->select('id','agentName')->get();
+                         }
+                         ,'directorate'=>function($q)
+                         {
+                           $q->select('id','dirName')->get();
+                         }
+                         ,'rigon'=>function($q)
+                         {
+                           $q->select('id','rigName')->get();
+                         }
+                       ])->select('id','dirId','rigId','staId','agentId')
+                        ->wherehas
+                        (
+                            'directorate',function($q) use($request)
+                                {
+                                    $q->where('dirName','Like','%'.$request->textGazLogsSearch.'%');
+                                }
+                        )->get();      
+
+                    else if( $request->filterGazLogsSearch=='rigName' )
+                      $resultSearch=gazLogs::with(
+                      [
+                         'station'=>function($q)
+                         {
+                           $q->select('id','staName')->get();
+                         }
+                         ,'agent'=>function($q)
+                         {
+                           $q->select('id','agentName')->get();
+                         }
+                         ,'directorate'=>function($q)
+                         {
+                           $q->select('id','dirName')->get();
+                         }
+                         ,'rigon'=>function($q)
+                         {
+                           $q->select('id','rigName')->get();
+                         }
+                       ])->select('id','dirId','rigId','staId','agentId')
+                        ->wherehas
+                        (
+                            'rigon',function($q) use($request)
+                                {
+                                    $q->where('rigName','Like','%'.$request->textGazLogsSearch.'%');
+                                }
+                        )->get();      
+
+                    else if( $request->filterGazLogsSearch=='agentName' )
+                      $resultSearch=gazLogs::with(
+                      [
+                         'station'=>function($q)
+                         {
+                           $q->select('id','staName')->get();
+                         }
+                         ,'agent'=>function($q)
+                         {
+                           $q->select('id','agentName')->get();
+                         }
+                         ,'directorate'=>function($q)
+                         {
+                           $q->select('id','dirName')->get();
+                         }
+                         ,'rigon'=>function($q)
+                         {
+                           $q->select('id','rigName')->get();
+                         }
+                       ])->select('id','dirId','rigId','staId','agentId')
+                        ->wherehas
+                        (
+                            'agent',function($q) use($request)
+                                {
+                                    $q->where('agentName','Like','%'.$request->textGazLogsSearch.'%');
+                                }
+                        )->get();                  
+                
+            if ($resultSearch)
+                return response()->json
+                (
+                    [
+                        'status'        => true,
+                        'msg'           => 'تم الحفظ بنجاح', 
+                        'resultSearch'  =>  $resultSearch,
+                        //'Photo'       => $resultSearch->Photo,
+                    ]
+                );
+ 
+        }
+        catch (\Exception $ex)
+         {
+            return response()->json([
+                'status'             => false,
+                'msg'                => 'فشل الحفظ برجاء المحاوله مجددا',
+                'exceptionError'     => $ex,
+            ]);
+         }
+    }
+
+
 }
