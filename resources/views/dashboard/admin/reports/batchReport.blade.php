@@ -4,93 +4,70 @@
 <div id="batchReport" class="">
   <!-- select section -->
   <div class="p-6 bg-white shadow-sm rounded-xl">
-    <div class="grid grid-cols-5 gap-x-10 ">
-      <div class="select_wrap w-full relative select-none border-2 rounded-md">
-        <ul class="default_option_dir icon-arrow rounded relative  bg-white" onclick="dropSelect('_dir')">
-          <li class="p-3">
-            <div class="option">
-              <p id="valueSelect">المديريه</p>
-            </div>
-          </li>
-        </ul>
-        <ul
-          class="select_ul_dir hidden absolute  left-0 w-full rounded  top-14 bg-purple-50 "
-          onclick="clickVal('_dir')">
-          <li class=" p-2  hover:bg-purple-200">
-            <div class="">
-              <p>المعلا</p>
-            </div>
-          </li>
-          <li class=" p-2 hover:bg-purple-200">
-            <div class="">
-              <p>عدن</p>
-            </div>
-          </li>
-          <li class=" p-2 hover:bg-purple-200">
-            <div class="">
-              <p>خور مكسر</p>
-            </div>
-          </li>
-          <li class=" p-2 hover:bg-purple-200">
-            <div class="">
-              <p>التواهي</p>
-            </div>
-          </li>
-
-        </ul>
-      </div>
-      <div class="select_wrap w-full relative select-none border-2 rounded-md">
-        <ul class="default_option_rig icon-arrow rounded relative  bg-white" onclick="dropSelect('_rig')">
-          <li class="p-3">
-            <div class="option">
-              <p id="valueSelect">المربع</p>
-            </div>
-          </li>
-        </ul>
-        <ul
-          class="select_ul_rig hidden absolute   left-0 w-full rounded  top-14 bg-purple-50"
-          onclick="clickVal('_rig')">
-          <li class=" p-2  hover:bg-purple-200">
-            <div class="">
-              <p>جبل قوارير</p>
-            </div>
-          </li>
-          <li class=" p-2 hover:bg-purple-200">
-            <div class="">
-              <p>كاسترو</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="select_wrap w-full relative select-none border-2 rounded-md">
-        <ul class="default_option_agent icon-arrow rounded relative  bg-white" onclick="dropSelect('_agent')">
-          <li class="p-3">
-            <div class="option">
-              <p id="valueSelect">الموزع</p>
-            </div>
-          </li>
-        </ul>
-        <ul
-          class="select_ul_agent hidden absolute  left-0 w-full rounded  top-14 bg-gray-50"
-          onclick="clickVal('_agent')">
-          <li class=" p-2  hover:bg-purple-200">
-            <div class="">
-              <p> كريم العقر</p>
-            </div>
-          </li>
-          <li class=" p-2 hover:bg-purple-200">
-            <div class="">
-              <p>مصعب خالد</p>
-            </div>
-          </li>
-          <li class=" p-2 hover:bg-purple-200">
-            <div class="">
-              <p> معتز حسن</p>
-            </div>
-          </li>
-
-        </ul>
-      </div>
+    <div class="grid grid-cols-5 gap-x-10 gap-y-2 ">
+      <select  class="form-select form-select-lg 
+            appearance-none
+            block
+            w-full
+            px-4
+            py-2
+            text-xl
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding bg-no-repeat
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
+        <option selected>المديريه</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+      <select  class="form-select form-select-lg 
+            appearance-none
+            block
+            w-full
+            px-4
+            py-2
+            text-xl
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding bg-no-repeat
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
+            <option selected>المربع</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+      </select> 
+      <select  class="form-select form-select-lg 
+              appearance-none
+              block
+              w-full
+              px-4
+              py-2
+              text-xl
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding bg-no-repeat
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
+              <option selected>الموزع</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+      </select>
       <div class="relative z-0 w-full">
         <input type="date" name="name" placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
                    appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
@@ -107,7 +84,19 @@
           إلى</label>
         <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
       </div>
-
+      <div class="col-span-5 mx-auto">
+        <a class="relative inline-flex items-center px-8 py-3 overflow-hidden text-white bg-indigo-600 rounded group active:bg-indigo-500 focus:outline-none focus:ring" href="/download">
+          <span class="absolute left-0 transition-transform -translate-x-full group-hover:translate-x-4">
+            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </span>
+        
+          <span class="text-sm font-medium transition-all group-hover:ml-4">
+            أظهر
+          </span>
+        </a>
+      </div>
     </div>
   </div>
 
