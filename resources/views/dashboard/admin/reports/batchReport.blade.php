@@ -13,53 +13,32 @@
             </div>
           </li>
         </ul>
-        <ul
-          class="select_ul_dir hidden absolute  left-0 w-full rounded  top-14 bg-purple-50 "
+        <ul name="dirId" value="" id='selectDirectorates'
+          class="select_ul_dir hidden absolute   left-0 w-full rounded  top-14 bg-purple-50 "
           onclick="clickVal('_dir')">
-          <li class=" p-2  hover:bg-purple-200">
+        @if ($directorates && $directorates->count() > 0)
+          @foreach ($directorates as $dir)
+          <li  value="{{ $dir->id }}" class=" p-2  hover:bg-purple-200">
             <div class="">
-              <p>المعلا</p>
+              <p>{{ $dir->dirName }}</p>
             </div>
           </li>
-          <li class=" p-2 hover:bg-purple-200">
-            <div class="">
-              <p>عدن</p>
-            </div>
-          </li>
-          <li class=" p-2 hover:bg-purple-200">
-            <div class="">
-              <p>خور مكسر</p>
-            </div>
-          </li>
-          <li class=" p-2 hover:bg-purple-200">
-            <div class="">
-              <p>التواهي</p>
-            </div>
-          </li>
-
+         @endforeach
+       @endif
         </ul>
       </div>
-      <div class="select_wrap w-full relative select-none border-2 rounded-md">
-        <ul class="default_option_rig icon-arrow rounded relative  bg-white" onclick="dropSelect('_rig')">
+      <div name="rigId" value="" id='selectRigons' class="select_wrap w-full relative select-none border-2 rounded-md">
+        <ul  class="default_option_rig icon-arrow rounded relative  bg-white" onclick="dropSelect('_rig')">
           <li class="p-3">
             <div class="option">
               <p id="valueSelect">المربع</p>
             </div>
           </li>
         </ul>
-        <ul
+        <ul  
           class="select_ul_rig hidden absolute   left-0 w-full rounded  top-14 bg-purple-50"
           onclick="clickVal('_rig')">
-          <li class=" p-2  hover:bg-purple-200">
-            <div class="">
-              <p>جبل قوارير</p>
-            </div>
-          </li>
-          <li class=" p-2 hover:bg-purple-200">
-            <div class="">
-              <p>كاسترو</p>
-            </div>
-          </li>
+          
         </ul>
       </div>
       <div class="select_wrap w-full relative select-none border-2 rounded-md">

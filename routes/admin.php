@@ -104,8 +104,15 @@ Route::group(['namespace' => 'dashborad\admin', 'prefix' => 'admin'], function (
     });  
     Route::group(['prefix' => 'reports'], function () {
       Route::get('index',  'ReportsController@index')->name('reports.index');
+      Route::get('showRigons/{id?}', 'ReportsController@showRigons')->name('reports.showRigons');
       Route::get('batchReport',  'ReportsController@batchReport')->name('reports.batchReport');
       Route::get('citizenReport',  'ReportsController@citizenReport')->name('reports.citizenReport');
+     
+    });  
+    Route::group(['prefix' => 'export'], function () {
+      Route::get('excelBatch',  'ReportsController@exportExcelBatch')->name('export.excelBatch');
+    //  Route::get('batchReport',  'ReportsController@batchReport')->name('reports.batchReport');
+    //  Route::get('citizenReport',  'ReportsController@citizenReport')->name('reports.citizenReport');
      
     });  
 });

@@ -138,10 +138,12 @@
         
         <div class="containerSlides w-full p-6">
 
-
+         
           @yield('view')
 
-        
+           <!-- Start Code Ajax -->
+           @include('dashboard.admin.includes.ajax.Report')
+          <!-- End Code Ajax -->
         </div>
         
     </article>    
