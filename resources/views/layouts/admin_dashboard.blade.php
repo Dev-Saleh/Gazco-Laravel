@@ -26,9 +26,6 @@
 <body dir="rtl" class="font-tajawal text-base bg-gray-100">
     <div id="wrapper" class="flex h-full relative">
 
-       
-    
-        <!-- fixed-top-->
         <!-- begin sidebar -->
         @include('dashboard.admin.includes.sidebare')
         <!-- end sidebar -->
@@ -39,6 +36,11 @@
             @yield('content')
         </main>
     </div>
+
+     <!-- Required chart.js -->
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   
+    <script src="{{asset('assets/admin/ChartComponentsAdmin.js')}}" ></script>
     <script src="{{ asset('assets/admin/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets/admin/main.js') }}" type="text/javascript"></script>
     @yield('script')

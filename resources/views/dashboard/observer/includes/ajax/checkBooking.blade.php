@@ -22,8 +22,8 @@
                       url: "{{route('sendSms')}}",
                       data:
                             {
-                                  // 'mobilesCitizen':mobilesCitizen 
-                                  'mobilesCitizen':['967730147461','967738776516']
+                                 'mobilesCitizen':mobilesCitizen,
+                                  // 'mobilesCitizen':['967730147461','967738776516']
 
                             },
                 success: function (data) 
