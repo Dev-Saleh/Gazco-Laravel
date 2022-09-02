@@ -1,4 +1,4 @@
-    <details open class=" cursor-pointer text-lg font-medium leading-6 text-gray-900 ">
+    <details open class=" cursor-auto text-lg font-medium leading-6 text-gray-900 ">
         <summary class="text-lg font-medium leading-6 text-gray-900 space-y-6">
             <a href="">أضافة مراقب </a>
 
@@ -106,8 +106,7 @@
                                     <option value="" id='select_agent' selected disabled hidden></option>
                                 </select>
                                 <label for="select"
-                                    class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الموزع
-                                    المراقب</label>
+                                    class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الوكيل المراقب عليه</label>
                                 <span class="text-sm text-red-600 hidden" id="error">Option has to be selected</span>
                                   <small id='agentId_error' style='color:red'></small>
                             </div>
@@ -143,7 +142,7 @@
 
     <br>
     <br>
-    <details class="cursor-pointer text-lg font-medium leading-6 text-gray-900 ">
+    <details class="cursor-auto text-lg font-medium leading-6 text-gray-900 ">
         <summary class="text-lg font-medium leading-6 text-gray-900 space-y-6">
             <a href="#c_logs">سجل المراقبين </a>
             <div class="border-t border-gray-200">
@@ -157,9 +156,9 @@
                       
                 <select id="filterObsSearch" name="filterObsSearch"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-40 p-2.5">
                     <option value="all" selected>بحث الكل</option>
-                    <option value="obsName">الاسم</option>
-                    <option value="agentId">الموزع المراقب</option>
-                    <option value="id">الرقم الوطني</option>
+                    <option value="obsName">اسم المراقب</option>
+                    <option value="agentId">الوكيل المراقب عليه</option>
+                    <option value="id">الرقم</option>
                     <option value="dirId">المديريه</option>
                     <option value="rigId">المربع</option>
                 </select>
@@ -182,11 +181,11 @@
                     <thead class="bg-gray-200 text-gray-500 tableFixed">
                         <tr>
                             <th class="p-3">الرقم</th>
-                            <th class="p-3 text-center">الاسم</th>
+                            <th class="p-3 text-center">اسم المراقب</th>
                             <th class="p-3 text-center">المديريه</th>
                             <th class="p-3 text-center">المربع</th>
-                            <th class="p-3 text-center">الموزع المراقب</th>
-                            <th class="p-3 text-left">العمليات</th>
+                            <th class="p-3 text-center">الوكيل المراقب عليه</th>
+                            <th class="p-3 text-right">العمليات</th>
                         </tr>
                     </thead>
                     <tbody id='fetchLastObserver'>
@@ -218,7 +217,7 @@
                                             <button class="bg-red-200 w-14 hover:bg-red-400">N</button>
                                         </div>
                                         <div id="action-div"
-                                            class="flex space-x-2  transition-all ease-in duration-150">
+                                            class="flex transition-all ease-in duration-150">
                                             <a onclick="deleteAlert();" href="#" obsId="{{ $obs->id }}"
                                                 class="observerDelete text-red-400  hover:text-red-600 float-left ">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
@@ -229,22 +228,14 @@
                                                 </svg>
                                             </a>
                                             <a href="#" obsId="{{ $obs->id }}" 
-                                                class="observerEdit text-yellow-400 hover:text-yellow-600  mx-2">
+                                                class="observerEdit text-yellow-400 hover:text-yellow-600  mx-4">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                                     viewBox="0 0 20 20" fill="currentColor">
                                                     <path
                                                         d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                                                 </svg>
                                             </a>
-                                            <a href="#" class="text-blue-400 hover:text-blue-600  ml-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
-                                                    viewBox="0 0 20 20" fill="currentColor">
-                                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                    <path fill-rule="evenodd"
-                                                        d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                            </a>
+                                           
                                         </div>
                                     </td>
                                 </tr>
