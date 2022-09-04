@@ -3,9 +3,11 @@
 
 <div id="batchReport" class="">
   <!-- select section -->
+  <form action="" method="POST" id='batchReportForm'>
+   @csrf
   <div class="p-6 bg-white shadow-sm rounded-xl">
     <div class="grid grid-cols-5 gap-x-10 gap-y-2 ">
-      <select  class="form-select form-select-lg 
+      <select name="dirId" value="" id='selectDirectorates' class="form-select form-select-lg 
             appearance-none
             block
             w-full
@@ -22,11 +24,14 @@
             m-0
           focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
         <option selected>المديريه</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+           @if ($directorates && $directorates->count() > 0)
+              @foreach ($directorates as $dir)
+                  <option value="{{ $dir->id }}">
+                      {{ $dir->dirName }}</option>
+              @endforeach
+           @endif
       </select>
-      <select  class="form-select form-select-lg 
+      <select name="rigId" value="" id='selectRigon' class="form-select form-select-lg 
             appearance-none
             block
             w-full
@@ -43,11 +48,9 @@
             m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
             <option selected>المربع</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+           
       </select> 
-      <select  class="form-select form-select-lg 
+      <select name="agentId" value="" id='selectAgent' class="form-select form-select-lg 
               appearance-none
               block
               w-full
@@ -64,42 +67,42 @@
               m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
               <option selected>الموزع</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+             
       </select>
       <div class="relative z-0 w-full">
-        <input type="date" name="name" placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
+        <input type="date" name="dateForm" id='dateFrom' placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
                    appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
                    hover:border-blue-600 text-blue-900" />
-        <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">
+        <label for="from" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">
           من</label>
         <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
       </div>
       <div class="relative z-0 w-full">
-        <input type="date" name="name" placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
+        <input type="date" name="dateTo" id='dateTo' placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
                    appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
                    hover:border-blue-600 text-blue-900" />
-        <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">
+        <label for="to" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">
           إلى</label>
         <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
       </div>
+
       <div class="col-span-5 mx-auto">
-        <a class="relative inline-flex items-center px-8 py-3 overflow-hidden text-white bg-indigo-600 rounded group active:bg-indigo-500 focus:outline-none focus:ring" href="/download">
+      <button type="" id='btnShowBatchReports'>
+        <a  class="relative inline-flex items-center px-8 py-3 overflow-hidden text-white bg-indigo-600 rounded group active:bg-indigo-500 focus:outline-none focus:ring" href="">
           <span class="absolute left-0 transition-transform -translate-x-full group-hover:translate-x-4">
-            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-5 h-5" xmlns="" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </span>
-        
-          <span class="text-sm font-medium transition-all group-hover:ml-4">
-            أظهر
+          <span  class="text-sm font-medium transition-all group-hover:ml-4">
+              أظهر
           </span>
         </a>
+         </button> 
       </div>
     </div>
   </div>
-
+</form>
   <!-- end select section -->
 
   <!-- Table section -->
@@ -116,19 +119,19 @@
 
           <div class="group rounded-tr-none rounded-full bg-teal-500 w-full h-40 flex flex-col justify-center items-center space-y-2 hover:animate-wiggle">
                   <p class="text-teal-900 text-lg">عدد الدفعات</p>
-                  <span class="text-teal-200 text-base bg-teal-700 rounded-full rounded-tr-none p-2 py-1 group-hover:animate-bounce">19</span>
+                  <span id='batchCount' class="text-teal-200 text-base bg-teal-700 rounded-full rounded-tr-none p-2 py-1 group-hover:animate-bounce">19</span>
           </div>
           <div class="group rounded-tl-none rounded-full bg-purple-500 w-full h-40 flex flex-col justify-center items-center space-y-2 hover:animate-wiggle">
             <p class="text-purple-900 text-lg">اجمالي الدفعات</p>
-            <span class="text-purple-200 text-base bg-purple-700 rounded-full rounded-tl-none p-2 py-1 group-hover:animate-bounce">11</span>
+            <span id='batchResult' class="text-purple-200 text-base bg-purple-700 rounded-full rounded-tl-none p-2 py-1 group-hover:animate-bounce">11</span>
           </div>
           <div class="group rounded-tr-none rounded-full bg-yellow-500 w-full h-40 flex flex-col justify-center items-center space-y-2 hover:animate-wiggle">
             <p class="text-yellow-900 text-lg"> التي تم فتح الحجز</p>
-            <span class="text-yellow-200 text-base bg-yellow-700 rounded-full rounded-tr-none p-2 py-1 group-hover:animate-bounce">10</span>
+            <span id='allowBookingCount' class="text-yellow-200 text-base bg-yellow-700 rounded-full rounded-tr-none p-2 py-1 group-hover:animate-bounce">10</span>
           </div>
           <div  class="group rounded-tl-none rounded-full bg-sky-500 w-full h-40 flex flex-col justify-center items-center space-y-2 hover:animate-wiggle">
             <p class="text-sky-900 text-lg"> اي شي</p>
-            <span class="text-sky-200 text-base bg-sky-700 rounded-full rounded-tl-none p-2 py-1 group-hover:animate-bounce">00</span>
+            <span id='anyThings' class="text-sky-200 text-base bg-sky-700 rounded-full rounded-tl-none p-2 py-1 group-hover:animate-bounce">00</span>
           </div>
         </div>
       </div>
@@ -165,9 +168,15 @@
             
         </div>
            {{-- END SEARCH FORM --}}
-            <button class='h-8 w-8 bg-red-100 p-1 rounded-full'><img src="{{ asset('assets/images/pdf.png') }}" alt="PDF"></button>
-            <button class='h-8 w-8 bg-green-100 p-1 rounded-full'><img src="{{ asset('assets/images/sheets.png') }}" alt="Excel"></button>
+            <form action="" method="POST" id='batchExcelForm'>
+             @csrf
+            <input type="" value='2022-09-05' name='valueDateForm' style="display:none;" class="form-control" id="valueDateForm">
+            <input type="" value='2023-05-03' name='valueDateTo'  style="display:none;" class="form-control" id="valueDateTo">    
+            <button type="" id="btnBatchPdf"    class='h-8 w-8 bg-red-100 p-1 rounded-full'><img src="{{ asset('assets/images/pdf.png') }}" alt="PDF"></button>
+            <button type="" id="btnBatchExcel"  class='h-8 w-8 bg-green-100 p-1 rounded-full'><img src="{{ asset('assets/images/sheets.png') }}" alt="Excel"></button>
+     
           </div>
+          </form>
         <div class=" relative overflow-y-auto h-[300px]">
           <table class="table">
             <thead class="bg-white tableFixed">
@@ -177,7 +186,7 @@
                 <th>الحاله</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id='fetchLestGazLogs'>
               <tr>
                 <td>
                   <img src="/assest/Dev-SL.jpeg">
