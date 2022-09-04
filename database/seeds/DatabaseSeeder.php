@@ -7,6 +7,9 @@ use App\Models\Rigon;
 use App\Models\Directorate;
 use App\Models\gazLogs;
 use App\Models\Station;
+use App\Models\logsBooking;
+use App\Models\employee;
+
 use Illuminate\Database\Seeder;
 
 use Illuminate\Support\Str;
@@ -44,7 +47,8 @@ class DatabaseSeeder extends Seeder
 
 
         $directorateArray = array(
-            // "المنصوره","الشيخ عثمان","التواهي",
+        //  "المنصوره","الشيخ عثمان",
+         "التواهي",
         "خور مكسر"," عدن ","المعلا");
 
         for($i = 0 ; $i < count($directorateArray) ;$i++)
@@ -61,7 +65,7 @@ class DatabaseSeeder extends Seeder
             "1","1",
             "2","2",
             "3","3",
-            // "4","4",
+            "4","4",
             // "5","5",
             // "6","6",
         );
@@ -72,8 +76,8 @@ class DatabaseSeeder extends Seeder
                 // "الحجاز",
                 // "السيله",
                 // "القاهره",
-                // "الفتح",
-                // "بنجسار",
+                "الفتح",
+                "بنجسار",
                 "اكتوبر",
                 "الثقافه",
                 "الخساف",
@@ -96,16 +100,26 @@ class DatabaseSeeder extends Seeder
         //  ################################ ( AGENT SEEDER ) ##########################
 
             $agentArray = array(
-                "كريم حسن القعر",
+            "كريم حسن القعر",
             "معاذ عبدالله يحيى",
             "عبدالناصر اسماعيل علي",
             "عبدالرب احمد سالمين",
             "ياسر احمد محمود",
-                " حسن القعر",
+            " حسن علي القعر",
             " عبدالله يحيى",
             " اسماعيل علي",
             " احمد سالمين",
             " احمد محمود",
+            "مراد محسن",
+            "مهند قاسم",
+            "وليد علي",
+            "مصعب ثامر",
+            "ناجي حسين",
+            "نادر ناصر",
+            " نايف علاء",
+            " مؤيد سلمان",
+            " مروان سلطان",
+            " ثامر صلاح",
         );
 
 
@@ -116,7 +130,7 @@ class DatabaseSeeder extends Seeder
                 $cc = $bb->random()->id;
             Agent::create([
                 'agentName' => $agentArray[$i],
-                'Photo' => 'sfd.jpg',
+                'Photo' => 'Dev-Sl.jpeg',
 
                 'dirId' =>$aa,
                 'rigId' => $cc,
@@ -140,6 +154,16 @@ class DatabaseSeeder extends Seeder
             "علي ناصر محمود",
             "العليمي قاسم صلاح",
             "الطيار قاسم انور",
+            "مجاهد الشمري",
+            "فيصل الكثيري",
+            "فواز بن فهد",
+            " فادي بن وليد",
+            "فهد الزوبه",
+            "فضل العليمي",
+            "شهاب ياسر",
+            "طالب عبدالله",
+            "تامر حليمي",
+            "خالد العودي",
         );
         $observerUsers = array(
             "ماهر  ",
@@ -152,6 +176,16 @@ class DatabaseSeeder extends Seeder
             "علي  ",
             "العليمي  ",
             "الطيار  ",
+            "مجاهد",
+            "فيصل",
+            "فواز",
+            "فادي",
+            "فهد ",
+            "فضل ",
+            "شهاب",
+            "طالب",
+            "تامر",
+            "خالد",
         );
         $agentsId = array(
             "1",
@@ -164,6 +198,16 @@ class DatabaseSeeder extends Seeder
             "8",
             "9",
             "10",
+            "11",
+            "13",
+            "12",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
         );
 
 
@@ -199,7 +243,7 @@ class DatabaseSeeder extends Seeder
 
         //      ################################ ( GAZ_LOG SEEDER ) ##########################
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             // $aa = Directorate::all()->random()->id;
             // $zz = Rigon::select()->where('directorate_id', $aa)->get();
             // $mm = Agent::select()->where('directorate_id', $aa)->get();
@@ -214,14 +258,15 @@ class DatabaseSeeder extends Seeder
             $mm = Agent::select()->where('dirId', $aa)->get();
             $tt= $mm->random()->id;
 
+            $rr=rand(90,100);
             gazLogs::create([
-                'qty' => rand(90,100),
-                'qtyRemaining' => rand(90,100),
+                'qty' => $rr,
+                'qtyRemaining' => $rr,
                 'dirId' => $aa,
                 'rigId' => $cc,
                 'staId' => $ss,
                 'agentId' => $tt,
-                'notice' => 'أنت موقف راجع الاداره',
+                'notice' => ' ',
                 'validOfSell' => rand(0, 1),
                 'allowBooking' => '0',
                
@@ -275,10 +320,61 @@ class DatabaseSeeder extends Seeder
                 'citPassword' => rand(9999, 99999),
                 'dirId' => $aa,
                 'rigId' => $cc,
-                'obsId' =>$obb,
+                'obsId' =>'1',
 
             ]);
         }
 
-    }
+// ################################ ( EMPLOYEE SEEDER ) ##########################
+
+    $employeeArray = array(
+        "صالح عبدالاله الكهالي",
+        "مازن عبدالكريم العقر",
+        "احمد عبدالفتاح",
+        "محمد احمد هتاري",
+        "احمد خالد تركي",
+    );
+
+    $employeeUserArray = array(
+        "صالح",
+        "مازن",
+        "احمد",
+        "محمد",
+        "تركي",
+    );
+    for ($i = 0; $i < 5; $i++)
+    employee::create([
+        'empFullName' => $employeeArray[$i],
+        'empUserName' => $employeeUserArray[$i],
+        'empPassword' => rand(000,999),
+        'empPhoto' => Str::random(10),
+        'empRole' => rand(0,1),
+        
+    ]);
+
+// ################################ ( LOGS BOOKING SEEDER ) ##########################
+for ($i = 0; $i < 30; $i++) {
+    // $aa = Observer::all()->random()->id;
+    $aa = '1';
+    $bb = Citizen::select()->where('obsId', $aa)->get();
+    $cbb = $bb->random()->id;
+  
+    $agentId = Observer::select()->where('agentId', $aa)->get();
+  
+    // Determine Batch Number
+  
+    $gl =  gazLogs::select()->where('agentId', '1')->get();
+     $ggl = $gl->random()->id;
+  
+    logsBooking::create([
+        'recivingDate' => '2022-01-01',
+        'statusBooking' => rand(0,1),
+        'citId' => $cbb,
+        'numBatch' => $ggl,
+        
+    ]);
+  }
+  
+  }
+    
 }

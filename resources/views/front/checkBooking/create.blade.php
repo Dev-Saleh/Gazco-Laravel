@@ -17,11 +17,37 @@
    <!-- Table Query Booking -->
    <div class="flex flex-col space-y-4 w-full px-4">
     <!-- Serach Section -->
-   <div class="p-2.5 mt-3 flex items-center rounded-md 
-   px-4 duration-300 cursor-pointer  bg-gray-50">
-     <i class="bi bi-search text-sm"></i>
-     <input class="text-[15px] mr-4 w-11/12 bg-transparent focus:outline-none" placeholder=" بحث عن مواطن" />
-   </div>
+    <div class="relative">
+      <label class="sr-only" for="search"> Search </label>
+
+      <input
+        class="w-full h-10 pl-4 pr-10 text-sm bg-white border-none rounded-full shadow-sm sm:w-56"
+        id="search"
+        type="search"
+        placeholder="بحث عن مواطن ..."
+      />
+
+      <button
+        class="absolute p-2 text-gray-600 rounded-full transition -translate-y-1/2 hover:text-gray-700 bg-gray-50 top-1/2 right-1"
+        type="button"
+        aria-label="Submit Search"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
+      </button>
+    </div>
    <!-- End Serach Section -->
    
     <div class=" bg-white border-b rounded-xl border-gray-200 overflow-y-auto w-full " style="height:450px;">

@@ -8,7 +8,7 @@
             @include('front.include.header')
             <!-- end header -->
             
-            @include('front.profile.create')
+            @include('front.myProfile.create')
             
            
 

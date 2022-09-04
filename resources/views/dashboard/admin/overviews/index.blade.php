@@ -1,8 +1,8 @@
 @extends('layouts.admin_dashboard')
 @section('content')
 
-  <article id="Content" class="relative content-area px-10 pt-10 bg-gray-100 h-full flex flex-col">
-    <div id="containerStatus" class="mb-4 grid grid-cols-8 gap-x-7 w-full">
+  <article id="Content" class="relative content-area px-10 pt-10 bg-gray-100 h-full flex flex-col space-y-4">
+    <div id="containerStatus" class="mb-4 grid grid-cols-8 gap-4 w-full">
       <div class="  col-span-2 group box1 relative h-28 w-full bg-white rounded-md shadow-sm flex items-center" on>
         <span
           class="z-10 absolute h-28 w-24 bg-emerald-500 rounded-md flex justify-center items-center 
@@ -69,12 +69,12 @@
       </div>
     </div>
    {{-- Start Chart Section --}}
-      <div class="flex justify-around">
+      <div class="flex justify-around h-full">
                 
           {{-- Start Line Chart --}}
 
-          <div class="shadow-lg rounded-lg overflow-hidden">
-            <div class="py-3 px-5 bg-gray-50">Line chart</div>
+          <div class="shadow-lg rounded-lg overflow-hidden ">
+            <div class="py-3 px-5 bg-gray-50">بيان خطي</div>
             <canvas class="p-2 w-[700px]" id="chartLine"></canvas>
           </div>
 
@@ -82,9 +82,9 @@
           
           {{-- Start Doughnut Chart --}}
 
-          <div class="shadow-lg rounded-lg overflow-hidden">
-            <div class="py-3 px-5 bg-gray-50">Doughnut chart</div>
-            <canvas class="p-2 w-96 h-96" id="chartDoughnut"></canvas>
+          <div class="shadow-lg rounded-lg overflow-hidden ">
+            <div class="py-3 px-5 bg-gray-50">دونات بياني</div>
+            <canvas class="p-2 w-96 h-full" id="chartDoughnut"></canvas>
           </div>
           
           {{-- End Doughnut Chart --}}
@@ -93,10 +93,33 @@
       </div>
   {{-- End Chart Section --}}
 
-  <footer class="absolute bottom-0 right-0 left-0 bg-yellow-400 w-full h-20 rounded">
-
-  </footer>
-
+  
+  <footer class="p-2 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900 ">
+    <div class="sm:flex sm:items-center sm:justify-between">
+        <a href="#" class="flex items-center mb-4 sm:mb-0">
+            <img src="{{ asset('assets/images/gaz_logo.png') }}" class="mx-3 h-8" alt="Gazco Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">غـازكو</span>
+        </a>
+        <ul class="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
+            <li>
+                <a href="#" class="mr-4 hover:underline md:mr-6 ">من نحن</a>
+            </li>
+            <li>
+                <a href="#" class="mr-4 hover:underline md:mr-6">سياسة الخصوصية</a>
+            </li>
+            <li>
+                <a href="#" class="mr-4 hover:underline md:mr-6 ">الترخيص</a>
+            </li>
+            <li>
+                <a href="#" class="mr-4 hover:underline">تواصل معنا</a>
+            </li>
+        </ul>
+    </div>
+    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+    <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://flowbite.com/" class="hover:underline">Gazco™</a>. All Rights Reserved.
+    </span>
+</footer>
   </article>
+  
  @stop
 

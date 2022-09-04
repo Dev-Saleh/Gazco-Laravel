@@ -14,13 +14,17 @@ Route::group(['namespace' => 'auth'],function(){
   
 
 
-Route::group(['namespace' => 'front', 'middleware' => 'authCitizen', 'prefix' => 'home'], function () {
+Route::group(['namespace' => 'front', 'middleware' => 'authCitizen', 'prefix' => ''], function () {
     Route::get('/', 'homeController@index')->name('Main.front');  // the first page Observer visits if authenticated
     ################################## Profile routes ######################################
-    Route::group(['prefix' => 'profile'], function () {
-        Route::get('/', 'profileController@index')->name('profile.index');
-    });
-    ################################## Citizen routes ######################################
+    
+    Route::get('/profile', 'myProfileController@index')->name('myProfile.index');
+    
+    ################################## my Booking routes ######################################
+    
+    Route::get('/myBooking', 'myBookingController@index')->name('myBooking.index');
+   
+    
     ################################## Booking routes ######################################
      Route::group(['prefix' => 'Booking'], function () {
         Route::get('show/{id?}', 'homeController@show')->name('Main.show');
