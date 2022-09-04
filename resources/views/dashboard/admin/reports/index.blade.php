@@ -126,8 +126,8 @@
          <!-- nvabar of Reports -->
         <div class="p-6 w-full">
           <nav id="nav-reports" class="navBtn w-full h-12">
-            <a href="{{route('reports.batchReport')}}" class="{{ 'admin/reports/batchReport' == request()->path() ? 'bg-[#1abc9c]' : '' }}">الدفعات</a>
-            <a href="{{route('reports.citizenReport')}}" class="{{ 'admin/reports/citizenReport' == request()->path() ? 'bg-[#1abc9c]' : '' }}">المواطنين</a>
+            <a href="{{route('batchReports.index')}}" class="{{ 'admin/reports/Batch/index' == request()->path() ? 'bg-[#1abc9c]' : '' }}">الدفعات</a>
+           <a href="#" >المواطنين</a>
             <a href="#">المراقبين</a>
             <a href="#">الموزعين</a>
             <a href="#">المديريات</a>
@@ -142,7 +142,7 @@
           @yield('view')
 
            <!-- Start Code Ajax -->
-           @include('dashboard.admin.includes.ajax.Report')
+           @include('dashboard.admin.includes.ajax.batchReport')
           <!-- End Code Ajax -->
         </div>
         

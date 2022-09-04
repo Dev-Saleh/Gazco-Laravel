@@ -102,19 +102,26 @@ Route::group(['namespace' => 'dashborad\admin', 'prefix' => 'admin'], function (
       Route::post('search', 'CitizenConfirm@search')->name('citizenConfirm.search');
       
     });  
-    Route::group(['prefix' => 'reports'], function () {
-      Route::get('index',  'ReportsController@index')->name('reports.index');
-      Route::get('showRigons/{id?}', 'ReportsController@showRigons')->name('reports.showRigons');
-      Route::get('batchReport',  'ReportsController@batchReport')->name('reports.batchReport');
-      Route::get('citizenReport',  'ReportsController@citizenReport')->name('reports.citizenReport');
-     
+    Route::group(['prefix' => 'reports'], function () 
+    {
+      Route::group(['prefix' => 'Batch'], function ()
+      {
+        Route::get('index',  'batchReportsController@index')->name('batchReports.index');
+        Route::Post('show',  'batchReportsController@show')->name('batchReport.show');
+        Route::get('showRigon/{id?}', 'batchReportsController@showRigons')->name('batchReports.showRigons');
+        Route::get('exportExcel', 'batchReportsController@exportExcelBatch')->name('batchReports.exportExcelBatch');
+        Route::get('showAgent/{id?}', 'batchReportsController@showAgents')->name('batchReports.showAgents');
+      }
+       
+      
+     );
+      Route::group(['prefix' => 'citizen'], function ()
+      {
+          Route::get('citizenReport',  'ReportsController@citizenReport')->name('reports.citizenReport');
+      }
+    );
     });  
-    Route::group(['prefix' => 'export'], function () {
-      Route::get('excelBatch',  'ReportsController@exportExcelBatch')->name('export.excelBatch');
-    //  Route::get('batchReport',  'ReportsController@batchReport')->name('reports.batchReport');
-    //  Route::get('citizenReport',  'ReportsController@citizenReport')->name('reports.citizenReport');
-     
-    });  
+      
 });
 
  ################################## Observer routes ######################################  

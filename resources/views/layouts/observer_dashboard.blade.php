@@ -16,21 +16,27 @@
       <title>@yield('title')</title>
 </head>
 <body dir="rtl" class="font-tajawal text-base bg-gray-100">
-<div id="wrapper" class="flex h-full relative">
-<!-- fixed-top-->
+   <div id="wrapper" class="flex h-full relative">
+      <!-- fixed-top-->
 
-<!-- begin sidebar -->
-@include('dashboard.observer.includes.sidebare')
-<!-- end sidebar -->
-<main id="main" class="lex flex-col  font-tajawal  h-full overflow-y-auto mr-72 w-full">
-<!-- begin header -->
-@include('dashboard.observer.includes.header')
-<!-- end header -->
-@yield('content')
-</main>
-</div>
-<script src="{{asset('assets/admin/jquery-3.6.0.min.js')}}" ></script>
-<script src="{{asset('assets/admin/main.js')}}" type="text/javascript"></script>
-@yield('script')  
+      <!-- begin sidebar -->
+      @include('dashboard.observer.includes.sidebare')
+      <!-- end sidebar -->
+      <main id="main" class="flex flex-col  font-tajawal  h-full overflow-y-auto mr-72 w-full">
+         <!-- begin header -->
+         @include('dashboard.observer.includes.header')
+         <!-- end header -->
+         @yield('content')
+
+      </main>
+   </div>
+
+      <!-- Required chart.js -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+   <script src="{{asset('assets/admin/ChartComponentsObserver.js')}}" ></script>
+   <script src="{{asset('assets/admin/jquery-3.6.0.min.js')}}" ></script>
+   <script src="{{asset('assets/admin/main.js')}}" type="text/javascript"></script>
+   @yield('script')  
 </body>
 </html>

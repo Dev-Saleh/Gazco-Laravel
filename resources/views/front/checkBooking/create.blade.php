@@ -1,10 +1,4 @@
-  <!-- Serach Section -->
-   <div class="p-2.5 mt-3 flex items-center rounded-md 
-   px-4 duration-300 cursor-pointer  bg-gray-50">
-     <i class="bi bi-search text-sm"></i>
-     <input class="text-[15px] mr-4 w-11/12 bg-transparent focus:outline-none" placeholder=" بحث عن مواطن" />
-   </div>
-   <!-- End Serach Section -->
+  
 
    <!-- Combobox Section -->
    <div class="w-11/12 mx-auto flex flex-col space-y-2">
@@ -21,8 +15,16 @@
    <!-- End Combobox Section -->
 
    <!-- Table Query Booking -->
-   <div class="flex flex-col space-y-4 w-full">
-    <div class=" bg-white border-b rounded-xl border-gray-200 overflow-y-auto w-full" style="height:450px;">
+   <div class="flex flex-col space-y-4 w-full px-4">
+    <!-- Serach Section -->
+   <div class="p-2.5 mt-3 flex items-center rounded-md 
+   px-4 duration-300 cursor-pointer  bg-gray-50">
+     <i class="bi bi-search text-sm"></i>
+     <input class="text-[15px] mr-4 w-11/12 bg-transparent focus:outline-none" placeholder=" بحث عن مواطن" />
+   </div>
+   <!-- End Serach Section -->
+   
+    <div class=" bg-white border-b rounded-xl border-gray-200 overflow-y-auto w-full " style="height:450px;">
       <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
           <tr>

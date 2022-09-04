@@ -1,7 +1,7 @@
 @extends('layouts.admin_dashboard')
 @section('content')
 
-  <article id="Content" class="p-10 bg-gray-100 h-full flex flex-col">
+  <article id="Content" class="relative content-area px-10 pt-10 bg-gray-100 h-full flex flex-col">
     <div id="containerStatus" class="mb-4 grid grid-cols-8 gap-x-7 w-full">
       <div class="  col-span-2 group box1 relative h-28 w-full bg-white rounded-md shadow-sm flex items-center" on>
         <span
@@ -68,102 +68,35 @@
           class="bg-purple-200 px-3 py-2 rounded-full rounded-tr-none absolute left-0 group-hover:left-20  transition-all duration-1000 ">99</span>
       </div>
     </div>
+   {{-- Start Chart Section --}}
+      <div class="flex justify-around">
+                
+          {{-- Start Line Chart --}}
 
-    <div id="content">
+          <div class="shadow-lg rounded-lg overflow-hidden">
+            <div class="py-3 px-5 bg-gray-50">Line chart</div>
+            <canvas class="p-2 w-[700px]" id="chartLine"></canvas>
+          </div>
 
-      <div class="table-data">
-        <div class="order">
-          <div class="head">
-            <h3>ما ادري وش احط</h3>
-            <i class='bx bx-search'></i>
-            <i class='bx bx-filter'></i>
+          {{-- End Line Chart --}}
+          
+          {{-- Start Doughnut Chart --}}
+
+          <div class="shadow-lg rounded-lg overflow-hidden">
+            <div class="py-3 px-5 bg-gray-50">Doughnut chart</div>
+            <canvas class="p-2 w-96 h-96" id="chartDoughnut"></canvas>
           </div>
-          <table>
-            <thead>
-              <tr>
-                <th>الاسم</th>
-                <th>التاريخ</th>
-                <th>الحاله</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <img src="/assest/Dev-SL.jpeg">
-                  <p>John Doe</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status completed">تم الاستلام</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="/assest/sl.JPG">
-                  <p>John Doe</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status pending">معلق</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="/assest/mz.JPG">
-                  <p>John Doe</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status process">قيد المراجعه</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="/assest/Dev-SL.jpeg">
-                  <p>John Doe</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status pending">معلق</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="/assest/sl.JPG">
-                  <p>John Doe</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status completed">تم الاستلام</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="todo">
-          <div class="head">
-            <h3>الشكاوي</h3>
-            <i class='bx bx-plus'></i>
-            <i class='bx bx-filter'></i>
-          </div>
-          <ul class="todo-list">
-            <li class="completed">
-              <p> دفلوبر نيكسمو </p>
-              <i class='bx bx-dots-vertical-rounded'></i>
-            </li>
-            <li class="completed">
-              <p>كريم سرق الدبب</p>
-              <i class='bx bx-dots-vertical-rounded'></i>
-            </li>
-            <li class="not-completed">
-              <p>مصعب يشتي يتمشي مع صلوحي</p>
-              <i class='bx bx-dots-vertical-rounded'></i>
-            </li>
-            <li class="completed">
-              <p>سوريا قالت ما بتجيب حق مواصلات</p>
-              <i class='bx bx-dots-vertical-rounded'></i>
-            </li>
-            <li class="not-completed">
-              <p>نسخ لصق</p>
-              <i class='bx bx-dots-vertical-rounded'></i>
-            </li>
-          </ul>
-        </div>
+          
+          {{-- End Doughnut Chart --}}
+        
+        
       </div>
+  {{-- End Chart Section --}}
 
-    </div>
+  <footer class="absolute bottom-0 right-0 left-0 bg-yellow-400 w-full h-20 rounded">
+
+  </footer>
+
   </article>
-        </main>
-    </div>
  @stop
 

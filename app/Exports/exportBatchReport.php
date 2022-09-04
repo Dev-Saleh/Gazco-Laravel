@@ -2,12 +2,11 @@
 
 namespace App\Exports;
 use App\Models\gazLogs;
-
+use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromView;
 
-
-
-class exportBatchReport implements FromCollection
+class exportBatchReport implements FromView
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -18,9 +17,12 @@ class exportBatchReport implements FromCollection
         $this->from = $from;
         $this->to = $to;
     }
-
-    public function collection()
+    public function view() :View
     {
-         return gazLogs::whereBetween('created_at', [$this->from, $this->to])->get();
+        return view('dashboard.admin.reports.exportbatchExcel', [
+            'gazLogs' => gazLogs::whereBetween('created_at', [$this->from, $this->to])->get()
+        ]);
     }
+
+
 }

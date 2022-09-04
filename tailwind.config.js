@@ -2,7 +2,6 @@ module.exports = {
   content: ['./resources/views/**/**/*.blade.php'],
   theme: {
     extend: {
-
       animation: {
         wiggle: 'wiggle 1s ease-in-out infinite',
         fadeInRight: 'fadeInRight 0.4s ease-in-out',
@@ -25,6 +24,7 @@ module.exports = {
       },
 
       fontFamily: {
+        'sans': ['Inter', 'sans-serif'],
         'poppins': ['Poppins', 'sans-serif'], 
         'cairo': ['Cairo', 'sans-serif'], 
         'tajawal': ['Tajawal', 'sans-serif'], 
