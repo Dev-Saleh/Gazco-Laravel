@@ -13,8 +13,9 @@ class employee extends Model
   
     public function getempRoleAttribute($value)
     {
-        return  $value  == 0 ?  "User"   : "Admin" ;
+        return  $value  == 0 ?  "مستخدم"   : "مسئول" ;
     }
+  
     
 
     public function getempPhotoAttribute($val)

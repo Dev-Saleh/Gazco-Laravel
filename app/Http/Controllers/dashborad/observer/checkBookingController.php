@@ -124,4 +124,46 @@ class checkBookingController extends Controller
                 ]);
             }
     }
+    public function search(Request $request)
+    {
+        
+        try
+        { 
+               $observer=Observer::find(session()->get('obsId'));
+                 if($request->filterSearch=='all')
+                    $resultSearch=gazLogs::select('id','created_at')
+                    ->where('agentId',$observer->agentId)
+                    ->where('id','Like','%'.$request->inputSearch.'%')
+                       ->get();
+                  
+                   else if($request->filterSearch=='numBatch')
+                   $resultSearch=gazLogs::select('id','created_at')
+                   ->where('agentId',$observer->agentId)
+                    ->where('id','Like','%'.$request->inputSearch.'%')
+                      ->get();
+                 
+                                     
+                
+            if ($resultSearch)
+                return response()->json
+                (
+                    [
+                        'status'        => true,
+                        'msg'           => 'تم الحفظ بنجاح', 
+                        'resultSearch'  =>  $resultSearch,
+                        //'Photo'       => $resultSearch->Photo,
+                    ]
+                );
+ 
+        }
+        catch (\Exception $ex)
+         {
+            return response()->json([
+                'status'             => false,
+                'msg'                => 'فشل الحفظ برجاء المحاوله مجددا',
+                'exceptionError'     => $ex,
+            ]);
+         }
+    }
+       
 }
