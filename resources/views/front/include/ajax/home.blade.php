@@ -15,8 +15,8 @@
                         },
                     success: function (data) 
                     {
-                    console.log(data);
-                        if (data.status == true ) 
+                       // console.log(data);  for Test
+                        if (data.msg == '1' ) 
                         {  
                                 // في خطأ بالالوان
                                 $('.saveBooking').removeAttr("disabled");
@@ -28,16 +28,42 @@
                                 $('#numBatch').val(data.lastGazLogs.id);
                                 $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
                         }
-                        else
+                        else if(data.msg == '2')
+                        {
+                              // في خطأ بالالوان
+                                $('.saveBooking').removeAttr("disabled");
+                                document.getElementById('status_msg').classList.replace('bg-transparent','bg-green-200');
+                                document.getElementById('status_msg').classList.replace('border-transparent','border-green-600');
+                                document.getElementById('status_msg').classList.replace('text-gray-900','text-green-900');
+                                $('#status_msg').text('لاتوجد كمية الحجز');          
+                                $('.numBatch').text(data.lastGazLogs.id); //???????
+                                $('#numBatch').val(data.lastGazLogs.id);
+                                $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
+                        }
+                        else if(data.msg == '3')
+                        {
+                              // في خطأ بالالوان
+                                window.saveBooking.setAttribute('disabled','disabled');
+                                document.getElementById('status_msg').classList.replace('bg-transparent','bg-red-200');
+                                document.getElementById('status_msg').classList.replace('border-transparent','border-red-600');
+                                document.getElementById('status_msg').classList.replace('text-gray-900','text-red-900');
+                                $('#status_msg').text('لايوجد كمية مفتوحة الحجز');
+                          
+                      
+                        }
+                        else if(data.msg == '4')
                         {
                                 window.saveBooking.setAttribute('disabled','disabled');
                                 document.getElementById('status_msg').classList.replace('bg-transparent','bg-red-200');
                                 document.getElementById('status_msg').classList.replace('border-transparent','border-red-600');
                                 document.getElementById('status_msg').classList.replace('text-gray-900','text-red-900');
-                                    $('#status_msg').text('انت محظور يا حلو');
-                                    //$('numBatch').text(data.lastGazLogs.id);
-                                    //$('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
-                        } 
+                                $('#status_msg').text('انت محظور يا حلو');
+                              //$('numBatch').text(data.lastGazLogs.id);
+                              //$('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
+
+                        }
+                    
+                      
                     
                     }, error: function (reject) {
 

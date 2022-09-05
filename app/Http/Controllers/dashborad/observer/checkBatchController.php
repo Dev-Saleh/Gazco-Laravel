@@ -39,13 +39,9 @@ class checkBatchController extends Controller
                             $q->select('id','rigName');
                         }
                     ]
-                    )->select('id','dirId','rigId','staId','agentId','validOfSell','created_at')->where(
-                    [
-                        ['validOfSell','1']
-                       ,['allowBooking','0']
-                       ,['qtyRemaining','>','0']
-                       ,['agentId',$observer->agentId]
-                    ])->get();
+                    )->select('id','dirId','rigId','staId','agentId','statusBatch','created_at')
+                    ->where('agentId',$observer->agentId)
+                    ->get();
                    
                     return view('dashboard.observer.checkBatch.index',$data);
                 
@@ -87,13 +83,7 @@ class checkBatchController extends Controller
                         $q->select('id','rigName');
                     }
                 ]
-                )->select('id','dirId','rigId','staId','agentId','validOfSell','qty','created_at')->where(
-                    [
-                         ['validOfSell','1']
-                        ,['allowBooking','0']
-                        ,['qtyRemaining','>','0']
-                    ]
-                )->find($request -> checkBatchId);  // search in given table id only
+                )->select('id','dirId','rigId','staId','agentId','qty','created_at')->find($request -> checkBatchId);  // search in given table id only
           
                 if (!$gazLog)
                 return response()->json(
@@ -127,48 +117,71 @@ class checkBatchController extends Controller
     {
       try
             {
+                
+                $gazLog = gazLogs::find($request -> gazLogId);
 
-                  $obs=Observer::find($request->obsId); 
-                  // الخظوه الاوله : نستعلم على اخر كشف 
-                  $lastGazLogs=gazLogs::where([['allowBooking','1'],['validOfSell','1']])->where(
-                   [
-                       ['agentId',$obs->agentId]
-                      ,['qtyRemaining','>','0']
-                   ])->latest()->first();
-                 
-                  if($lastGazLogs)
-                    {
+                if($gazLog->statusBatch=='2')
+
+                        return response()->json(
+                        [
+                            'status' => true,
+                            'warring' => 'هدا كميه مفتوحةالحجز',      
+                        ]);
+
+                else if($gazLog->statusBatch=='3')
+
+                    return response()->json(
+                        [
+                            'status' => true,
+                            'warring' => 'تم نفاد هدا الكميه',      
+                        ]);
+
+                else if($gazLog->statusBatch=='1')
+
+                 {
+                        $obs=Observer::find($request->obsId); 
+                        // الخظوه الاوله : نستعلم على اخر كشف 
+                        $lastBatchOpenBooking=gazLogs::where('statusBatch','2')->where(
+                        [
+                            ['agentId',$obs->agentId]
+                            ,['qtyRemaining','>','0']
+                        ])->latest()->first();
+                    
+                            
+                        if($lastBatchOpenBooking)
                             return response()->json(
                             [
                                 'status' => true,
                                 'warring' => 'هناك كميه مفتوحة الحجز',      
                             ]);
-                    }
-                  else
-                    {
-                        $gazLog = gazLogs::find($request -> gazLogId)->update(
-                            [
-                                'allowBooking'=>'1',
-                                'validOfSell' =>'0' 
-                            ]);  // نتاكذا من الكشف المرسل هل هو موجد في جدول الكشوفات
                     
-                            if (!$gazLog) // هذا الشرط اذا الكشف المرسل لا نرسل رساله حظاء
-                                return response()->json(
-                                [
-                                    'status'     => false,
-                                    'msg'        => 'This gaz Log Not Found Error In Function Update',
-                                    'gazLogId'   => $request -> gazLogId, //for Test
-                                ]);
+                            
+                          else
+                            {
+                                $gazLog = gazLogs::find($request -> gazLogId);     
+                                $gazLog->statusBatch='2';
+                                $gazLog->update();
+                                // نتاكذا من الكشف المرسل هل هو موجد في جدول الكشوفات
+                            
+                                    if (!$gazLog) // هذا الشرط اذا الكشف المرسل لا نرسل رساله حظاء
+                                        return response()->json(
+                                        [
+                                            'status'     => false,
+                                            'msg'        => 'This gaz Log Not Found Error In Function Update',
+                                            'gazLogId'   => $request -> gazLogId, //for Test
+                                        ]);
 
-                                return response()->json(
-                                [
-                                    'status'   => true,
-                                    'gazLog'   => $gazLog, //for Test
-                                    'gazLogId' => $request -> gazLogId, ////For Delete Row Form Table
-                                ]); 
+                                        return response()->json(
+                                        [
+                                            'status'                 => true,
+                                            'lastBatchOpenBooking'   => $gazLog, //for display in table
+                                            'getStatusBatch'         => $gazLog->getStatusBatch(), //for display in table
+                                            'gazLogId'               => $request -> gazLogId, ////For Delete Row Form Table
+                                        ]); 
+                            }
+                    
                     }
-               
-            }
+                }
             
             catch (\Exception $ex) 
             {

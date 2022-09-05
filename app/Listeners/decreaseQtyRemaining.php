@@ -35,7 +35,7 @@ class decreaseQtyRemaining
             $gazLogs->decrement('qtyRemaining');
             
             if($gazLogs->qtyRemaining=='0') 
-            $gazLogs->update(['allowBooking'=>'0']);
+            $gazLogs->update(['statusBatch'=>'3']);
        }
        
     }

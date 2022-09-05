@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class gazLogs extends Model
 {
     protected $table='gazLogs';
-    protected $fillable = ['id','qty','dirId','rigId','staId','agentId','allowBooking','qtyRemaining','notice','validOfSell','created_at'];
+    protected $fillable = ['id','qty','dirId','rigId','staId','agentId','qtyRemaining','notice','created_at'];
     public  $timestamps = false;
     public function directorate()
     {
@@ -25,12 +25,19 @@ class gazLogs extends Model
     {
         return $this->belongsTo(Station::class,'staId');
     }
-    public function getvalidOfSell()
+    public function getStatusBatch()
     {
-        return $this->validOfSell == 0 ? 'تم البيع ' : 'لم يتم البيع';
+         if($this->statusBatch == '1' )
+         {
+             return 'لم يتم فتح الحجز'; 
+         }
+        else if($this->statusBatch == '2')
+        { return 'مفتوح الحجز';
+        }
+        else if($this->statusBatch == '3')
+        {
+           return 'تم نفاد الكميه';
+        }
     }
-    public function getallowBooking()
-    {
-       return $this->allowBooking == 0 ? 'true' : 'false';    
-    }
+    
 }

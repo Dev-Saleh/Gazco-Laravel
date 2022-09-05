@@ -109,7 +109,7 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
         Route::get('index',  'batchReportsController@index')->name('batchReports.index');
         Route::Post('show',  'batchReportsController@show')->name('batchReport.show');
         Route::get('showRigon/{id?}', 'batchReportsController@showRigons')->name('batchReports.showRigons');
-        Route::get('exportExcel', 'batchReportsController@exportExcelBatch')->name('batchReports.exportExcelBatch');
+        Route::post('exportExcel', 'batchReportsController@exportExcelBatch')->name('batchReports.exportExcelBatch');
         Route::get('showAgent/{id?}', 'batchReportsController@showAgents')->name('batchReports.showAgents');
       }
        

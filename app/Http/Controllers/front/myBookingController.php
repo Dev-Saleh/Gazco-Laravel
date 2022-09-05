@@ -3,18 +3,20 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\logsBooking;
 use Illuminate\Http\Request;
 
 class myBookingController extends Controller
 {
     
-    public function index(Request $request)
+    public function index()
     {
         try
-            {
+            { 
 
-                return view('front.myBooking.index');
+                $data['myBookings']=logsBooking::select('id','numBatch','created_at','statusBooking','citId')->where('citId',session()->get('idCitizen'))->get();
+               
+                return view('front.myBooking.index',$data);
             }
        catch (\Exception $ex)
            {
