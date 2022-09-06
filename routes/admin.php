@@ -14,8 +14,6 @@ Route::group(['namespace' => 'auth'],function(){
   Route::get('adminLogin', 'loginAdminController@login')->name('adminLogin'); 
   Route::get('adminLogout', 'loginAdminController@logout')->name('adminLogout'); 
   Route::post('adminCheck', 'loginAdminController@checkAdmin')->name('adminCheckAdmin'); 
-
-
 });
 
 

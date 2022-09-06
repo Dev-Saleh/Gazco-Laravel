@@ -62,7 +62,8 @@
                                     />
                                   </svg>
                   
-                                 تسجيل الخروج
+                                 <a href="{{route('observerLogout')}}"> تسجيل الخروج </a>
+                             
                                 </button>
                               </form>
                             </div>

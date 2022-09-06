@@ -66,7 +66,7 @@
                                     />
                                   </svg>
                   
-                                 تسجيل الخروج
+                                <a href="{{route('adminLogout')}}"> تسجيل الخروج </a>
                                 </button>
                               </form>
                             </div>

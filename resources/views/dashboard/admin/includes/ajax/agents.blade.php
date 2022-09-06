@@ -148,6 +148,9 @@
                 success: function(data) {
                     console.log(data);
                     if (data.status == true) {
+                      // for Test
+                     
+                      // for Test
                         var preview = document.getElementById("file-ip-1-preview");
                         preview.style.display = "block";
                         $('#file-ip-1-preview').attr('src', data.photo.valsrc);
@@ -189,7 +192,8 @@
                 success: function(data) {
                     console.log(data);
                     if (data.status == true) {
-                        alert(data.msg, 'success');
+                        //alert(data.msg, 'success');
+                         window.alertSuccess.style.display = "inline-flex";
                         window.saveAgent.style.display = "inline-flex";
                         window.updateAgent.style.display = "none";
                         $('.offerRow' + data.agentId).remove(); // حدف الحقل السابق الدي قبل التعديل 
