@@ -59,7 +59,20 @@ function alertt(msg,st)
 
 
 // ---------------END-ALERT-----------
+function playSound() {
+  var audio = new Audio('/success_sound.wav');
+  audio.play();
+}
 
+function newAlert(type,text)
+{
+  $(type+'Text').text(text);
+  $(type).addClass('flex').removeClass('hidden');
+  playSound();
+  setTimeout(() => {
+      $(type).addClass('hidden').removeClass('flex');
+  }, 2000);
+}
 
 
 function showPreview(event){
