@@ -13,14 +13,14 @@
     {{-- <script src="https://kit.fontawesome.com/a23e6feb03.js"></script> --}}
 
 
-    <title>4 shoop</title>
+    <title>غـازكو | تسجيل دخول</title>
 </head>
 
 <body dir="rtl">
   
 
 
-    @include('auth.loginCitizenPage.create');
+    @include('auth.loginCitizenPage.create')
 
 
 

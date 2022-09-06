@@ -131,7 +131,11 @@ class homeController extends Controller
                         }
                        
                 }
+<<<<<<< HEAD
+                else if (!$lastGazLogs && $days=='true') // if no have records
+=======
                 else if(!$lastBatchOpenBooking && $days=='true')
+>>>>>>> 9284ae37cc3daf76101a738817a9fc06951a2399
                 {
                         return response()->json(
                         [

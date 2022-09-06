@@ -1,5 +1,5 @@
 <!-- Navbar Section -->
-    <nav class="w-full h-14 bg-white flex items-center justify-between">
+    <nav class="w-full h-14 bg-white flex items-center justify-between rounded-full">
       <span class="mr-4 text-white text-4xl  cursor-pointer" onclick="Openbar()">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24"
           stroke="currentColor" stroke-width="2">
