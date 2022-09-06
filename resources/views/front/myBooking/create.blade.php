@@ -75,7 +75,12 @@
               <div class="text-sm text-gray-700">{{$myBooking->created_at}}</div>
             </td>
             <td class="text-center p-4 whitespace-nowrap">
-              <div class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">{{$myBooking->getStatusBooking()}}</div>
+            @if($myBooking->getStatusBooking()=='تم الاستلام')
+              <div  class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">{{$myBooking->getStatusBooking()}}</div>
+             @endif
+            @if($myBooking->getStatusBooking()=='لم يتم الاستلام')
+              <div  class="bg-red-100 text-red-700 px-3 py-1.5 rounded text-xs font-medium">{{$myBooking->getStatusBooking()}}</div>
+              @endif   
             </td>
           </tr>
             @endforeach

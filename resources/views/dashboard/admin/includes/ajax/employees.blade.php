@@ -205,7 +205,7 @@
                                 <img class="rounded-full h-12 w-12  object-cover" src='+resultSearch.empPhoto['valsrc']+' alt="unsplash image">\
                               </td>\
                               <td class="p-3 text-center whitespace-nowrap">\
-                                <span class="bg-green-400 text-gray-50 rounded-md px-2">'+resultSearch.empRole+'</span>\
+                                <span class="bg-green-400 text-gray-50 rounded-md px-2">'+resultSearch.+'</span>\
                               </td>\
                               <td class="p-5 flex space-x-2">\
                                 <a href="#"  empId="'+resultSearch.id+'"  class="employeeDelete  text-red-400  hover:text-red-600 float-left ">\
