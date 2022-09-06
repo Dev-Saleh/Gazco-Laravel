@@ -180,7 +180,7 @@
                {{-- START SEARCH FORM --}}
            <form action="" method="POST" id='formGazLogsSearch'>
               @csrf
-            <div class="flex mx-auto w-[700px] my-2">
+            <div class="flex mx-auto w-[700px] my-2 bg-white rounded-full shadow-md py-4 px-8">
                       
                
                 <select id="filterGazLogsSearch"  name="filterGazLogsSearch" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-40 p-2.5">
@@ -206,7 +206,7 @@
                 <!-- <p class="text-center font-sans mb-2 text-2xl"> Brands Table</p> -->
                 <div class=" relative overflow-y-auto" style="height: 590px;">
                     <table class="table w-full text-gray-500 border-separate space-y-6 text-sm">
-                        <thead class="bg-gray-200 text-gray-500 tableFaxied">
+                        <thead class="bg-gray-200 text-gray-500 tableFixed">
                             <tr>
                                 <th class="p-3">الرقم</th>
                                 <th class="p-3 text-center">المحطه</th>

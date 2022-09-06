@@ -24,6 +24,8 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
   
    // the first page admin visits if authenticated
    Route::get('/', 'OverviewController@index')->name('admin.dashboard'); 
+   Route::get('settings', 'settingsController@index')->name('admin.settings'); 
+   Route::get('profile', 'profileController@index')->name('admin.profile'); 
     ################################## directorate routes ######################################
   //  Route::group(['prefix' => 'directorate'], function () {
     

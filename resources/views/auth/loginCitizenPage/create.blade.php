@@ -1,75 +1,64 @@
+<div class="p-4 bg-gray-50 h-screen">
 
- <div class="bg-no-repeat bg-cover bg-center relative"
-        style="background-image: url()">
-        <div class="absolute bg-gradient-to-b from-green-700 to-green-300 opacity-75 inset-0 z-0"></div>
-        <div class="min-h-screen sm:flex sm:flex-row mx-0 justify-center">
-            <div class="flex-col flex  self-center p-10 sm:max-w-5xl xl:max-w-2xl  z-10">
-                <div class="self-start hidden lg:flex flex-col  text-white">
-                    <img src="" class="mb-3">
-                    <h1 class="mb-3 font-bold text-4xl">Hi 👋 Sign in To Dashboard</h1>
-                    <p class="pr-3">Lorem ipsum is placeholder text commonly used in the graphic, print,
-                        and publishing industries for previewing layouts and visual mockups</p>
-                </div>
+    <div class="flex min-h-full items-center justify-center  px-4 sm:px-6 lg:px-8 bg-white rounded-md shadow">
+        <div class="w-full max-w-md space-y-2">
+            <div>
+                <img class="mx-auto h-48 w-auto" src="{{ asset('assets/images/gaz_logo.png') }}" alt="Your Company">
+                <h2 class="mt-0 text-center text-3xl font-bold tracking-tight text-gray-900">سجل دخولك عبر بيانات البطاقه
+                    الشخصيه</h2>
+                <p class="mt-2 text-center text-sm text-gray-600">
+                    او
+                    <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">تواصل مع مراقب منطقتك
+                        لتسجيلك</a>
+                </p>
             </div>
-            <div class="flex justify-center self-center  z-10">
-                <div class="p-12 bg-white mx-auto rounded-2xl w-100 ">
-                    <div class="mb-4">
-                        <h3 class="font-semibold text-2xl text-gray-800">غازكو </h3>
-                        <p class="text-gray-500">سجل دخولك عبر بيانات البطاقه الشخصيه</p>
+            <form class="mt-8 space-y-6" action="{{ route('checkCitizen') }}" method="POST" id='loginCitizenForm'">
+                <input type="hidden" name="remember" value="true">
+                <div class="-space-y-px rounded-md shadow-sm">
+                    <div>
+                        <label for="email-address" class="sr-only">أدخل رقم الهويه</label>
+                        <input name="identityNum" type="text" autocomplete="email" required
+                            class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                            placeholder="أدخل رقم الهويه">
                     </div>
-                    <div class="space-y-5">
-                    <form action="{{ route('checkCitizen') }}" method="POST" id='loginCitizenForm'>
-                     @csrf   
-                    <div class="space-y-2">
-                            <label class="text-sm font-medium text-gray-700 tracking-wide"> الرقم الوطني</label>
-                            <input name="identityNum"
-                                class=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400"
-                                type="text" placeholder="ادخل الرقم الوطني">
-                        </div>
-                        
-                        <div class="space-y-2">
-                            <label class="mb-5 text-sm font-medium text-gray-700 tracking-wide">
-                                كلمة السر
-                            </label>
-                            <input name="citPassword"
-                                class="w-full content-center text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-green-400"
-                                type="password" placeholder="غالبا تكون كلمة السر مثل الرقم الوطني">
-                               
-                          </div>
-                   
-                     
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <input id="remember_me" name="remember_me" type="checkbox"
-                                    class="h-4 w-4 bg-blue-500 focus:ring-blue-400 border-gray-300 rounded">
-                                <label for="remember_me" class="ml-2 block text-sm text-gray-800">
-                                    Remember me
-                                </label>
-                            </div>
-                            <div class="text-sm">
-                                <a href="#" class="text-green-400 hover:text-green-500">
-                                    Forgot your password?
-                                </a>
-                            </div>
-                        </div>
-                        <div>
-                            <button id="loginCitizenBtn"  type="submit"
-                                class="w-full flex justify-center bg-green-400  hover:bg-green-500
-                                 text-gray-100 p-3  rounded-full tracking-wide font-semibold 
-                                  shadow-lg cursor-pointer transition ease-in duration-300">
-                               تسجيل
-                            </button>
-                        </div>
-                        </form> 
-                    </div>
-                    <div class="pt-5 text-center text-gray-400 text-xs">
-                        <span>
-                            Copyright © 2021-2022
-                            <a href="#" rel="" target="_blank" class="text-green hover:text-green-500 ">Gazco
-                                </a></span>
+                    <div>
+                        <label for="password" class="sr-only">Password</label>
+                        <input <input name="citPassword" type="password" autocomplete="current-password" required
+                            class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                            placeholder="غالبا تكون الهويه هي كلمة السر">
                     </div>
                 </div>
-            </div>
+
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox"
+                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-900">Remember me</label>
+                    </div>
+
+                    <div class="text-sm">
+                        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Forgot your
+                            password?</a>
+                    </div>
+                </div>
+
+                <div>
+                    <button id="loginCitizenBtn" type="submit"
+                        class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                            <!-- Heroicon name: mini/lock-closed -->
+                            <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                        سَجل الدخول
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
-    
+</div>

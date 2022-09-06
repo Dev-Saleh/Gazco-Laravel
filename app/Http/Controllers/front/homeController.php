@@ -128,7 +128,7 @@ class homeController extends Controller
                                 ]);
                         }
                 }
-                else // if no have records
+                else if (!$lastGazLogs && $days=='true') // if no have records
                 {
                         return response()->json(
                         [

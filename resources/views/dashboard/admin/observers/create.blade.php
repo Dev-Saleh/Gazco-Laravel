@@ -152,7 +152,7 @@
             {{-- START SEARCH FORM --}}
            <form action="" method="Post" id='formObsSearch'>
              @csrf 
-            <div class="flex mx-auto w-[700px] my-2">
+            <div class="flex mx-auto w-[700px] my-2 bg-white rounded-full shadow-md py-4 px-8">
                       
                 <select id="filterObsSearch" name="filterObsSearch"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-40 p-2.5">
                     <option value="all" selected>بحث الكل</option>

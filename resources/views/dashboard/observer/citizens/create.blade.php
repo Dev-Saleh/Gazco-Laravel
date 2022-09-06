@@ -181,7 +181,7 @@
         </summary>
         <br>
             {{-- START SEARCH FORM --}}
-            <div class="flex mx-auto w-[700px] my-2">
+            <div class="flex mx-auto w-[700px] my-2 bg-white rounded-full shadow-md py-4 px-8">
                       
                
                 <select id="filterSearch" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-40 p-2.5">

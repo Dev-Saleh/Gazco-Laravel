@@ -89,7 +89,7 @@ function showPreviewUser(event){
 
  function dropClick() {
     const drop = document.getElementById("dropDown"); 
-      drop.classList.replace("hidden","block");
+      drop.classList.toggle("hidden");
  };
 
 
