@@ -198,6 +198,7 @@
                     {
                         $('#fetchEmployees').html("");
                         $.each(data.resultSearch, function (key , resultSearch) {
+                           (resultSearch.empRole=='0') ?  empRole='user':empRole='Admin';
                          $('#fetchEmployees').prepend('<tr  class="offerRow'+resultSearch.id+' bg-white hover:scale-95 transform transition-all ease-in">\
                               <td class="p-3 text-center">'+resultSearch.id+'</td>\
                               <td class="p-3 text-center">'+resultSearch.empUserName+'</td>\
@@ -205,7 +206,7 @@
                                 <img class="rounded-full h-12 w-12  object-cover" src='+resultSearch.empPhoto['valsrc']+' alt="unsplash image">\
                               </td>\
                               <td class="p-3 text-center whitespace-nowrap">\
-                                <span class="bg-green-400 text-gray-50 rounded-md px-2">'+resultSearch.+'</span>\
+                                <span class="bg-green-400 text-gray-50 rounded-md px-2">'+empRole+'</span>\
                               </td>\
                               <td class="p-5 flex space-x-2">\
                                 <a href="#"  empId="'+resultSearch.id+'"  class="employeeDelete  text-red-400  hover:text-red-600 float-left ">\
