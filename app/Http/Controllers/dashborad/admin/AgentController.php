@@ -109,7 +109,8 @@ class AgentController extends Controller
              if ($agent)
                 return response()->json([
                     'status' => true,
-                    'msg' => 'تم الحفظ بنجاح', 
+                    'msg' => 'تم حفظ بيانات الوكيل بنجاح', 
+                    'alertType'=> '.alertSuccess',   
                     'lastAgent' => $lastAgent,
                     'Photo'=> $lastAgent->Photo,
                 ]);
@@ -122,8 +123,9 @@ class AgentController extends Controller
             unlink($imageDelete);
 
             return response()->json([
-                'status'             => false,
-                'msg'                => 'فشل الحفظ برجاء المحاوله مجددا',
+                'status'=> false,
+                'msg' => 'فشل الحفظ الوكيل يرجاء المحاوله مجددا',
+                'alertType'=> '.alertError', 
                 'exceptionError'     =>$ex,
             ]);
          }

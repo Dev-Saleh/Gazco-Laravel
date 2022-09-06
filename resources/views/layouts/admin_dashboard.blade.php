@@ -21,21 +21,21 @@
 
 <body dir="rtl" class="font-tajawal text-base bg-gray-100">
     {{-- start section Alert --}}
-    <div id="alertSuccess" style="display:none;"
-        class="animate-fadeFromUp p-3 rounded-md text-lg text-green-900 flex items-center mx-auto w-96  top-10 right-0 left-0 fixed z-10 bg-green-200 border-r-4 border-green-600">
+    <div
+        class="alertSuccess animate-fadeFromUp p-3 rounded-md text-lg text-green-900 hidden items-center mx-auto w-96  top-10 right-0 left-0 fixed z-50 bg-green-200 border-r-4 border-green-600">
         <span class="p-3 bg-green-300 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 animate-wiggle" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
             </svg>
         </span>
-        <p class="mr-4">
-            تمت العمليه بنجاح
+        <p class="alertSuccessText mr-4">
+            
         </p>
     </div>
 
-    <div id="alertSure" style="display:none;"
-        class=" p-3 rounded-md text-lg text-yellow-900 flex items-center mx-auto w-96  top-36 right-0 left-0 fixed z-10 bg-yellow-200 border-r-4 border-yellow-600">
+    <div 
+        class="alertWarning p-3 rounded-md text-lg text-yellow-900 hidden items-center mx-auto w-96  top-36 right-0 left-0 fixed z-50 bg-yellow-200 border-r-4 border-yellow-600">
         <span class="p-3 bg-yellow-300 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 animate-pulse" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" stroke-width="2">
@@ -48,8 +48,8 @@
         </p>
     </div>
 
-    <div id="alertError" style="display:none;"
-        class=" p-3 rounded-md text-lg  text-red-900 flex items-center mx-auto w-96  top-60 right-0 left-0 fixed z-10 bg-red-200 border-r-4 border-red-600">
+    <div id="alert"
+        class="alertError p-3 rounded-md text-lg  text-red-900 hidden items-center mx-auto w-96  top-60 right-0 left-0 fixed z-50 bg-red-200 border-r-4 border-red-600">
         <span class="p-3 bg-red-300 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 animate-spin" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" stroke-width="2">
