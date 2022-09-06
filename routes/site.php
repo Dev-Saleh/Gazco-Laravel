@@ -19,7 +19,7 @@ Route::group(['namespace' => 'front', 'middleware' => 'authCitizen', 'prefix' =>
     ################################## Profile routes ######################################
     
     Route::get('/profile', 'myProfileController@index')->name('myProfile.index');
-    
+    Route::post('/profile/update','myProfileController@update')->name('myProfile.update');
     ################################## my Booking routes ######################################
     
     Route::get('/myBooking', 'myBookingController@index')->name('myBooking.index');

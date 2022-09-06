@@ -260,15 +260,15 @@ class DatabaseSeeder extends Seeder
 
             $rr=rand(90,100);
             gazLogs::create([
-                'qty' => $rr,
+                'qty'          => $rr,
                 'qtyRemaining' => $rr,
-                'dirId' => $aa,
-                'rigId' => $cc,
-                'staId' => $ss,
-                'agentId' => $tt,
-                'notice' => ' ',
-                'validOfSell' => rand(0, 1),
-                'allowBooking' => '0',
+                'dirId'        => $aa,
+                'rigId'        => $cc,
+                'staId'        => $ss,
+                'agentId'      => $tt,
+                'notice'       => ' ',
+                'statusBatch'  => rand(1, 3),
+           
                
                 
 

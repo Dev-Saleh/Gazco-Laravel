@@ -65,73 +65,26 @@
           </tr>
         </thead >
         <tbody id='' class="bg-white divide-y divide-gray-200">
-        
-          <tr>
+         @if($myBookings && $myBookings -> count() > 0)
+           @foreach($myBookings as $myBooking)
+         <tr>
             <td class="text-center p-4 whitespace-nowrap">
-            <div class="text-sm text-gray-700">10</div>
+            <div class="text-sm text-gray-700">{{$myBooking->numBatch}}</div>
             </td>
             <td class="text-center p-4 whitespace-nowrap">
-              <div class="text-sm text-gray-700">09-09-2022</div>
+              <div class="text-sm text-gray-700">{{$myBooking->created_at}}</div>
             </td>
             <td class="text-center p-4 whitespace-nowrap">
-              <div class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">تم الاستلام</div>
-            </td>
-          </tr>
-          <tr>
-            <td class="text-center p-4 whitespace-nowrap">
-            <div class="text-sm text-gray-700">05</div>
-            </td>
-            <td class="text-center p-4 whitespace-nowrap">
-              <div class="text-sm text-gray-700">09-09-2022</div>
-            </td>
-            <td class="text-center p-4 whitespace-nowrap">
-              <div class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">تم الاستلام</div>
+            @if($myBooking->getStatusBooking()=='تم الاستلام')
+              <div  class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">{{$myBooking->getStatusBooking()}}</div>
+             @endif
+            @if($myBooking->getStatusBooking()=='لم يتم الاستلام')
+              <div  class="bg-red-100 text-red-700 px-3 py-1.5 rounded text-xs font-medium">{{$myBooking->getStatusBooking()}}</div>
+              @endif   
             </td>
           </tr>
-          <tr>
-            <td class="text-center p-4 whitespace-nowrap">
-            <div class="text-sm text-gray-700">13</div>
-            </td>
-            <td class="text-center p-4 whitespace-nowrap">
-              <div class="text-sm text-gray-700">09-09-2022</div>
-            </td>
-            <td class="text-center p-4 whitespace-nowrap">
-              <div class="bg-red-100 text-red-700 px-3 py-1.5 rounded text-xs font-medium">لم يتم الاستلام</div>
-            </td>
-          </tr>
-          <tr>
-            <td class="text-center p-4 whitespace-nowrap">
-            <div class="text-sm text-gray-700">14</div>
-            </td>
-            <td class="text-center p-4 whitespace-nowrap">
-              <div class="text-sm text-gray-700">09-09-2022</div>
-            </td>
-            <td class="text-center p-4 whitespace-nowrap">
-              <div class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">تم الاستلام</div>
-            </td>
-          </tr>
-          <tr>
-            <td class="text-center p-4 whitespace-nowrap">
-            <div class="text-sm text-gray-700">22</div>
-            </td>
-            <td class="text-center p-4 whitespace-nowrap">
-              <div class="text-sm text-gray-700">09-09-2022</div>
-            </td>
-            <td class="text-center p-4 whitespace-nowrap">
-              <div class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">تم الاستلام</div>
-            </td>
-          </tr>
-          <tr>
-            <td class="text-center p-4 whitespace-nowrap">
-            <div class="text-sm text-gray-700">07</div>
-            </td>
-            <td class="text-center p-4 whitespace-nowrap">
-              <div class="text-sm text-gray-700">09-09-2022</div>
-            </td>
-            <td class="text-center p-4 whitespace-nowrap">
-              <div class="bg-red-100 text-red-700 px-3 py-1.5 rounded text-xs font-medium">لم يتم الاستلام</div>
-            </td>
-          </tr>
+            @endforeach
+          @endif
         </tbody>
       </table>
     </div> 

@@ -208,4 +208,52 @@ class EmployeeController extends Controller
           
          }
     }
+    public function search(Request $request)
+    {
+        
+        try
+        { 
+                 if($request->filterSearch=='all')
+                    $resultSearch=employee::select('id','empUserName','empRole','empPhoto')
+                        ->where('empUserName','Like','%'.$request->inputSearch.'%')
+                        ->orwhere('id','Like','%'.$request->inputSearch.'%')
+                        ->orwhere('empRole','Like','%'.$request->inputSearch.'%')
+                       ->get();
+
+                  else if($request->filterSearch=='empUserName')
+                   $resultSearch=employee::select('id','empUserName','empRole','empPhoto')
+                   ->where('empUserName','Like','%'.$request->inputSearch.'%')->get();
+
+                   else if( $request->filterSearch=='empRole' )
+                    {   
+                        
+                        $resultSearch=employee::select('id','empUserName','empRole','empPhoto')
+                        ->where('empRole','Like','%'.$request->inputSearch .'%')
+                       ->get();
+                    }                           
+    
+
+            if ($resultSearch)
+                return response()->json
+                (
+                    [
+                        'status'        => true,
+                        'msg'           => 'تم الحفظ بنجاح', 
+                        'resultSearch'  =>  $resultSearch,
+                    
+                    ]
+                );
+ 
+        }
+        catch (\Exception $ex)
+         {
+            return response()->json([
+                'status'             => false,
+                'msg'                => 'فشل الحفظ برجاء المحاوله مجددا',
+                'exceptionError'     => $ex,
+            ]);
+         }
+    }
+
 }
+

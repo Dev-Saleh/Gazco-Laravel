@@ -16,10 +16,9 @@ class logsBooking extends Model
     {
         return $this->belongsTo(Citizen::class,'citId');
     }
-
     public function getStatusBooking()
     {
-        return  $this -> statusBooking  == 0 ?  'غير مفعل'   : 'مفعل' ;
+        return  $this -> statusBooking  == 0 ?  'تم الاستلام'   : 'لم يتم الاستلام' ;
     }
   
   

@@ -85,7 +85,7 @@
                     <th class="p-3 text-center">العمليات</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id='lastBatchOpenBooking'>
                    @if($gazLogs && $gazLogs -> count() > 0)
                   @foreach($gazLogs as $gazLog)
                   <tr class="offerRow{{$gazLog -> id}} bg-gray-50 hover:scale-95 transform transition-all ease-in">
@@ -96,7 +96,7 @@
                   {{$gazLog->created_at}}
                     </td>
                      <td class="p-3 text-center">
-                      <span class="bg-green-400 text-gray-50 rounded-md px-2">{{$gazLog->getvalidOfSell()}}</span>
+                      <span class="bg-green-400 text-gray-50 rounded-md px-2">{{$gazLog->getStatusBatch()}}</span>
                     </td>
                     <td class="p-3 grid items-center justify-center">
                       <a href="#" checkBatchId='{{$gazLog->id}}' class="checkBatchShow text-blue-600 hover:text-blue-400">

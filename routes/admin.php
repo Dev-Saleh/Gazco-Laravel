@@ -71,6 +71,7 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
         Route::get('edit/{id?}', 'EmployeeController@edit')->name('employee.edit');
         Route::post('update', 'EmployeeController@update')->name('employee.update');
         Route::get('show', 'EmployeeController@show')->name('employee.show');
+        Route::post('search', 'EmployeeController@search')->name('employee.search');
         
       });
       Route::group(['prefix' => 'observer'], function () {
@@ -111,7 +112,7 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
         Route::get('index',  'batchReportsController@index')->name('batchReports.index');
         Route::Post('show',  'batchReportsController@show')->name('batchReport.show');
         Route::get('showRigon/{id?}', 'batchReportsController@showRigons')->name('batchReports.showRigons');
-        Route::get('exportExcel', 'batchReportsController@exportExcelBatch')->name('batchReports.exportExcelBatch');
+        Route::post('exportExcel', 'batchReportsController@exportExcelBatch')->name('batchReports.exportExcelBatch');
         Route::get('showAgent/{id?}', 'batchReportsController@showAgents')->name('batchReports.showAgents');
       }
        
@@ -155,6 +156,8 @@ Route::group(['namespace' => 'dashborad\observer','middleware' => 'authObserver'
     Route::get('show',  'checkBookingController@show')->name('checkBooking.show');
     Route::post('update',  'checkBookingController@update')->name('checkBooking.update');
     Route::post('sendSms',  'SendingMessageController@sendSms')->name('sendSms');
+    Route::post('search', 'checkBookingController@search')->name('checkBooking.search');
+    Route::post('citSearch', 'checkBookingController@citSearch')->name('checkBooking.citSearch');
   
     
   });

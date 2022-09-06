@@ -20,12 +20,7 @@ class checkBookingController extends Controller
         try
             {
 
-                $data['gazLogs']=gazLogs::select()->where(
-                    [
-                         ['allowBooking','0']
-                        ,['qtyRemaining','0']
-                        ,['validOfSell','0']
-                    ])->latest('id')->limit('10')->get();
+                $data['gazLogs']=gazLogs::select()->where('statusBatch','3')->latest('id')->limit('10')->get();
                 return view('front.checkBooking.index',$data);
             }
        catch (\Exception $ex)
