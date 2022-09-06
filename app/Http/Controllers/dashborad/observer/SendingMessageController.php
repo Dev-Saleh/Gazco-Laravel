@@ -38,24 +38,26 @@ class SendingMessageController extends Controller
             
     //         $message = $response->current();
             
-    //         if ($message->getStatus() == 0) 
-    //         {
-    //                 return response()->json(
-    //                     [
-    //                         'status' => true,
-    //                         'msg'    => "The message was sent successfully\n",
+            if ($message->getStatus() == 0) 
+            {
+                    return response()->json(
+                        [
+                            'status' => true,
+                            'alertType'=> '.alertSuccess',
+                            'msg'    => 'تم إرسال الرسائل النصيه بنجاح',
                         
-    //                     ]);
-    //         } 
-    //         else
-    //          {
-    //                 return response()->json(
-    //                     [
-    //                         'status' => true,
-    //                         'msg'    => "The message failed with status: " . $message->getStatus() . "\n",
+                        ]);
+            } 
+            else
+             {
+                    return response()->json(
+                        [
+                            'status' => false,
+                            'msg'    => "فشلت عملية إرسال الرسائل: " . $message->getStatus() . "\n",
+                            'alertType'=> '.alertError',
                         
-    //                     ]);
-    //         }
+                        ]);
+            }
     
     //         return response()->json(
     //             [
@@ -64,7 +66,7 @@ class SendingMessageController extends Controller
     //             ]);
     //    }
     }
-       echo 'Message has been sent successfuly';
+    //    echo 'Message has been sent successfuly';
        
     }
 

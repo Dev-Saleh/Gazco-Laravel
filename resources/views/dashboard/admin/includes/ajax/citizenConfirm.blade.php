@@ -22,7 +22,7 @@
 
                   if (data.status == true)
                     {
-                     // alert.show(data.msg,'success');
+                        newAlert(data.alertType,data.msg);
                     }
 
                    $('.offerRow'+data.citId).remove();
@@ -102,7 +102,7 @@
                
                      if (data.status == true) 
                      {
-                         alert(data.msg,'success');
+                        newAlert(data.alertType,data.msg);
                          $('.offerRow'+data.citId).remove();
                      
                      }

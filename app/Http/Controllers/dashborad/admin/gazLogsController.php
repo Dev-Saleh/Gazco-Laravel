@@ -144,7 +144,8 @@ class gazLogsController extends Controller
                 if ($gazLog)
                 return response()->json([
                     'status'       => true,
-                    'msg'          => 'تم الحفظ بنجاح',
+                    'alertType'=> '.alertSuccess',
+                    'msg'          => 'تم ترحيل الدفعه بنجاح',
                     'lastGazLog'   => $lastGazLog,
 
                 ]);
@@ -154,7 +155,8 @@ class gazLogsController extends Controller
 
                 return response()->json([
                     'status'          => false,
-                    'msg'             => 'فشل الحفظ برجاء المحاوله مجددا',
+                    'msg'             => 'فشل ترحيل الدفعه برجاء المحاوله مجددا',
+                    'alertType'=> '.alertError',
                     'exceptionError'  => $ex,                
                 
                 ]);
@@ -189,11 +191,12 @@ class gazLogsController extends Controller
                    if (!$gazLog)
                     return response()->json([
                         'status' => false,
+                        'alertType'=> '.alertError',
                         'msg' => 'هذ العرض غير موجود',
-                    
-                    ]);
-                
-                    return response()->json([
+                        
+                      ]);
+                      
+                      return response()->json([
                         'status' => true,
                         'gazLog' => $gazLog,
                     
@@ -246,6 +249,7 @@ class gazLogsController extends Controller
     
                 return response()->json([
                     'status'           => true,
+                    'alertType'=> '.alertSuccess',
                     'msg'              => 'تم  التحديث بنجاح',
                     'lastGazLogUpdate' => $lastGazLogUpdate,
                 ]);
@@ -278,7 +282,8 @@ class gazLogsController extends Controller
 
                 return response()->json([
                     'status' => true,
-                    'msg' => 'تم الحذف بنجاح',
+                    'alertType'=> '.alertSuccess',
+                    'msg' => 'تم حذف الدفعه بنجاح',
                     'id' => $request -> gazLogId
                 ]);
             } 

@@ -44,9 +44,9 @@
                         {
                               // في خطأ بالالوان
                                 window.saveBooking.setAttribute('disabled','disabled');
-                                document.getElementById('status_msg').classList.replace('bg-transparent','bg-red-200');
-                                document.getElementById('status_msg').classList.replace('border-transparent','border-red-600');
-                                document.getElementById('status_msg').classList.replace('text-gray-900','text-red-900');
+                                document.getElementById('status_msg').classList.replace('bg-transparent','bg-gray-200');
+                                document.getElementById('status_msg').classList.replace('border-transparent','border-gray-600');
+                                document.getElementById('status_msg').classList.replace('text-gray-900','text-gray-900');
                                 $('#status_msg').text('لايوجد كمية مفتوحة الحجز');
                           
                       
@@ -97,10 +97,14 @@
                         console.log(data);
                         if (data.status == true)
                         {
-                           // alert(data.msg,'success');
+                            newAlert(data.alertType,data.msg);
                             $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
+                            $('.validDays').text(data.lastGazLogs.qtyRemaining);
                         } 
-                    
+                        if (data.status == false)
+                        {
+                            newAlert(data.alertType,data.msg);
+                        }
                     }
                     , error: function (reject)
                      {

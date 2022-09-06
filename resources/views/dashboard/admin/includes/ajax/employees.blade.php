@@ -58,9 +58,9 @@
                 contentType: false,
                 cache: false,
                 success: function (data) {
-                  console.log(data);
+                 
                      if (data.status == true) {
-                       alert(data.msg,'success')
+                      newAlert(data.alertType,data.msg);
                        $('#file-ip-1').val('');
                         $('#empUserName').val('');
                         $('#empFullName').val('');
@@ -91,9 +91,9 @@
                      'empId' :empId, 
                 },
                 success: function (data) {
-                  console.log(data);
+                 
                      if (data.status == true) {
-                      alert(data.msg,'success');
+                      newAlert(data.alertType,data.msg);
                     }
                     $('.offerRow'+data.id).remove();
                 }, error: function (reject) {
@@ -159,7 +159,7 @@
                 success: function (data) {
                 console.log(data);
                     if(data.status == true){
-                      alert(data.msg,'success');
+                      newAlert(data.alertType,data.msg);
                         window.saveEmployee.style.display="inline-flex";
                         window.updateEmployee.style.display="none";
                          $('.offerRow' + data.empId).remove(); // حدفل السجل الدي قبل التعديل

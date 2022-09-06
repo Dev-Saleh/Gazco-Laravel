@@ -54,8 +54,7 @@
                  hover:opacity-100
                   py-4 pl-6 nav-item h-20">
               <i class="fas fa-calendar mr-3"></i>
-              استعلام كشوفات
-          </a>
+              استعلام الدفعات          </a>
          
             <div class="w-full relative inline-block py-4 px-6 text-white bg-transparent h-18 rounded-tl-3xl
             rounded-br-3xl group">

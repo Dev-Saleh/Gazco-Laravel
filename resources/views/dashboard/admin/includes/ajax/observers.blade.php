@@ -113,7 +113,7 @@
                 success: function (data) {
                   console.log(data);
                    if (data.status == true) {
-                       alert(data.msg,'success');
+                        newAlert(data.alertType,data.msg);
                         $('#obsId').val('');
                         $('#obsName').val(''); 
                         $('#obsUserName').val('');
@@ -145,7 +145,7 @@
                 },
                 success: function (data) {
                      if (data.status == true) {
-                      alert(data.msg,'success');
+                      newAlert(data.alertType,data.msg);
                     }
                     $('.offerRow'+data.obsId).remove();
                 }, error: function (reject) {
@@ -209,10 +209,10 @@
                 contentType: false,
                 cache: false,
                 success: function (data) {
-                console.log(data);
+            
                     if(data.status == true){
-                       alert(data.msg,'success');
-                      
+                      newAlert(data.alertType,data.msg);
+                       
                         window.saveObserver.style.display="inline-flex";
                         window.updateObserver.style.display="none";  
                          $('.offerRow' + data.obsId).remove(); // حدف الحقل السابق الدي قبل التعديل 

@@ -51,7 +51,7 @@ class checkBatchController extends Controller
                     return response()->json(
                     [
                         'status'         => false,
-                        'msg'            => 'error In Function Index',
+                        'msg'            => 'ASD',
                         'exceptionError' => $ex,
                     ]);
                 }

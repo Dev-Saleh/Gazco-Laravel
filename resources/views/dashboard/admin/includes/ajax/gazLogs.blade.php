@@ -108,7 +108,7 @@
                 success: function (data) {
                   console.log(data);
                    if (data.status == true) {
-                        alert(data.msg,'success');
+                    newAlert(data.alertType,data.msg);
                         $('#qty').val('');
                         $('#created_at').val('');
                         $('#notice').val('');
@@ -149,7 +149,7 @@
                 {
                    if (data.status == true) 
                     {
-                        alert(data.msg,'success');
+                      newAlert(data.alertType,data.msg);
                     }
 
                     $('.offerRow'+data.id).remove();
@@ -179,7 +179,7 @@
                 success: function (data) 
                 {
                  
-                  console.log(data);
+               
                      if (data.status == true) 
                      {
                         $('#gazLogId').val(data.gazLog.id);
@@ -228,7 +228,7 @@
                 success: function (data) {
                 console.log(data);
                     if(data.status == true){
-                       alert(data.msg,'success');
+                      newAlert(data.alertType,data.msg);
                        $('#gazLogId').val('');
                        $('#select_Stations').text('');
                        $('#select_Station').text('');

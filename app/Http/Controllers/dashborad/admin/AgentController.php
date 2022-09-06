@@ -282,12 +282,15 @@ class AgentController extends Controller
             if (!$agent)
                 return response()->json([
                     'status' => false,
-                    'msg' => 'هذ العرض غير موجود',
+                    'alertType'=> '.alertError',
+                    'msg' => 'فشل الحذف',
                    
                 ]);
             
             return response()->json([
                 'status' => true,
+                'alertType'=> '.alertWarning',
+                'msg'=> 'تم التعديل على الوكيل بنجاح',
                 'agent' => $agent,
                 'photo'=> $agent->Photo,
             
@@ -337,7 +340,8 @@ class AgentController extends Controller
             }])->select('id','Photo','agentName','dirId')->find($request -> id);
             return response()->json([
                 'status' => true,
-                'msg' => 'تم  التحديث بنجاح',
+                'alertType'=> '.alertWarning',
+                'msg'=> 'تم التعديل على الوكيل بنجاح',
                 'photo'=>$fileName,
                 'lastAgent' =>$lastAgent,
                 'Photo'=> $lastAgent->Photo,
@@ -378,7 +382,8 @@ class AgentController extends Controller
 
                 return response()->json([
                     'status' => true,
-                    'msg' => 'تم الحذف بنجاح',
+                    'msg' => 'تم حذف الوكيل بنجاح',
+                    'alertType'=> '.alertSuccess',
                     'agentId' => $request -> agentId,      
                  ]);
         } 
