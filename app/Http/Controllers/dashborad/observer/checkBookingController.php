@@ -108,7 +108,8 @@ class checkBookingController extends Controller
                     return response()->json(
                         [
                             'status' => true,
-                            'msg'    => 'Update Success',
+                            'msg'    => 'تمت العمليه بنجاح',
+                            'alertType'=> '.alertSuccess',
                             'logBookingsId'=>$logBookingsId,
                         
                         ]);
@@ -120,6 +121,7 @@ class checkBookingController extends Controller
                 [
                     'status'          => false,
                     'msg'             => 'Error In Function Update',
+                    'alertType'=> '.alertError',
                     'exceptionError'  => $ex,
                 ]);
             }

@@ -45,7 +45,9 @@ class EmployeeController extends Controller
                 if ($emp)
                     return response()->json([
                         'status' => true,
-                        'msg' => 'تم الحفظ بنجاح', 
+                        'msg' => 'تم حفظ بيانات الموظف بنجاح', 
+                        'alertType'=> '.alertSuccess',   
+                    
                         
                     ]);
 
@@ -58,7 +60,8 @@ class EmployeeController extends Controller
             unlink($imageDelete);
 
             return response()->json([
-                'status'         => false,
+                'status'         => false, 
+                'alertType'=> '.alertError',   
                 'msg'            => 'فشل الحفظ برجاء المحاوله مجددا',
                 'getDataForm'    =>$request->all(),
                 'exceptionError' =>$ex,
@@ -104,15 +107,18 @@ class EmployeeController extends Controller
             if (!$emp)
                 return response()->json([
                     'status' => false,
-                    'msg' => 'هذ العرض غير موجود',
-                   
+                    'alertType'=> '.alertError',
+                    'msg' => 'يوجد هناك خطأ',
+                    
                 ]);
-    
-           
-            return response()->json([
-                'status' => true,
-                'emp' => $emp,
-                'empPhoto'=>$emp->empPhoto['valsrc'],
+                
+                
+                return response()->json([
+                    'status' => true,
+                    'emp' => $emp,
+                    'empPhoto'=>$emp->empPhoto['valsrc'],
+                    'alertType'=> '.alertSuccess',
+                    'msg' => 'تم تعديل على بيانات الموظف',
                  
             ]); 
         }
@@ -120,7 +126,8 @@ class EmployeeController extends Controller
            {
                 return response()->json([
                     'status'         => false,
-                    'msg'            => 'فشل الحفظ برجاء المحاوله مجددا',
+                    'msg'            => 'فشل التعديل برجاء المحاوله مجددا',
+                    'alertType'=> '.alertError',
                     'exceptionError' => $ex,
                 ]);
            }
@@ -136,7 +143,8 @@ class EmployeeController extends Controller
             if (!$emp)
                 return response()->json([
                     'status' => false,
-                    'msg' => 'هذ العرض غير موجود',
+                    'alertType'=> '.alertError',
+                    'msg' => 'يوجد هناك خطأ',
                 ]);
 
         
@@ -159,7 +167,8 @@ class EmployeeController extends Controller
             }
             return response()->json([
                 'status' => true,
-                'msg' => 'تم  التحديث بنجاح',
+                'alertType'=> '.alertSuccess',
+                'msg' => 'تم تحديث بيانات الموظف بنجاح',
                 'empPhoto'=>$fileName,
                 'lastemp'=>$emp,
                 'empId'=>$request->id,
@@ -185,7 +194,8 @@ class EmployeeController extends Controller
             if (!$emp)
             return response()->json([
                 'status' => false,
-                'msg' => 'فشل بالتعديل برجاء المحاوله مجددا',
+                'alertType'=> '.alertError',
+                'msg' => 'فشل الحذف حاول مره أخرى',
                ]);
  
              
@@ -194,7 +204,8 @@ class EmployeeController extends Controller
                $emp->delete();
              return response()->json([
                 'status' => true,
-                'msg' => 'تم الحذف بنجاح',
+                'alertType'=> '.alertSuccess',
+                'msg' => 'تم حذف الموظف بنجاح',
                 'id' => $request -> empId,
              
                 

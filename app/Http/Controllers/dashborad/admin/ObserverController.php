@@ -119,17 +119,25 @@ class ObserverController extends Controller
                     }
                 ]
                )->select('id','obsName','dirId','rigId','agentId')->get()->last();
-         
+               if (!$obs)
+               return response()->json([
+                   'status' => true,
+                   'msg' => 'تم تسجيل المراقب بنجاح',
+                   'alertType'=> '.alertSuccess',
+                   'lastObserver'=> $lastobserver,
+               ]);      
             if ($obs)
             return response()->json([
                 'status' => true,
-                'msg' => 'تم الحفظ بنجاح',
+                'msg' => 'تم تسجيل المراقب بنجاح',
+                'alertType'=> '.alertSuccess',
                 'lastObserver'=> $lastobserver,
             ]);
         }
         catch (\Exception $ex) {
             return response()->json([
                 'status'         => false,
+                'alertType'=> '.alertError',
                 'msg'            => 'فشل الحفظ برجاء المحاوله مجددا',
                 'exceptionError' => $ex,
             ]);
@@ -164,7 +172,6 @@ class ObserverController extends Controller
            return response()->json([
             'status' => true,
             'observers' => $observers,
-        
            ]);
 
        }
@@ -204,6 +211,7 @@ class ObserverController extends Controller
             if (!$observer)
                 return response()->json([
                     'status' => false,
+                    'alertType'=> '.alertError',
                     'msg' => 'هذ العرض غير موجود',
                    
                 ]);
@@ -234,6 +242,7 @@ class ObserverController extends Controller
             if (!$observer)
                 return response()->json([
                     'status' => false,
+                    'alertType'=> '.alertError',
                     'msg' => 'هذ العرض غير موجود',
                 ]);
          
@@ -260,7 +269,8 @@ class ObserverController extends Controller
          
             return response()->json([
                 'status'             => true,
-                'msg'                => 'تم  التحديث بنجاح',
+                'alertType'=> '.alertWarning',
+                'msg'    => 'تم تعديل المراقب بنجاح',
                 'lastobserverUpdate' => $lastobserverUpdate,
                 'obsId'              => $request->id,
             ]);

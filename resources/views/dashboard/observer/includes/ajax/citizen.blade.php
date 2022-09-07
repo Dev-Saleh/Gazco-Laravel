@@ -60,6 +60,7 @@
 
                     if (data.status == true)
                      {
+                        newAlert(data.alertType,data.msg);
                         $('#citId').val('');
                         //$('#obsId').val(''); can not be null لاتفعل دا
                         $('#citName').val('');
@@ -99,12 +100,16 @@
                     },
                     success: function (data) 
                     {
-                       if (data.status == true)
+                        if (data.status == true)
+                        $('.offerRow' + data.citId).addClass("animate-fadeInLeft");
                         {
-                          // alert.show(data.msg,'success');
+                           
+                            newAlert(data.alertType,data.msg);
                         }
-
-                        $('.offerRow'+data.citId).remove();
+                        sleep(400).then(() => {
+                            $('.offerRow' +data.citId).remove();
+                        });
+                      
 
                     }, error: function (reject) {
 
@@ -131,7 +136,7 @@
                         },
                         success: function (data)
                         {
-                           console.log(data);
+                          
                     
                             if (data.status == true) {
                             $('#citId').val(data.citizen.id);
@@ -182,7 +187,8 @@
                         console.log(data);  // For Test
                         if(data.status == true)
                         {
-                            
+                            newAlert(data.alertType,data.msg);
+
                              $('#citName_error').text('');
                              $('#identityNum_error').text('');
                              $('#citPassword_error').text('');
@@ -191,7 +197,7 @@
                              $('#rigId_error').text('');
                              $('#attachment_error').text('');
 
-                            //alert.show(data.msg,'success');
+                           
                             $('#citId').val('');
                             //  $('#observer_Id').val(''); can not be null لاتفعل دا
                             $('#citName').val('');

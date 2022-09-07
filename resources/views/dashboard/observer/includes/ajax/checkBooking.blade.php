@@ -31,7 +31,12 @@
                           console.log(data);
                           if (data.status == true)
                           {
+                            newAlert(data.alertType,data.msg);  
                           
+                          } 
+                         else if (data.status == false)
+                          {
+                            newAlert(data.alertType,data.msg);  
                           
                           } 
                         

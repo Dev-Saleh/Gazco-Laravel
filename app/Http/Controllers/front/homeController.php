@@ -63,7 +63,8 @@ class homeController extends Controller
                     return response()->json(
                      [
                         'status'       => true,
-                        'msg'          => 'تم الحفظ بنجاح',
+                        'alertType'=> '.alertSuccess',
+                        'msg'          => 'تم تسجيلك بنجاح 😁👍',
                         'lastGazLogs'  => $lastGazLogs,
                      ]
                     );
@@ -75,7 +76,8 @@ class homeController extends Controller
                     return response()->json(
                         [
                             'status'         => false,
-                            'msg'            => 'Error In Function Store Booking',
+                            'alertType'=> '.alertError',
+                            'msg'            => 'فشلت عملية حجز الدبه',
                             'exceptionError' => $ex,     
                         ]
                      );
@@ -131,7 +133,11 @@ class homeController extends Controller
                         }
                        
                 }
+<<<<<<< HEAD
                 else if(!$lastBatchOpenBooking && $days=='true')
+=======
+                else if(!$lastBatchOpenBooking && $days=='true' || $days=='false' )
+>>>>>>> 71133158e55ec10634afb118ef16124fdad5aeb3
                 {
                         return response()->json(
                         [
@@ -140,7 +146,7 @@ class homeController extends Controller
                             //'lastGazLogs'=>$lastBatchOpenBooking,
                         ]);
                 }
-                else
+                else if($lastBatchOpenBooking && $days=='false')
                 {
                     return response()->json(
                         [

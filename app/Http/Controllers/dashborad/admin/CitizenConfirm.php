@@ -43,7 +43,6 @@ class CitizenConfirm extends Controller
                 return response()->json(
                 [
                     'status'          => false,
-                    'msg'             => 'error in function index',
                     'exceptionError'  => $ex,
                 ] 
               );
@@ -82,8 +81,7 @@ class CitizenConfirm extends Controller
                     return response()->json(
                       [
                         'status' => false,
-                        'msg'    => 'Citizen Not Found Error In Function Show',
-                      
+                                          
                      ]
                    );
       
@@ -128,7 +126,8 @@ class CitizenConfirm extends Controller
 
                   return response()->json(
                     [
-                      'status'      => true,
+                      'status'      => true, 
+                      'alertType'=> '.alertSuccess',   
                       'msg'         => 'تم المطابقة بنجاح',
                       'citId'   => $request -> citId, // for Test
                       'checkbox'    => $citizen->checked, // for Test
@@ -159,7 +158,8 @@ class CitizenConfirm extends Controller
                 return response()->json(
                   [
                     'status'  => false,
-                    'msg'     => 'Error In Function destroy',
+                    'alertType'=> '.alertError',
+                    'msg'    => 'حدث خطأ أثناء الحذف',
                     'cizId'   => $request -> citId,
                   ]
                 );
@@ -171,8 +171,9 @@ class CitizenConfirm extends Controller
 
                 return response()->json(
                   [
-                    'status'    => true,
-                    'msg'       => 'تم الحذف بنجاح',
+                    'status'    => true, 
+                    'alertType'=> '.alertSuccess',   
+                    'msg'       => 'تم حذف المواطن بنجاح',
                     'citId'     => $request -> citId
                  ]
                 );

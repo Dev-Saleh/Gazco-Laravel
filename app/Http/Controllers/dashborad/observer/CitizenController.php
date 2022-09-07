@@ -112,7 +112,8 @@ class CitizenController extends Controller
                         return response()->json(
                          [
                             'status'         => true,
-                            'msg'            => 'تم الحفظ بنجاح',
+                            'msg'            => 'تم الحفظ المواطن بنجاح',
+                            'alertType'=> '.alertSuccess',
                             'lastCitizenAdd' => $lastCitizenAdd,
                             
                          ]
@@ -208,6 +209,7 @@ class CitizenController extends Controller
                     return response()->json(
                       [
                         'status' => false,
+                        'alertType'=> '.alertError',
                         'msg' => 'The Citizen Not Found Error In Function Update ',
                       ]
                   );
@@ -259,7 +261,8 @@ class CitizenController extends Controller
                     return response()->json(
                       [
                         'status'            => true,
-                        'msg'               => 'تم  التحديث بنجاح',
+                        'msg'               => 'تم تعديل بيانات المواطن بنجاح',
+                        'alertType'=> '.alertWarning',
                         'attachment'        => $fileName,
                         'lastCitizenUpdate' => $lastCitizenUpdate,
                         'citId'             => $request->id,
@@ -293,7 +296,8 @@ class CitizenController extends Controller
                 return response()->json(
                   [
                     'status'  => false,
-                    'msg'     => 'The Citizen Not Found Error In Function destroy',
+                    'alertType'=> '.alertError',
+                    'msg'     => 'حدث خطأ اثناء حذف المواطن',
                     'citId'   => $request -> citId, //For Test
                   ]
                 );
@@ -306,7 +310,8 @@ class CitizenController extends Controller
                 return response()->json(
                 [
                     'status' => true,
-                    'msg'    => 'تم الحذف بنجاح',
+                    'alertType'=> '.alertSuccess',
+                    'msg'    => 'تم حذف المواطن بنجاح',
                     'citId'  => $request -> citId
                 ]
               );

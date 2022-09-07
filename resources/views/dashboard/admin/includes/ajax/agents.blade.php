@@ -117,13 +117,12 @@
                         'agentId': agentId,
                     },
                     success: function(data) {
-                        console.log(data);
-
+                       
                         $('.offerRow' + data.agentId).addClass("animate-fadeInLeft");
 
                         if (data.status == true) {
 
-                            alertt(data.msg, 'success');
+                            newAlert(data.alertType,data.msg);
                         }
 
                         sleep(400).then(() => {
@@ -154,9 +153,13 @@
                 success: function(data) {
                     console.log(data);
                     if (data.status == true) {
+<<<<<<< HEAD
                       // for Test
                      
                       // for Test
+=======
+                        
+>>>>>>> 71133158e55ec10634afb118ef16124fdad5aeb3
                         var preview = document.getElementById("file-ip-1-preview");
                         preview.style.display = "block";
                         $('#file-ip-1-preview').attr('src', data.photo.valsrc);
@@ -170,6 +173,7 @@
                         window.saveAgent.style.display = "none";
                         window.updateAgent.style.display = "inline-flex";
                     }
+                  
 
                 },
                 error: function(reject) {
@@ -196,10 +200,14 @@
                 contentType: false,
                 cache: false,
                 success: function(data) {
-                    console.log(data);
+                  
                     if (data.status == true) {
+<<<<<<< HEAD
                         //alert(data.msg, 'success');
                          window.alertSuccess.style.display = "inline-flex";
+=======
+                        newAlert(data.alertType,data.msg);
+>>>>>>> 71133158e55ec10634afb118ef16124fdad5aeb3
                         window.saveAgent.style.display = "inline-flex";
                         window.updateAgent.style.display = "none";
                         $('.offerRow' + data.agentId).remove(); // حدف الحقل السابق الدي قبل التعديل 
