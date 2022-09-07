@@ -93,7 +93,7 @@ class homeController extends Controller
             {
                     $citizen = Citizen::find($request -> citId);
                     $lastBatchOpenBooking=gazLogs::where('statusBatch','2')->where('agentId',$citizen->observer->agentId)->latest('id')->first();
-                    $days='true'; 
+                    $citizenBookingValid='true'; 
                     $numdays='0';
                     $lastRequestBookingtocitz=logsBooking::where('citid',$request -> citId)->latest('id')->first();
                    
@@ -102,12 +102,12 @@ class homeController extends Controller
                         $numdays=
                         
                         date_diff($lastRequestBookingtocitz->created_at,now()); // get Number Days Between Reciving_date and current Date
-                        $numdays->days > '14' ? $days='true' : $days='false';
+                        $numdays->citizenBookingValid > '14' ? $citizenBookingValid='true' : $citizenBookingValid='false';
                     }
 
-                    else  $days='true'; // if no have records
+                    else  $citizenBookingValid='true'; // if no have records
 
-                if($lastBatchOpenBooking && $days=='true') // if has records
+                if($lastBatchOpenBooking && $citizenBookingValid=='true') // if has records
                 {
                         if($lastBatchOpenBooking->qtyRemaining > '0' )  
                         {  
@@ -122,31 +122,9 @@ class homeController extends Controller
                                     
                                 ]);
                         }
-                        else if ($lastBatchOpenBooking->qtyRemaining == '0' )
-                        {
-                                return response()->json(
-                                [
-                                    'status' => false,
-                                    'msg' => '2', //2='لاتوجد كمية الحجز' 
-                                    'lastGazLogs'=>$lastBatchOpenBooking,
-                                ]);
-                        }
                        
                 }
-<<<<<<< HEAD
-                else if(!$lastBatchOpenBooking && $days=='true')
-=======
-                else if(!$lastBatchOpenBooking && $days=='true' || $days=='false' )
->>>>>>> 71133158e55ec10634afb118ef16124fdad5aeb3
-                {
-                        return response()->json(
-                        [
-                            'status' => false,
-                            'msg' =>'3',   //1='لايوجد كمية مفتوحة الحجز'
-                            //'lastGazLogs'=>$lastBatchOpenBooking,
-                        ]);
-                }
-                else if($lastBatchOpenBooking && $days=='false')
+                else if($lastBatchOpenBooking && $citizenBookingValid=='false')
                 {
                     return response()->json(
                         [
@@ -155,6 +133,16 @@ class homeController extends Controller
                             'lastGazLogs'=>$lastBatchOpenBooking,
                         ]);
                 }
+                else if(!$lastBatchOpenBooking && $citizenBookingValid=='true' || $citizenBookingValid=='false' )
+                {
+                        return response()->json(
+                        [
+                            'status' => false,
+                            'msg' =>'3',   //1='لايوجد كمية مفتوحة الحجز'
+                            //'lastGazLogs'=>$lastBatchOpenBooking,
+                        ]);
+                }
+                
      
             
                     

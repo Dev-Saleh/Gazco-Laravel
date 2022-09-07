@@ -136,7 +136,7 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
 });
 
 Route::group(['namespace' => 'dashborad\observer','middleware' => 'authObserver', 'prefix' => 'observer'], function () {
-  Route::get('/', 'DashboradController@index')->name('observer.dashboard');  // the first page Employe visits if authenticated
+  Route::get('/', 'OverviewController@index')->name('observer.dashboard');  // the first page Employe visits if authenticated
   
   Route::group(['prefix' => 'citizen'], function () {
     Route::get('index',  'CitizenController@index')->name('citizen.index');

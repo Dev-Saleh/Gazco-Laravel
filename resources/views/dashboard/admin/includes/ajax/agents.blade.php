@@ -153,13 +153,9 @@
                 success: function(data) {
                     console.log(data);
                     if (data.status == true) {
-<<<<<<< HEAD
                       // for Test
                      
                       // for Test
-=======
-                        
->>>>>>> 71133158e55ec10634afb118ef16124fdad5aeb3
                         var preview = document.getElementById("file-ip-1-preview");
                         preview.style.display = "block";
                         $('#file-ip-1-preview').attr('src', data.photo.valsrc);
@@ -202,12 +198,7 @@
                 success: function(data) {
                   
                     if (data.status == true) {
-<<<<<<< HEAD
-                        //alert(data.msg, 'success');
-                         window.alertSuccess.style.display = "inline-flex";
-=======
                         newAlert(data.alertType,data.msg);
->>>>>>> 71133158e55ec10634afb118ef16124fdad5aeb3
                         window.saveAgent.style.display = "inline-flex";
                         window.updateAgent.style.display = "none";
                         $('.offerRow' + data.agentId).remove(); // حدف الحقل السابق الدي قبل التعديل 

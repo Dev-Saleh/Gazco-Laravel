@@ -130,7 +130,7 @@
             <span id='allowBookingCount' class="text-yellow-200 text-base bg-yellow-700 rounded-full rounded-tr-none p-2 py-1 group-hover:animate-bounce">10</span>
           </div>
           <div  class="group rounded-tl-none rounded-full bg-sky-500 w-full h-40 flex flex-col justify-center items-center space-y-2 hover:animate-wiggle">
-            <p class="text-sky-900 text-lg"> اي شي</p>
+            <p class="text-sky-900 text-lg"> التي لم يتم فتح الحجز </p>
             <span id='anyThings' class="text-sky-200 text-base bg-sky-700 rounded-full rounded-tl-none p-2 py-1 group-hover:animate-bounce">00</span>
           </div>
         </div>

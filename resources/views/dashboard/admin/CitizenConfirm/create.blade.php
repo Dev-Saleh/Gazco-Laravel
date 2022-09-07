@@ -26,7 +26,7 @@
               <div class="flex justify-between space-x-2">
         
                 <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
-                  <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">بواسطة من ؟
+                  <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">بواسطة من
                     <span  class="obsName text-xs bg-gray-800 text-gray-200 px-1 rounded-full">Dev SL</span>
                   </li>
                   <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">تاريخ الاضافه

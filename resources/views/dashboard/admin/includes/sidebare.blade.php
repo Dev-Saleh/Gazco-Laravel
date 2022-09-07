@@ -31,6 +31,7 @@
           <i class="fas fa-table mr-3"></i>
           الوكلاء
         </a>
+        
         <a href="{{route('observer.index')}}" class=" {{ 'admin/observer/index' == request()->path() ? 'bg-yellow-500' : '' }}
         flex items-center text-white 
                 rounded-tl-3xl
@@ -76,6 +77,20 @@
           <i class="fas fa-cogs mr-3"></i>
           المديريه والمربعات
         </a>
+        @if(session()->get('empRole')=='مستخدم')
+        <a href="" disabled class=" {{ 'admin/employee/index' == request()->path() ? 'bg-red-500' : '' }}
+        flex items-center text-white 
+                rounded-tl-3xl
+                rounded-br-3xl
+                hover:text-red-100
+                hover:bg-red-500
+                 hover:opacity-100
+                  py-4 pl-6 nav-item">
+          <i class="fas fa-tablet-alt mr-3"></i>
+          المستخدمين
+        </a>
+        @endif
+        @if(session()->get('empRole')=='مسئول')
         <a href="{{route('employee.index')}}" class=" {{ 'admin/employee/index' == request()->path() ? 'bg-yellow-500' : '' }}
         flex items-center text-white 
                 rounded-tl-3xl
@@ -87,6 +102,7 @@
           <i class="fas fa-tablet-alt mr-3"></i>
           المستخدمين
         </a>
+        @endif
         <a href="{{route('batchReports.index')}}" class=" {{  'admin/reports/citizenReport'  == request()->path() ? 'bg-yellow-500' : '' }} {{ 'admin/reports/Batch/index'  == request()->path() ? 'bg-yellow-500' : '' }} 
         flex items-center text-white 
                 rounded-tl-3xl
@@ -99,16 +115,5 @@
           التقارير
         </a>
         <!-- Base -->
-
-        <a href="" class="flex items-center text-white 
-                rounded-tl-3xl
-                rounded-br-3xl
-                hover:text-yellow-100
-                hover:bg-yellow-500
-                 hover:opacity-100
-                  py-4 pl-6 nav-item">
-          <i class="fas fa-cogs mr-3"></i>
-          الشكاوي
-        </a>
       </nav>
 </aside>

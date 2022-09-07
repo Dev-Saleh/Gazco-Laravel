@@ -17,7 +17,7 @@
         </span>
         <h5 class="P-2 mr-2 text-emerald-700"> عدد الموزعين</h5>
         <span
-          class="bg-emerald-200 px-3 py-2 rounded-full rounded-tr-none absolute left-0 group-hover:left-20 transition-all duration-1000 ">99</span>
+          class="bg-emerald-200 px-3 py-2 rounded-full rounded-tr-none absolute left-0 group-hover:left-20 transition-all duration-1000 ">{{App\Models\Agent::count()}}</span>
       </div>
       <div class="col-span-2 group box1 relative h-28 w-full bg-white rounded-md shadow-sm flex items-center" on>
         <span
@@ -33,7 +33,7 @@
         </span>
         <h5 class="P-2 mr-2 text-yellow-700"> عدد المواطنين</h5>
         <span
-          class="bg-yellow-200 px-3 py-2 rounded-full rounded-tr-none absolute left-0 group-hover:left-20  transition-all duration-1000 ">99</span>
+          class="bg-yellow-200 px-3 py-2 rounded-full rounded-tr-none absolute left-0 group-hover:left-20  transition-all duration-1000 ">{{App\Models\Citizen::count()}}</span>
       </div>
       <div class="col-span-2 group box1 relative h-28 w-full bg-white rounded-md shadow-sm flex items-center" on>
         <span
@@ -49,7 +49,7 @@
         </span>
         <h5 class="P-2 mr-2 text-indigo-700"> عدد المراقبين</h5>
         <span
-          class="bg-indigo-200 px-3 py-2 rounded-full rounded-tr-none absolute left-0 group-hover:left-20  transition-all duration-1000 ">99</span>
+          class="bg-indigo-200 px-3 py-2 rounded-full rounded-tr-none absolute left-0 group-hover:left-20  transition-all duration-1000 ">{{App\Models\observer::count()}}</span>
       </div>
       <div class="col-span-2 group box1 relative h-28 w-full bg-white rounded-md shadow-sm flex items-center" on>
         <span
@@ -63,9 +63,9 @@
             </svg>
           </span>
         </span>
-        <h5 class="P-2 mr-2 text-purple-700"> عدد الموزعين</h5>
+        <h5 class="P-2 mr-2 text-purple-700"> عدد المستخدمين</h5>
         <span
-          class="bg-purple-200 px-3 py-2 rounded-full rounded-tr-none absolute left-0 group-hover:left-20  transition-all duration-1000 ">@php App\Models\Agent::Select()->get()->count(); @endphp</span>
+          class="bg-purple-200 px-3 py-2 rounded-full rounded-tr-none absolute left-0 group-hover:left-20  transition-all duration-1000 "> {{App\Models\employee::count()}}</span>
       </div>
     </div>
    {{-- Start Chart Section --}}

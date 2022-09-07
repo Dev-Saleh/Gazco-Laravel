@@ -210,6 +210,8 @@
                         <tr>
                             <th class="p-3">الرقم</th>
                             <th class="p-3 text-center">الاسم</th>
+                            <th class="p-3 text-center">رقم الهويه</th>
+                            <th class="p-3 text-center">المطابقه</th>
                             <th class="p-3 text-center">المديريه</th>
                             <th class="p-3 text-center">المربع</th>
                             <th class="p-3 text-center">الموزع </th>
@@ -227,6 +229,17 @@
                                 {{$cit -> citName}}
                             </td>
                             <td class="p-3 text-center">
+                                {{$cit -> identityNum}}
+                            </td>
+                            <td class="p-3 text-center">
+                            @if($cit->checked == 'لا')
+                            <span class="bg-red-400 text-red-50 rounded-md px-2">{{$cit -> checked}}</span>
+                            
+                            @elseif($cit->checked == 'نعم')
+                            <span class="bg-green-400 text-green-50 rounded-md px-2">{{$cit -> checked}}</span>
+                            @endif
+                            </td>
+                            <td class="p-3 text-center">
                                  {{$cit -> directorate->dirName}}
                             </td>
 
@@ -234,7 +247,7 @@
                                 {{$cit -> rigon->rigName}}
                             </td>
                             <td class="p-3 text-center">
-                                <span class="bg-green-400 text-gray-50 rounded-md px-2">{{$cit->observer->agent->agentName}}</span>
+                                <span class="bg-blue-400 text-blue-50 rounded-md px-2">{{$cit->observer->agent->agentName}}</span>
                             </td>
                             <td class="p-3 text-center ">
                                 <div id="delete-alert" class=" h-10 w-28 rounded-full overflow-hidden hidden">

@@ -119,13 +119,11 @@
                 url: "{{route('batchReports.exportExcelBatch')}}",
               data: {
                      'valueDateForm' :valueDateForm, 
-                     //'valueDateTo' :valueDateTo, 
-
+                     //'valueDateTo' :valueDateTo,
                     },
                 success: function (data) 
                 {
-                 console.log(data);
-                  
+                   console.log(data); 
                 }, error: function (reject) {
                    
                 }
