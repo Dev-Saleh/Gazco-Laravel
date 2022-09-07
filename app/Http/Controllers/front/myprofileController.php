@@ -40,9 +40,6 @@ class myProfileController extends Controller
                     'status' => false,
                     'msg' => 'هذ العرض غير موجود',
                 ]);
-
-            //update data  
-           $cit->update($request->except('_token', 'Photo'));
         
            return response()->json([
                 'status' => true,

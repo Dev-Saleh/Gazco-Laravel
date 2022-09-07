@@ -8,7 +8,7 @@
             var formData = new FormData($('#FormUpdateMyProfile')[0]);
 
             $.ajax({
-                type: 'post',
+                type: 'Post',
                 enctype: 'multipart/form-data',
                 url: "{{ route('myProfile.update') }}",
                 data: formData,
@@ -17,18 +17,19 @@
                 cache: false,
                 success: function(data)
                 {
-                    console.log(data);
+                    console.log(data.status);
                     if (data.status == true) 
                     {
-                        alert(data.msg, 'success');
+                       // alert(data.msg, 'success');
                     }
                 },
                 error: function(reject) 
                 {
                    
                    
-                });
-
+                }
+         
+        });
         });
    // End Update myProfile By Ajax
 </script>

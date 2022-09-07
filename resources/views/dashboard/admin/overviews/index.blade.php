@@ -65,7 +65,7 @@
         </span>
         <h5 class="P-2 mr-2 text-purple-700"> عدد الموزعين</h5>
         <span
-          class="bg-purple-200 px-3 py-2 rounded-full rounded-tr-none absolute left-0 group-hover:left-20  transition-all duration-1000 ">99</span>
+          class="bg-purple-200 px-3 py-2 rounded-full rounded-tr-none absolute left-0 group-hover:left-20  transition-all duration-1000 ">@php App\Models\Agent::Select()->get()->count(); @endphp</span>
       </div>
     </div>
    {{-- Start Chart Section --}}
