@@ -3,6 +3,7 @@ namespace App\Http\Controllers\dashborad\observer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\requestsCitizen;
 use App\Models\Citizen;
+use App\Models\familyMembers;
 use Intervention\Image\Facades\Image;
 use App\Models\Observer;
 use Illuminate\Http\Request;
@@ -75,7 +76,8 @@ class CitizenController extends Controller
     {
        
            try
-               { 
+               {  
+                   
                     $attachment =$request->attachment;  
                     $filename = uploadImageAndResize('citizens', $attachment , $width='220', $height='190');
                   

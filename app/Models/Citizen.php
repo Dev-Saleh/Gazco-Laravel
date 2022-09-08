@@ -22,6 +22,10 @@ class Citizen extends Model
     {
         return $this->belongsTo(Observer::class,'obsId');
     }
+    public function familyMember()
+    {
+        return $this->hasMany(familyMembers::class, 'citId','id');
+    }
     public function logBookings()
     {
         return $this->hasMany(logBookings::class, 'citId','id');
