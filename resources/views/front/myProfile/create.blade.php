@@ -9,7 +9,7 @@
                             <div>
 
                                 <img class="max-w-xl object-cover rounded-lg shadow-xl dark:shadow-gray-800 h-[200px] w-auto  "
-                                    src="{{ asset('assets/images/IdentityPicture-1.jpg') }}" alt="image description">
+                                    src="{{ $data->attachment['valsrc'] }}" alt="image description">
 
                             </div>
                             <h1 class="text-gray-600 mr-4">

@@ -96,7 +96,15 @@
                   {{$gazLog->created_at}}
                     </td>
                      <td class="p-3 text-center">
+                     @if($gazLog->getStatusBatch()=='لم يتم فتح الحجز')
+                      <span class="bg-blue-400 text-gray-50 rounded-md px-2">{{$gazLog->getStatusBatch()}}</span>
+                     @endif
+                     @if($gazLog->getStatusBatch()=='مفتوح الحجز')
+                      <span class="bg-red-400 text-gray-50 rounded-md px-2">{{$gazLog->getStatusBatch()}}</span>
+                     @endif
+                     @if($gazLog->getStatusBatch()=='تم نفاد الكميه')
                       <span class="bg-green-400 text-gray-50 rounded-md px-2">{{$gazLog->getStatusBatch()}}</span>
+                     @endif
                     </td>
                     <td class="p-3 grid items-center justify-center">
                       <a href="#" checkBatchId='{{$gazLog->id}}' class="checkBatchShow text-blue-600 hover:text-blue-400">

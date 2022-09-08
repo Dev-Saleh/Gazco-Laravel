@@ -87,7 +87,7 @@ class ReportsController extends Controller
     {
         try
         {
-           return Excel::download(new exportBatchReport('2022-09-05','2023-05-03'),'salah.xlsx');
+           return Excel::download(new exportBatchReport($request->valueDateForm,$request->valueDateTo),'salah.xlsx');
         }
         catch (\Exception $ex)
         {

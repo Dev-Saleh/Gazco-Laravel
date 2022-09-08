@@ -62,6 +62,11 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
         Route::post('search', 'AgentController@search')->name('agent.search');
         
       });
+      Route::group(['prefix' => 'profile'], function () {
+        
+        Route::post('update', 'profileController@store')->name('profile.update');
+       
+      });
       Route::group(['prefix' => 'employee'], function () {
         Route::get('index', 'EmployeeController@index')->name('employee.index');
         Route::post('store', 'EmployeeController@store')->name('employee.store');
@@ -110,7 +115,7 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
         Route::get('index',  'batchReportsController@index')->name('batchReports.index');
         Route::Post('show',  'batchReportsController@show')->name('batchReport.show');
         Route::get('showRigon/{id?}', 'batchReportsController@showRigons')->name('batchReports.showRigons');
-        Route::post('exportExcel', 'batchReportsController@exportExcelBatch')->name('batchReports.exportExcelBatch');
+        Route::get('exportExcel', 'batchReportsController@exportExcelBatch')->name('batchReports.exportExcelBatch');
         Route::get('showAgent/{id?}', 'batchReportsController@showAgents')->name('batchReports.showAgents');
       }
        
@@ -167,8 +172,4 @@ Route::group(['namespace' => 'dashborad\observer','middleware' => 'authObserver'
     Route::get('show', 'checkBatchController@show')->name('checkBatch.show');
     
   });
-
-  
-
-
 });

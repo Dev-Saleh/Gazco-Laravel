@@ -243,7 +243,7 @@ class AgentController extends Controller
                         'status'        => true,
                         'msg'           => 'تم الحفظ بنجاح', 
                         'resultSearch'  =>  $resultSearch,
-                        //'Photo'       => $resultSearch->Photo,
+                        
                     
                     ]
                 );

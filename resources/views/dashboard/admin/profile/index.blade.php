@@ -6,9 +6,9 @@
         <!-- Adding observers -->
         @include('dashboard.admin.profile.create')   
         <!-- END Adding observers -->
-         <!-- Start Code Ajax -->
-          {{-- @include('dashboard.admin.includes.ajax.observers') --}}
-        <!-- End Code Ajax -->
+          <!-- Start Code Ajax -->
+        @include('dashboard.admin.includes.ajax.profile')
+         <!-- End Code Ajax -->
 
    </article>
       @stop

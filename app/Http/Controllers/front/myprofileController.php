@@ -12,7 +12,7 @@ class myProfileController extends Controller
         try
             {
                $data['myProfileCitz']=Citizen::select('id','citName','mobileNum','identityNum','attachment','citPassword')->where('id', session()->get('idCitizen'))->get(); //->where('obsId',$request->obsId) ذا الشرط لازم نتناقش عليه
-                 
+
                 return view('front.myProfile.index',$data);
             }
        catch (\Exception $ex)

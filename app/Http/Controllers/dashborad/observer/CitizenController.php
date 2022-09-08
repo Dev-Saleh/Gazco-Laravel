@@ -106,7 +106,7 @@ class CitizenController extends Controller
                               ]
                               )->select('id','agentId','obsName')->get();
                           }
-                        ])->select('id','citName','dirId','rigId','obsId')->where('obsId',$request->obsId)->get()->last(); //->where('obsId',$request->obsId) ذا الشرط لازم نتناقش عليه
+                        ])->select('id','citName','dirId','rigId','obsId','identityNum','checked')->where('obsId',$request->obsId)->get()->last(); //->where('obsId',$request->obsId) ذا الشرط لازم نتناقش عليه
                    
                         if ($citizen)
                         return response()->json(

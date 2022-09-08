@@ -11,43 +11,43 @@
               </div>
               <span class="absolute p-2.5 rounded-md rotate-45 bg-purple-200 px-3 group-hover:right-40 right-20  transition-all duration-1000">
                 <p class="text-emerald-800 -rotate-45 text-center ">
-                  99
+               {{App\Models\Citizen::count()}}
                 </p>
               </span>
           </div>
           <div class="col-span-2 group h-28 w-full bg-white rounded-md shadow-sm flex items-center p-4">
               <div class="z-30 rotate-45 rounded-md h-20 w-20 bg-rose-500 p-3">
                 <p class="text-emerald-100 -rotate-45 text-center ">
-                  عدد المواطن
+                  عدد الدفعات
                 </p>
               </div>
               <span class="p-2.5 rounded-md rotate-45 bg-rose-200 px-3 group-hover:-translate-x-10 translate-x-5  transition-all duration-1000">
                 <p class="text-emerald-800 -rotate-45 text-center ">
-                  99
+                   {{App\Models\gazLogs::count()}}
                 </p>
               </span>
           </div>
           <div class="col-span-2 group h-28 w-full bg-white rounded-md shadow-sm flex items-center p-4">
               <div class="z-30 rotate-45 rounded-md h-20 w-20 bg-yellow-500 p-3">
                 <p class="text-emerald-100 -rotate-45 text-center ">
-                  عدد المواطن
+                   مفتوحه الحجز
                 </p>
               </div>
               <span class="p-2.5 rounded-md rotate-45 bg-yellow-200 px-3 group-hover:-translate-x-10 translate-x-5  transition-all duration-1000">
                 <p class="text-emerald-800 -rotate-45 text-center ">
-                  99
+                   {{App\Models\gazLogs::where('statusBatch','2')->count()}}
                 </p>
               </span>
           </div>
           <div class="col-span-2 group h-28 w-full bg-white rounded-md shadow-sm flex items-center p-4">
               <div class="z-30 rotate-45 rounded-md h-20 w-20 bg-emerald-500 p-3">
                 <p class="text-emerald-100 -rotate-45 text-center ">
-                  عدد المواطن
+                 مكتمله الحجز 
                 </p>
               </div>
               <span class="p-2.5 rounded-md rotate-45 bg-emerald-200 px-3 group-hover:-translate-x-10 translate-x-5  transition-all duration-1000">
                 <p class="text-emerald-800 -rotate-45 text-center ">
-                  99
+                   {{App\Models\gazLogs::where('statusBatch','3')->count()}}
                 </p>
               </span>
           </div>

@@ -107,30 +107,5 @@
             });
         })
     // End show gazLogs By Ajax 
-     // Start show gazLogs By Ajax 
-
-        $(document).on('click', '#btnBatchExcel', function (e) {
-          e.preventDefault();
-          var valueDateForm= $('#valueDateForm').val();
-          var valueDateTo= $('#valueDateTo').val();
-        $.ajax({
-                type: 'get',
-                enctype: 'multipart/form-data',
-                url: "{{route('batchReports.exportExcelBatch')}}",
-              data: {
-                     'valueDateForm' :valueDateForm, 
-                     //'valueDateTo' :valueDateTo,
-                    },
-                success: function (data) 
-                {
-                   console.log(data); 
-                }, error: function (reject) {
-                   
-                }
-            });
-        });
-    // End show gazLogs By Ajax 
-   
-    
     </script>
     @stop

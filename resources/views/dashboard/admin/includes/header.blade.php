@@ -45,7 +45,7 @@
                             </div>
                   
                             <div class="p-2">
-                              <form method="POST" action="#">
+                            
                                 <button
                                   type="submit"
                                   class="flex items-center w-full px-4 py-2 text-sm text-red-700 rounded-lg gap-2 hover:bg-red-50"
@@ -68,7 +68,7 @@
                   
                                 <a href="{{route('adminLogout')}}"> تسجيل الخروج </a>
                                 </button>
-                              </form>
+                            
                             </div>
                           </div>
                         </div>

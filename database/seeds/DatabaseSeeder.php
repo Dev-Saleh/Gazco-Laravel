@@ -121,6 +121,7 @@ class DatabaseSeeder extends Seeder
             " مروان سلطان",
             " ثامر صلاح",
         );
+        
 
 
         for($i = 0 ; $i < count($agentArray) ;$i++)
@@ -128,9 +129,10 @@ class DatabaseSeeder extends Seeder
                 $aa = Directorate::all()->random()->id;
                 $bb = Rigon::select()->where('dirId', $aa)->get();
                 $cc = $bb->random()->id;
+                $filename = 'XUbpiLh4Hci9jbcyIE3EHvhicsQ6ThPOsxHM4oHE.png';
             Agent::create([
                 'agentName' => $agentArray[$i],
-                'Photo' => 'Dev-Sl.jpeg',
+                'Photo' =>  $filename,
 
                 'dirId' =>$aa,
                 'rigId' => $cc,

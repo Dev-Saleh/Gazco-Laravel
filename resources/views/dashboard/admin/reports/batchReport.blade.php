@@ -168,14 +168,15 @@
             
         </div>
            {{-- END SEARCH FORM --}}
-            <form action="{{route('batchReports.exportExcelBatch')}}" method="POST" id='batchExcelForm'>
+            <form action="{{route('batchReports.exportExcelBatch')}}" method="get" >
              @csrf
-            <input type="" value='2022-09-05' name='valueDateForm' style="display:none;" class="form-control" id="valueDateForm">
-            <input type="" value='2023-05-03' name='valueDateTo'  style="display:none;" class="form-control" id="valueDateTo">    
-           <button type="submit" id="btnBatchPdf"    class='h-8 w-8 bg-red-100 p-1 rounded-full'><img src="{{ asset('assets/images/pdf.png') }}" alt="PDF"></button>
-            <button  id="btnBatchExcel"  class='h-8 w-8 bg-green-100 p-1 rounded-full'><img src="{{ asset('assets/images/sheets.png') }}" alt="Excel"></button>
-          </div>
-          </form>
+            <input  type="" value='2022-09-05' name='valueDateForm' style="display:none;" class="form-control" id="valueDateForm">
+            <input  type="" value='2023-05-03' name='valueDateTo'  style="display:none;" class="form-control" id="valueDateTo">    
+            <button type="submit" id="btnBatchPdf"    class='h-8 w-8 bg-red-100 p-1 rounded-full'><img src="{{ asset('assets/images/pdf.png') }}" alt="PDF"></button>
+            <button type="submit"  id="btnBatchExcel"  class='h-8 w-8 bg-green-100 p-1 rounded-full'><img src="{{ asset('assets/images/sheets.png') }}" alt="Excel"></button>
+           </form>
+           </div>
+      
         <div class=" relative overflow-y-auto h-[300px]">
           <table class="table">
             <thead class="bg-white tableFixed">

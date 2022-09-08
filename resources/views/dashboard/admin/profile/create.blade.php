@@ -7,28 +7,29 @@
             </div>
         </div>
         <div class="mt-5 md:col-span-2 md:mt-0">
-            <form action="#" method="POST">
+            <form action="" method="POST" id='profileForm'>
+                @csrf
                 <div class="overflow-hidden shadow sm:rounded-md">
                     <div class="bg-white px-4 py-5 sm:p-6">
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="" class="block text-sm font-medium text-gray-700">مدة حظر المواطن بالايام</label>
-                                <input type="number" name="" id="" autocomplete="given-name"  placeholder="14 | Days"
+                                <input type="number" name="numDaysBookingValid" id="numDaysBookingValid" autocomplete="given-name"  placeholder="14 | Days"
                                     class="mt-1 block w-full rounded-md border p-2 border-gray-300 shadow-sm active:border-indigo-400 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                 </div>
                                 
                                 <div class="col-span-6 sm:col-span-3">
                                 <label for="" class="block text-sm font-medium text-gray-700">اسم مرسل الرساله</label>
-                                <input type="text" name="" id="" autocomplete="given-name" placeholder="Gazco | Aden"
+                                <input type="text" name="nameMessage" id="nameMessage" autocomplete="given-name" placeholder="Gazco | Aden"
                                     class="mt-1 block w-full rounded-md border p-2 border-gray-300 shadow-sm active:border-indigo-400 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                               
                             </div>
 
                             <div class="col-span-6 sm:col-span-4">
                                 <div>
-                                    <label for="about" class="block text-sm font-medium text-gray-700"> محتوى الرساله النصيه 📩</label>
+                                    <label for="contentMessage" class="block text-sm font-medium text-gray-700"> محتوى الرساله النصيه 📩</label>
                                     <div class="mt-1">
-                                      <textarea id="about" name="about" rows="3" class="mt-1 block w-full border p-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="اكتب نص الرساله النصيه"></textarea>
+                                      <textarea id="contentMessage" name="contentMessage" rows="3" class="mt-1 block w-full border p-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="اكتب نص الرساله النصيه"></textarea>
                                     </div>
                                     <p class="mt-2 text-sm text-gray-500">تستطيع تغيير النص اللذي بالرساله النصيه من هنا 👆🏻</p>
                                   </div>
@@ -44,7 +45,7 @@
                                     <div class="flex text-sm text-gray-600">
                                       <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
                                         <span>Upload a file</span>
-                                        <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                        <input id="profilePhoto" name="profilePhoto" type="file" class="sr-only">
                                       </label>
                                       <p class="pl-1">or drag and drop</p>
                                     </div>
@@ -55,7 +56,7 @@
                             </div>
                             </div>
                     <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                        <button type="submit"
+                        <button type="submit" id="updateProfile"
                             class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-6 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">تغيير الاعدادات</button>
                     </div>
                 </div>

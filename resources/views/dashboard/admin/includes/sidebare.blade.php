@@ -21,7 +21,22 @@
           <i class="fas fa-tachometer-alt mr-3"></i>
           نظره عامه
         </a>
-        <a href="{{route('agent.index')}}" class="{{ 'admin/agent/index' == request()->path() ? 'bg-yellow-500' : '' }} text-base font-semibold flex items-center text-white 
+         @if(session()->get('empRole')=='مستخدم')
+
+        <a href="" disabled class="{{ 'admin/agent/index' == request()->path() ? 'bg-red-500' : '' }} text-base font-semibold flex items-center text-white 
+                rounded-tl-3xl
+                rounded-br-3xl
+                hover:text-red-100
+                hover:bg-red-500
+                 hover:opacity-100
+                  py-4 pl-6 nav-item">
+          <i class="fas fa-table mr-3"></i>
+          الوكلاء
+        </a>
+        @endif
+        
+        @if(session()->get('empRole')=='مسئول')
+         <a href="{{route('agent.index')}}" class="{{ 'admin/agent/index' == request()->path() ? 'bg-yellow-500' : '' }} text-base font-semibold flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl
                 hover:text-yellow-100
@@ -31,7 +46,9 @@
           <i class="fas fa-table mr-3"></i>
           الوكلاء
         </a>
+        @endif
         
+        @if(session()->get('empRole')=='مسئول')
         <a href="{{route('observer.index')}}" class=" {{ 'admin/observer/index' == request()->path() ? 'bg-yellow-500' : '' }}
         flex items-center text-white 
                 rounded-tl-3xl
@@ -43,7 +60,20 @@
           <i class="fas fa-align-left mr-3"></i>
           المراقبين
         </a>
-
+        @endif
+       @if(session()->get('empRole')=='مستخدم')
+         <a href="" disabled class=" {{ 'admin/observer/index' == request()->path() ? 'bg-red-500' : '' }}
+        flex items-center text-white 
+                rounded-tl-3xl
+                rounded-br-3xl
+                hover:text-red-100
+                hover:bg-red-500
+                 hover:opacity-100
+                py-4 pl-6 nav-item">
+          <i class="fas fa-align-left mr-3"></i>
+          المراقبين
+        </a>
+         @endif
         <a href="{{route('gazLogs.index')}}" class=" {{ 'admin/gazLogs/index' == request()->path() ? 'bg-yellow-500' : '' }}
         flex items-center text-white 
                 rounded-tl-3xl
@@ -66,17 +96,32 @@
           <i class="fas fa-cogs mr-3"></i>
           تحقق من المواطن
         </a>
-        <a href="{{route('directorate.index')}}" class=" {{ 'admin/directorate/index' == request()->path() ? 'bg-yellow-500' : '' }}
+        @if(session()->get('empRole')=='مستخدم')
+        <a href="" disabled class=" {{ 'admin/directorate/index' == request()->path() ? 'bg-red-500' : '' }}
         flex items-center text-white 
                 rounded-tl-3xl
                 rounded-br-3xl
-                hover:text-yellow-100
-                hover:bg-yellow-500
+                hover:text-red-100
+                hover:bg-red-500
                  hover:opacity-100
                   py-4 pl-6 nav-item">
           <i class="fas fa-cogs mr-3"></i>
           المديريه والمربعات
         </a>
+        @endif
+        @if(session()->get('empRole')=='مسئول')
+          <a href="{{route('directorate.index')}}"  class=" {{ 'admin/directorate/index' == request()->path() ? 'bg-yellow-500' : '' }}
+          flex items-center text-white 
+                rounded-tl-3xl
+                rounded-br-3xl
+                hover:text-yellow-100
+                hover:bg-yellow-500
+                hover:opacity-100
+                py-4 pl-6 nav-item">
+          <i class="fas fa-cogs mr-3"></i>
+          المديريه والمربعات
+        </a>
+        @endif
         @if(session()->get('empRole')=='مستخدم')
         <a href="" disabled class=" {{ 'admin/employee/index' == request()->path() ? 'bg-red-500' : '' }}
         flex items-center text-white 
