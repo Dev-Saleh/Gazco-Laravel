@@ -188,11 +188,10 @@
     </summary>
     <br>
     <div class="">
-        <form action="#" method="POST" id="citForm">
+        <form action="" method="POST" id="fmForm">
             @csrf
-            <input type="text" name='id' style="display:none;" class="form-control" id="citId">
-            <input type="text" name='obsId' value="{{ $observers->id }}" style="display:none;"
-                class="form-control" id="observer_Id">
+            <input type="text" name='id' style="display:none;" class="form-control" id="familyMemberId">
+             
             <div class="">
                 <div class="px-4 py-5 bg-white space-y-6 sm:p-6 rounded-xl ">
                     <!-- GRID ONE -->
@@ -200,22 +199,28 @@
                     <div class="grid grid-cols-6 gap-4">
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full mb-5">
-                                <select name="dirId" value="{{ $observers->dirId }}" id='select_directorates'
-                                    onchange="f('select_rigons');" onclick="this.setAttribute('value', this.value);"
+                             
+                                <select name="citId" value="" id='selectCitizen'
+                                    onchange="f('selectCitizen');" onclick="this.setAttribute('value', this.value);"
                                     class="hover:border-black  pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-black appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                                    <option value="{{ $observers->dirId }}" id='select_directorate'>
-                                        {{ $observers->directorate->dirName }}</option>
+                              
+                                    @if ($allCitizens && $allCitizens->count() > 0)
+                                        @foreach ($allCitizens as $cit)
+                                            <option value="{{ $cit->id }}">{{ $cit->citName }}</option>
+                                        @endforeach
+                                    @endif
+
                                 </select>
                                 <label for="select"
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">رب الاسره</label>
                                 <span class="text-sm text-red-600 hidden" id="error">Option has to be
                                     selected</span>
-                                <small id='dirId_error' style='color:red'></small>
+                                <small id='citId_fmerror' style='color:red'></small>
                             </div>
                         </div>
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full">
-                                <input type="text" name="citName" id='citName' placeholder=" " required
+                                <input type="text" name="fmName" id='fmName' placeholder=" " required
                                     class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
                                    appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200
                                    hover:border-black text-black" />
@@ -223,7 +228,7 @@
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اسم
                                     الفرد</label>
                                 <span class="text-sm text-red-600 hidden" id="error">الاسم مطلوب !</span>
-                                <small id='citName_error' style='color:red'></small>
+                                <small id='fmName_fmerror' style='color:red'></small>
                             </div>
                         </div>
 
@@ -237,7 +242,7 @@
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">رقم
                                     الهويه</label>
                                 <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
-                                <small id='identityNum_error' style='color:red'></small>
+                                <small id='identityNum_fmerror' style='color:red'></small>
                             </div>
                         </div>
 
@@ -248,30 +253,30 @@
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full">
-                                <input type="number" name="mobileNum" id='mobileNum' placeholder=" "
+                                <input type="number" name="age" id='age' placeholder=" "
                                     onchange="Slugify(document.getElementById('proudct_slug').value);"
                                     id="proudct_slug"
                                     class="hover:border-black pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
                                 <label for="name"
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">العمر</label>
                                 <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
-                                <small id='mobileNum_error' style='color:red'></small>
+                                <small id='age_fmerror' style='color:red'></small>
                             </div>
                         </div>
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full mb-5">
-                                <select name="dirId" value="{{ $observers->dirId }}" id='select_directorates'
-                                    onchange="f('select_rigons');" onclick="this.setAttribute('value', this.value);"
+                                <select name="sex" value="" id='selectSex'
+                                    onchange="f('selectSex');" onclick="this.setAttribute('value', this.value);"
                                     class="hover:border-black  pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-black appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                                    <option value="ئ" id=''>ذكر</option>
-                                    <option value="ئ" id=''>انثى</option>
+                                    <option value="0" id=''>ذكر</option>
+                                    <option value="1" id=''>انثى</option>
                                 </select>
                                 <label for="select"
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الجنس</label>
                                 <span class="text-sm text-red-600 hidden" id="error">Option has to be
                                     selected</span>
-                                <small id='dirId_error' style='color:red'></small>
+                                <small id='sex_fmerror' style='color:red'></small>
                             </div>
                         </div>
 
@@ -279,19 +284,19 @@
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full mb-5">
-                                <select name="rigId" id='select_rigons' value="{{ $observers->rigId }}"
+                                <select name="relationship" id='selectRelationship' value=""
                                     onclick="this.setAttribute('value', this.value);"
                                     class="hover:border-black pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-black appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                                    <option value="ش">أب</option>
-                                    <option value="ش">أم</option>
-                                    <option value="ش">أخ</option>
-                                    <option value="ش">أخت</option>
+                                    <option value="0">أب</option>
+                                    <option value="1">أم</option>
+                                    <option value="2">أخ</option>
+                                    <option value="3">أخت</option>
                                 </select>
                                 <label for="select"
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">صلة القرابه</label>
                                 <span class="text-sm text-red-600 hidden" id="error">Option has to be
                                     selected</span>
-                                <small id='rigId_error' style='color:red'></small>
+                                <small id='relationship_fmerror' style='color:red'></small>
                             </div>
                         </div>
 
@@ -308,8 +313,8 @@
                         <div class="p-2 bg-transparent text-center rounded-3xl">
                             <!-- Base -->
 
-                            <button type="submit" id='saveCitizen'>
-                                <a class="relative inline-block group focus:outline-none focus:ring" href="/download">
+                            <button type="submit" id='fmSave'>
+                                <a class="relative inline-block group focus:outline-none focus:ring" href="">
                                     <span
                                         class="absolute inset-0 transition-transform translate-x-1.5 translate-y-1.5 bg-emerald-400 group-hover:translate-y-0 group-hover:translate-x-0"></span>
 
@@ -319,8 +324,8 @@
                                     </span>
                                 </a>
                             </button>
-                            <button type="submit" id='updateCitizen' style='display:none;'>
-                                <a class="relative inline-block group focus:outline-none focus:ring" href="/download">
+                            <button type="" id='fmUpdate' style='display:none;'>
+                                <a class="relative inline-block group focus:outline-none focus:ring" href="">
                                     <span
                                         class="absolute inset-0 transition-transform translate-x-1.5 translate-y-1.5 bg-emerald-400 group-hover:translate-y-0 group-hover:translate-x-0"></span>
 
@@ -513,7 +518,7 @@
         
                             </tr>
                         </thead>
-                        <tbody id='showLogBookingsCitizen' class="bg-white divide-y divide-gray-200">
+                        <tbody id='showfamilyMember' class="bg-white divide-y divide-gray-200">
                             {{-- <tr>
                             
                             <td class="text-center px-4 py-2 whitespace-nowrap">

@@ -8,7 +8,7 @@ class familyMembers extends Model
 {
     //
     protected $table='family_members';
-    protected $fillable = ['id','fmName','identityNum','attachment','relationship','sex','age','citId'];
+    protected $fillable = ['id','fmName','identityNum','relationship','sex','age','citId'];
 
     public function citizen()
     {

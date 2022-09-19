@@ -53,7 +53,7 @@ class CitizenController extends Controller
                   }
                 ]
                 )->select('id','citName','dirId','rigId','obsId','identityNum','checked')->where('obsId',session()->get('obsId'))->get();  // search in given table id only
-             
+              $data['allCitizens']=Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')->get();
             return view('dashboard.observer.citizens.index',$data);
        
          }
@@ -77,7 +77,9 @@ class CitizenController extends Controller
        
            try
                {  
-                   
+                    $searchfm=familyMembers::select()->where('fmName',$request->citName)->orwhere('identityNum',$request->identityNum)->get();
+                  if(!$searchfm)
+                   {
                     $attachment =$request->attachment;  
                     $filename = uploadImageAndResize('citizens', $attachment , $width='220', $height='190');
                   
@@ -120,6 +122,16 @@ class CitizenController extends Controller
                             
                          ]
                         );
+                      }
+                      else
+                      return response()->json(
+                        [
+                           'status'               => false,
+                           'foundAsMember'        => 'أنت مسجل كفرد في الاسره',
+                           
+                        ]
+                       );
+
                    
                }
            catch (\Exception $ex)

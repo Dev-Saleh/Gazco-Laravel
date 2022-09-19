@@ -2,7 +2,7 @@
 @section('content')
 
   <article id="Content" class="relative content-area px-10 pt-10 bg-gray-100 h-full flex flex-col space-y-4">
-    <div id="containerStatus" class="mb-4 grid grid-cols-8 gap-4 w-full">
+    <div id="containerStatus" class="mb-16 grid grid-cols-8 gap-4 w-full">
       <div class="  col-span-2 group box1 relative h-28 w-full bg-white rounded-md shadow-sm flex items-center" on>
         <span
           class="z-10 absolute h-28 w-24 bg-emerald-500 rounded-md flex justify-center items-center 
@@ -68,33 +68,42 @@
           class="bg-purple-200 px-3 py-2 rounded-full rounded-tr-none absolute left-0 group-hover:left-20  transition-all duration-1000 "> {{App\Models\employee::count()}}</span>
       </div>
     </div>
-   {{-- Start Chart Section --}}
-      <div class="flex justify-around h-full">
-                
-          {{-- Start Line Chart --}}
+    <div class="flex flex-col w-full h-[150px] bg-yellow-400 relative rounded-md">
+      <img  src="{{asset('assets/images/hello2.svg')}}" class="z-20 absolute left-2 -top-16 h-full w-[300px]"/>
+     <div class="flex">
+       <h1 class="pt-8 pr-6 text-2xl text-yellow-900"> مرحباً بك يا </h1> 
+      <span id="adminName" class="pt-8 pr-2 text-2xl text-yellow-900"> صالح ...</span>
+     </div>
+      <div class="flex">
+       <h1 class="pb-6 pt-2 pr-6 text-xl text-yellow-900"> أنت </h1> 
+      <span id="adminRole" class="pb-6 py-2 pr-2 text-xl text-yellow-900"> مسوؤل</span>
+       <h1 class="pb-6 py-2 pr-2 text-xl text-yellow-900"> ولديك الصلاحيه في النظام كاملاٌ </h1> 
+     </div>
 
-          <div class="shadow-lg rounded-lg overflow-hidden ">
-            <div class="py-3 px-5 bg-gray-50">بيان خطي</div>
-            <canvas class="p-2 w-[700px]" id="chartLine"></canvas>
-          </div>
-
-          {{-- End Line Chart --}}
-          
-          {{-- Start Doughnut Chart --}}
-
-          <div class="shadow-lg rounded-lg overflow-hidden ">
-            <div class="py-3 px-5 bg-gray-50">دونات بياني</div>
-            <canvas class="p-2 w-96 h-full" id="chartDoughnut"></canvas>
-          </div>
-          
-          {{-- End Doughnut Chart --}}
-        
-        
-      </div>
-  {{-- End Chart Section --}}
-
+    </div>
   
-  <footer class="p-2 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900 ">
+   {{-- Start Chart Section --}}
+        <div class="flex justify-around">
+          
+          {{-- Start Chart Bar --}}
+            <div class=" shadow-md rounded-lg overflow-hidden ml-4">
+              <div class="py-3 px-5 bg-gray-50">الاحصائيات بالاشهر</div>
+              <canvas class="p-2  w-[700px]" id="chartLine"></canvas>
+            </div>
+          {{-- End Chart Bar --}}
+          
+          
+          <div class="shadow-md rounded-lg overflow-hidden">
+            <div class="py-3 px-5 bg-gray-50">الاحصائيات بالدائره</div>
+            <canvas class="p-2 h-96 w-96" id="chartDoughnut"></canvas>
+          </div>
+          
+          
+        </div>
+        {{-- End Chart Section --}}
+    <br/>
+    <br/>
+  {{-- <footer class="p-2 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900 ">
     <div class="sm:flex sm:items-center sm:justify-between">
         <a href="#" class="flex items-center mb-4 sm:mb-0">
             <img src="{{ asset('assets/images/gaz_logo.png') }}" class="mx-3 h-8" alt="Gazco Logo" />
@@ -118,7 +127,7 @@
     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
     <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://flowbite.com/" class="hover:underline">Gazco™</a>. All Rights Reserved.
     </span>
-</footer>
+</footer> --}}
   </article>
   
  @stop

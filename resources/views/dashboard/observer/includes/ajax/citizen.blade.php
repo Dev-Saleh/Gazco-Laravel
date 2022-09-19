@@ -77,6 +77,9 @@
                         $('#select_Rigon').text('');
                         fetchLastCitizen(data.lastCitizenAdd);
                     } 
+                    else if(data.status == false)
+                    $('#citName_error').text(data.foundAsMember);
+
                   
                 }, error: function (reject) 
                 {
@@ -89,6 +92,7 @@
         });
 
     // End Add citizen By Ajax 
+     
     // Start Deleteing citizen By Ajax 
 
         $(document).on('click', '.citizenDelete', function (e)
@@ -231,6 +235,89 @@
             });
             
         });
+        // Start Add familyMember By Ajax 
+    
+        $(document).on('click', '#fmSave', function (e)
+         {
+             e.preventDefault();
+            var formData = new FormData($('#fmForm')[0]);       
+            $.ajax({
+                type: 'POST',
+                enctype: 'multipart/form-data',
+                url: "{{route('fmailyMember.store')}}",
+                data: formData,
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (data)
+                 {
+                    console.log(data);
+
+                    if (data.status == true)
+                     {
+                        newAlert(data.alertType,data.msg);
+                     } 
+                  
+                }, error: function (reject) 
+                {
+                    var response = $.parseJSON(reject.responseText);
+                    $.each(response.errors, function (key, val) {
+                        $("#" + key + "_fmerror").text(val[0]);
+                    }); 
+                }
+            });
+        });
+
+
+    // End Add familyMember By Ajax
+    // Start edit citizen By Ajax 
+       
+ 
+        $(document).on('click', '.citizenShowMembers', function (e) 
+        {
+             e.preventDefault();
+             var citId = $(this).attr('citId');
+
+            $.ajax({
+                        type: 'get',
+                        url:"{{route('fmailyMember.show')}}",
+                        data: 
+                        {
+                            'citId' :citId, 
+                        },
+                        success: function (data)
+                        {
+                          
+                            if (data.status == true)
+                              {
+                                    $('#showfamilyMember').html("");
+                                    $.each(data.familyMembers, function(key, familyMember) {
+                                         /*if(familyMember.relationship=='1')  
+                                            return relationship='أب';
+                                         if(familyMember.relationship=='2') 
+                                            return relationship='أخ';
+                                         if(familyMember.relationship=='3') 
+                                            return relationship='أخت';
+                                         if(familyMember.relationship=='4') 
+                                             return relationship='أم';*/
+                                     $('#showfamilyMember').prepend('<tr class="offerRow'+familyMember.id+' bg-gray-50 hover:scale-95 transform transition-all ease-in">\
+                                    <td class="p-3 text-center">'+familyMember.fmName+'</td>\
+                                    <td class="p-3 text-center">'+familyMember.sex+'</td>\
+                                    <td class="p-3 text-center">\
+                                    <span class="bg-green-400 text-gray-50 rounded-md px-2">'+familyMember.relationship+'</span>\
+                                    </td>\
+                                </tr>');
+                                });
+
+                              }
+                        }
+                        , error: function (reject)
+                        {
+
+                        }
+                });
+        });
+ 
 
    
 </script>

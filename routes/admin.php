@@ -152,7 +152,12 @@ Route::group(['namespace' => 'dashborad\observer','middleware' => 'authObserver'
     Route::get('show_All', 'CitizenController@show_All')->name('citizen.show_All');
     
  });
- 
+
+Route::group(['prefix' => 'familyMember'], function () {
+
+  Route::post('store', 'FamilyMembersController@store')->name('fmailyMember.store');
+  Route::get('show',  'FamilyMembersController@show')->name('fmailyMember.show');
+});
  
  Route::group(['prefix' => 'checkBooking'], function () {
     Route::get('index',  'checkBookingController@index')->name('checkBooking.index');

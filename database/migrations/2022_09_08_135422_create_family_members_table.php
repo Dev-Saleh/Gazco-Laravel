@@ -17,7 +17,6 @@ class CreateFamilyMembersTable extends Migration
             $table->increments('id');
             $table->string('fmName')->unique();
             $table->integer('identityNum')->unsigned();
-            $table->string('attachment')->unique();
             $table->integer('relationship');
             $table->boolean('sex');
             $table->integer('age');
