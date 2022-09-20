@@ -6,9 +6,9 @@
     labels: labels,
     datasets: [
       {
-        label: "My First dataset",
-        backgroundColor: "hsl(742, 42.9%, 61.1%)",
-        borderColor: "hsl(112, 72.7%, 61.4%)",
+        label: "الدفعات",
+        backgroundColor: "hsl(41, 96%, 40%)",
+        borderColor: "hsl(50, 98%, 64%)",
         data: [0, 10, 5, 2, 20, 30, 45],
       },
     ],
@@ -31,15 +31,15 @@
 // Start Dount Chart 
 
 const dataDoughnut = {
-    labels: ["JavaScript", "Python", "Ruby"],
+    labels: ["المواطنين", "الوكلاء", "المراقبين"],
     datasets: [
       {
         label: "My First Dataset",
         data: [300, 50, 100],
         backgroundColor: [
-          "rgb(133, 105, 241)",
-          "rgb(164, 101, 241)",
-          "rgb(101, 143, 241)",
+          "rgb(234, 179, 8)",
+          "rgb(250, 204, 21)",
+          "rgb(253, 224, 71)",
         ],
         hoverOffset: 4,
       },
