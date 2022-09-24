@@ -20,12 +20,15 @@
                 {
                    console.log(data); //for Test
 
+                   $('.offerRow' + data.citId).addClass("animate-fadeInLeft");
                   if (data.status == true)
                     {
                         newAlert(data.alertType,data.msg);
                     }
-
-                   $('.offerRow'+data.citId).remove();
+                    sleep(400).then(() => {
+                        $('.offerRow'+data.citId).remove();
+                        });
+                  
                 }, error: function (reject) 
                 {
 
@@ -102,8 +105,12 @@
                
                      if (data.status == true) 
                      {
+                        $('.offerRow' + data.citId).addClass("animate-fadeInLeft");
                         newAlert(data.alertType,data.msg);
-                         $('.offerRow'+data.citId).remove();
+
+                        sleep(400).then(() => {
+                        $('.offerRow'+data.citId).remove();
+                        });
                      
                      }
                 }, error: function (reject) 
@@ -137,7 +144,7 @@
                            $('#fetchAllCitizenConfirm').html("");
                            $.each(data.resultSearch, function (key , resultSearch)
                              {
-                                $('#fetchAllCitizenConfirm').prepend('<tr class="offerRow'+resultSearch.id+' bg-white hover:scale-95 transform transition-all ease-in">\
+                                $('#fetchAllCitizenConfirm').prepend('<tr class="offerRow'+resultSearch.id+' animate-fadeInRight bg-white hover:scale-95 transform transition-all ease-in">\
                                 <td class="p-3 text-center">'+resultSearch.id+'</td>\
                                 <td class="p-1 text-base text-center">'+resultSearch.citName+'</td>\
                                 <td class="p-3 text-center">'+resultSearch.identityNum+'</td>\

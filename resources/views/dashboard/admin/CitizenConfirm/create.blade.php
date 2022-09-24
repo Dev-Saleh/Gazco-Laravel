@@ -14,44 +14,44 @@
               <!-- END Preview Proudct Section -->
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                 <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">اسم المواطن
-                  <span  class="citName text-xs bg-gray-800 text-gray-200 p-2 rounded-full">صالح عبدلاله صالح</span>
+                  <span  class="citName text-xs bg-gray-800 text-gray-200 p-2 rounded-full"></span>
                 </li>
               </ul>
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                 <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> رقم الهويه 
-                  <span  class="identityNum text-xs bg-gray-800 text-gray-200 p-2 rounded-full"> 2149935344 </span>
+                  <span  class="identityNum text-xs bg-gray-800 text-gray-200 p-2 rounded-full"></span>
                 </li>
               </ul>
               <!-- List Details For Prooudct -->
               <div class="flex justify-between space-x-2">
         
                 <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
-                  <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">بواسطة من
-                    <span  class="obsName text-xs bg-gray-800 text-gray-200 px-1 rounded-full">Dev SL</span>
+                  <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">بواسطة المراقب 
+                    <span  class="obsName text-xs bg-gray-800 text-gray-200 px-1 rounded-full"></span>
                   </li>
                   <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">تاريخ الاضافه
-                    <span  class="dateAdd text-xs bg-gray-800 text-gray-200 px-1 rounded-full">12/2021</span>
+                    <span  class="dateAdd text-xs bg-gray-800 text-gray-200 px-1 rounded-full"></span>
                   </li>
         
                   <li class="px-4 py-2 flex justify-between items-center font-bold">عدد الحجوزات
-                    <span class="text-xs bg-gray-800 text-gray-200 px-1 rounded-full">99</span>
+                    <span class="text-xs bg-gray-800 text-gray-200 px-1 rounded-full"></span>
                   </li>
                   <li class="px-4 py-2 flex justify-between items-center font-bold">عدد الاستلام
-                    <span class="text-xs bg-gray-800 text-gray-200 px-1 rounded-full">19</span>
+                    <span class="text-xs bg-gray-800 text-gray-200 px-1 rounded-full"></span>
                   </li>
         
                 </ul>
         
                 <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
                   <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">المديريه
-                    <span class="dirName text-xs bg-gray-800 text-gray-200 px-1 rounded-full">خور مكسر</span>
+                    <span class="dirName text-xs bg-gray-800 text-gray-200 px-1 rounded-full"></span>
                   </li>
                   <li class="px-4 py-2 flex text-sm justify-between items-center font-bold">المربع
-                    <span  class="rigName text-xs bg-gray-800 text-gray-200 px-1 rounded-full">اكتوبر</span>
+                    <span  class="rigName text-xs bg-gray-800 text-gray-200 px-1 rounded-full"></span>
                   </li>
         
                   <li class="px-4 py-2 flex justify-between items-center font-bold">الموزع
-                    <span  class="agentName text-xs bg-gray-800 text-gray-200 px-1 rounded-full">كريم</span>
+                    <span  class="agentName text-xs bg-gray-800 text-gray-200 px-1 rounded-full"></span>
                   </li>
                   <div class="px-4 py-2 font-bold flex justify-between">
                     <span class=" relative z-20">الصوره مطابقه</span>

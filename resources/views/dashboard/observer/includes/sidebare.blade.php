@@ -11,50 +11,56 @@
       </div>
       <nav class=" text-base font-semibold pt-3">
           <a href="{{ route('observer.dashboard') }}"
-              class="{{ 'observer' == request()->path() ? 'bg-emerald-500' : '' }} flex items-center active-nav-link  py-4 pl-6 text-white nav-item 
+              class="{{ 'observer' == request()->path() ? 'bg-emerald-500' : '' }} 
+              flex justify-between
+                w-full p-5 
+                text-white  
                 rounded-tl-3xl
                 rounded-br-3xl
-                hover:text-emerald-200
-                hover:bg-emerald-600
-                h-20">
-              <i class="fas fa-tachometer-alt mr-3"></i>
-              نظره عامه
+                hover:text-emerald-100
+                hover:bg-emerald-500">
+                نظره عامه
+                <i class="fas fa-tachometer-alt mr-3"></i>
           </a>
           
           <a href="{{ route('citizen.index')}}"  
-              class="{{ 'observer/citizen/index' == request()->path() ? 'bg-emerald-500' : '' }} text-base font-semibold flex items-center text-white 
-                rounded-tl-3xl
-                rounded-br-3xl
-                hover:text-emerald-200
-                hover:bg-emerald-600
-                 hover:opacity-100
-                  py-4 pl-6 nav-item h-20">
-              <i class="fas fa-table mr-3"></i>
+              class="{{ 'observer/citizen/index' == request()->path() ? 'bg-emerald-500' : '' }} 
+              flex justify-between
+              w-full p-5 
+              text-white  
+              rounded-tl-3xl
+              rounded-br-3xl
+              hover:text-emerald-100
+              hover:bg-emerald-500">
               المواطنين
+              <i class="fa-light fa-people-group"></i>
           </a>
           <a href="{{route('checkBooking.index')}}"
-              class="{{ 'observer/checkBooking/index' == request()->path() ? 'bg-emerald-500' : '' }} text-base font-semibold flex items-center text-white 
-                rounded-tl-3xl
-                rounded-br-3xl
-                hover:text-emerald-200
-                hover:bg-emerald-600
-                 hover:opacity-100
-                  py-4 pl-6 nav-item h-20">
-              <i class="fas fa-table mr-3"></i>
+              class="{{ 'observer/checkBooking/index' == request()->path() ? 'bg-emerald-500' : '' }}
+              flex justify-between
+              w-full p-5 
+              text-white  
+              rounded-tl-3xl
+              rounded-br-3xl
+              hover:text-emerald-100
+              hover:bg-emerald-500">
               الحجوزات
+              <i class="fa-sharp fa-solid fa-clipboard-question"></i>
           </a>
 
 
           <a href="{{route('checkBatch.index')}}"
-              class="{{ 'observer/checkBatch/index' == request()->path() ? 'bg-emerald-500' : '' }} flex items-center text-white 
-                rounded-tl-3xl
-                rounded-br-3xl
-                hover:text-emerald-200
-                hover:bg-emerald-600
-                 hover:opacity-100
-                  py-4 pl-6 nav-item h-20">
-              <i class="fas fa-calendar mr-3"></i>
-              استعلام الدفعات          </a>
+              class="{{ 'observer/checkBatch/index' == request()->path() ? 'bg-emerald-500' : '' }}
+              flex justify-between
+              w-full p-5 
+              text-white  
+              rounded-tl-3xl
+              rounded-br-3xl
+              hover:text-emerald-100
+              hover:bg-emerald-500">
+              استعلام الدفعات          
+              <i class="fa-light fa-clipboard-question"></i>
+            </a>
          
             <div class="w-full relative inline-block py-4 px-6 text-white bg-transparent h-18 rounded-tl-3xl
             rounded-br-3xl group">

@@ -61,7 +61,7 @@
                 cache: false,
                 success: function (data)
                  {
-                    console.log(data);
+                    
 
                     if (data.status == true)
                      {

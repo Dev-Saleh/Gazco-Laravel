@@ -35,12 +35,13 @@
             </div>
     </section>
     <!-- End Swiper Section -->
+
     <div id="Content" class="space-y-4">
         <!-- Aler Section -->
         <div id="status_msg"
             class="border-b-4 border-transparent bg-transparent 
-   px-6 py-4 rounded-md justify-center
-   text-lg flex items-center text-gray-900 mx-auto w-11/12">
+                            px-6 py-4 rounded-md justify-center
+                            text-lg flex items-center text-gray-900 mx-auto w-11/12">
 
         </div>
         <!-- End Aler Section -->
@@ -66,7 +67,7 @@
                     </p>
                     <button type="submit" id='saveBooking' idCitizen="{{ session()->get('idCitizen') }}"
                         class="saveBooking flex flex-col disabled:opacity-50 disabled:cursor-not-allowed p-0">
-                        <img src="{{ asset('assets/images/gaz-cart.png') }}" alt="">
+                        <img id=gazImg class="" src="{{ asset('assets/images/gaz-cart.png') }}" alt="">
                     </button>
 
 
@@ -103,3 +104,6 @@
         <!-- End Notes Section -->
     </div>
 </div>
+<br>
+<br>
+<br>

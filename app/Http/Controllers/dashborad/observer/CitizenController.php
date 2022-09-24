@@ -126,8 +126,9 @@ class CitizenController extends Controller
                       else
                       return response()->json(
                         [
-                           'status'               => false,
-                           'foundAsMember'        => 'أنت مسجل كفرد في الاسره',
+                           'status'     => false,
+                           'msg'        => 'أنت مسجل كفرد في الاسره',
+                           'alertType'=> '.alertError',
                            
                         ]
                        );

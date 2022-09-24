@@ -93,16 +93,14 @@ class homeController extends Controller
             {
                     $citizen = Citizen::find($request -> citId);
                     $lastBatchOpenBooking=gazLogs::where('statusBatch','2')->where('agentId',$citizen->observer->agentId)->latest('id')->first();
-                    $citizenBookingValid='true'; 
+                    $citizenBookingValid=''; 
                     $numdays='0';
                     $lastRequestBookingtocitz=logsBooking::where('citid',$request -> citId)->latest('id')->first();
                    
                     if($lastRequestBookingtocitz) // if have record
                     {
-                        $numdays=
-                        
-                        date_diff($lastRequestBookingtocitz->created_at,now()); // get Number Days Between Reciving_date and current Date
-                        $numdays->citizenBookingValid > '14' ? $citizenBookingValid='true' : $citizenBookingValid='false';
+                        $numdays=date_diff($lastRequestBookingtocitz->created_at,now()); // get Number Days Between Reciving_date and current Date
+                        $numdays->format('%R%a') > '14' ? $citizenBookingValid='true' : $citizenBookingValid='false';
                     }
 
                     else  $citizenBookingValid='true'; // if no have records
@@ -116,8 +114,9 @@ class homeController extends Controller
                                 [
                                     'status'     => true,
                                     'msg'        => '1',   //1='مصرح لك بالحجز' 
+                                    'number'        => $numdays, 
                                     'lastGazLogs'=>$lastBatchOpenBooking,
-                                    'lastRequest'=>$lastRequestBookingtocitz,
+                                    'lastGazLogs'=> $numdays->format('%R%a'),
                                     //for Test
                                     
                                 ]);
@@ -129,8 +128,8 @@ class homeController extends Controller
                     return response()->json(
                         [
                             'status' => false,
-                            'msg' => '4', //4='انت محظور يا حلو' 
-                            'lastGazLogs'=>$lastBatchOpenBooking,
+                            'msg' => '2', //2='انت محظور يا حلو' 
+                            'lastGazLogs'=> $numdays->format('%R%a'),
                         ]);
                 }
                 else if(!$lastBatchOpenBooking && $citizenBookingValid=='true' || $citizenBookingValid=='false' )
@@ -138,8 +137,9 @@ class homeController extends Controller
                         return response()->json(
                         [
                             'status' => false,
-                            'msg' =>'3',   //1='لايوجد كمية مفتوحة الحجز'
-                            //'lastGazLogs'=>$lastBatchOpenBooking,
+                            'msg' =>'3',   //3='لايوجد كمية مفتوحة الحجز'
+                            'lastGazLogs'=>$lastBatchOpenBooking,
+                            'last'=>$citizenBookingValid,
                         ]);
                 }
                 
