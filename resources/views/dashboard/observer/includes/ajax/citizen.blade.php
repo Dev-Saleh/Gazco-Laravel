@@ -68,6 +68,7 @@
                         newAlert(data.alertType,data.msg);
                         $('#citId').val('');
                         //$('#obsId').val(''); can not be null لاتفعل دا
+                        $('#file-ip-1-preview').css('display', 'none');
                         $('#citName').val('');
                         $('#identityNum').val('');
                         $('#citPassword').val('');

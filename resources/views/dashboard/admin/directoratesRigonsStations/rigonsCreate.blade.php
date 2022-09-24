@@ -57,7 +57,7 @@
                                              <th class="p-3 text-center">العمليات</th>
                                          </tr>
                                      </thead>
-                                     <tbody id='fetch_Allrigon'>
+                                     <tbody id='fetchLastRigon'>
                                          @if ($rigons && $rigons->count() > 0)
                                              @foreach ($rigons as $rig)
                                                  <tr

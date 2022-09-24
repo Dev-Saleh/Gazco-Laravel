@@ -16,9 +16,9 @@ class directoratesController extends Controller
         try
         {
            $data = [];
-           $data['directorates'] = Directorate::select('id','dirName')->orderBy('id', 'DESC')->paginate(PAGINATION_COUNT);
-           $data['rigons'] = Rigon::select('id','rigName')->orderBy('id', 'DESC')->paginate(PAGINATION_COUNT);
-           $data['Stations'] = Station::select('id','staName')->orderBy('id', 'DESC')->paginate(PAGINATION_COUNT);           ;
+           $data['directorates'] = Directorate::select('id','dirName')->orderBy('id', 'DESC')->get();
+           $data['rigons'] = Rigon::select('id','rigName')->orderBy('id', 'DESC')->get();
+           $data['Stations'] = Station::select('id','staName')->orderBy('id', 'DESC')->get();        //paginate(PAGINATION_COUNT);           ;
            
            return view('dashboard.admin.directoratesRigonsStations.index',$data);
        }
@@ -37,23 +37,34 @@ class directoratesController extends Controller
 
     public function store(requestsDirectorates $request)
     {
-        try { 
-                $dir = Directorate::create($request->except('_token'));
-                $dir->save();
-                if ($dir)
-                return response()->json([
-                    'status' => true,
-                    'msgSuccess' => 'تم الحفظ بنجاح',
+        try 
+            { 
+                    $dir = Directorate::create($request->except('_token'));
+                    $dir->save();
+                    $lastDirectorate = Directorate::get()->last();
+                    if ($dir)
+                    {
+                      
+                        return response()->json(
+                        [
+                            'status'           => true,
+                            'msg'              => 'تم حفظ بيانات المديريه بنجاح', 
+                            'alertType'        => '.alertSuccess', 
+                            'lastDirectorate'  => $lastDirectorate,
+                        ]);
+                   }
+            }
+        catch (\Exception $ex) 
+            {
+                return response()->json(
+                [
+                    'status'           => false,
+                    'alertType'        => '.alertError', 
+                    'msgError'         => 'فشل الحفظ برجاء المحاوله مجددا',
+                    'getDataForm'      => $request->all(), // for Test
+                    'exceptionError'   =>$ex,
                 ]);
-        }
-        catch (\Exception $ex) {
-            return response()->json([
-                'status'   => false,
-                'msgError' => 'فشل الحفظ برجاء المحاوله مجددا',
-                'getDataForm'  => $request->all(),
-                'exceptionError'=>$ex,
-            ]);
-        }
+            }
     }
 
   

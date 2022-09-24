@@ -93,7 +93,7 @@
                 url:"{{route('citizenConfirm.update')}}",
                 data: 
                 {
-                     'citId' :citId, 
+                     'citId'     :citId, 
                      'checkbox'  :checkbox,
                 },
                 success: function (data) 
@@ -102,7 +102,7 @@
                
                      if (data.status == true) 
                      {
-                        newAlert(data.alertType,data.msg);
+                         newAlert(data.alertType,data.msg);
                          $('.offerRow'+data.citId).remove();
                      
                      }

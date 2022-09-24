@@ -17,11 +17,13 @@ class StationController extends Controller
 
                 $station = Station::create($request->except('_token'));
                 $station->save();
-
+                $lastStation=Station::get()->last();
                 if ($station)
                 return response()->json([
-                    'status' => true,
-                    'msg' => 'تم الحفظ بنجاح',
+                    'status'           => true,
+                    'msg'              => 'تم حفظ بيانات المربع بنجاح', 
+                    'alertType'        => '.alertSuccess', 
+                    'lastStation'      => $lastStation,
                 ]);
 
         }
@@ -29,10 +31,11 @@ class StationController extends Controller
         {
 
             return response()->json([
-                'status'        => false,
-                'msg'           => 'فشل الحفظ برجاء المحاوله مجددا',
-                'getDataForm'   => $request->all(),
-              'exceptionError'  => $ex,
+                'status'           => false,
+                'alertType'        => '.alertError', 
+                'msgError'         => 'فشل الحفظ برجاء المحاوله مجددا',
+                'getDataForm'      => $request->all(),
+                'exceptionError'   => $ex,
               
                
             ]);

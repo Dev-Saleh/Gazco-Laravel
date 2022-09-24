@@ -43,7 +43,7 @@
                                         <th class="p-3 text-center">العمليات</th>
                                     </tr>
                                 </thead>
-                                <tbody id='fetchAllDirectorates'>
+                                <tbody id='fetchLastDirectorate'>
                                     @if ($directorates && $directorates->count() > 0)
                                         @foreach ($directorates as $dir)
                                              <tr

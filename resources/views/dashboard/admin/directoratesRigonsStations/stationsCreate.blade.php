@@ -43,7 +43,7 @@
                                         <th class="p-3 text-center">العمليات</th>
                                     </tr>
                                 </thead>
-                                <tbody id='fetch_All_Stations'>
+                                <tbody id='fetchLastStation'>
                                     @if ($Stations && $Stations->count() > 0)
                                         @foreach ($Stations as $Sta)
                                             <tr
