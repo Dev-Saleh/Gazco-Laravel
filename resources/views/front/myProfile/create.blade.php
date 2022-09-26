@@ -1,4 +1,4 @@
-<div class="p-4">
+<div class="px-4">
     <form action="" method="Post" id='FormUpdateMyProfile' class="  max-w-2xl shadow-md md:w-3/4">
         @csrf
         @if ($myProfileCitz && $myProfileCitz->count() > 0)
@@ -93,3 +93,6 @@
         @endif
     </form>
 </div>
+<br>
+<br>
+<br>

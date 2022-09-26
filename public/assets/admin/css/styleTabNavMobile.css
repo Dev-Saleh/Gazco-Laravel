@@ -74,7 +74,17 @@ html *::after {
   background-color: var(--bgColorItem);
 
 }
-
+.home .user{
+  width: 2.6em;
+  height: 2.6em;
+  stroke: white;
+  fill: white;
+  stroke-width: 1pt;
+  stroke-miterlimit: 10;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 400;
+}
 .icon{
   
   width: 2.6em;
