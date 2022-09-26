@@ -19,7 +19,6 @@
                 success: function (data) 
                 {
                    console.log(data); //for Test
-
                    $('.offerRow' + data.citId).addClass("animate-fadeInLeft");
                   if (data.status == true)
                     {
@@ -58,8 +57,7 @@
                      console.log(data); //for Test
                
                      if (data.status == true) 
-                     {
-                         
+                    {
                        $('#attachment').attr('src', data.citizen.attachment['valsrc']);
                        $('.citName').text(data.citizen.citName);
                        $('.identityNum').text(data.citizen.identityNum);
@@ -68,13 +66,17 @@
                        $('.dateAdd').text(data.citizen.created_at);
                        $('.dirName').text(data.citizen.directorate.dirName);
                        $('.rigName').text(data.citizen.rigon.rigName);
+                       $('.bookingNumber').text(data.bookingNumber);
                        $('.agentName').text(data.citizen.observer.agent.agentName);
+<<<<<<< HEAD
+                       $('.numberOfReceipt').text(data.numberOfReceipt);
 
                      
+=======
+>>>>>>> 659a9b50420dffcdb046bdfc56623d745594b0e5
                     }
                 }, error: function (reject) 
                 {
-
                 }
             });
         });
@@ -105,8 +107,28 @@
                
                      if (data.status == true) 
                      {
+<<<<<<< HEAD
                          newAlert(data.alertType,data.msg);
                          $('.offerRow'+data.citId).remove();
+                         $('.numberOfReceipt').text('');
+                         window.checkbox.checked=false;
+                       
+
+
+=======
+                            newAlert(data.alertType,data.msg);
+                            $('.offerRow'+data.citId).remove();
+                            $('#attachment').attr('src','');
+                            $('.citName').text('');
+                            $('.identityNum').text('');
+                            $('.bookingNumber').text('');
+                            $('#citId').text('');
+                            $('.obsName').text('');
+                            $('.dateAdd').text('');
+                            $('.dirName').text('');
+                            $('.rigName').text('');
+                            $('.agentName').text('');
+>>>>>>> 659a9b50420dffcdb046bdfc56623d745594b0e5
                      
                      }
                 }, error: function (reject) 

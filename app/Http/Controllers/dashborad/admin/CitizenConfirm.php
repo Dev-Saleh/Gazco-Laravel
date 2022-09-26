@@ -2,7 +2,9 @@
 namespace App\Http\Controllers\dashborad\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Citizen;
+use App\Models\logsBooking;
 use Illuminate\Http\Request;
+use App\Models\logsBooking;
 
 class CitizenConfirm extends Controller
 {
@@ -76,20 +78,32 @@ class CitizenConfirm extends Controller
                         )->select('id','agentId','obsName')->get();
                     }
                   ])->select('id','attachment','citName','created_at','identityNum','dirId','rigId','obsId','checked')->find($request -> citId);  // search in given table id only
-                
+<<<<<<< HEAD
+                  $numberOfReceipt=logsBooking::where('statusBooking','1')->where('citId',$citizen->id)->get();
+=======
+                 
+>>>>>>> 659a9b50420dffcdb046bdfc56623d745594b0e5
                   if (!$citizen)
                     return response()->json(
                       [
-                        'status' => false,
-                                          
-                     ]
+                        'status' => false,                     
+                      ]
                    );
-      
-                          
+                  // هدا الامر بعد جلب معلومات المواطن
+                  $bookingNumber =logsBooking::where('citId',$citizen->id)->get(); 
+
                   return response()->json(
                     [
-                      'status'  => true,
-                      'citizen' => $citizen,        
+<<<<<<< HEAD
+                      'status'            => true,
+                      'citizen'           => $citizen, 
+                      'numberOfReceipt'   => $numberOfReceipt->count(),     
+=======
+                      'status'         => true,
+                      'citizen'        => $citizen,
+                      'bookingNumber'  => $bookingNumber->count(),
+
+>>>>>>> 659a9b50420dffcdb046bdfc56623d745594b0e5
                     ]
                 ); 
 
@@ -117,7 +131,7 @@ class CitizenConfirm extends Controller
                     [
                       'status'    => false,
                       'msg'       => 'The Citizen Not Found Error In Function Update',
-                      'citId' => $request,
+                      'citId'     => $request,
                     ]
                   );
 
@@ -157,10 +171,10 @@ class CitizenConfirm extends Controller
                 if (!$citizen)
                 return response()->json(
                   [
-                    'status'  => false,
-                    'alertType'=> '.alertError',
-                    'msg'    => 'حدث خطأ أثناء الحذف',
-                    'cizId'   => $request -> citId,
+                    'status'    => false,
+                    'alertType' => '.alertError',
+                    'msg'       => 'حدث خطأ أثناء الحذف',
+                    'cizId'     => $request -> citId,
                   ]
                 );
                 
@@ -172,7 +186,7 @@ class CitizenConfirm extends Controller
                 return response()->json(
                   [
                     'status'    => true, 
-                    'alertType'=> '.alertSuccess',   
+                    'alertType' => '.alertSuccess',   
                     'msg'       => 'تم حذف المواطن بنجاح',
                     'citId'     => $request -> citId
                  ]
@@ -196,7 +210,6 @@ class CitizenConfirm extends Controller
         
         try
         { 
-
                  if($request->filterCitConfirmSearch=='all')
                     $resultSearch=Citizen::with(
                       [
@@ -221,23 +234,24 @@ class CitizenConfirm extends Controller
                         }
                       ])
                       ->select('id','attachment','citName','created_at','identityNum','dirId','rigId','obsId','checked')
-                      ->where('citName','Like','%'.$request->textCitConfirmSearch.'%')
-                      ->orwhere('identityNum','Like','%'.$request->textCitConfirmSearch.'%')
-                      ->orwhere('id','Like','%'.$request->textCitConfirmSearch.'%')
+                      ->where('citName','Like','%'.$request->textCitConfirmSearch.'%')->where('checked','0')
+                      ->orwhere('identityNum','Like','%'.$request->textCitConfirmSearch.'%')->where('checked','0')
+                      ->orwhere('id','Like','%'.$request->textCitConfirmSearch.'%')->where('checked','0')
                       ->orwherehas
                         (
                             'directorate',function($q) use($request)
                                 {
-                                    $q->where('dirName','Like','%'.$request->textCitConfirmSearch.'%');
+                                    $q->where('dirName','Like','%'.$request->textCitConfirmSearch.'%')->where('checked','0');
                                 }
                         )
                         ->orwherehas
                         (
                             'rigon',function($q) use($request)
                                 {
-                                    $q->where('rigName','Like','%'.$request->textCitConfirmSearch.'%');
+                                    $q->where('rigName','Like','%'.$request->textCitConfirmSearch.'%')->where('checked','0');
                                 }
                         )
+                        
                         ->get();      
                 else if($request->filterCitConfirmSearch=='citName')
                     $resultSearch=Citizen::with(
@@ -263,7 +277,7 @@ class CitizenConfirm extends Controller
                         }
                       ])
                       ->select('id','attachment','citName','created_at','identityNum','dirId','rigId','obsId','checked')
-                      ->where('citName','Like','%'.$request->textCitConfirmSearch.'%')
+                      ->where('citName','Like','%'.$request->textCitConfirmSearch.'%')->where('checked','0')
                       ->get(); 
 
                 else if($request->filterCitConfirmSearch=='identityNum')
@@ -290,7 +304,7 @@ class CitizenConfirm extends Controller
                         }
                       ])
                       ->select('id','attachment','citName','created_at','identityNum','dirId','rigId','obsId','checked')
-                      ->where('identityNum','Like','%'.$request->textCitConfirmSearch.'%')
+                      ->where('identityNum','Like','%'.$request->textCitConfirmSearch.'%')->where('checked','0')
                       ->get();      
        
                 

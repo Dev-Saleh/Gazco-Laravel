@@ -42,7 +42,7 @@
                                     </td>\
                                     <td class="p-3 text-center">\
                                       <span class="bg-green-400 text-gray-50 rounded-md px-2">' + $lastAgent.directorate
-                .dirName + '</span>\
+                                   .dirName + '</span>\
                                     </td>\
                                     <td class="p-3 grid grid-cols-2 justify-center">\
                                       <a href="#"  agentId="' + $lastAgent.id + '"  class="agentDelete text-red-400 hover:text-red-600 float-left ">\

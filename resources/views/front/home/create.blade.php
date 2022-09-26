@@ -95,8 +95,8 @@
                 </li>
                 <li class="text-lg text-yellow-900"> ملاحظات:
                     <span class="text-yellow-700 text-sm font-bold">
-                        اذا حجزت الان سوف يتم حظرك عن الحجز لمدة <small
-                            class="validDays text-yellow-700 text-sm font-bold"></small> يوم
+                        اذا حجزت الان سوف يتم حظرك عن الحجز لمدة <small id="validDays"
+                            class="text-yellow-700 text-sm font-bold"></small> ايام
                     </span>
                 </li>
             </ul>

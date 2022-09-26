@@ -34,10 +34,14 @@
                   </li>
         
                   <li class="px-4 py-2 flex justify-between items-center font-bold">عدد الحجوزات
-                    <span class="text-xs bg-gray-800 text-gray-200 px-1 rounded-full"></span>
+                    <span class="bookingNumber text-xs bg-gray-800 text-gray-200 px-1 rounded-full">99</span>
                   </li>
                   <li class="px-4 py-2 flex justify-between items-center font-bold">عدد الاستلام
-                    <span class="text-xs bg-gray-800 text-gray-200 px-1 rounded-full"></span>
+<<<<<<< HEAD
+                    <span class="numberOfReceipt text-xs bg-gray-800 text-gray-200 px-1 rounded-full"></span>
+=======
+                    <span class="receiptNumber text-xs bg-gray-800 text-gray-200 px-1 rounded-full">19</span>
+>>>>>>> 659a9b50420dffcdb046bdfc56623d745594b0e5
                   </li>
         
                 </ul>

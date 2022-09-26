@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Notifications\PaymentReceived;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Http\Request;
+use App\Models\profile;
 use Nexmo\Laravel\Facade\Nexmo;
 class SendingMessageController extends Controller
 {
@@ -16,8 +17,8 @@ class SendingMessageController extends Controller
     //     $this->middleware('auth');
     // }
     public function sendSms(Request $request)
-    {
-
+    {   
+        $profile = profile::select()->first();
         foreach($request->mobilesCitizen as $number) 
         {
                 // Nexmo::message()->send([
@@ -33,10 +34,10 @@ class SendingMessageController extends Controller
 
 
              $client->sms()->send(
-                new \Vonage\SMS\Message\SMS( $number, 'DBSMazen', 'معتز حبيبي')
+                new \Vonage\SMS\Message\SMS( $number, $profile->nameMessage, $profile->contentMessage)
             );
             
-    //         $message = $response->current();
+             $message = $response->current();
             
             if ($message->getStatus() == 0) 
             {
