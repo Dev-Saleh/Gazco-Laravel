@@ -18,7 +18,7 @@ class logsBooking extends Model
     }
     public function getStatusBooking()
     {
-        return  $this -> statusBooking  == 0 ?  'تم الاستلام'   : 'لم يتم الاستلام' ;
+        return  $this -> statusBooking  == 0 ?  'لم يتم الاستلام'   : 'تم الاستلام' ;
     }
   
   

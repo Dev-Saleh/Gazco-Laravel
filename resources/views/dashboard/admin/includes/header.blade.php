@@ -15,7 +15,7 @@
             </div>
             <div class="relative col-span-3 flex flex-row-reverse ">
                 <button type="button" class="left-0 h-8 w-8 rounded-full" onclick="dropClick()">
-                    <img class="h-8 w-8 rounded-full" src="{{ asset('assets/images/Dev-SL.jpeg') }}" alt="Admin">
+                    <img class="h-8 w-8 rounded-full" src="{{ asset('assets/images/sl.jpg') }}" alt="Admin">
                 </button>
          
                       <div

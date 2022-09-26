@@ -5,7 +5,7 @@
       <div class="p-6 flex items-center flex-col space-y-2">
         <div class="avatar ">
           <div class="rounded-3xl w-24 h-24">
-            <img class="rounded-full"  id='adminPhoto' src="{{session()->get('empPhoto')}}">
+            <img class="rounded-full"  id='adminPhoto' src="{{ asset('assets/images/sl.jpg') }}">
           </div>
         </div>
         <a href="" class="text-white text-xl font-semibold hover:text-gray-300">
@@ -16,16 +16,16 @@
     
        
 
-        <a href="{{route('admin.dashboard')}}" class="{{ 'admin' == request()->path() ? 'bg-yellow-500' : '' }} 
+        <a href="{{route('admin.dashboard')}}" class="{{ 'admin' == request()->path() ? 'bg-indigo-500' : '' }} 
                 flex justify-between
                 w-full p-4 
                 text-white  
                 rounded-tl-3xl
                 rounded-br-3xl
-                hover:text-yellow-100
-                hover:bg-yellow-500">
+                hover:text-indigo-100
+                hover:bg-indigo-500">
           نظره عامه
-          <i class="fas fa-table "></i>
+          <i class="fa-light fa-grid-horizontal"></i>
         </a>
 
        
@@ -37,38 +37,38 @@
                 text-white  
                 rounded-tl-3xl
                 rounded-br-3xl
-                hover:text-yellow-100
-                hover:bg-yellow-500">
+                hover:text-indigo-100
+                hover:bg-indigo-500">
           الوكلاء
-          <i class="fas fa-table "></i>
+          <i class="fa-regular fa-user-group"></i>
         </a>
         @endif
         
         @if(session()->get('empRole')=='مسئول')
-         <a href="{{route('agent.index')}}" class="{{ 'admin/agent/index' == request()->path() ? 'bg-yellow-500' : '' }}
+         <a href="{{route('agent.index')}}" class="{{ 'admin/agent/index' == request()->path() ? 'bg-indigo-500' : '' }}
               flex justify-between
                 w-full p-4 
                 text-white  
                 rounded-tl-3xl
                 rounded-br-3xl
-                hover:text-yellow-100
-                hover:bg-yellow-500">
+                hover:text-indigo-100
+                hover:bg-indigo-500">
           الوكلاء
-          <i class="fas fa-table "></i>
+          <i class="fa-regular fa-user-group"></i>
         </a>
         @endif
         
         @if(session()->get('empRole')=='مسئول')
-        <a href="{{route('observer.index')}}" class=" {{ 'admin/observer/index' == request()->path() ? 'bg-yellow-500' : '' }}
+        <a href="{{route('observer.index')}}" class=" {{ 'admin/observer/index' == request()->path() ? 'bg-indigo-500' : '' }}
                 flex justify-between
                 w-full p-4 
                 text-white  
                 rounded-tl-3xl
                 rounded-br-3xl
-                hover:text-yellow-100
-                hover:bg-yellow-500">
+                hover:text-indigo-100
+                hover:bg-indigo-500">
           المراقبين
-    <i class="fa-light fa-people-group"></i>
+          <i class="fa-solid fa-user-injured"></i>
         </a>
         @endif
        @if(session()->get('empRole')=='مستخدم')
@@ -78,33 +78,33 @@
                 text-white  
                 rounded-tl-3xl
                 rounded-br-3xl
-                hover:text-yellow-100
-                hover:bg-yellow-500">
+                hover:text-indigo-100
+                hover:bg-indigo-500">
           المراقبين
-        <i class="fa-light fa-people-group"></i>
+          <i class="fa-solid fa-user-injured"></i>
         </a>
          @endif
-        <a href="{{route('gazLogs.index')}}" class=" {{ 'admin/gazLogs/index' == request()->path() ? 'bg-yellow-500' : '' }}
+        <a href="{{route('gazLogs.index')}}" class=" {{ 'admin/gazLogs/index' == request()->path() ? 'bg-indigo-500' : '' }}
                 flex justify-between
                 w-full p-4 
                 text-white  
                 rounded-tl-3xl
                 rounded-br-3xl
-                hover:text-yellow-100
-                hover:bg-yellow-500">
+                hover:text-indigo-100
+                hover:bg-indigo-500">
           الدفعـات
-          <i class="fas fa-calendar mr-3"></i>
+          <i class="fa-sharp fa-solid fa-files"></i>
         </a>
-        <a href="{{route('citizenConfirm.index')}}" class=" {{ 'admin/citizenConfirm/index' == request()->path() ? 'bg-yellow-500' : '' }}
+        <a href="{{route('citizenConfirm.index')}}" class=" {{ 'admin/citizenConfirm/index' == request()->path() ? 'bg-indigo-500' : '' }}
        flex justify-between
                 w-full p-4 
                 text-white  
                 rounded-tl-3xl
                 rounded-br-3xl
-                hover:text-yellow-100
-                hover:bg-yellow-500">
+                hover:text-indigo-100
+                hover:bg-indigo-500">
           تحقق من المواطن
-          <i class="fas fa-cogs mr-3"></i>
+          <i class="fa-solid fa-list-check"></i>
         </a>
         @if(session()->get('empRole')=='مستخدم')
         <a href="" disabled class=" {{ 'admin/directorate/index' == request()->path() ? 'bg-red-500' : '' }}
@@ -113,23 +113,23 @@
                 text-white  
                 rounded-tl-3xl
                 rounded-br-3xl
-                hover:text-yellow-100
-                hover:bg-yellow-500">
+                hover:text-indigo-100
+                hover:bg-indigo-500">
           المديريه والمربعات
-          <i class="fas fa-cogs mr-3"></i>
+          <i class="fa-light fa-city"></i>
         </a>
         @endif
         @if(session()->get('empRole')=='مسئول')
-          <a href="{{route('directorate.index')}}"  class=" {{ 'admin/directorate/index' == request()->path() ? 'bg-yellow-500' : '' }}
+          <a href="{{route('directorate.index')}}"  class=" {{ 'admin/directorate/index' == request()->path() ? 'bg-indigo-500' : '' }}
          flex justify-between
                 w-full p-4 
                 text-white  
                 rounded-tl-3xl
                 rounded-br-3xl
-                hover:text-yellow-100
-                hover:bg-yellow-500">
+                hover:text-indigo-100
+                hover:bg-indigo-500">
           المديريه والمربعات
-          <i class="fas fa-cogs mr-3"></i>
+          <i class="fa-light fa-city"></i>
         </a>
         @endif
         @if(session()->get('empRole')=='مستخدم')
@@ -139,35 +139,35 @@
                 text-white  
                 rounded-tl-3xl
                 rounded-br-3xl
-                hover:text-yellow-100
-                hover:bg-yellow-500">
+                hover:text-indigo-100
+                hover:bg-indigo-500">
           المستخدمين
           <i class="fas fa-tablet-alt mr-3"></i>
         </a>
         @endif
         @if(session()->get('empRole')=='مسئول')
-        <a href="{{route('employee.index')}}" class=" {{ 'admin/employee/index' == request()->path() ? 'bg-yellow-500' : '' }}
+        <a href="{{route('employee.index')}}" class=" {{ 'admin/employee/index' == request()->path() ? 'bg-indigo-500' : '' }}
         flex justify-between
                 w-full p-4 
                 text-white  
                 rounded-tl-3xl
                 rounded-br-3xl
-                hover:text-yellow-100
-                hover:bg-yellow-500">
+                hover:text-indigo-100
+                hover:bg-indigo-500">
           المستخدمين
-          <i class="fas fa-tablet-alt mr-3"></i>
+          <i class="fa-light fa-user"></i>
         </a>
         @endif
-        <a href="{{route('batchReports.index')}}" class=" {{  'admin/reports/citizenReport'  == request()->path() ? 'bg-yellow-500' : '' }} {{ 'admin/reports/Batch/index'  == request()->path() ? 'bg-yellow-500' : '' }} 
+        <a href="{{route('batchReports.index')}}" class=" {{  'admin/reports/citizenReport'  == request()->path() ? 'bg-indigo-500' : '' }} {{ 'admin/reports/Batch/index'  == request()->path() ? 'bg-indigo-500' : '' }} 
         flex justify-between
                 w-full p-4 
                 text-white  
                 rounded-tl-3xl
                 rounded-br-3xl
-                hover:text-yellow-100
-                hover:bg-yellow-500">
+                hover:text-indigo-100
+                hover:bg-indigo-500">
           التقارير
-          <i class="fas fa-cogs mr-3"></i>
+          <i class="fa-light fa-print"></i>
         </a>
         <!-- Base -->
       </nav>

@@ -68,16 +68,16 @@
           class="bg-purple-200 px-3 py-2 rounded-full rounded-tr-none absolute left-0 group-hover:left-20  transition-all duration-1000 "> {{App\Models\employee::count()}}</span>
       </div>
     </div>
-    <div class="flex flex-col w-full h-[150px] bg-yellow-400 relative rounded-md">
-      <img  src="{{asset('assets/images/hello2.svg')}}" class="z-20 absolute left-2 -top-16 h-full w-[300px]"/>
+    <div class="flex flex-col w-full h-[150px] bg-indigo-400 relative rounded-md">
+      <img  src="{{asset('assets/images/hello5.svg')}}" class="z-20 absolute left-2 -top-16 h-full w-[300px]"/>
      <div class="flex">
-       <h1 class="pt-8 pr-6 text-2xl text-yellow-900"> مرحباً بك يا </h1> 
-      <span id="adminName" class="pt-8 pr-2 text-2xl text-yellow-900"> صالح ...</span>
+       <h1 class="pt-8 pr-6 text-2xl text-indigo-100"> مرحباً بك يا </h1> 
+      <span id="adminName" class="pt-8 pr-2 text-2xl text-indigo-100"> صالح ...</span>
      </div>
       <div class="flex">
-       <h1 class="pb-6 pt-2 pr-6 text-xl text-yellow-900"> أنت </h1> 
-      <span id="adminRole" class="pb-6 py-2 pr-2 text-xl text-yellow-900"> مسوؤل</span>
-       <h1 class="pb-6 py-2 pr-2 text-xl text-yellow-900"> ولديك الصلاحيه في النظام كاملاٌ </h1> 
+       <h1 class="pb-6 pt-2 pr-6 text-xl text-indigo-100"> أنت </h1> 
+      <span id="adminRole" class="pb-6 py-2 pr-2 text-xl text-indigo-100"> مسوؤل</span>
+       <h1 class="pb-6 py-2 pr-2 text-xl text-indigo-100"> ولديك الصلاحيه في النظام كاملاٌ </h1> 
      </div>
 
     </div>
