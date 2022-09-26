@@ -146,7 +146,7 @@ class DatabaseSeeder extends Seeder
         // ################################ ( OBSERVER SEEDER ) ##########################
 
         $observerArray = array(
-            "ماهر عوض الحسيني",
+            "مازن عوض الحسيني",
             "يوسف عبدربه الخليفي",
             "محمود ناصر علي",
             "صلاح قاسم العليمي",
@@ -168,7 +168,7 @@ class DatabaseSeeder extends Seeder
             "خالد العودي",
         );
         $observerUsers = array(
-            "ماهر  ",
+            "مازن  ",
             "يوسف  ",
             "محمود  ",
             "صلاح  ",

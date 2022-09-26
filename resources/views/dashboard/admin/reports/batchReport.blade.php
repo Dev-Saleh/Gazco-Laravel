@@ -190,7 +190,7 @@
               <tr>
                 <td>
                   <img src="/assest/Dev-SL.jpeg">
-                  <p>John Doe</p>
+                  <p>كريم علي سالم</p>
                 </td>
                 <td>01-10-2021</td>
                 <td><span class="status completed">تم الاستلام</span></td>
@@ -198,7 +198,7 @@
               <tr>
                 <td>
                   <img src="/assest/sl.JPG">
-                  <p>John Doe</p>
+                  <p>كريم علي سالم</p>
                 </td>
                 <td>01-10-2021</td>
                 <td><span class="status pending">معلق</span></td>
@@ -206,7 +206,7 @@
               <tr>
                 <td>
                   <img src="/assest/mz.JPG">
-                  <p>John Doe</p>
+                  <p>كريم علي سالم</p>
                 </td>
                 <td>01-10-2021</td>
                 <td><span class="status process">قيد المراجعه</span></td>
@@ -214,7 +214,7 @@
               <tr>
                 <td>
                   <img src="/assest/Dev-SL.jpeg">
-                  <p>John Doe</p>
+                  <p>كريم علي سالم</p>
                 </td>
                 <td>01-10-2021</td>
                 <td><span class="status pending">معلق</span></td>
@@ -222,7 +222,7 @@
               <tr>
                 <td>
                   <img src="/assest/Dev-SL.jpeg">
-                  <p>John Doe</p>
+                  <p>كريم علي سالم</p>
                 </td>
                 <td>01-10-2021</td>
                 <td><span class="status pending">معلق</span></td>
@@ -230,7 +230,7 @@
               <tr>
                 <td>
                   <img src="/assest/Dev-SL.jpeg">
-                  <p>John Doe</p>
+                  <p>كريم علي سالم</p>
                 </td>
                 <td>01-10-2021</td>
                 <td><span class="status pending">معلق</span></td>
@@ -238,7 +238,7 @@
               <tr>
                 <td>
                   <img src="/assest/Dev-SL.jpeg">
-                  <p>John Doe</p>
+                  <p>كريم علي سالم</p>
                 </td>
                 <td>01-10-2021</td>
                 <td><span class="status pending">معلق</span></td>
@@ -246,7 +246,7 @@
               <tr>
                 <td>
                   <img src="/assest/Dev-SL.jpeg">
-                  <p>John Doe</p>
+                  <p>كريم علي سالم</p>
                 </td>
                 <td>01-10-2021</td>
                 <td><span class="status pending">معلق</span></td>
@@ -254,7 +254,7 @@
               <tr>
                 <td>
                   <img src="/assest/Dev-SL.jpeg">
-                  <p>John Doe</p>
+                  <p>كريم علي سالم</p>
                 </td>
                 <td>01-10-2021</td>
                 <td><span class="status pending">معلق</span></td>

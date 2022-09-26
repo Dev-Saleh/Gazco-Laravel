@@ -62,13 +62,13 @@
         <div class="flex flex-col w-full h-[150px] bg-emerald-400 relative rounded-md">
             <img src="{{ asset('assets/images/obshello.svg') }}" class="z-20 absolute left-2 -top-16 h-full w-[300px]" />
             <div class="flex">
-                <h1 class="pt-8 pr-6 text-2xl text-emerald-900"> مرحباً بك يا </h1>
-                <span id="adminName" class="pt-8 pr-2 text-2xl text-emerald-900"> ماهر ...</span>
+                <h1 class="pt-8 pr-6 text-2xl text-emerald-100"> مرحباً بك يا </h1>
+                <span id="adminName" class="pt-8 pr-2 text-2xl text-emerald-100"> مازن ...</span>
             </div>
             <div class="flex">
-                <h1 class="pb-6 pt-2 pr-6 text-xl text-emerald-900"> أنت </h1>
-                <span id="adminRole" class="pb-6 pt-2 pr-2 text-xl text-emerald-900"> مراقب</span>
-                <h1 class="pb-6 pt-2 pr-2 text-xl text-emerald-900"> ولديك الصلاحيه في النظام كاملاٌ </h1>
+                <h1 class="pb-6 pt-2 pr-6 text-xl text-emerald-100"> أنت </h1>
+                <span id="adminRole" class="pb-6 pt-2 pr-2 text-xl text-emerald-100"> مراقب</span>
+                <h1 class="pb-6 pt-2 pr-2 text-xl text-emerald-100"> ولديك الصلاحيه في النظام كاملاٌ </h1>
             </div>
 
         </div>
@@ -78,7 +78,7 @@
           
           {{-- Start Chart Bar --}}
             <div class=" shadow-md rounded-lg overflow-hidden ml-4">
-              <div class="py-3 px-5 bg-gray-50">الاحصائيات بالاشهر</div>
+              <div class="py-3 px-5 bg-gray-50">الاحصائيات بالاشهر لعدد الدفعات</div>
               <canvas class="p-2  w-[700px]" id="chartBar"></canvas>
             </div>
           {{-- End Chart Bar --}}

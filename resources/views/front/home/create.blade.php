@@ -67,7 +67,7 @@
                     </p>
                     <button type="submit" id='saveBooking' idCitizen="{{ session()->get('idCitizen') }}"
                         class="saveBooking flex flex-col disabled:opacity-50 disabled:cursor-not-allowed p-0">
-                        <img id=gazImg class="" src="{{ asset('assets/images/gaz-cart.png') }}" alt="">
+                        <img id="gazImg" class="" src="{{ asset('assets/images/gaz-cart.png') }}" alt="">
                     </button>
 
 

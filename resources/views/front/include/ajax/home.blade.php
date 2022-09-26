@@ -23,7 +23,9 @@
                                 document.getElementById('status_msg').classList.replace('bg-transparent','bg-green-200');
                                 document.getElementById('status_msg').classList.replace('border-transparent','border-green-600');
                                 document.getElementById('status_msg').classList.replace('text-gray-900','text-green-900');
-                                $('#status_msg').text('مصرح لك بالحجز');          
+                                document.getElementById('gazImg').classList.add('animate-wiggle');
+                                $('#status_msg').text('مصرح لك بالحجز');     
+                            
                                 $('.numBatch').text(data.lastGazLogs.id); //???????
                                 $('#numBatch').val(data.lastGazLogs.id);
                                 $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
