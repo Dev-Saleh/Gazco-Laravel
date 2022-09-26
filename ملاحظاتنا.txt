@@ -3,7 +3,7 @@ APP_ENV=local
 APP_KEY=base64:GzCZe/AGrgfx86FIuRUVs+pVty8QDLSMvdPGZoljkog=
 APP_DEBUG=true
 APP_URL=http://localhost
-
+a
 LOG_CHANNEL=stack
 
 DB_CONNECTION=mysql
