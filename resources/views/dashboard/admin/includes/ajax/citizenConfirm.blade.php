@@ -96,7 +96,7 @@
                 url:"{{route('citizenConfirm.update')}}",
                 data: 
                 {
-                     'citId' :citId, 
+                     'citId'     :citId, 
                      'checkbox'  :checkbox,
                 },
                 success: function (data) 
@@ -105,12 +105,8 @@
                
                      if (data.status == true) 
                      {
-                        $('.offerRow' + data.citId).addClass("animate-fadeInLeft");
-                        newAlert(data.alertType,data.msg);
-
-                        sleep(400).then(() => {
-                        $('.offerRow'+data.citId).remove();
-                        });
+                         newAlert(data.alertType,data.msg);
+                         $('.offerRow'+data.citId).remove();
                      
                      }
                 }, error: function (reject) 

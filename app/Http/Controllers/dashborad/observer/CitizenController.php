@@ -77,81 +77,81 @@ class CitizenController extends Controller
        
            try
                {  
-                    $searchfm=familyMembers::select()->where('fmName',$request->citName)->orwhere('identityNum',$request->identityNum)->get();
-                  if(!$searchfm)
-                   {
-                    $attachment =$request->attachment;  
-                    $filename = uploadImageAndResize('citizens', $attachment , $width='220', $height='190');
-                  
-                    $citizen = Citizen::create($request->except('_token'));
- 
-                    $citizen->attachment=$filename;
-      
-                    $citizen->save();
-                    
-                    $lastCitizenAdd=Citizen::with(
-                        [
-                          'directorate'=>function($q)
-                          {
-                            $q->select('id','dirName');
-                          }
-                          ,'rigon'=>function($q)
-                          {
-                            $q->select('id','rigName');
-                          }
-                          ,'observer'=>function($q)
-                          {
-                              $q->with(
-                              [
-                                'agent'=>function($q)
-                                {
-                                  $q->select('id','agentName');
-                                }
-                              ]
-                              )->select('id','agentId','obsName')->get();
-                          }
-                        ])->select('id','citName','dirId','rigId','obsId','identityNum','checked')->where('obsId',$request->obsId)->get()->last(); //->where('obsId',$request->obsId) ذا الشرط لازم نتناقش عليه
-                   
-                        if ($citizen)
-                        return response()->json(
-                         [
-                            'status'         => true,
-                            'msg'            => 'تم الحفظ المواطن بنجاح',
-                            'alertType'=> '.alertSuccess',
-                            'lastCitizenAdd' => $lastCitizenAdd,
-                            
-                         ]
-                        );
-                      }
-                      else
-                      return response()->json(
-                        [
-                           'status'     => false,
-                           'msg'        => 'أنت مسجل كفرد في الاسره',
-                           'alertType'=> '.alertError',
-                           
-                        ]
-                       );
+                      $searchfm=familyMembers::where('fmName',$request->citName)->orwhere('identityNum',$request->identityNum)->get();
+                    if(!($searchfm && $searchfm->count() > 0))
+                      {
+                        $attachment =$request->attachment;  
+                        $filename = uploadImageAndResize('citizens', $attachment , $width='220', $height='190');
 
-                   
-               }
-           catch (\Exception $ex)
-               {
-                    $imageDelete=base_path("public/assets/images/citizens/".$filename);
-                    if(file_exists($imageDelete))
-                    unlink($imageDelete);
+                        $citizen = Citizen::create($request->except('_token'));
+    
+                        $citizen->attachment=$filename;
+          
+                        $citizen->save();
+                        
+                        $lastCitizenAdd=Citizen::with(
+                            [
+                              'directorate'=>function($q)
+                              {
+                                $q->select('id','dirName');
+                              }
+                              ,'rigon'=>function($q)
+                              {
+                                $q->select('id','rigName');
+                              }
+                              ,'observer'=>function($q)
+                              {
+                                  $q->with(
+                                  [
+                                    'agent'=>function($q)
+                                    {
+                                      $q->select('id','agentName');
+                                    }
+                                  ]
+                                  )->select('id','agentId','obsName')->get();
+                              }
+                            ])->select('id','citName','dirId','rigId','obsId','identityNum','checked')->where('obsId',$request->obsId)->get()->last(); //->where('obsId',$request->obsId) ذا الشرط لازم نتناقش عليه
+                      
+                            if ($citizen)
+                            {
+                              return response()->json(
+                              [
+                                  'status'         => true,
+                                  'msg'            => 'تم الحفظ المواطن بنجاح',
+                                  'alertType'      => '.alertSuccess',
+                                  'lastCitizenAdd' => $lastCitizenAdd,
+                                  
+                              ]
+                              );
+                           }
+                    }  
                     
+                   else
                     return response()->json(
-                        [
-                            'status'         => false,
-                            'msg'            => 'Error In Function Save ',
-                            'exceptionError' => $ex,
-                            'data'           => $request->obsId,  //For Test
-                            'lastCitizenAdd' => $lastCitizenAdd,  //For Test
-                            
-                        ]
+                      [
+                        'status'               => false,
+                        'foundAsMember'        => 'أنت مسجل كفرد في الاسره',
+                        
+                      ]
                     );
+                
                }
+              catch (\Exception $ex)
+                  {
+                        $imageDelete=base_path("public/assets/images/citizens/".$filename);
+                        if(file_exists($imageDelete))
+                        unlink($imageDelete);
+                        
+                        return response()->json(
+                            [
+                                'status'         => false,
+                                'msg'            => 'Error In Function Save ',
+                                'exceptionError' => $ex,
+                           
+                                
+                            ]
+                        );
+                  }
     }
 
     

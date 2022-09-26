@@ -32,7 +32,6 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
             Route::get('index', 'directoratesController@index')->name('directorate.index');
             Route::post('store', 'directoratesController@store')->name('directorate.store');
             Route::post('edit', 'directoratesController@edit')->name('directorate.edit');
-            Route::get('show', 'directoratesController@show')->name('directorate.fetchNewDirectorate');
             Route::post('update', 'directoratesController@update')->name('directorate.update');
             Route::delete('delete/{id?}', 'directoratesController@destroy')->name('directorate.destroy'); 
      });
@@ -40,15 +39,12 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
             Route::post('store', 'RigonController@store')->name('rigon.store');
             Route::delete('delete/{id?}', 'RigonController@destroy')->name('rigon.destroy');
             Route::get('edit/{id?}', 'RigonController@edit')->name('rigon.edit');
-            Route::get('show_All', 'RigonController@show')->name('rigon.show_all_Data');
             Route::post('update', 'RigonController@update')->name('rigon.update');
       });
       Route::group(['prefix' => 'station'], function () {
         Route::post('store', 'StationController@store')->name('station.store');
         Route::delete('delete/{id?}', 'StationController@destroy')->name('station.destroy');
         Route::get('edit/{id?}', 'StationController@edit')->name('station.edit');
-        Route::get('show_All', 'StationController@show')->name('station.show_All');
-      
         Route::post('update', 'StationController@update')->name('station.update');
   });
       Route::group(['prefix' => 'agent'], function () {

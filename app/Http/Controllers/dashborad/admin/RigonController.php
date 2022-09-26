@@ -16,13 +16,14 @@ class RigonController extends Controller
          { 
                 $rig = Rigon::create($request->except('_token'));
                 $rig->save();
-
+                $lastRigon=Rigon::get()->last();
                 if ($rig) 
                 return response()->json([
 
-                    'status' => true,
-                    'msg' => 'تم الحفظ بنجاح',
-
+                    'status'           => true,
+                    'msg'              => 'تم حفظ بيانات المربع بنجاح', 
+                    'alertType'        => '.alertSuccess', 
+                    'lastRigon'        => $lastRigon,
                 ]);
 
          }
@@ -31,9 +32,10 @@ class RigonController extends Controller
 
             return response()->json([
 
-                'status'         => false,
-                'msg'            => 'فشل الحفظ برجاء المحاوله مجددا',
-                'exceptionError' => $ex,
+                'status'           => false,
+                'alertType'        => '.alertError', 
+                'msgError'         => 'فشل الحفظ برجاء المحاوله مجددا',
+                'exceptionError'   => $ex,
            
             ]);
         }
