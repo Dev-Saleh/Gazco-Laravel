@@ -27,6 +27,8 @@
                                 $('.numBatch').text(data.lastGazLogs.id); //???????
                                 $('#numBatch').val(data.lastGazLogs.id);
                                 $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
+                                $('#validDays').Html(data.validDays);
+                               
                         }
                         else if(data.msg == '2')
                         {
@@ -35,6 +37,7 @@
                                 document.getElementById('status_msg').classList.replace('border-transparent','border-red-600');
                                 document.getElementById('status_msg').classList.replace('text-gray-900','text-red-900');
                                 $('#status_msg').text('انت محظور يا حلو');
+                                 $('#validDays').Html(data.validDays);
                               //$('numBatch').text(data.lastGazLogs.id);
                               //$('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
 
@@ -47,6 +50,7 @@
                                 document.getElementById('status_msg').classList.replace('border-transparent','border-gray-600');
                                 document.getElementById('status_msg').classList.replace('text-gray-900','text-gray-900');
                                 $('#status_msg').text('لايوجد كمية مفتوحة الحجز');
+                                 $('#validDays').text(data.validDays);
                           
                       
                         }

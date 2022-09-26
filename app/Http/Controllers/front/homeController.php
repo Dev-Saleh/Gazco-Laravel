@@ -12,6 +12,7 @@ use App\Models\gaz_Logs;
 use App\Models\gazLogs;
 use App\Models\logs_Booking;
 use App\Models\logsBooking;
+use App\Models\profile;
 use App\Models\Rigon;
 use Illuminate\Http\Request;
 
@@ -90,7 +91,7 @@ class homeController extends Controller
     {   
         // فييييين ال RETURN ???????????????????
         try
-            {
+         {       $profile = profile::select()->first();
                     $citizen = Citizen::find($request -> citId);
                     $lastBatchOpenBooking=gazLogs::where('statusBatch','2')->where('agentId',$citizen->observer->agentId)->latest('id')->first();
                     $citizenBookingValid=''; 
@@ -100,7 +101,7 @@ class homeController extends Controller
                     if($lastRequestBookingtocitz) // if have record
                     {
                         $numdays=date_diff($lastRequestBookingtocitz->created_at,now()); // get Number Days Between Reciving_date and current Date
-                        $numdays->format('%R%a') > '14' ? $citizenBookingValid='true' : $citizenBookingValid='false';
+                        $numdays->format('%R%a') > $profile->numDaysBookingValid ? $citizenBookingValid='true' : $citizenBookingValid='false';
                     }
 
                     else  $citizenBookingValid='true'; // if no have records
@@ -115,7 +116,7 @@ class homeController extends Controller
                                     'status'     => true,
                                     'msg'        => '1',   //1='مصرح لك بالحجز' 
                                     'number'        => $numdays, 
-                                    'lastGazLogs'=>$lastBatchOpenBooking,
+                                    'validDays'=> $profile->numDaysBookingValid,
                                     'lastGazLogs'=> $numdays->format('%R%a'),
                                     //for Test
                                     
@@ -129,6 +130,7 @@ class homeController extends Controller
                         [
                             'status' => false,
                             'msg' => '2', //2='انت محظور يا حلو' 
+                            'validDays'=> $profile->numDaysBookingValid,
                             'lastGazLogs'=> $numdays->format('%R%a'),
                         ]);
                 }
@@ -138,7 +140,7 @@ class homeController extends Controller
                         [
                             'status' => false,
                             'msg' =>'3',   //3='لايوجد كمية مفتوحة الحجز'
-                            'lastGazLogs'=>$lastBatchOpenBooking,
+                            'validDays'=> $profile->numDaysBookingValid,
                             'last'=>$citizenBookingValid,
                         ]);
                 }
@@ -156,6 +158,7 @@ class homeController extends Controller
                 'msg'             => 'Error In Function Show',
                 'exceptionErrore' => $ex,
                 'lastGazLogs'     => $lastBatchOpenBooking,
+                 'validDays'=> $profile,
              ]);
          }
     }

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\dashborad\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Citizen;
+use App\Models\logsBooking;
 use Illuminate\Http\Request;
 
 class CitizenConfirm extends Controller
@@ -76,7 +77,7 @@ class CitizenConfirm extends Controller
                         )->select('id','agentId','obsName')->get();
                     }
                   ])->select('id','attachment','citName','created_at','identityNum','dirId','rigId','obsId','checked')->find($request -> citId);  // search in given table id only
-                
+                  $numberOfReceipt=logsBooking::where('statusBooking','1')->where('citId',$citizen->id)->get();
                   if (!$citizen)
                     return response()->json(
                       [
@@ -88,8 +89,9 @@ class CitizenConfirm extends Controller
                           
                   return response()->json(
                     [
-                      'status'  => true,
-                      'citizen' => $citizen,        
+                      'status'            => true,
+                      'citizen'           => $citizen, 
+                      'numberOfReceipt'   => $numberOfReceipt->count(),     
                     ]
                 ); 
 
@@ -221,23 +223,24 @@ class CitizenConfirm extends Controller
                         }
                       ])
                       ->select('id','attachment','citName','created_at','identityNum','dirId','rigId','obsId','checked')
-                      ->where('citName','Like','%'.$request->textCitConfirmSearch.'%')
-                      ->orwhere('identityNum','Like','%'.$request->textCitConfirmSearch.'%')
-                      ->orwhere('id','Like','%'.$request->textCitConfirmSearch.'%')
+                      ->where('citName','Like','%'.$request->textCitConfirmSearch.'%')->where('checked','0')
+                      ->orwhere('identityNum','Like','%'.$request->textCitConfirmSearch.'%')->where('checked','0')
+                      ->orwhere('id','Like','%'.$request->textCitConfirmSearch.'%')->where('checked','0')
                       ->orwherehas
                         (
                             'directorate',function($q) use($request)
                                 {
-                                    $q->where('dirName','Like','%'.$request->textCitConfirmSearch.'%');
+                                    $q->where('dirName','Like','%'.$request->textCitConfirmSearch.'%')->where('checked','0');
                                 }
                         )
                         ->orwherehas
                         (
                             'rigon',function($q) use($request)
                                 {
-                                    $q->where('rigName','Like','%'.$request->textCitConfirmSearch.'%');
+                                    $q->where('rigName','Like','%'.$request->textCitConfirmSearch.'%')->where('checked','0');
                                 }
                         )
+                        
                         ->get();      
                 else if($request->filterCitConfirmSearch=='citName')
                     $resultSearch=Citizen::with(
@@ -263,7 +266,7 @@ class CitizenConfirm extends Controller
                         }
                       ])
                       ->select('id','attachment','citName','created_at','identityNum','dirId','rigId','obsId','checked')
-                      ->where('citName','Like','%'.$request->textCitConfirmSearch.'%')
+                      ->where('citName','Like','%'.$request->textCitConfirmSearch.'%')->where('checked','0')
                       ->get(); 
 
                 else if($request->filterCitConfirmSearch=='identityNum')
@@ -290,7 +293,7 @@ class CitizenConfirm extends Controller
                         }
                       ])
                       ->select('id','attachment','citName','created_at','identityNum','dirId','rigId','obsId','checked')
-                      ->where('identityNum','Like','%'.$request->textCitConfirmSearch.'%')
+                      ->where('identityNum','Like','%'.$request->textCitConfirmSearch.'%')->where('checked','0')
                       ->get();      
        
                 

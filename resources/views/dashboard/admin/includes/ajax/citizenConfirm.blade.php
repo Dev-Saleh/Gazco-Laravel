@@ -19,7 +19,6 @@
                 success: function (data) 
                 {
                    console.log(data); //for Test
-
                    $('.offerRow' + data.citId).addClass("animate-fadeInLeft");
                   if (data.status == true)
                     {
@@ -69,6 +68,7 @@
                        $('.dirName').text(data.citizen.directorate.dirName);
                        $('.rigName').text(data.citizen.rigon.rigName);
                        $('.agentName').text(data.citizen.observer.agent.agentName);
+                       $('.numberOfReceipt').text(data.numberOfReceipt);
 
                      
                     }
@@ -107,6 +107,11 @@
                      {
                          newAlert(data.alertType,data.msg);
                          $('.offerRow'+data.citId).remove();
+                         $('.numberOfReceipt').text('');
+                         window.checkbox.checked=false;
+                       
+
+
                      
                      }
                 }, error: function (reject) 

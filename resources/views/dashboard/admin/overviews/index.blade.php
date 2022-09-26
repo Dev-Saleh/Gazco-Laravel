@@ -72,7 +72,7 @@
       <img  src="{{asset('assets/images/hello5.svg')}}" class="z-20 absolute left-2 -top-16 h-full w-[300px]"/>
      <div class="flex">
        <h1 class="pt-8 pr-6 text-2xl text-indigo-100"> مرحباً بك يا </h1> 
-      <span id="adminName" class="pt-8 pr-2 text-2xl text-indigo-100"> صالح ...</span>
+      <span id="adminName" class="pt-8 pr-2 text-2xl text-indigo-100">{{session()->get('empUserName')}}...</span>
      </div>
       <div class="flex">
        <h1 class="pb-6 pt-2 pr-6 text-xl text-indigo-100"> أنت </h1> 
