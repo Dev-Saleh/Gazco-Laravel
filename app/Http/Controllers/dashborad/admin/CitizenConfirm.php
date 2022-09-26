@@ -3,6 +3,7 @@ namespace App\Http\Controllers\dashborad\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Citizen;
 use Illuminate\Http\Request;
+use App\Models\logsBooking;
 
 class CitizenConfirm extends Controller
 {
@@ -76,20 +77,22 @@ class CitizenConfirm extends Controller
                         )->select('id','agentId','obsName')->get();
                     }
                   ])->select('id','attachment','citName','created_at','identityNum','dirId','rigId','obsId','checked')->find($request -> citId);  // search in given table id only
-                
+                 
                   if (!$citizen)
                     return response()->json(
                       [
-                        'status' => false,
-                                          
-                     ]
+                        'status' => false,                     
+                      ]
                    );
-      
-                          
+                  // هدا الامر بعد جلب معلومات المواطن
+                  $bookingNumber =logsBooking::where('citId',$citizen->id)->get(); 
+
                   return response()->json(
                     [
-                      'status'  => true,
-                      'citizen' => $citizen,        
+                      'status'         => true,
+                      'citizen'        => $citizen,
+                      'bookingNumber'  => $bookingNumber->count(),
+
                     ]
                 ); 
 
@@ -117,7 +120,7 @@ class CitizenConfirm extends Controller
                     [
                       'status'    => false,
                       'msg'       => 'The Citizen Not Found Error In Function Update',
-                      'citId' => $request,
+                      'citId'     => $request,
                     ]
                   );
 
@@ -157,10 +160,10 @@ class CitizenConfirm extends Controller
                 if (!$citizen)
                 return response()->json(
                   [
-                    'status'  => false,
-                    'alertType'=> '.alertError',
-                    'msg'    => 'حدث خطأ أثناء الحذف',
-                    'cizId'   => $request -> citId,
+                    'status'    => false,
+                    'alertType' => '.alertError',
+                    'msg'       => 'حدث خطأ أثناء الحذف',
+                    'cizId'     => $request -> citId,
                   ]
                 );
                 
@@ -172,7 +175,7 @@ class CitizenConfirm extends Controller
                 return response()->json(
                   [
                     'status'    => true, 
-                    'alertType'=> '.alertSuccess',   
+                    'alertType' => '.alertSuccess',   
                     'msg'       => 'تم حذف المواطن بنجاح',
                     'citId'     => $request -> citId
                  ]
@@ -196,7 +199,6 @@ class CitizenConfirm extends Controller
         
         try
         { 
-
                  if($request->filterCitConfirmSearch=='all')
                     $resultSearch=Citizen::with(
                       [

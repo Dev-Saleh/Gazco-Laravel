@@ -177,7 +177,13 @@ class AgentController extends Controller
                     )
                     ->select('id','Photo','agentName','dirId')
                     ->where('agentName','Like','%'.$request->inputSearch.'%')
-                    ->get();
+                   //->where('agentName','REGEXP',".*".$request->inputSearch) //for test
+                   // ->where('agentName','REGEXP',".*[".$request->inputSearch." اً]$") //for test
+                //    ->where('agentName','REGEXP',"(.*".$request->inputSearch.".*)") //for test
+              
+                //   ->where('agentName','REGEXP',"[أاء]") //for test
+                  
+                  ->get();
 
                     else if( $request->filterSearch=='dirId' )
                     {

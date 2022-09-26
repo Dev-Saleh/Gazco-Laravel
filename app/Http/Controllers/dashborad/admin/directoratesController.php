@@ -149,6 +149,7 @@ class directoratesController extends Controller
     }
     public function destroy(Request $request)
     {
+        
         try {
                 $dir = Directorate::find($request -> dirId); 
                 if (!$dir)

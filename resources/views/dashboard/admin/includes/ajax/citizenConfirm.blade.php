@@ -55,8 +55,7 @@
                      console.log(data); //for Test
                
                      if (data.status == true) 
-                     {
-                         
+                    {
                        $('#attachment').attr('src', data.citizen.attachment['valsrc']);
                        $('.citName').text(data.citizen.citName);
                        $('.identityNum').text(data.citizen.identityNum);
@@ -65,13 +64,11 @@
                        $('.dateAdd').text(data.citizen.created_at);
                        $('.dirName').text(data.citizen.directorate.dirName);
                        $('.rigName').text(data.citizen.rigon.rigName);
+                       $('.bookingNumber').text(data.bookingNumber);
                        $('.agentName').text(data.citizen.observer.agent.agentName);
-
-                     
                     }
                 }, error: function (reject) 
                 {
-
                 }
             });
         });
@@ -102,8 +99,18 @@
                
                      if (data.status == true) 
                      {
-                         newAlert(data.alertType,data.msg);
-                         $('.offerRow'+data.citId).remove();
+                            newAlert(data.alertType,data.msg);
+                            $('.offerRow'+data.citId).remove();
+                            $('#attachment').attr('src','');
+                            $('.citName').text('');
+                            $('.identityNum').text('');
+                            $('.bookingNumber').text('');
+                            $('#citId').text('');
+                            $('.obsName').text('');
+                            $('.dateAdd').text('');
+                            $('.dirName').text('');
+                            $('.rigName').text('');
+                            $('.agentName').text('');
                      
                      }
                 }, error: function (reject) 
