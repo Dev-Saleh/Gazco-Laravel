@@ -9,6 +9,7 @@ use App\Models\gazLogs;
 use App\Models\Station;
 use App\Models\logsBooking;
 use App\Models\employee;
+use App\Models\profile;
 
 use Illuminate\Database\Seeder;
 
@@ -377,6 +378,16 @@ for ($i = 0; $i < 30; $i++) {
     ]);
   }
   
+
+
+  ##################################(SETTING ADMIN)###############################
+
+  profile::create([
+    'numDaysBookingValid' => '14',
+    'nameMessage' => 'Gazco | Aden',
+    'contentMessage' => 'تم وصول دبة الغاز تعال لاستلامها',
+    
+]);
   }
     
 }

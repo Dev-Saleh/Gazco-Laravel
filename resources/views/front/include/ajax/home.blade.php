@@ -29,7 +29,7 @@
                                 $('.numBatch').text(data.lastGazLogs.id); //???????
                                 $('#numBatch').val(data.lastGazLogs.id);
                                 $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
-                                $('#validDays').Html(data.validDays);
+                                $('#validDays').text(data.validDays);
                                
                         }
                         else if(data.msg == '2')
@@ -39,7 +39,7 @@
                                 document.getElementById('status_msg').classList.replace('border-transparent','border-red-600');
                                 document.getElementById('status_msg').classList.replace('text-gray-900','text-red-900');
                                 $('#status_msg').text('انت محظور يا حلو');
-                                 $('#validDays').Html(data.validDays);
+                                 $('#validDays').text(data.validDays);
                               //$('numBatch').text(data.lastGazLogs.id);
                               //$('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
 
