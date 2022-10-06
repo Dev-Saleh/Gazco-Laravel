@@ -166,25 +166,38 @@ class AgentController extends Controller
                        ->get();
 
                    else if($request->filterSearch=='agentName')
-                   $resultSearch=Agent::with
-                   (
-                       [
-                         'directorate'=>function($q)
-                           {
-                              $q->select('id','dirName')->get();
-                           }
-                        ]
-                    )
-                    ->select('id','Photo','agentName','dirId')
-                    ->where('agentName','Like','%'.$request->inputSearch.'%')
-                   //->where('agentName','REGEXP',".*".$request->inputSearch) //for test
-                   // ->where('agentName','REGEXP',".*[".$request->inputSearch." اً]$") //for test
-                //    ->where('agentName','REGEXP',"(.*".$request->inputSearch.".*)") //for test
-              
-                //   ->where('agentName','REGEXP',"[أاء]") //for test
-                  
-                  ->get();
-
+                   {
+                        if(preg_match("/('أ|ا|إ|ى|ي|ئ|و|ؤ|آ')/",$request->inputSearch))
+                       {
+                           $a=str_replace(array('ا','أ','إ','آ'),'ا',$request->inputSearch);
+                           $b=str_replace(array('ا','أ','إ','آ'),'أ',$request->inputSearch);
+                           $c=str_replace(array('ا','أ','إ','آ'),'إ',$request->inputSearch);
+                           $d=str_replace(array('ا','أ','إ','آ'),'آ',$request->inputSearch);
+                           $e=str_replace(array('ئ','ي','ى'),'ي',$request->inputSearch);
+                           $f=str_replace(array('ئ','ي','ى'),'ى',$request->inputSearch);
+                           $g=str_replace(array('ئ','ي','ى'),'ئ',$request->inputSearch);
+                           $h=str_replace(array('ؤ','و'),'و',$request->inputSearch);
+                           $i=str_replace(array('ؤ','و'),'ؤ',$request->inputSearch);
+                            $resultSearch=Agent::with
+                        (
+                            [
+                                'directorate'=>function($q)
+                                {
+                                    $q->select('id','dirName')->get();
+                                }
+                                ]
+                            )
+                            ->select('id','Photo','agentName','dirId')
+                            //->where('agentName','Like','%'.$request->inputSearch.'%')
+                        //->where('agentName','REGEXP',".*".$request->inputSearch) //for test
+                         ->where('agentName','REGEXP',"(".$a."|".$b."|".$c."|".$d."|".$e."|".$f."|".$g."|".$h."|".$i.")") //for test
+                        // ->where('agentName','REGEXP',"(.*".$request->inputSearch.".*)") //for test
+                    
+                        //->where('agentName','REGEXP',"[أاء]") //for test
+                        
+                        ->get();
+                        }
+                  }
                     else if( $request->filterSearch=='dirId' )
                     {
                         $resultSearch=Agent::with
@@ -249,6 +262,7 @@ class AgentController extends Controller
                         'status'        => true,
                         'msg'           => 'تم الحفظ بنجاح', 
                         'resultSearch'  =>  $resultSearch,
+                        're'            => str_replace(array('ا','أ'),'ا',$request->inputSearch), //for Test
                         
                     
                     ]

@@ -142,8 +142,8 @@ class batchReportsController extends Controller
     
     public function exportExcelBatch(Request $request)
     {
-    
-          return Excel::download(new exportBatchReport('2022-09-10','2022-09-07'),'salah.xlsx');        
+           
+          return Excel::download(new exportBatchReport($request->valueDateForm,$request->valueDateTo),'salah.xlsx');        
       
     }
     

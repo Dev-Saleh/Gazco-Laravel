@@ -59,6 +59,8 @@
                      if (data.status == true) 
                     {
                        $('#attachment').attr('src', data.citizen.attachment['valsrc']);
+                       $('#attachment').attr('width', '150');
+                       $('#attachment').attr('height', '150');
                        $('.citName').text(data.citizen.citName);
                        $('.identityNum').text(data.citizen.identityNum);
                        $('#citId').text(data.citizen.id);
@@ -68,12 +70,9 @@
                        $('.rigName').text(data.citizen.rigon.rigName);
                        $('.bookingNumber').text(data.bookingNumber);
                        $('.agentName').text(data.citizen.observer.agent.agentName);
-<<<<<<< HEAD
                        $('.numberOfReceipt').text(data.numberOfReceipt);
 
                      
-=======
->>>>>>> 659a9b50420dffcdb046bdfc56623d745594b0e5
                     }
                 }, error: function (reject) 
                 {
@@ -107,15 +106,6 @@
                
                      if (data.status == true) 
                      {
-<<<<<<< HEAD
-                         newAlert(data.alertType,data.msg);
-                         $('.offerRow'+data.citId).remove();
-                         $('.numberOfReceipt').text('');
-                         window.checkbox.checked=false;
-                       
-
-
-=======
                             newAlert(data.alertType,data.msg);
                             $('.offerRow'+data.citId).remove();
                             $('#attachment').attr('src','');
@@ -128,7 +118,8 @@
                             $('.dirName').text('');
                             $('.rigName').text('');
                             $('.agentName').text('');
->>>>>>> 659a9b50420dffcdb046bdfc56623d745594b0e5
+                            $('.numberOfReceipt').text('');
+                            window.checkbox.checked=false;
                      
                      }
                 }, error: function (reject) 

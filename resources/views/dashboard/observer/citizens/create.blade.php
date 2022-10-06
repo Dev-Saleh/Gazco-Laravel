@@ -200,7 +200,7 @@
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full mb-5">
                              
-                                <select name="citId" value="" id='selectCitizen'
+                                <select name="citId" value="رب الاسره" id='selectCitizen'
                                     onchange="f('selectCitizen');" onclick="this.setAttribute('value', this.value);"
                                     class="hover:border-black  pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-black appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                               
@@ -266,7 +266,7 @@
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full mb-5">
-                                <select name="sex" value="" id='selectSex'
+                                <select name="sex" value="ذكر" id='selectSex'
                                     onchange="f('selectSex');" onclick="this.setAttribute('value', this.value);"
                                     class="hover:border-black  pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-black appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                                     <option value="0" id=''>ذكر</option>
@@ -284,7 +284,7 @@
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full mb-5">
-                                <select name="relationship" id='selectRelationship' value=""
+                                <select name="relationship" id='selectRelationship' value="أب"
                                     onclick="this.setAttribute('value', this.value);"
                                     class="hover:border-black pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-black appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
                                     <option value="0">أب</option>

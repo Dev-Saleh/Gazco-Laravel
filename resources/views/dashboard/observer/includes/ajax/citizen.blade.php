@@ -40,6 +40,8 @@
                                 </div>\
                             </td>\
                         </tr>');
+                    $('#selectCitizen').prepend('<option value='+$lastCitizenAdd.id+'>'+$lastCitizenAdd.citName+'</option>');
+                   
             
         }
 
@@ -76,7 +78,9 @@
                         $('#select_Directorate').text('');
                         $('#select_Directorate').val('');
                         $('#select_Rigon').text('');
+                        $('#selectCitizen').text(data.lastCitizenAdd.citName);
                         fetchLastCitizen(data.lastCitizenAdd);
+                    
                     } 
                     else if(data.status == false)
                     $('#citName_error').text(data.foundAsMember);

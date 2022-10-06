@@ -233,7 +233,7 @@
                 contentType: false,
                 cache: false,
                 success: function(data) {
-                    console.log(data.resultSearch);
+                    console.log(data); // for Test
                     if (data.status == true) {
                         $('#fetchLastAgent').html("");
                         $.each(data.resultSearch, function(key, resultSearch) {
