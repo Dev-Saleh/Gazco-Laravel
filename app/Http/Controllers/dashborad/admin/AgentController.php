@@ -142,62 +142,113 @@ class AgentController extends Controller
                         $q->where('rigName', 'Like', '%' . $request->inputSearch . '%');
                     })
                     ->get();
-            } elseif ($request->filterSearch == 'agentName') {
-                $resultSearch = Agent::with([
-                    'directorate' => function ($q) {
-                        $q->select('id', 'dirName')->get();
-                    },
-                ])
-                    ->select('id', 'Photo', 'agentName', 'dirId')
-                    ->where('agentName', 'Like', '%' . $request->inputSearch . '%')
-                    //->where('agentName','REGEXP',".*".$request->inputSearch) //for test
-                    // ->where('agentName','REGEXP',".*[".$request->inputSearch." اً]$") //for test
-                    //    ->where('agentName','REGEXP',"(.*".$request->inputSearch.".*)") //for test
-
-                    //   ->where('agentName','REGEXP',"[أاء]") //for test
-
-                    ->get();
-            } elseif ($request->filterSearch == 'dirId') {
-                $resultSearch = Agent::with([
-                    'directorate' => function ($q) {
-                        $q->select('id', 'dirName')->get();
-                    },
-                ])
-                    ->select('id', 'Photo', 'agentName', 'dirId')
-                    ->wherehas('directorate', function ($q) use ($request) {
-                        $q->where('dirName', 'Like', '%' . $request->inputSearch . '%');
-                    })
-                    ->get();
-            } elseif ($request->filterSearch == 'rigId') {
-                $resultSearch = Agent::with([
-                    'directorate' => function ($q) {
-                        $q->select('id', 'dirName')->get();
-                    },
-                ])
-                    ->select('id', 'Photo', 'agentName', 'dirId')
-                    ->wherehas('rigon', function ($q) use ($request) {
-                        $q->where('rigName', 'Like', '%' . $request->inputSearch . '%');
-                    })
-                    ->get();
-            } elseif ($request->filterSearch == 'id') {
-                $resultSearch = Agent::with([
-                    'directorate' => function ($q) {
-                        $q->select('id', 'dirName')->get();
-                    },
-                ])
-                    ->select('id', 'Photo', 'agentName', 'dirId')
-                    ->where('id', 'Like', '%' . $request->inputSearch . '%')
-                    ->get();
             }
+                   else if($request->filterSearch=='agentName')
+                   {
+                        if(preg_match("/('أ|ا|إ|ى|ي|ئ|و|ؤ|آ')/",$request->inputSearch))
+                       {
+                           $a=str_replace(array('ا','أ','إ','آ'),'ا',$request->inputSearch);
+                           $b=str_replace(array('ا','أ','إ','آ'),'أ',$request->inputSearch);
+                           $c=str_replace(array('ا','أ','إ','آ'),'إ',$request->inputSearch);
+                           $d=str_replace(array('ا','أ','إ','آ'),'آ',$request->inputSearch);
+                           $e=str_replace(array('ئ','ي','ى'),'ي',$request->inputSearch);
+                           $f=str_replace(array('ئ','ي','ى'),'ى',$request->inputSearch);
+                           $g=str_replace(array('ئ','ي','ى'),'ئ',$request->inputSearch);
+                           $h=str_replace(array('ؤ','و'),'و',$request->inputSearch);
+                           $i=str_replace(array('ؤ','و'),'ؤ',$request->inputSearch);
+                            $resultSearch=Agent::with
+                        (
+                            [
+                                'directorate'=>function($q)
+                                {
+                                    $q->select('id','dirName')->get();
+                                }
+                                ]
+                            )
+                            ->select('id','Photo','agentName','dirId')
+                            //->where('agentName','Like','%'.$request->inputSearch.'%')
+                        //->where('agentName','REGEXP',".*".$request->inputSearch) //for test
+                         ->where('agentName','REGEXP',"(".$a."|".$b."|".$c."|".$d."|".$e."|".$f."|".$g."|".$h."|".$i.")") //for test
+                        // ->where('agentName','REGEXP',"(.*".$request->inputSearch.".*)") //for test
+                    
+                        //->where('agentName','REGEXP',"[أاء]") //for test
+                        
+                        ->get();
+                        }
+                  }
+                    else if( $request->filterSearch=='dirId' )
+                    {
+                        $resultSearch=Agent::with
+                        (
+                            [
+                                'directorate'=>function($q)
+                                    {
+                                      $q->select('id','dirName')->get();
+                                    }
+                            ]
+                        )
+                         ->select('id','Photo','agentName','dirId')
+                         ->wherehas
+                             (
+                                'directorate',function($q) use($request)
+                                    {
+                                        $q->where('dirName','Like','%'.$request->inputSearch.'%');
+                                    }
+                              )
+                        ->get();  
+                    }                           
+                 
+                    else if( $request->filterSearch=='rigId' )
+                    $resultSearch=Agent::with
+                    (
+                        [
+                            'directorate'=>function($q)
+                                {
+                                    $q->select('id','dirName')->get();
+                                }
+                        ]
+                    )
+                    ->select('id','Photo','agentName','dirId')
+                    ->wherehas
+                    (
+                        'rigon',function($q) use($request)
+                          {
+                             $q->where('rigName','Like','%'.$request->inputSearch.'%');
+                          }
+                    )
+                    ->get(); 
+                   
+                    else if( $request->filterSearch=='id' )
+                      $resultSearch=Agent::with
+                      (
+                          [
+                              'directorate'=>function($q)
+                             {
+                                $q->select('id','dirName')->get();
+                             }
+                         ]
+                       )
+                       ->select('id','Photo','agentName','dirId')
+                       ->where('id','Like','%'.$request->inputSearch.'%')
+                       ->get();   
+    
 
-            if ($resultSearch) {
-                return response()->json([
-                    'status' => true,
-                    'msg' => 'تم الحفظ بنجاح',
-                    'resultSearch' => $resultSearch,
-                ]);
-            }
-        } catch (\Exception $ex) {
+            if ($resultSearch)
+                return response()->json
+                (
+                    [
+                        'status'        => true,
+                        'msg'           => 'تم الحفظ بنجاح', 
+                        'resultSearch'  =>  $resultSearch,
+                        're'            => str_replace(array('ا','أ'),'ا',$request->inputSearch), //for Test
+                        
+                    
+                    ]
+                );
+ 
+        }
+        catch (\Exception $ex)
+         {
             return response()->json([
                 'status' => false,
                 'msg' => 'فشل الحفظ برجاء المحاوله مجددا',

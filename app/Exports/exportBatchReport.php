@@ -19,9 +19,12 @@ class exportBatchReport implements FromView
     }
     public function view() :View
     {
-        return view('dashboard.admin.reports.exportbatchExcel', [
-            'gazLogs' => gazLogs::whereBetween('created_at', [$this->from, $this->to])->get()
-        ]);
+        $gazLogs=gazLogs::select()->whereBetween('created_at', [$this->from, $this->to])->get();
+        $data['gazLogs']=$gazLogs;
+        $data['batchCount']=$gazLogs->count();
+        $data['batchResult']=$gazLogs->sum('qty');
+        $data['allowBookingCount']=$gazLogs->where('allowBooking','0')->count();
+        return view('dashboard.admin.reports.exportbatchExcel',$data);
     }
 
 

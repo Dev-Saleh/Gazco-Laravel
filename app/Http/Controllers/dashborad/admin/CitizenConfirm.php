@@ -78,7 +78,7 @@ class CitizenConfirm extends Controller
                         )->select('id','agentId','obsName')->get();
                     }
                   ])->select('id','attachment','citName','created_at','identityNum','dirId','rigId','obsId','checked')->find($request -> citId);  // search in given table id only
-                 
+                  $numberOfReceipt=logsBooking::where('statusBooking','1')->where('citId',$citizen->id)->get();
                   if (!$citizen)
                     return response()->json(
                       [
@@ -90,10 +90,11 @@ class CitizenConfirm extends Controller
 
                   return response()->json(
                     [
-                      'status'         => true,
-                      'citizen'        => $citizen,
-                      'bookingNumber'  => $bookingNumber->count(),
-
+                      'status'            => true,
+                      'citizen'           => $citizen, 
+                      'numberOfReceipt'   => $numberOfReceipt->count(),
+                      'bookingNumber'    => $bookingNumber->count(),
+  
                     ]
                 ); 
 
