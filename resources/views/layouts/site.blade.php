@@ -94,6 +94,7 @@
             document.querySelector('.sidebar').classList.toggle('right-[-300px]')
         }
     </script> --}}
+    
     @yield('script')
 </body>
 

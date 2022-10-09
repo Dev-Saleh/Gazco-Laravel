@@ -37,23 +37,24 @@ class loginCitizenController extends Controller
                 if($citizenInfo->checked == 'نعم')
                 {
                     session()->put('idCitizen',$citizenInfo->id);
+                    
                     return redirect()->route('Main.front');
                 }
                 else
                 {
-                    return redirect()->route('login')->with(['error' => "المعذره لم يتم التحقق من بياناتك"]);
+                    return redirect()->route('login')->with(['error'=>"المعذره لم يتم التحقق من بياناتك"]);
                 }
-              
             }
             else
-            {
-               return redirect()->route('login')->with(['error' => "الرقم السري خاطى"]);
-            }
+             {
+                 return redirect()->route('login')->with(['error'=>"الرقم السري خاطى"]);
+             }
+                
         }
         else
         {
-            return redirect()->route('login')->with(['error' => "الرقم الوطني خاطى"]);
-             
+            return redirect()->route('login')->with(['error'=>"الرقم الوطني خاطى"]);
+         
         }
     }
 

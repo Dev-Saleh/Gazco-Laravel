@@ -127,7 +127,7 @@
         <div class="p-6 w-full">
           <nav id="nav-reports" class="navBtn w-full h-12">
             <a href="{{route('batchReports.index')}}" class="{{ 'admin/reports/Batch/index' == request()->path() ? 'bg-[#1abc9c]' : '' }}">الدفعات</a>
-           <a href="#" >المواطنين</a>
+           <a href="{{route('reports.citizenReport')}}" class="{{ 'admin/reports/citizen/index' == request()->path() ? 'bg-[#1abc9c]' : '' }}" >المواطنين</a>
             <a href="#">المراقبين</a>
             <a href="#">الموزعين</a>
             <a href="#">المديريات</a>

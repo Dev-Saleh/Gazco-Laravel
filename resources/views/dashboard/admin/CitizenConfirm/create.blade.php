@@ -6,7 +6,7 @@
         
               <div class="grid grid-cols-4">
                 <div class="col-start-2 col-end-4 bg-gray-200 w-100 h-40 justify-center items-center flex rounded-md">
-                  <span class="text-white text-2xl text-center"> <img id='attachment'>40 * 100 </img> </span>
+                  <img id='attachment'></img>
 
                 </div>
                 

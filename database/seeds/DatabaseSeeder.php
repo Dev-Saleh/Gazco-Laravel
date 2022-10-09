@@ -9,6 +9,7 @@ use App\Models\gazLogs;
 use App\Models\Station;
 use App\Models\logsBooking;
 use App\Models\employee;
+use App\Models\profile;
 
 use Illuminate\Database\Seeder;
 
@@ -146,7 +147,7 @@ class DatabaseSeeder extends Seeder
         // ################################ ( OBSERVER SEEDER ) ##########################
 
         $observerArray = array(
-            "ماهر عوض الحسيني",
+            "مازن عوض الحسيني",
             "يوسف عبدربه الخليفي",
             "محمود ناصر علي",
             "صلاح قاسم العليمي",
@@ -168,7 +169,7 @@ class DatabaseSeeder extends Seeder
             "خالد العودي",
         );
         $observerUsers = array(
-            "ماهر  ",
+            "مازن  ",
             "يوسف  ",
             "محمود  ",
             "صلاح  ",
@@ -377,6 +378,16 @@ for ($i = 0; $i < 30; $i++) {
     ]);
   }
   
+
+
+  ##################################(SETTING ADMIN)###############################
+
+  profile::create([
+    'numDaysBookingValid' => '14',
+    'nameMessage' => 'Gazco | Aden',
+    'contentMessage' => 'تم وصول دبة الغاز تعال لاستلامها',
+    
+]);
   }
     
 }
