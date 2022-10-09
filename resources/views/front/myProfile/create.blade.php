@@ -82,10 +82,14 @@
 
                     </div>
                     <hr />
-                    <div class="w-full px-4 pb-4 ml-auto text-gray-500 md:w-1/3">
+                    <div class="w-full px-4 pb-4 ml-auto text-gray-500 md:w-1/3 space-y-4">
                         <button type="submit" id='btnUpdateMyProfile'
                             class="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                             تغيير
+                        </button>
+                        <button 
+                            class="py-2 px-4  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                            <a href="{{route("logout")}}" class="text-[15px] mr-4 text-gray-200">تسجيل الخروج</a>
                         </button>
                     </div>
                 </div>

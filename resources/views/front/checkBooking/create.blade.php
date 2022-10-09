@@ -50,20 +50,20 @@
     </div>
    <!-- End Serach Section -->
    
-    <div class=" bg-white border-b rounded-xl border-gray-200 overflow-y-auto w-full " style="height:450px;">
+    <div class=" bg-white border-b rounded-xl border-gray-200 overflow-y-auto w-full " style="height:550px;">
       <table class="min-w-full divide-y divide-gray-200">
         <thead class="bg-gray-50">
           <tr>
         
-            <th scope="col" class="px-4 py-3 text-center  font-medium text-gray-900 uppercase tracking-wider">
+            <th scope="col" class="px-4 py-3 text-center  font-medium text-gray-900 ">
               الرقم
             </th>
 
-            <th scope="col" class="px-4 py-3 text-center  font-medium text-gray-900 uppercase tracking-wider">
+            <th scope="col" class="px-4 py-3 text-center  font-medium text-gray-900  ">
               اسم المواطن
             </th>
             
-            <th scope="col" class="px-6 py-3 text-center  font-medium text-gray-900 uppercase tracking-wider">
+            <th scope="col" class="px-6 py-3 text-center  font-medium text-gray-900  ">
               تاريخ و وقت الحجز
             </th>
             

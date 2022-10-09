@@ -118,18 +118,18 @@
         <div class="grid grid-cols-2 grid-rows-2 gap-10 p-4 h-full ">
 
           <div class="group   bg-pink-500 w-full h-36 rounded-md shadow-sm flex flex-col justify-center items-center space-y-2 hover:animate-wiggle ">
-                  <p class="text--900 text-lg">عدد الدفعات</p>
-                  <span id='batchCount' class="text-teal-200 text-base bg-teal-700  p-2 py-1 group-hover:animate-bounce">19</span>
+                  <p class="text-pink-900 text-lg">عدد الدفعات</p>
+                  <span id='batchCount' class="text-pink-200 text-base bg-pink-700  p-2 py-1 group-hover:animate-bounce">19</span>
           </div>
           <div class="group -none  bg-indigo-500 w-full h-36 rounded-md shadow-sm  flex flex-col justify-center items-center space-y-2 hover:animate-wiggle ">
-            <p class="text-purple-900 text-lg">اجمالي الدفعات</p>
-            <span id='batchResult' class="text-purple-200 text-base bg-purple-700  p-2 py-1 group-hover:animate-bounce">11</span>
+            <p class="text-indigo-900 text-lg">اجمالي الدفعات</p>
+            <span id='batchResult' class="text-indigo-200 text-base bg-indigo-700  p-2 py-1 group-hover:animate-bounce">11</span>
           </div>
           <div class="group -none  bg-rose-500 w-full h-36 rounded-md shadow-sm  flex flex-col justify-center items-center space-y-2 hover:animate-wiggle ">
-            <p class="text-yellow-900 text-lg"> التي تم فتح الحجز</p>
-            <span id='allowBookingCount' class="text-yellow-200 text-base bg-yellow-700  p-2 py-1 group-hover:animate-bounce">10</span>
+            <p class="text-rose-900 text-lg"> التي تم فتح الحجز</p>
+            <span id='allowBookingCount' class="text-rose-200 text-base bg-rose-700  p-2 py-1 group-hover:animate-bounce">10</span>
           </div>
-          <div  class="group -none  bg-emerald-500 w-full h-36 rounded-md shadow-sm  flex flex-col justify-center items-center space-y-2 hover:animate-wiggle ">
+          <div  class="group -none  bg-sky-500 w-full h-36 rounded-md shadow-sm  flex flex-col justify-center items-center space-y-2 hover:animate-wiggle ">
             <p class="text-sky-900 text-lg"> التي لم يتم فتح الحجز </p>
             <span id='anyThings' class="text-sky-200 text-base bg-sky-700  p-2 py-1 group-hover:animate-bounce">00</span>
           </div>

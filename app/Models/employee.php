@@ -13,7 +13,7 @@ class employee extends Model
   
     public function getempRoleAttribute($value)
     {
-        return  $value  == 0 ?  "مستخدم"   : "مسئول" ;
+        return  $value  == 0 ?  "مستخدم"   : "مسؤول" ;
     }
   
     

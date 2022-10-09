@@ -85,7 +85,7 @@
                          {
                             $('#fetchLestGazLogs').prepend
                             (
-                                '<tr><td><img src="/assest/Dev-SL.jpeg">\
+                                '<tr><td>\
                                 <p>'+gazLogs.agent.agentName+'</p></td>\
                                 <td>'+gazLogs.created_at+'</td>\
                                 <td><span class="status completed">تم الاستلام</span></td>\

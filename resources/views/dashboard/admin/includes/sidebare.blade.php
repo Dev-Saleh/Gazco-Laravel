@@ -44,7 +44,7 @@
         </a>
         @endif
         
-        @if(session()->get('empRole')=='مسئول')
+        @if(session()->get('empRole')=='مسؤول')
          <a href="{{route('agent.index')}}" class="{{ 'admin/agent/index' == request()->path() ? 'bg-indigo-500' : '' }}
               flex justify-between
                 w-full p-4 
@@ -58,7 +58,7 @@
         </a>
         @endif
         
-        @if(session()->get('empRole')=='مسئول')
+        @if(session()->get('empRole')=='مسؤول')
         <a href="{{route('observer.index')}}" class=" {{ 'admin/observer/index' == request()->path() ? 'bg-indigo-500' : '' }}
                 flex justify-between
                 w-full p-4 
@@ -119,7 +119,7 @@
           <i class="fa-light fa-city"></i>
         </a>
         @endif
-        @if(session()->get('empRole')=='مسئول')
+        @if(session()->get('empRole')=='مسؤول')
           <a href="{{route('directorate.index')}}"  class=" {{ 'admin/directorate/index' == request()->path() ? 'bg-indigo-500' : '' }}
          flex justify-between
                 w-full p-4 
@@ -145,7 +145,7 @@
           <i class="fas fa-tablet-alt mr-3"></i>
         </a>
         @endif
-        @if(session()->get('empRole')=='مسئول')
+        @if(session()->get('empRole')=='مسؤول')
         <a href="{{route('employee.index')}}" class=" {{ 'admin/employee/index' == request()->path() ? 'bg-indigo-500' : '' }}
         flex justify-between
                 w-full p-4 

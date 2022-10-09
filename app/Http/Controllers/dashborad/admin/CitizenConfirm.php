@@ -4,7 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Citizen;
 use App\Models\logsBooking;
 use Illuminate\Http\Request;
-use App\Models\logsBooking;
+
 
 class CitizenConfirm extends Controller
 {
@@ -78,11 +78,7 @@ class CitizenConfirm extends Controller
                         )->select('id','agentId','obsName')->get();
                     }
                   ])->select('id','attachment','citName','created_at','identityNum','dirId','rigId','obsId','checked')->find($request -> citId);  // search in given table id only
-<<<<<<< HEAD
-                  $numberOfReceipt=logsBooking::where('statusBooking','1')->where('citId',$citizen->id)->get();
-=======
                  
->>>>>>> 659a9b50420dffcdb046bdfc56623d745594b0e5
                   if (!$citizen)
                     return response()->json(
                       [
@@ -94,16 +90,10 @@ class CitizenConfirm extends Controller
 
                   return response()->json(
                     [
-<<<<<<< HEAD
-                      'status'            => true,
-                      'citizen'           => $citizen, 
-                      'numberOfReceipt'   => $numberOfReceipt->count(),     
-=======
                       'status'         => true,
                       'citizen'        => $citizen,
                       'bookingNumber'  => $bookingNumber->count(),
 
->>>>>>> 659a9b50420dffcdb046bdfc56623d745594b0e5
                     ]
                 ); 
 

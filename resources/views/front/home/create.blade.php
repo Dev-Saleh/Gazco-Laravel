@@ -63,7 +63,7 @@
                     <input type="text" name='numBatch' id="numBatch" style="display:none;" class="form-control">
 
                     <p class="text-center text-2xl text-gray-700">
-                        أحجز بالنقر على الدبه 😉
+                        احجز بالنقر على الاسطوانه
                     </p>
                     <button type="submit" id='saveBooking' idCitizen="{{ session()->get('idCitizen') }}"
                         class="saveBooking flex flex-col disabled:opacity-50 disabled:cursor-not-allowed p-0">
@@ -95,8 +95,8 @@
                 </li>
                 <li class="text-lg text-yellow-900"> ملاحظات:
                     <span class="text-yellow-700 text-sm font-bold">
-                        اذا حجزت الان سوف يتم حظرك عن الحجز لمدة <small id="validDays"
-                            class="text-yellow-700 text-sm font-bold"></small> ايام
+                        اذا حجزت الان سوف يتم ايقافك عن الحجز لمدة <small id="validDays"
+                            class="text-yellow-700 text-sm font-bold"></small> يوم
                     </span>
                 </li>
             </ul>

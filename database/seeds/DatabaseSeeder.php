@@ -231,6 +231,7 @@ class DatabaseSeeder extends Seeder
                 'obsName' => $observerArray[$i],
                 'obsUserName' =>  $observerUsers[$i],
                 'obsPassword' => rand(9999, 999999),
+                // 'obsPassword' => '123',
                 'dirId' => $aa,
                 'rigId' => $cc,
                 'agentId' => $agentsId[$i],
@@ -245,7 +246,7 @@ class DatabaseSeeder extends Seeder
 
 
         //      ################################ ( GAZ_LOG SEEDER ) ##########################
-
+        $faker = Faker\Factory::create();
         for ($i = 0; $i < 50; $i++) {
             // $aa = Directorate::all()->random()->id;
             // $zz = Rigon::select()->where('directorate_id', $aa)->get();
@@ -258,7 +259,7 @@ class DatabaseSeeder extends Seeder
             $aa = Directorate::all()->random()->id;
             $bb = Rigon::select()->where('dirId', $aa)->get();
             $cc = $bb->random()->id;
-            $mm = Agent::select()->where('dirId', $aa)->get();
+            $mm = Agent::select()->where('dirId', $cc)->get();
             $tt= $mm->random()->id;
 
             $rr=rand(90,100);
@@ -271,6 +272,7 @@ class DatabaseSeeder extends Seeder
                 'agentId'      => $tt,
                 'notice'       => ' ',
                 'statusBatch'  => rand(1, 3),
+                'created_at'   =>  $faker->dateTimeBetween($startDate = '01-09-2022', $endDate = '30-09-2022'),
            
                
                 
@@ -321,6 +323,7 @@ class DatabaseSeeder extends Seeder
                 'identityNum' => rand(999999, 9999999),
                 'attachment' => Str::random(10),
                 'citPassword' => rand(9999, 99999),
+                // 'citPassword' => '123',
                 'dirId' => $aa,
                 'rigId' => $cc,
                 'obsId' =>'1',
@@ -349,7 +352,8 @@ class DatabaseSeeder extends Seeder
     employee::create([
         'empFullName' => $employeeArray[$i],
         'empUserName' => $employeeUserArray[$i],
-        'empPassword' => rand(000,999),
+        'empPassword' => rand(000,123),
+        // 'empPassword' => '123',
         'empPhoto' => Str::random(10),
         'empRole' => rand(0,1),
         
@@ -370,7 +374,7 @@ for ($i = 0; $i < 30; $i++) {
      $ggl = $gl->random()->id;
   
     logsBooking::create([
-        'recivingDate' => '2022-01-01',
+        'recivingDate' => $faker->dateTimeBetween($startDate = '01-09-2022', $endDate = '30-09-2022'),
         'statusBooking' => rand(0,1),
         'citId' => $cbb,
         'numBatch' => $ggl,
@@ -385,7 +389,7 @@ for ($i = 0; $i < 30; $i++) {
   profile::create([
     'numDaysBookingValid' => '14',
     'nameMessage' => 'Gazco | Aden',
-    'contentMessage' => 'تم وصول دبة الغاز تعال لاستلامها',
+    'contentMessage' => 'تم وصول اسطوانة الغاز تعال لاستلامها',
     
 ]);
   }

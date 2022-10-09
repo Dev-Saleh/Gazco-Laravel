@@ -23,13 +23,13 @@
                                 $('#fetchAllCitizenBooking').html("");
                                   $.each(data.logBookings,function (key , logBooking){
                                     $('#fetchAllCitizenBooking').append('<tr>\
-                                    <td class="text-center p-4 whitespace-nowrap">\
+                                    <td class="text-center p-4 whitespace-wrap">\
                                     <div class="text-sm text-gray-700">'+logBooking.id+'</div>\
                                     </td>\
-                                    <td class="text-center p-4 whitespace-nowrap">\
+                                    <td class="text-center p-4 whitespace-wrap">\
                                       <div class="text-sm text-gray-700">'+logBooking.citizen.citName+'</div>\
                                     </td>\
-                                    <td class="text-center p-4 whitespace-nowrap">\
+                                    <td class="text-center p-4 whitespace-wrap">\
                                       <div class="text-sm text-gray-700">'+logBooking.created_at+'</div>\
                                     </td>\
                                   </tr>');

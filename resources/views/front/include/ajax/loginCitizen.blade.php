@@ -1,3 +1,0 @@
-@section('script')
-
-@stop
