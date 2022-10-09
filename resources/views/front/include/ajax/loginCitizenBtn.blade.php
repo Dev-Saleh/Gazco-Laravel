@@ -21,6 +21,7 @@ $(document).on('click', '#loginCitizenBtn', function(e) {
             newAlert(data.alertType,data.msg);
         },
         error: function(reject) {
+            console.log('sss');// for test;
 
         }
     });
