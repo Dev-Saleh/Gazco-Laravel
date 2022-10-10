@@ -91,7 +91,7 @@ class homeController extends Controller
     {   
         // فييييين ال RETURN ???????????????????
         try
-         {       $profile = profile::select()->first();
+         {          $profile = profile::select()->first();
                     $citizen = Citizen::find($request -> citId);
                     $lastBatchOpenBooking=gazLogs::where('statusBatch','2')->where('agentId',$citizen->observer->agentId)->latest('id')->first();
                     $citizenBookingValid=''; 
@@ -106,21 +106,24 @@ class homeController extends Controller
 
                     else  $citizenBookingValid='true'; // if no have records
 
-                if($lastBatchOpenBooking && $citizenBookingValid=='true') // if has records
+                   
+
+
+                if( $lastBatchOpenBooking && $citizenBookingValid=='true' ) // if has records
                 {
-                        if($lastBatchOpenBooking->qtyRemaining > '0' )  
+                        if( $lastBatchOpenBooking->qtyRemaining > '0'  )  
                         {  
                         
-                                return response()->json(
-                                [
-                                    'status'     => true,
-                                    'msg'        => '1',   //1='مصرح لك بالحجز' 
-                                    'number'        => $numdays, 
-                                    'validDays'=> $profile->numDaysBookingValid,
-                                    'lastGazLogs'=> $numdays->format('%R%a'),
-                                    //for Test
-                                    
-                                ]);
+                                return response()->json
+                                (
+                                    [
+                                        'status'       => true,
+                                        'msg'          => '1',   //1='مصرح لك بالحجز' 
+                                        'lastGazLogs'  => $lastBatchOpenBooking,
+                                        'validDays'    => $profile->numDaysBookingValid,
+                                        //for Test    
+                                    ]
+                                );
                         }
                        
                 }
@@ -141,7 +144,7 @@ class homeController extends Controller
                             'status' => false,
                             'msg' =>'3',   //3='لايوجد كمية مفتوحة الحجز'
                             'validDays'=> $profile->numDaysBookingValid,
-                            'last'=>$citizenBookingValid,
+                            'last'=>$citizenBookingValid,               
                         ]);
                 }
                 
@@ -152,14 +155,16 @@ class homeController extends Controller
         }
        catch (\Exception $ex) 
          {
-            return response()->json(
-            [
-                'status'          => false,
-                'msg'             => 'Error In Function Show',
-                'exceptionErrore' => $ex,
-                'lastGazLogs'     => $lastBatchOpenBooking,
-                 'validDays'=> $profile,
-             ]);
+            return response()->json
+            (
+                [
+                    'status'          => false,
+                    'msg'             => 'Error In Function Show',
+                    'exceptionErrore' => $ex,
+                    'lastGazLogs'     => $lastBatchOpenBooking,
+                    'validDays'       => $profile,
+                ]
+            );
          }
     }
 

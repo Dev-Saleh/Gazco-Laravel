@@ -38,6 +38,8 @@ class loginObserverController extends Controller
                session()->put('obsId',$obsInfo->id);
                session()->put('obsUserName',$obsInfo->obsUserName);
            
+               
+           
                return redirect()->route('observer.dashboard');
              }
         

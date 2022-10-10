@@ -15,7 +15,7 @@
                         },
                     success: function (data) 
                     {
-                       console.log(data); 
+                        console.log(data); 
                         if (data.msg == '1' ) 
                         {  
                                 // في خطأ بالالوان
@@ -24,8 +24,7 @@
                                 document.getElementById('status_msg').classList.replace('border-transparent','border-green-600');
                                 document.getElementById('status_msg').classList.replace('text-gray-900','text-green-900');
                                 document.getElementById('gazImg').classList.add('animate-wiggle');
-                                $('#status_msg').text('مصرح لك بالحجز');     
-                            
+                                $('#status_msg').text('مصرح لك بالحجز');                                 
                                 $('.numBatch').text(data.lastGazLogs.id); 
                                 $('#numBatch').val(data.lastGazLogs.id);
                                 $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
@@ -39,26 +38,22 @@
                                 document.getElementById('status_msg').classList.replace('border-transparent','border-red-600');
                                 document.getElementById('status_msg').classList.replace('text-gray-900','text-red-900');
                                 $('#status_msg').text('انت محظور يا حلو');
-                                 $('#validDays').text(data.validDays);
-                              //$('numBatch').text(data.lastGazLogs.id);
-                              //$('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
+                                $('#validDays').text(data.validDays);
+                                $('#numBatch').text(data.lastGazLogs.id);
+                                $('.numBatch').text(data.lastGazLogs.id);
+                                $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
 
                         }
                         else if(data.msg == '3')
                         {
-                              // في خطأ بالالوان
+                                // في خطأ بالالوان
                                 window.saveBooking.setAttribute('disabled','disabled');
                                 document.getElementById('status_msg').classList.replace('bg-transparent','bg-gray-200');
                                 document.getElementById('status_msg').classList.replace('border-transparent','border-gray-600');
                                 document.getElementById('status_msg').classList.replace('text-gray-900','text-gray-900');
                                 $('#status_msg').text('لايوجد كمية مفتوحة الحجز');
-                                 $('#validDays').text(data.validDays);
-                          
-                      
+                                $('#validDays').text(data.validDays);
                         }
-                        
-                    
-                      
                     
                     }, error: function (reject) {
 

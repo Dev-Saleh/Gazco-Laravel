@@ -5,7 +5,7 @@
       <div class="p-6 flex items-center flex-col space-y-2">
         <div class="avatar ">
           <div class="rounded-3xl w-24 h-24">
-            <img class="rounded-full"  id='adminPhoto' src="{{ asset('assets/images/sl.jpg') }}">
+            <img class="rounded-full"  id='adminPhoto' src="{{session()->get('empPhoto')}}">
           </div>
         </div>
         <a href="" class="text-white text-xl font-semibold hover:text-gray-300">

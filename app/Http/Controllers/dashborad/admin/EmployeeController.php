@@ -18,7 +18,7 @@ class EmployeeController extends Controller
         {
             $data = [];
             $data['employees']=employee::select('id','empUserName','empRole','empPhoto')->orderby('id','DESC')->get();
-             return view('dashboard.admin.employees.index',$data);
+            return view('dashboard.admin.employees.index',$data);
        }
        catch (\Exception $ex)
         {
