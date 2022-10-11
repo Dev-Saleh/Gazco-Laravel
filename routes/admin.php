@@ -144,6 +144,7 @@ Route::group(['namespace' => 'dashborad\observer','middleware' => 'authObserver'
     Route::post('store', 'CitizenController@store')->name('citizes.store');
     Route::delete('delete/{id?}','CitizenController@destroy')->name('citizen.destroy');
     Route::get('edit/{id?}', 'CitizenController@edit')->name('citizen.edit');
+    Route::post('search', 'CitizenController@search')->name('citizen.search');
     Route::post('update', 'CitizenController@update')->name('citizen.update');
     Route::get('show_All', 'CitizenController@show_All')->name('citizen.show_All');
     

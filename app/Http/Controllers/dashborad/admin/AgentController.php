@@ -166,15 +166,24 @@ class AgentController extends Controller
                                 ]
                             )
                             ->select('id','Photo','agentName','dirId')
-                            //->where('agentName','Like','%'.$request->inputSearch.'%')
-                        //->where('agentName','REGEXP',".*".$request->inputSearch) //for test
-                         ->where('agentName','REGEXP',"(".$a."|".$b."|".$c."|".$d."|".$e."|".$f."|".$g."|".$h."|".$i.")") //for test
-                        // ->where('agentName','REGEXP',"(.*".$request->inputSearch.".*)") //for test
-                    
-                        //->where('agentName','REGEXP',"[أاء]") //for test
-                        
-                        ->get();
+                            ->where('agentName','REGEXP',"(".$a."|".$b."|".$c."|".$d."|".$e."|".$f."|".$g."|".$h."|".$i.")") //for test
+                            ->get();
                         }
+                        else
+                            {
+                                $resultSearch=Agent::with
+                                (
+                                    [
+                                        'directorate'=>function($q)
+                                        {
+                                            $q->select('id','dirName')->get();
+                                        }
+                                        ]
+                                    )
+                                    ->select('id','Photo','agentName','dirId')
+                                    ->where('agentName','Like','%'.$request->inputSearch.'%')->get();
+                            }
+
                   }
                     else if( $request->filterSearch=='dirId' )
                     {

@@ -358,20 +358,21 @@
     <div class="grid grid-cols-2 gap-x-10">
         <div class=" col-span-1 mx-auto w-full scroll-m-10">
             {{-- START SEARCH FORM --}}
+            <form action="" method="Post" id='citizenSearch'>
+             @csrf
             <div class="flex mx-auto w-full my-0 bg-white rounded-full shadow-md py-2 px-4">
 
 
-                <select id="filterSearch"
+                <select id="filterSearch" name="filterSearch"
                     class="bg-gray-50 border h-10 border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-40 p-2.5">
-                    <option selected>بحث الكل</option>
-                    <option value="cn">الاسم</option>
-                    <option value="cn">الرقم الوطني</option>
-                    <option value="dr">المديريه</option>
-                    <option value="sq">المربع</option>
+                    <option value="all" selected>بحث الكل</option>
+                    <option value="citName">الاسم</option>
+                    <option value="id">الرقم الوطني</option>
+                    <option value="identityNum">رقم الهويه</option>
                 </select>
 
                 <div class="relative w-full">
-                    <button type="submit"
+                    <button type="submit" id='search'
                         class="h-10 absolute top-0 left-0 px-2 text-sm font-medium text-white bg-blue-700 rounded-l-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -380,11 +381,11 @@
                         </svg>
                         <span class="sr-only">بحث</span>
                     </button>
-                    <input type="search" id="search-dropdown"
+                    <input type="search" id="search-dropdown" name="inputSearch"
                         class="h-10 block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-l-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-50 focus:border-blue-500  dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
                         placeholder="ابحث عن اسم مواطن ..." required="">
                 </div>
-
+             </form>
             </div>
             {{-- END SEARCH FORM --}}
             <div class=" relative overflow-y-auto" style="height: 550px;">
