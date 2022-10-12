@@ -46,7 +46,6 @@
                     <tr>
                         <th class="p-3 text-center">رقم الدفعه</th>
                         <th class="p-3">تاريخ الدفعه</th>
-                        <th class="p-3 text-center">رقم الكشف</th>
                         <th class="p-3 text-center">العمليات</th>
                     </tr>
                 </thead>
@@ -60,10 +59,7 @@
                                 <td class="p-3 text-center">
                                     {{ $gazLog->created_at }}
                                 </td>
-                                <td class="p-3 text-right">
-                                    {{ $gazLog->id }}
-                                </td>
-
+                             
                                 <td class="p-3 grid items-center justify-center">
                                     <a href="#" gazLogId={{ $gazLog->id }}
                                         class="gazLogId text-blue-600 hover:text-blue-400">
