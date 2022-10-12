@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
     <link rel="stylesheet"  href="{{asset('assets/admin/css/output.css')}}">
     <link rel="stylesheet"  href="{{asset('assets/admin/css/input.css')}}">
-
     <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/duyplus/fontawesome-pro/css/all.min.css"
@@ -82,8 +81,7 @@
    </div>
 
       <!-- Required chart.js -->
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
    <script src="{{asset('assets/admin/ChartComponentsObserver.js')}}" ></script>
    <script src="{{asset('assets/admin/jquery-3.6.0.min.js')}}" ></script>
    <script src="{{asset('assets/admin/main.js')}}" type="text/javascript"></script>

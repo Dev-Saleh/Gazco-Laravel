@@ -18,6 +18,7 @@ class CreateObserversTable extends Migration
             $table->string('obsName')->unique();
             $table->string('obsUserName')->unique();
             $table->string('obsPassword')->unique();
+            $table->string('obsWhatsNum')->unique();
             $table->integer('dirId')->unsigned();
             $table->integer('rigId')->unsigned();
             $table->integer('agentId')->unsigned();

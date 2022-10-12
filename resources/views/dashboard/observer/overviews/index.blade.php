@@ -12,7 +12,7 @@
                 <span
                     class="absolute p-2.5 rounded-md rotate-45 bg-purple-200 px-3 group-hover:right-40 right-20  transition-all duration-1000">
                     <p class="text-emerald-800 -rotate-45 text-center ">
-                        {{ App\Models\Citizen::count() }}
+                        {{ App\Models\Citizen::where('obsId',session()->get('obsId'))->count() }}
                     </p>
                 </span>
             </div>
@@ -25,7 +25,8 @@
                 <span
                     class="p-2.5 rounded-md rotate-45 bg-rose-200 px-3 group-hover:-translate-x-10 translate-x-5  transition-all duration-1000">
                     <p class="text-emerald-800 -rotate-45 text-center ">
-                        {{ App\Models\gazLogs::count() }}
+                    <?php $v=App\Models\Observer::where('id',session()->get('obsId'))?>
+                        {{ App\Models\gazLogs::where('agentId',$v)->count() }}
                     </p>
                 </span>
             </div>
@@ -89,7 +90,7 @@
             <canvas class="p-2 h-96 w-96" id="chartPie"></canvas>
           </div>
           
-          
+
         </div>
         {{-- End Chart Section --}}
         <br/>
