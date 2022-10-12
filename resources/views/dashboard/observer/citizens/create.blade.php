@@ -291,6 +291,8 @@
                                     <option value="1">أم</option>
                                     <option value="2">أخ</option>
                                     <option value="3">أخت</option>
+                                    <option value="4">إبن</option>
+                                    <option value="5">إبنته</option>
                                 </select>
                                 <label for="select"
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">صلة القرابه</label>
@@ -308,9 +310,26 @@
                     <!-- GRID THREE -->
 
                     <!-- GRID THREE -->
-                    <div class="grid grid-cols-1 gap-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="span-col-1 flex flex-col items-center">
 
-                        <div class="p-2 bg-transparent text-center rounded-3xl">
+                            <label for="file-ip-1"
+                                class="px-10 relative cursor-pointer bg-white rounded-xl font-medium text-black hover:text-black focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-black border-2 border-black">
+                                <span>رفع صورة الهويه</span>
+                                <input id="file-ip-1" name='attachmentFm' accept="image/*"
+                                    onchange="showPreviewFm(event);" type="file" class="sr-only">
+                            </label>
+
+                            <div
+                                class="mt-4 flex h-48 w-full  border-2 bg-gray-200 border-gray-500 border-dashed rounded">
+                                <img class="rounded w-full  object-cover" src="" id="Fm-preview"
+                                    alt="" style="display: none;" class="w-52 h-28">
+                            </div>
+                            <small id='attachment_error' style='color:red'></small>
+
+                        </div>
+
+                        <div class="p-20 bg-transparent text-center sm:px-6  rounded-3xl">
                             <!-- Base -->
 
                             <button type="submit" id='fmSave'>

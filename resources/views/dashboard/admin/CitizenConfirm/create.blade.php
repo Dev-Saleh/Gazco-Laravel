@@ -64,7 +64,18 @@
                 </ul>
               </div>
               <!-- END List Details For Prooudct -->
-        
+              
+              <div class="p-8 bg-transparent text-center sm:px-6  rounded-3xl">
+                <button  id=''>
+                    <a href=" رقم جوال الواتس حق المراقب اللذي اضاف المواطن" class="  rounded-lg relative w-72 inline-block px-8 py-3 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring" href="/download">
+                        <span class="absolute inset-x-0 top-0 h-full transition-all bg-indigo-600 group-hover:h-[1px] group-active:bg-indigo-500"></span>
+                      
+                        <span class="relative text-sm font-medium text-indigo-50 transition-colors group-hover:text-indigo-500">
+                          ارسال طلب تعديل
+                        </span>
+                      </a>                                      
+                </button>
+            </div>
            
               
             </div>
@@ -81,8 +92,8 @@
                
             <select id="filterCitConfirmSearch" name="filterCitConfirmSearch" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-40 p-2.5">
                 <option value="all" selected>بحث الكل</option>
-                <option value="citName">الاسم</option>
-                <option value="identityNum">رقم الوطني</option>
+                <option value="citName">اسم المواطن</option>
+                <option value="identityNum">رقم الهويه</option>
             </select>
        
             <div class="relative w-full">

@@ -113,26 +113,47 @@
                         </div>
                     </div>
                     <!-- GRID THREE -->
-                    <div class="mt-1 px-4 py-3 bg-transparent text-center sm:px-6  rounded-3xl">
-                        <button type="submit" id='saveObserver'>
-                        <a class="rounded-lg relative w-72 inline-block p-2 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring" href="/download">
-                            <span class="absolute inset-x-0 top-0 h-full transition-all bg-indigo-600 group-hover:h-[1px] group-active:bg-indigo-500"></span>
-                          
-                            <span class="relative text-sm font-medium text-indigo-50 transition-colors group-hover:text-indigo-500">
-                              أضافة المراقب
-                            </span>
-                          </a>
-                        </button>
-                        <button type="submit" id='updateObserver' style='display:none;'>
-                             <a class="  rounded-lg relative w-72 inline-block px-8 py-3 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring" href="/download">
-                            <span class="absolute inset-x-0 top-0 h-full transition-all bg-indigo-600 group-hover:h-[1px] group-active:bg-indigo-500"></span>
-                          
-                            <span class="relative text-sm font-medium text-indigo-50 transition-colors group-hover:text-indigo-500">
-                               تعديل المراقب
-                            </span>
-                          </a>
-                        </button>
+                    <div class="grid grid-cols-6 gap-4">
+
+                        <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
+                            <div class="relative z-0 w-full">
+                                <input type="text" name="obsWhatsappNum" id="obsWhatsappNum" placeholder=" "
+                                    required
+                                    class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
+                                  appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
+                                  hover:border-blue-600 text-blue-900" />
+                                <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">
+                                    رقم الواتس للشكاوي
+                                    </label>
+                                <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
+                                <small id='obsWhatsappNum_error' style='color:red'></small>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-4  mt-1 px-4 py-3 bg-transparent text-center sm:px-6  rounded-3xl">
+                            <button type="submit" id='saveObserver'>
+                            <a class="rounded-lg relative w-72 inline-block p-2 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring" href="/download">
+                                <span class="absolute inset-x-0 top-0 h-full transition-all bg-indigo-600 group-hover:h-[1px] group-active:bg-indigo-500"></span>
+                              
+                                <span class="relative text-sm font-medium text-indigo-50 transition-colors group-hover:text-indigo-500">
+                                  أضافة المراقب
+                                </span>
+                              </a>
+                            </button>
+                            <button type="submit" id='updateObserver' style='display:none;'>
+                                 <a class="  rounded-lg relative w-72 inline-block px-8 py-3 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring" href="/download">
+                                <span class="absolute inset-x-0 top-0 h-full transition-all bg-indigo-600 group-hover:h-[1px] group-active:bg-indigo-500"></span>
+                              
+                                <span class="relative text-sm font-medium text-indigo-50 transition-colors group-hover:text-indigo-500">
+                                   تعديل المراقب
+                                </span>
+                              </a>
+                            </button>
+                        </div>
+
+                        
                     </div>
+                    
 
             </form>
         </div>
@@ -158,7 +179,7 @@
                     <option value="all" selected>بحث الكل</option>
                     <option value="obsName">اسم المراقب</option>
                     <option value="agentId">الوكيل المراقب عليه</option>
-                    <option value="id">الرقم</option>
+                    <option value="id">رقم المراقب</option>
                     <option value="dirId">المديريه</option>
                     <option value="rigId">المربع</option>
                 </select>

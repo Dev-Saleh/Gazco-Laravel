@@ -121,7 +121,7 @@ class homeController extends Controller
                                         'msg'          => '1',   //1='مصرح لك بالحجز' 
                                         'lastGazLogs'  => $lastBatchOpenBooking,
                                         'validDays'    => $profile->numDaysBookingValid,
-                                        //for Test    
+                                            
                                     ]
                                 );
                         }
@@ -134,7 +134,12 @@ class homeController extends Controller
                             'status' => false,
                             'msg' => '2', //2='انت محظور يا حلو' 
                             'validDays'=> $profile->numDaysBookingValid,
-                            'lastGazLogs'=> $numdays->format('%R%a'),
+                   
+                            'd'=> $numdays->d,
+                            'h'=> $numdays->h,
+                            'm'=> $numdays->m,
+                            's'=> $numdays->s,
+                            'full'=> $numdays,
                         ]);
                 }
                 else if(!$lastBatchOpenBooking && $citizenBookingValid=='true' || $citizenBookingValid=='false' )

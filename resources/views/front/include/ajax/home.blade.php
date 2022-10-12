@@ -3,7 +3,9 @@
  // Start load home By Ajax 
          
  
-        $(document).ready(function () {
+        $(document).ready(asd());
+            
+        function  asd () {
 
             $.ajax(
                 {
@@ -20,9 +22,9 @@
                         {  
                                 // في خطأ بالالوان
                                 $('.saveBooking').removeAttr("disabled");
-                                document.getElementById('status_msg').classList.replace('bg-transparent','bg-green-200');
-                                document.getElementById('status_msg').classList.replace('border-transparent','border-green-600');
-                                document.getElementById('status_msg').classList.replace('text-gray-900','text-green-900');
+                                document.getElementById('status_msg').classList.add('bg-green-200');
+                                document.getElementById('status_msg').classList.add('border-green-600');
+                                document.getElementById('status_msg').classList.add('text-green-900');
                                 document.getElementById('gazImg').classList.add('animate-wiggle');
                                 $('#status_msg').text('مصرح لك بالحجز');                                 
                                 $('.numBatch').text(data.lastGazLogs.id); 
@@ -34,23 +36,21 @@
                         else if(data.msg == '2')
                         {
                                 window.saveBooking.setAttribute('disabled','disabled');
-                                document.getElementById('status_msg').classList.replace('bg-transparent','bg-red-200');
-                                document.getElementById('status_msg').classList.replace('border-transparent','border-red-600');
-                                document.getElementById('status_msg').classList.replace('text-gray-900','text-red-900');
-                                $('#status_msg').text('انت محظور يا حلو');
+                                document.getElementById('status_msg').classList.add('bg-red-200');
+                                document.getElementById('status_msg').classList.add('border-red-600');
+                                document.getElementById('status_msg').classList.add('text-red-900');
+                                $('#status_msg').text('لقد تم ايقافك مؤقتاً');
                                 $('#validDays').text(data.validDays);
-                                $('#numBatch').text(data.lastGazLogs.id);
-                                $('.numBatch').text(data.lastGazLogs.id);
-                                $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
+                               
 
                         }
                         else if(data.msg == '3')
                         {
                                 // في خطأ بالالوان
                                 window.saveBooking.setAttribute('disabled','disabled');
-                                document.getElementById('status_msg').classList.replace('bg-transparent','bg-gray-200');
-                                document.getElementById('status_msg').classList.replace('border-transparent','border-gray-600');
-                                document.getElementById('status_msg').classList.replace('text-gray-900','text-gray-900');
+                                document.getElementById('status_msg').classList.add('bg-gray-200');
+                                document.getElementById('status_msg').classList.add('border-gray-600');
+                                document.getElementById('status_msg').classList.add('text-gray-900');
                                 $('#status_msg').text('لايوجد كمية مفتوحة الحجز');
                                 $('#validDays').text(data.validDays);
                         }
@@ -60,7 +60,7 @@
                     }
                }
             );
-        });
+        }
       
  
 
@@ -86,10 +86,10 @@
                     {
                         console.log(data);
                         if (data.status == true)
-                        {
+                        {   
                             newAlert(data.alertType,data.msg);
-                            $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
-                            $('.validDays').text(data.lastGazLogs.qtyRemaining);
+                            asd();
+                            
                         } 
                         if (data.status == false)
                         {
