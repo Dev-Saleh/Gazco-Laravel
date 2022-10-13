@@ -24,16 +24,16 @@
                                    hover:border-black text-black" />
                                 <label for="name"
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">اسم
-                                    المواطن</label>
+                                    المواطن  <small id='citName_error' style='color:green'>(رب الاسره 👨‍👧‍👦)</small></label>
                                 <span class="text-sm text-red-600 hidden" id="error">الاسم مطلوب !</span>
-                                <small id='citName_error' style='color:green'>رب الاسره</small>
+                                <small id='citName_error' style='color:red'></small>
                             </div>
                         </div>
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full">
                                 <input type="number" name="identityNum" id='identityNum' minlength="3" placeholder=" "
-                                    onchange="convertNumToIdentity(document.getElementById('identity_num').value);"
+                                    onchange="convertNumToIdentity(document.getElementById('identityNum').value);"
                                     class="hover:border-black pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
                                 <label for="name"
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">رقم
@@ -45,7 +45,7 @@
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
 
                             <div class="relative z-0 w-full ">
-                                <input type="number" name="citPassword" id='citPassword' placeholder=" "
+                                <input type="text" name="citPassword" id='citPassword' placeholder=" "
                                     class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none
                           hover:border-black focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
                                 <label for="password"
@@ -66,7 +66,7 @@
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full">
                                 <input type="number" name="mobileNum" id='mobileNum' placeholder=" "
-                                    onchange="Slugify(document.getElementById('proudct_slug').value);" id="proudct_slug"
+                                  
                                     class="hover:border-black pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
                                 <label for="name"
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">رقم
@@ -292,7 +292,7 @@
                                     <option value="2">أخ</option>
                                     <option value="3">أخت</option>
                                     <option value="4">إبن</option>
-                                    <option value="5">إبنته</option>
+                                    <option value="5">إبنه</option>
                                 </select>
                                 <label for="select"
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">صلة القرابه</label>
@@ -313,10 +313,10 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="span-col-1 flex flex-col items-center">
 
-                            <label for="file-ip-1"
+                            <label for="file-ip-2"
                                 class="px-10 relative cursor-pointer bg-white rounded-xl font-medium text-black hover:text-black focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-black border-2 border-black">
                                 <span>رفع صورة الهويه</span>
-                                <input id="file-ip-1" name='attachmentFm' accept="image/*"
+                                <input id="file-ip-2" name='attachmentFm' accept="image/*"
                                     onchange="showPreviewFm(event);" type="file" class="sr-only">
                             </label>
 
@@ -534,6 +534,10 @@
                                 <th scope="col"
                                     class="px-6 py-3 text-center  font-medium text-gray-900 uppercase tracking-wider">
                                   صلة القرابه
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-center  font-medium text-red-900 uppercase tracking-wider">
+                                 العمليات
                                 </th>
         
                             </tr>

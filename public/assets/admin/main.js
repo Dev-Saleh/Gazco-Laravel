@@ -118,7 +118,8 @@ function showPreviewUser(event){
 // تحويل رقم الوطني الى رقم باسوورد
  function convertNumToIdentity(numId)
  {  
-   const slugInput = document.getElementById('citizen_password');
+  console.log("convertNumToIdentity: " + numId);
+   const slugInput = document.getElementById('citPassword');
    slugInput.value = numId;
 
  }
@@ -137,8 +138,8 @@ function showPreviewUser(event){
  function deleteAlert()
  {
    const alert = document.getElementById('delete-alert');
-   const action = document.getElementById('action-div');
-   action.classList.replace('flex','hidden');
+  //  const action = document.getElementById('action-div');
+  //  action.classList.replace('flex','hidden');
    alert.classList.replace('hidden','flex');
   
  }

@@ -62,8 +62,8 @@
         <div class="flex flex-col w-full h-[150px] bg-emerald-400 relative rounded-md">
             <img src="{{ asset('assets/images/obshello.svg') }}" class="z-20 absolute left-2 -top-16 h-full w-[300px]" />
             <div class="flex">
-                <h1 class="pt-8 pr-6 text-2xl text-emerald-900"> مرحباً بك يا </h1>
-                <span id="adminName" class="pt-8 pr-2 text-2xl text-emerald-900">  {{session()->get('obsUserName')}} ...</span>
+                <h1 class="pt-8 pr-6 text-2xl text-emerald-100"> مرحباً بك يا </h1>
+                <span id="adminName" class="pt-8 pr-2 text-2xl text-emerald-100">  {{session()->get('obsUserName')}} ...</span>
             </div>
             <div class="flex">
                 <h1 class="pb-6 pt-2 pr-6 text-xl text-emerald-100"> أنت </h1>
