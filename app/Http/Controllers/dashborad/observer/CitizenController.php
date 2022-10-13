@@ -361,13 +361,13 @@ class CitizenController extends Controller
                             ]
                             )->select('id','agentId','obsName')->get();
                         }
-                      ])->select('id','citName','dirId','rigId','obsId')->find($request->id); //->where('obsId',$request->obsId) ذا الشرط لازم نتناقش عليه
+                      ])->select('id','citName','dirId','rigId','obsId','identityNum','checked')->find($request->id); //->where('obsId',$request->obsId) ذا الشرط لازم نتناقش عليه
                  
                     return response()->json(
                       [
                         'status'            => true,
                         'msg'               => 'تم تعديل بيانات المواطن بنجاح',
-                        'alertType'=> '.alertWarning',
+                        'alertType'         => '.alertWarning',
                         'attachment'        => $fileName,
                         'lastCitizenUpdate' => $lastCitizenUpdate,
                         'citId'             => $request->id,

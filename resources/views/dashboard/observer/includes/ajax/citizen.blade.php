@@ -235,8 +235,8 @@
                         console.log(data);  // For Test
                         if(data.status == true)
                         {
-                            newAlert(data.alertType,data.msg);
-
+                            $('#file-ip-1-preview').css('display', 'none');
+                            
                              $('#citName_error').text('');
                              $('#identityNum_error').text('');
                              $('#citPassword_error').text('');
@@ -245,7 +245,7 @@
                              $('#rigId_error').text('');
                              $('#attachment_error').text('');
 
-                           
+                             
                             $('#citId').val('');
                             //  $('#observer_Id').val(''); can not be null لاتفعل دا
                             $('#citName').val('');
@@ -258,7 +258,9 @@
                             $('.offerRow'+data.citId).remove(); // This Command must execute Befor Function  *fetchLastCitizen*
                             fetchLastCitizen(data.lastCitizenUpdate);
                             window.saveCitizen.style.display="inline-flex";
-                            window.updateCitizen.style.display="none";     
+                            window.updateCitizen.style.display="none";  
+                            newAlert(data.alertType,data.msg);
+   
                         }
                     }
                     ,error: function (reject) 

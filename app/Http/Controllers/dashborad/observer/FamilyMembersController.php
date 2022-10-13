@@ -16,8 +16,13 @@ class FamilyMembersController extends Controller
        
            try
                {  
-       
+                    $attachment =$request->attachmentFm;  
+                    $filename = uploadImageAndResize('familymember', $attachment , $width='220', $height='190');
+
                     $familyMember = familyMembers::create($request->except('_token'));
+                    
+                    $familyMember->attachment=$filename;
+
                     $familyMember->save();
 
                         if ($familyMember)

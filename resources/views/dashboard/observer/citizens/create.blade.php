@@ -93,7 +93,6 @@
                         </div>
 
 
-
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full mb-5">
                                 <select name="rigId" id='select_rigons' value="{{ $observers->rigId }}"

@@ -118,6 +118,7 @@
                         $('#obsName').val(''); 
                         $('#obsUserName').val('');
                         $('#obsPassword').val('');
+                        $('#obsWhatsNum').val('');
                         fetchLastObserver(data.lastObserver);
                     }
                   
@@ -170,11 +171,13 @@
                 },
                 success: function (data) {
                   console.log(data);
-                     if (data.status == true) {
+                     if (data.status == true) 
+                     {
                         $('#obsId').val(data.obs.id);
                         $('#obsName').val(data.obs.obsName); 
                         $('#obsUserName').val(data.obs.obsUserName);
                         $('#obsPassword').val(data.obs.obsPassword);
+                        $('#obsWhatsNum').val(data.obs.obsWhatsNum);
                         $('#select_directorates').val(data.obs.dirId);
                         $('#select_directorate').text(data.obs.directorate.dirName);
                         $('#select_rigons').val(data.obs.rigId);

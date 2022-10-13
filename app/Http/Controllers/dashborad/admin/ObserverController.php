@@ -207,7 +207,7 @@ class ObserverController extends Controller
                         $q->select('id','agentName')->get();
                     }
                 ]
-               )->select('id','obsName','obsUserName','obsPassword','dirId','rigId','agentId')->find($request->obsId); // search in given table id only
+               )->select('id','obsName','obsUserName','obsPassword','obsWhatsNum','dirId','rigId','agentId')->find($request->obsId); // search in given table id only
             if (!$observer)
                 return response()->json([
                     'status' => false,
