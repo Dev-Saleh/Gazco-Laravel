@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Observer extends Model
 {
     protected $table='observers';
-    protected $fillable = ['id','obsName','obsUserName','obsPassword','dirId','rigId','agentId'];
+    protected $fillable = ['id','obsName','obsUserName','obsPassword','obsWhatsNum','dirId','rigId','agentId'];
     public  $timestamps = false;
     public function directorate()
     {
