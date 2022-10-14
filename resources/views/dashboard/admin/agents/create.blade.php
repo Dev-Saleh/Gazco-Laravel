@@ -167,9 +167,9 @@
                             </td>
 
                             <td class="p-3 grid grid-cols-2 justify-center">
-                               
-                                <a href="#" agentId="{{ $agent->id }}"
-                                    class="agentDelete  text-red-400  hover:text-red-600  ">
+                              
+                                <a  onclick="deleteAlert($(this).attr('agentId'));" href="#" agentId="{{ $agent->id }}"
+                                    class="  text-red-400  hover:text-red-600  ">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

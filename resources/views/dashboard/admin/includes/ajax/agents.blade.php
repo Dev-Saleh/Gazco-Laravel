@@ -108,7 +108,8 @@
         // Start Deleteing Agent By Ajax 
         $(document).on('click', '.agentDelete', function(e) {
             e.preventDefault();
-            var agentId = $(this).attr('agentId');
+            document.getElementById('deletionPoping').classList.replace('flex','hidden');
+            var agentId = $(this).attr('value');
           
                 $.ajax({
                     type: 'delete',

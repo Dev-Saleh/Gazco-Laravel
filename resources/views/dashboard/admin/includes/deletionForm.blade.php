@@ -1,5 +1,5 @@
  <!-- This example requires Tailwind CSS v2.0+ -->
- <div id="delete-alert" class="hidden relative z-10" aria-labelledby="modal-title" role="" aria-modal="true">
+ <div value="" id="deletionPoping" class="hidden relative z-50" aria-labelledby="modal-title" role="" aria-modal="true">
 
      <div class="fixed inset-0 bg-gray-100 bg-opacity-70 transition-opacity"></div>
 
@@ -29,9 +29,14 @@
                      </div>
                  </div>
                  <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                     <button type="button"
-                         class="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">حذف</button>
-                     <button type="button"
+                      
+                        <button id="deletionPopingId" value=""
+                        class="citizenDelete agentDelete observerDelete gazLogDelete inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">
+                        <a href="">حذف</a>
+                       </button>
+
+                      
+                     <button type="button" onclick="getElementById('deletionPoping').classList.replace('flex','hidden');"
                          class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">إلغاء</button>
                  </div>
              </div>

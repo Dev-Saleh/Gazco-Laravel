@@ -135,7 +135,8 @@
 
         $(document).on('click', '.observerDelete', function (e) {
             e.preventDefault();
-              var obsId = $(this).attr('obsId');
+            document.getElementById('deletionPoping').classList.replace('flex','hidden');
+              var obsId = $(this).attr('value');
             $.ajax({
                 type: 'delete',
                 url: "{{route('observer.destroy')}}",
@@ -144,10 +145,14 @@
                      'obsId' :obsId, 
                 },
                 success: function (data) {
+                  $('.offerRow' + data.obsId).addClass("animate-fadeInLeft");
                      if (data.status == true) {
                       newAlert(data.alertType,data.msg);
                     }
-                    $('.offerRow'+data.obsId).remove();
+                    sleep(400).then(() => {
+                      $('.offerRow'+data.obsId).remove();
+                        });
+                   
                 }, error: function (reject) {
 
                 }

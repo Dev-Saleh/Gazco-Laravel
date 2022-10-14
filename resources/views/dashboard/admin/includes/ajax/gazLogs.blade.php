@@ -137,7 +137,8 @@
 
         $(document).on('click', '.gazLogDelete', function (e) {
             e.preventDefault();
-              var gazLogId = $(this).attr('gazLogId');
+            document.getElementById('deletionPoping').classList.replace('flex','hidden');
+              var gazLogId = $(this).attr('value');
             $.ajax({
                 type: 'delete',
                 url: "{{route('gazLogs.destroy')}}",

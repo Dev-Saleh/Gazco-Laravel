@@ -301,7 +301,9 @@ class ObserverController extends Controller
                 return response()->json([
                     'status' => true,
                     'msg' => 'تم الحذف بنجاح',
+                    'alertType'=> '.alertSuccess',
                     'obsId' => $request -> obsId,
+
             ]);
          } 
          catch (\Exception $ex) 
@@ -309,6 +311,7 @@ class ObserverController extends Controller
             return response()->json([
                 'status'         => false,
                 'msg'            => 'فشل بالحدف برجاء المحاوله مجددا',
+                'alertType'=> '.alertError',
                 'exceptionError' => $ex,
             ]);
           

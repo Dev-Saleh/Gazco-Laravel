@@ -69,9 +69,9 @@
         </p>
     </div>
     
-     {{-- <!-- begin deletionForm -->
+     <!-- begin deletionForm -->
      @include('dashboard.admin.includes.deletionForm')
-     <!-- end deletionForm --> --}}
+     <!-- end deletionForm -->
 
     {{-- end section Alert --}}
     <div id="wrapper" class="flex h-full relative">

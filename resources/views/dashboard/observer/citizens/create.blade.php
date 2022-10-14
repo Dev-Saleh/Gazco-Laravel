@@ -452,13 +452,10 @@
                           </td> --}}
 
                                     <td class="p-3 text-center ">
-                                        <div id="delete-alert" class=" h-10 w-28 rounded-full overflow-hidden hidden">
-                                            <button class="bg-green-200 w-14 hover:bg-green-400">Y</button>
-                                            <button class="bg-red-200 w-14 hover:bg-red-400">N</button>
-                                        </div>
+                                       
                                         <div id="action-div" class="flex justify-center">
-                                            <a onclick="deleteAlert();" href="#" citId="{{ $cit->id }}"
-                                                class="citizenDelete text-red-400  hover:text-red-600  ">
+                                            <a onclick="deleteAlert($(this).attr('citId'));" href="#" citId="{{ $cit->id }}"
+                                                class=" text-red-400  hover:text-red-600  ">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -543,19 +540,7 @@
                             </tr>
                         </thead>
                         <tbody id='showfamilyMember' class="bg-white divide-y divide-gray-200">
-                            {{-- <tr>
-                            
-                            <td class="text-center px-4 py-2 whitespace-nowrap">
-                              <div class="text-sm text-gray-700">صالح عبدالله صالح</div>  
-                            </td>
-                            <td class="text-center px-4 py-2 whitespace-nowrap">
-                              <input type="checkbox"  name='status_booking'  class="confirm">
-                            </td>
-                            <td class="text-center px-4 py-2 whitespace-nowrap">
-                              <input type="checkbox" class="sms"> 
-                            </td>
-                            
-                          </tr> --}}
+                          
                         </tbody>
                     </table>
                 </div>
