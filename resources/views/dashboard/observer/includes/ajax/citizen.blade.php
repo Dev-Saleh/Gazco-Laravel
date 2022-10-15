@@ -133,22 +133,11 @@
     // End Add citizen By Ajax 
      
     // Start Deleteing citizen By Ajax 
-    $(document).on('click', '.citizenDeletePopping', function (e)
-         {
-              e.preventDefault();
-              var citId = $(this).attr('citId');
-             window.deletionPopingId.setAttribute('value',citId);
-             document.getElementById('deletionPoping').classList.replace('hidden','flex');
-            
-        });
            
         $(document).on('click', '.citizenDelete', function (e)
          {
               e.preventDefault();
-              var citId = $(this).attr('value');
-            //   $('#deletionPoping').class(citId);
-            //  window.deletionPoping.setAttribute('value',citId);
-           
+              var citId = $(this).attr('value');           
              document.getElementById('deletionPoping').classList.replace('flex','hidden');
             $.ajax({
                     type: 'delete',
@@ -159,16 +148,20 @@
                     },
                     success: function (data) 
                     {
-                        if (data.status == true)
-                        $('.offerRow' + data.citId).addClass("animate-fadeInLeft");
+                        if (data.status == true)  
                         {
-                           
+                            $('.offerRow' + data.citId).addClass("animate-fadeInLeft");
                             newAlert(data.alertType,data.msg);
-                        }
+                        
                         sleep(400).then(() => {
                             $('.offerRow' +data.citId).remove();
                         });
-                      
+                         }
+
+                         elseif (data.status == false){
+                            newAlert(data.alertType,data.msg);
+                         }
+
 
                     }, error: function (reject) {
 
