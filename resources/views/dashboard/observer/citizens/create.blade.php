@@ -233,7 +233,7 @@
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full">
-                                <input type="number" name="identityNum" id='identityNum' minlength="3"
+                                <input type="number" name="identityNum" id='identityNumber' minlength="3"
                                     placeholder=" "
                                     onchange="convertNumToIdentity(document.getElementById('identity_num').value);"
                                     class="hover:border-black pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
@@ -286,6 +286,7 @@
                                 <select name="relationship" id='selectRelationship' value="أب"
                                     onclick="this.setAttribute('value', this.value);"
                                     class="hover:border-black pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-black appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
+                                    {{-- <option value="" id='Option'selected disabled hidden></option> --}}
                                     <option value="0">أب</option>
                                     <option value="1">أم</option>
                                     <option value="2">أخ</option>
@@ -321,7 +322,7 @@
 
                             <div
                                 class="mt-4 flex h-48 w-full  border-2 bg-gray-200 border-gray-500 border-dashed rounded">
-                                <img class="rounded w-full  object-cover" src="" id="Fm-preview"
+                                <img class="rounded w-full  object-cover" src=""  id="Fm-preview"
                                     alt="" style="display: none;" class="w-52 h-28">
                             </div>
                             <small id='attachment_error' style='color:red'></small>
@@ -484,7 +485,6 @@
                                                         clip-rule="evenodd" />
                                                 </svg>
                                             </a>
-
                                         </div>
                                     </td>
                                 </tr>

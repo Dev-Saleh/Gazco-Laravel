@@ -170,6 +170,7 @@ class CitizenController extends Controller
                       $searchfm=familyMembers::where('fmName',$request->citName)->orwhere('identityNum',$request->identityNum)->get();
                     if(!($searchfm && $searchfm->count() > 0))
                       {
+                        
                         $attachment =$request->attachment;  
                         $filename = uploadImageAndResize('citizens', $attachment , $width='220', $height='190');
 

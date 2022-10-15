@@ -30,7 +30,7 @@ class requestsfamilyMember extends FormRequest
             'identityNum'    =>  'required|max:30|unique:family_members,identityNum,'.$this -> id,
             'citId'          =>  'required|exists:citizens,id',
             'sex'            =>  'required|in:1,0',
-            'relationship'   =>  'required|in:0,2,3,4,5',
+            'relationship'   =>  'required|in:0,1,2,3,4,5',
         ];
     }
     public function messages()

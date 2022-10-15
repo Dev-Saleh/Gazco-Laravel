@@ -14,7 +14,7 @@ function uploadImageAndResize($folder,$image,$width='300',$height='300')
  {
     $image->store('/', $folder);
     $filename = $image->hashName();
-    Image::make(public_Path('assets/images/citizens/'.$filename))->resize($width, $height)->save();
+    Image::make(public_Path('assets/images/'.$folder.'/'.$filename))->resize($width, $height)->save();
     return  $filename;
  }
  function saveImage($photo,$folder)

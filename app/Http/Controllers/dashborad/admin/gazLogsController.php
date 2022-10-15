@@ -144,7 +144,7 @@ class gazLogsController extends Controller
                 if ($gazLog)
                 return response()->json([
                     'status'       => true,
-                    'alertType'=> '.alertSuccess',
+                    'alertType'    => '.alertSuccess',
                     'msg'          => 'تم ترحيل الدفعه بنجاح',
                     'lastGazLog'   => $lastGazLog,
 
@@ -156,7 +156,7 @@ class gazLogsController extends Controller
                 return response()->json([
                     'status'          => false,
                     'msg'             => 'فشل ترحيل الدفعه برجاء المحاوله مجددا',
-                    'alertType'=> '.alertError',
+                    'alertType'       => '.alertError',
                     'exceptionError'  => $ex,                
                 
                 ]);
