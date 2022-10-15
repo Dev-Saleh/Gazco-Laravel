@@ -13,7 +13,8 @@ class CreateLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gazLogs', function (Blueprint $table) {
+        Schema::create('gazLogs', function (Blueprint $table) 
+        {
             $table->increments('id');
             $table->integer('qty')->nullable();
             $table->integer('dirId')->unsigned();

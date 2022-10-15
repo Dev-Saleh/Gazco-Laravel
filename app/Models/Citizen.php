@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Citizen extends Model
 {
     protected $table='citizens';
-    protected $fillable = ['id','citName','mobileNum','identityNum','attachment','citPassword','checked','dirId','rigId','obsId','created_at'];
+    protected $fillable = ['id','citName','mobileNum','identityNum','attachment','citPassword','unblockDate','checked','dirId','rigId','obsId','created_at'];
     public  $timestamps = false;
     public function directorate()
     {

@@ -7,14 +7,12 @@
     // Start fetch last citizen  
       function fetchLastCitizen($lastCitizenAdd)
         {
-               if($lastCitizenAdd.checked=='لا')
+              
                 $('#fetchLastCitizen').prepend('<tr class="offerRow'+$lastCitizenAdd.id+' bg-white hover:scale-95 transform transition-all ease-in">\
                                                 <td class="p-3 text-center">'+$lastCitizenAdd.id+'</td>\
                                                 <td class="p-3 text-center">'+$lastCitizenAdd.citName+'</td>\
                                                 <td class="p-3 text-center">'+$lastCitizenAdd.identityNum+'</td>\
-                                                <td class="p-3 text-center">\
-                                                <span class="bg-red-400 text-red-50 rounded-md px-2">'+$lastCitizenAdd.checked+'</span>\
-                                                </td>\
+                                                <td class="p-3 text-center">'+($lastCitizenAdd.checked=='لا' ? '<span class="bg-red-400 text-red-50 rounded-md px-2">'+$lastCitizenAdd.checked+'<span>':'<span class="bg-green-400 text-green-50 rounded-md px-2">'+$lastCitizenAdd.checked+'<span>')+'</td>\
                                                 <td class="p-3 text-center ">\
                                                     <div id="delete-alert" class=" h-10 w-28 rounded-full overflow-hidden hidden">\
                                                         <button class="bg-green-200 w-14 hover:bg-green-400">Y</button>\
@@ -40,43 +38,7 @@
                                                     </div>\
                                                 </td>\
                                             </tr>');
-                    
-               else if($lastCitizenAdd.checked=='نعم')
-                $('#fetchLastCitizen').prepend('<tr class="offerRow'+$lastCitizenAdd.id+' bg-white hover:scale-95 transform transition-all ease-in">\
-                                                <td class="p-3 text-center">'+$lastCitizenAdd.id+'</td>\
-                                                <td class="p-3 text-center">'+$lastCitizenAdd.citName+'</td>\
-                                                <td class="p-3 text-center">'+$lastCitizenAdd.identityNum+'</td>\
-                                                <td class="p-3 text-center">\
-                                                <span class="bg-green-400 text-green-50 rounded-md px-2">'+$lastCitizenAdd.checked+'</span>\
-                                                </td>\
-                                                <td class="p-3 text-center ">\
-                                                    <div id="delete-alert" class=" h-10 w-28 rounded-full overflow-hidden hidden">\
-                                                        <button class="bg-green-200 w-14 hover:bg-green-400">Y</button>\
-                                                        <button class="bg-red-200 w-14 hover:bg-red-400">N</button>\
-                                                    </div>\
-                                                    <div id="action-div" class="flex justify-center">\
-                                                        <a onclick="deleteAlert();" href="#" citId="' + $lastCitizenAdd.id + '"  class="citizenDelete text-red-400  hover:text-red-600  ">\
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
-                                                            </svg>\
-                                                        </a>\
-                                                        <a href="#"  citId="' + $lastCitizenAdd.id + '" class="citizenEdit text-yellow-400 hover:text-yellow-600 mx-2 ">\
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">\
-                                                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />\
-                                                            </svg>\
-                                                        </a>\
-                                                        <a href="#" citId="' + $lastCitizenAdd.id + '"  class="citizenShowMembers text-blue-600 hover:text-blue-400">\
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">\
-                                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />\
-                                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />\
-                                                            </svg>\
-                                                        </a>\
-                                                    </div>\
-                                                </td>\
-                                            </tr>');
-                    $('#selectCitizen').prepend('<option value='+$lastCitizenAdd.id+'>'+$lastCitizenAdd.citName+'</option>');
-                   
-            
+                      $('#selectCitizen').prepend('<option value='+$lastCitizenAdd.id+'>'+$lastCitizenAdd.citName+'</option>');
         }
 
     // End fetch last citizen 
@@ -418,15 +380,14 @@
                     success: function (data) 
                     {
                         if (data.status == true)
-                        $('.offerRow' + data.fmId).addClass("animate-fadeInLeft");
                         {
-                           
+                            $('.offerRow' + data.fmId).addClass("animate-fadeInLeft");
                             newAlert(data.alertType,data.msg);
+                            sleep(400).then(() =>
+                            {
+                                $('.offerRow' +data.fmId).remove();
+                            });
                         }
-                        sleep(400).then(() => {
-                            $('.offerRow' +data.fmId).remove();
-                        });
-                      
 
                     }, error: function (reject) {
 
@@ -503,41 +464,16 @@
                         console.log(data);  // For Test
                         if(data.status == true)
                         {
-                             /* $('#file-ip-1-preview').css('display', 'none');
                             
-                             $('#citName_error').text('');
-                             $('#identityNum_error').text('');
-                             $('#citPassword_error').text('');
-                             $('#mobileNum_error').text('');
-                             $('#dirId_error').text('');
-                             $('#rigId_error').text('');
-                             $('#attachment_error').text('');
-
-                             
-                            $('#citId').val('');
-                            //  $('#observer_Id').val(''); can not be null لاتفعل دا
-                            $('#citName').val('');
-                            $('#identityNum').val('');
-                            $('#citPassword').val('');
-                            $('#mobileNum').val('');
-                        
-                           
-
-                            $('.offerRow'+data.citId).remove(); // This Command must execute Befor Function  *fetchLastCitizen*
-                            fetchLastCitizen(data.lastCitizenUpdate);
-                            window.saveCitizen.style.display="inline-flex";
-                            window.updateCitizen.style.display="none";   */
-                            newAlert(data.alertType,data.msg);
                             window.fmSave.style.display="inline-flex";
                             window.fmUpdate.style.display="none";  
                             $('#fmName').val('');
                             $('#identityNumber').val('');
                             $('#age').val('');
                             $('#Fm-preview').css('display', 'none');
-                            $('.offerRow'+data.fmId).remove();
+                            $('.offerRow' +data.fmId).remove();
                             fetchLastfm(data.lastfmUpdate);
-                             
-   
+                            newAlert(data.alertType,data.msg);
                         }
                     }
                     ,error: function (reject) 
@@ -573,15 +509,12 @@
                                     $('#fetchLastCitizen').html("");
                                     $.each(data.resultSearch, function(key, resultSearch)
                                     {
-                                        if(resultSearch.checked == 'لا')
-                                        {
+                                       
                                                 $('#fetchLastCitizen').prepend('<tr class="offerRow'+resultSearch.id+' bg-white hover:scale-95 transform transition-all ease-in">\
                                                 <td class="p-3 text-center">'+resultSearch.id+'</td>\
                                                 <td class="p-3 text-center">'+resultSearch.citName+'</td>\
                                                 <td class="p-3 text-center">'+resultSearch.identityNum+'</td>\
-                                                <td class="p-3 text-center">\
-                                                <span class="bg-red-400 text-red-50 rounded-md px-2">'+resultSearch.checked+'</span>\
-                                                </td>\
+                                                <td class="p-3 text-center">'+(resultSearch.checked=='لا' ? '<span class="bg-red-400 text-red-50 rounded-md px-2">'+resultSearch.checked+'<span>':'<span class="bg-green-400 text-green-50 rounded-md px-2">'+resultSearch.checked+'<span>')+'</td>\
                                                 <td class="p-3 text-center ">\
                                                     <div id="delete-alert" class=" h-10 w-28 rounded-full overflow-hidden hidden">\
                                                         <button class="bg-green-200 w-14 hover:bg-green-400">Y</button>\
@@ -606,44 +539,7 @@
                                                         </a>\
                                                     </div>\
                                                 </td>\
-                                            </tr>');
-                                        }
-                                        if(resultSearch.checked == 'نعم')
-                                        {
-                                                $('#fetchLastCitizen').prepend('<tr class="offerRow'+resultSearch.id+' bg-white hover:scale-95 transform transition-all ease-in">\
-                                                <td class="p-3 text-center">'+resultSearch.id+'</td>\
-                                                <td class="p-3 text-center">'+resultSearch.citName+'</td>\
-                                                <td class="p-3 text-center">'+resultSearch.identityNum+'</td>\
-                                                <td class="p-3 text-center">\
-                                                <span class="bg-green-400 text-green-50 rounded-md px-2">'+resultSearch.checked+'</span>\
-                                                </td>\
-                                                <td class="p-3 text-center ">\
-                                                    <div id="delete-alert" class=" h-10 w-28 rounded-full overflow-hidden hidden">\
-                                                        <button class="bg-green-200 w-14 hover:bg-green-400">Y</button>\
-                                                        <button class="bg-red-200 w-14 hover:bg-red-400">N</button>\
-                                                    </div>\
-                                                    <div id="action-div" class="flex justify-center">\
-                                                        <a onclick="deleteAlert();" href="#" citId="' + resultSearch.id + '"  class="citizenDelete text-red-400  hover:text-red-600  ">\
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />\
-                                                            </svg>\
-                                                        </a>\
-                                                        <a href="#"  citId="' + resultSearch.id + '" class="citizenEdit text-yellow-400 hover:text-yellow-600 mx-2 ">\
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">\
-                                                                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />\
-                                                            </svg>\
-                                                        </a>\
-                                                        <a href="#" citId="' + resultSearch.id + '"  class="citizenShowMembers text-blue-600 hover:text-blue-400">\
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">\
-                                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />\
-                                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />\
-                                                            </svg>\
-                                                        </a>\
-                                                    </div>\
-                                                </td>\
-                                            </tr>');
-                                        }
-                                
+                                            </tr>');          
                                     });
 
                             }
@@ -656,7 +552,7 @@
             });
         });
 
-        // End Search Citizen By Ajax 
+  // End Search Citizen By Ajax 
  
 
    
