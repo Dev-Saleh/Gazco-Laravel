@@ -395,8 +395,21 @@ class CitizenController extends Controller
     public function destroy(Request $request)
     {
         try 
-          {
-                $cit = Citizen::find($request -> citId); // Search about Citizen By Citizen Id for defind if Citizen Found Or Not Found This Codition For Delete Citizen
+          {     
+            $fmFounding = familyMembers::where('citId',$request->citId)->get();
+            if($fmFounding)
+            {
+              return response()->json(
+                [
+                  'status'  => false,
+                  'alertType'=> '.alertWarning',
+                  'msg'     => 'لا يمكنك الحذف يوجد افراد مرتبطه بالمواطن',
+                  'citId'   => $request -> citId, 
+                ]
+              );
+
+            }
+                $cit = Citizen::find($request -> citId); 
 
                 if (!$cit)
                 return response()->json(

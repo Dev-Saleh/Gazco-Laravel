@@ -25,8 +25,8 @@
                 <span
                     class="p-2.5 rounded-md rotate-45 bg-rose-200 px-3 group-hover:-translate-x-10 translate-x-5  transition-all duration-1000">
                     <p class="text-emerald-800 -rotate-45 text-center ">
-                    {{-- <?php $v=App\Models\Observer::where('id',session()->get('obsId'))?>
-                        {{ App\Models\gazLogs::where('agentId',$v)->count() }} --}}
+                     <?php $v=App\Models\Observer::where('id',session()->get('obsId'))?>
+                        {{-- {{ App\Models\gazLogs::where('agentId',$v)->count() }}  --}}
                     </p>
                 </span>
             </div>
