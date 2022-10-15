@@ -11,23 +11,30 @@ use Illuminate\Http\Request;
 
 class FamilyMembersController extends Controller
 {
-    public function store(requestsfamilyMember $request)
+    
+   public function store(requestsfamilyMember $request)
     {
        
            try
                {  
-       
+
+                    $attachment =$request->attachmentFm;  
+                    $filename = uploadImageAndResize('familymember', $attachment , $width='220', $height='190');
+
                     $familyMember = familyMembers::create($request->except('_token'));
+                    
+                    $familyMember->attachment=$filename;
+
                     $familyMember->save();
 
                         if ($familyMember)
                         return response()->json(
                             [
-                            'status'         => true,
-                            'msg'            => 'تم الحفظ المواطن بنجاح',
-                            'alertType'      => '.alertSuccess', 
+                                'status'         => true,
+                                'msg'            => 'تم الحفظ المواطن بنجاح',
+                                'alertType'      => '.alertSuccess', 
                             ]
-                        );
+                    );
                    
                }
            catch (\Exception $ex)
@@ -63,6 +70,141 @@ class FamilyMembersController extends Controller
                 'exceptionError'  =>   $ex,
             ]);
         }
+    }
+    public function destroy(Request $request)
+    {
+        try 
+          {
+                $fm = familyMembers::find($request -> fmId); // Search about Citizen By Citizen Id for defind if Citizen Found Or Not Found This Codition For Delete Citizen
+
+                if (!$fm)
+                return response()->json(
+                  [
+                    'status'  => false,
+                    'alertType'=> '.alertError',
+                    'msg'     => 'حدث خطأ اثناء حذف المواطن',
+                  ]
+                );
+                
+                $fm->delete();
+
+                return response()->json(
+                [
+                    'status' => true,
+                    'alertType'=> '.alertSuccess',
+                    'msg'    => 'تم حذف المواطن بنجاح',
+                    'fmId'  => $request -> fmId
+                ]
+              );
+         } 
+         catch (\Exception $ex) 
+         {
+            return response()->json(
+             [
+                'status'          => false,
+                'msg'             => 'Error In Function destroy',
+                'exceptionError'  =>$ex,
+             ]
+            );
+          
+         }
+    }
+    public function edit(Request $request)
+    {
+        try
+           {
+                $fm =familyMembers::select()->find($request -> fmId);
+             
+                if (!$fm)
+                  return response()->json(
+                    [
+                       'status'   => false,
+                       'msg'      => 'The fm Not Found Error In Function Edit',
+                    ]
+                  );
+                
+                return response()->json(
+                  [
+                    'status'  => true,
+                    'fm' => $fm,  
+                  ]
+                ); 
+            }
+          catch (\Exception $ex)
+             {
+                return response()->json(
+                  [
+                    'status'         => false,
+                    'msg'            => 'Error In Function Edit fm',
+                    'exceptionError' => $ex,
+                  ]
+               );
+           }
+    }
+    public function update(requestsfamilyMember $request)
+    {
+        try
+            {
+                $fm = familyMembers::find($request -> id);
+                if (!$fm)
+                 return response()->json
+                   (
+                      [
+                          'status'     => false,
+                          'alertType'  => '.alertError',
+                          'msg'        => 'The Citizen Not Found Error In Function Update ',
+                      ]
+                  );
+
+                $fileName="";
+                //update data  
+                $fm->update($request->except('_token', 'attachment'));
+
+                if($fm)
+                {
+                    if ($request->has('attachment')) 
+                    {
+
+                        $getBeforeImage=familyMembers::select('attachment')->find($request -> id); // Before update attachment Citizen git attchment citizen for detete
+                        $fileName=uploadImageAndResize('familymember', $request->attachmentFm , $width='220', $height='190');
+                        familyMembers::where('id', $request -> id)
+                            ->update(
+                              [
+                                'attachment' => $fileName,
+                              ]
+                            );   
+
+                            if($getBeforeImage->attachment['exsit'])
+                            unlink($getBeforeImage->attachment['public_path']);
+                    }
+                    $lastfmUpdate=familyMembers::select()->find($request->id); //->where('obsId',$request->obsId) ذا الشرط لازم نتناقش عليه
+                 
+                    return response()->json(
+                      [
+                        'status'            => true,
+                        'msg'               => 'تم تعديل بيانات المواطن بنجاح',
+                        'alertType'         => '.alertWarning',
+                        'attachment'        => $fileName,
+                        'lastfmUpdate'      => $lastfmUpdate,
+                        'fmId'              => $request->id,
+                      ]
+                  );
+            }
+            }
+        catch (\Exception $ex) 
+            {
+              
+                return response()->json(
+                  [
+                    'status'          => false,
+                    'msg'             => 'Error In Function Update',
+                    'exceptionerror'  => $ex,
+                   
+                    
+                  ]
+              );
+            }
+          
     }
 
     

@@ -170,6 +170,7 @@ class CitizenController extends Controller
                       $searchfm=familyMembers::where('fmName',$request->citName)->orwhere('identityNum',$request->identityNum)->get();
                     if(!($searchfm && $searchfm->count() > 0))
                       {
+                        
                         $attachment =$request->attachment;  
                         $filename = uploadImageAndResize('citizens', $attachment , $width='220', $height='190');
 
@@ -361,13 +362,13 @@ class CitizenController extends Controller
                             ]
                             )->select('id','agentId','obsName')->get();
                         }
-                      ])->select('id','citName','dirId','rigId','obsId')->find($request->id); //->where('obsId',$request->obsId) ذا الشرط لازم نتناقش عليه
+                      ])->select('id','citName','dirId','rigId','obsId','identityNum','checked')->find($request->id); //->where('obsId',$request->obsId) ذا الشرط لازم نتناقش عليه
                  
                     return response()->json(
                       [
                         'status'            => true,
                         'msg'               => 'تم تعديل بيانات المواطن بنجاح',
-                        'alertType'=> '.alertWarning',
+                        'alertType'         => '.alertWarning',
                         'attachment'        => $fileName,
                         'lastCitizenUpdate' => $lastCitizenUpdate,
                         'citId'             => $request->id,

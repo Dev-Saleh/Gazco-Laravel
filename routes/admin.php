@@ -152,8 +152,11 @@ Route::group(['namespace' => 'dashborad\observer','middleware' => 'authObserver'
 
 Route::group(['prefix' => 'familyMember'], function () {
 
-  Route::post('store', 'FamilyMembersController@store')->name('fmailyMember.store');
-  Route::get('show',  'FamilyMembersController@show')->name('fmailyMember.show');
+      Route::post('store', 'FamilyMembersController@store')->name('fmailyMember.store');
+      Route::get('show',  'FamilyMembersController@show')->name('fmailyMember.show');
+      Route::delete('delete/{id?}','FamilyMembersController@destroy')->name('fm.destroy');
+      Route::get('edit/{id?}', 'FamilyMembersController@edit')->name('fm.edit');
+      Route::post('update', 'FamilyMembersController@update')->name('fm.update');
 });
  
  Route::group(['prefix' => 'checkBooking'], function () {

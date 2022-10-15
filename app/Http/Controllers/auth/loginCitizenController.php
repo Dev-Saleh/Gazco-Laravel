@@ -4,6 +4,7 @@ namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Citizen;
+use App\Models\Observer;
 use Illuminate\Http\Request;
 
 class loginCitizenController extends Controller
@@ -29,7 +30,7 @@ class loginCitizenController extends Controller
     {
 
         $citizenInfo = Citizen::select()->where('identityNum',$request->identityNum)->first();
-
+  
         if($citizenInfo)
         {
             if($citizenInfo->citPassword == $request->citPassword)
@@ -37,6 +38,14 @@ class loginCitizenController extends Controller
                 if($citizenInfo->checked == 'نعم')
                 {
                     session()->put('idCitizen',$citizenInfo->id);
+                    $obsWhatsNum=$citizenInfo->with(
+                        [
+                          'observer'=>function($q)
+                          {
+                             $q->select('obsWhatsNum')->get();
+                          }
+                        ])->get();
+                     session()->put('obsWhatsNum',$citizenInfo->observer->obsWhatsNum);
                     
                     return redirect()->route('Main.front');
                 }

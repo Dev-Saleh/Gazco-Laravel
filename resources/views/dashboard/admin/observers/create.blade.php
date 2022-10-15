@@ -117,7 +117,7 @@
 
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full">
-                                <input type="text" name="obsWhatsappNum" id="obsWhatsappNum" placeholder=" "
+                                <input type="text"  name="obsWhatsNum" id="obsWhatsNum" placeholder=" "
                                     required
                                     class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
                                   appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200

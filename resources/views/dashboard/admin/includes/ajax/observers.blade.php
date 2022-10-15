@@ -118,6 +118,7 @@
                         $('#obsName').val(''); 
                         $('#obsUserName').val('');
                         $('#obsPassword').val('');
+                        $('#obsWhatsNum').val('');
                         fetchLastObserver(data.lastObserver);
                     }
                   
@@ -175,16 +176,18 @@
                 },
                 success: function (data) {
                   console.log(data);
-                     if (data.status == true) {
+                     if (data.status == true) 
+                     {
                         $('#obsId').val(data.obs.id);
                         $('#obsName').val(data.obs.obsName); 
                         $('#obsUserName').val(data.obs.obsUserName);
                         $('#obsPassword').val(data.obs.obsPassword);
-                        $('#select_directorates').val(data.obs.dirId);
+                        $('#obsWhatsNum').val(data.obs.obsWhatsNum);
+                       // $('#select_directorates').val(data.obs.dirId);
                         $('#select_directorate').text(data.obs.directorate.dirName);
-                        $('#select_rigons').val(data.obs.rigId);
+                        //$('#select_rigons').val(data.obs.rigId);
                         $('#select_rigon').text(data.obs.rigon.rigName);
-                        $('#select_agents').val(data.obs.agentId);
+                        //$('#select_agents').val(data.obs.agentId);
                         $('#select_agent').text(data.obs.agent.agentName); 
                         window.saveObserver.style.display="none";
                         window.updateObserver.style.display="inline-flex";
