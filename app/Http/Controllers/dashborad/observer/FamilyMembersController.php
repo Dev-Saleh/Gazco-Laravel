@@ -199,9 +199,7 @@ class FamilyMembersController extends Controller
                   [
                     'status'          => false,
                     'msg'             => 'Error In Function Update',
-                    'exceptionerror'  => $ex,
-                   
-                    
+                    'exceptionerror'  => $ex,       
                   ]
               );
             }

@@ -389,15 +389,14 @@
                     success: function (data) 
                     {
                         if (data.status == true)
-                        $('.offerRow' + data.fmId).addClass("animate-fadeInLeft");
                         {
-                           
+                            $('.offerRow' + data.fmId).addClass("animate-fadeInLeft");
                             newAlert(data.alertType,data.msg);
+                            sleep(400).then(() =>
+                            {
+                                $('.offerRow' +data.fmId).remove();
+                            });
                         }
-                        sleep(400).then(() => {
-                            $('.offerRow' +data.fmId).remove();
-                        });
-                      
 
                     }, error: function (reject) {
 
@@ -474,41 +473,16 @@
                         console.log(data);  // For Test
                         if(data.status == true)
                         {
-                             /* $('#file-ip-1-preview').css('display', 'none');
                             
-                             $('#citName_error').text('');
-                             $('#identityNum_error').text('');
-                             $('#citPassword_error').text('');
-                             $('#mobileNum_error').text('');
-                             $('#dirId_error').text('');
-                             $('#rigId_error').text('');
-                             $('#attachment_error').text('');
-
-                             
-                            $('#citId').val('');
-                            //  $('#observer_Id').val(''); can not be null لاتفعل دا
-                            $('#citName').val('');
-                            $('#identityNum').val('');
-                            $('#citPassword').val('');
-                            $('#mobileNum').val('');
-                        
-                           
-
-                            $('.offerRow'+data.citId).remove(); // This Command must execute Befor Function  *fetchLastCitizen*
-                            fetchLastCitizen(data.lastCitizenUpdate);
-                            window.saveCitizen.style.display="inline-flex";
-                            window.updateCitizen.style.display="none";   */
-                            newAlert(data.alertType,data.msg);
                             window.fmSave.style.display="inline-flex";
                             window.fmUpdate.style.display="none";  
                             $('#fmName').val('');
                             $('#identityNumber').val('');
                             $('#age').val('');
                             $('#Fm-preview').css('display', 'none');
-                            $('.offerRow'+data.fmId).remove();
+                            $('.offerRow' +data.fmId).remove();
                             fetchLastfm(data.lastfmUpdate);
-                             
-   
+                            newAlert(data.alertType,data.msg);
                         }
                     }
                     ,error: function (reject) 
@@ -589,7 +563,7 @@
             });
         });
 
-        // End Search Citizen By Ajax 
+  // End Search Citizen By Ajax 
  
 
    
