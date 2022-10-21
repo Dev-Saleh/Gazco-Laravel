@@ -239,15 +239,10 @@
                                                 class="bg-green-400 text-gray-50 rounded-md px-2">{{ $gazLog->agent->agentName }}</span>
                                         </td>
                                         <td class="p-1 transition-all ease-in duration-150 flex  justify-center">
-                                            <div id="delete-alert"
-                                                class=" h-10 w-28 rounded-full overflow-hidden transition-all ease-in duration-150 hidden">
-                                                <button class="bg-green-200 w-14 hover:bg-green-400">Y</button>
-                                                <button class="bg-red-200 w-14 hover:bg-red-400">N</button>
-                                            </div>
                                             <div id="action-div"
                                                 class="flex space-x-2  transition-all ease-in duration-150">
-                                                <a onclick="deleteAlert();" href="#" gazLogId="{{ $gazLog->id }}"
-                                                    class="gazLogDelete text-red-400  hover:text-red-600 float-left ">
+                                                <a onclick="deleteAlert($(this).attr('gazLogId'));" href="#" gazLogId="{{ $gazLog->id }}"
+                                                    class="text-red-400  hover:text-red-600 float-left ">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round"

@@ -2,7 +2,7 @@
 @section('content')
     <article id="content" class="relative content-area px-10 pt-10 bg-gray-100 h-full flex flex-col space-y-4 ">
 
-        <div id="containerStatus" class="mb-16 grid grid-cols-8 gap-x-7 w-full">
+         <div id="containerStatus" class="mb-16 grid grid-cols-8 gap-x-7 w-full">
             <div class="relative col-span-2 group h-28 w-full bg-white rounded-md shadow-sm flex items-center p-4">
                 <div class="z-30 rotate-45 rounded-md h-20 w-20 bg-purple-500 p-3">
                     <p class="text-emerald-100 -rotate-45 text-center ">
@@ -25,8 +25,8 @@
                 <span
                     class="p-2.5 rounded-md rotate-45 bg-rose-200 px-3 group-hover:-translate-x-10 translate-x-5  transition-all duration-1000">
                     <p class="text-emerald-800 -rotate-45 text-center ">
-                    
-                        {{ App\Models\gazLogs::count() }}
+                     <?php $v=App\Models\Observer::where('id',session()->get('obsId'))?>
+                        {{-- {{ App\Models\gazLogs::where('agentId',$v)->count() }}  --}}
                     </p>
                 </span>
             </div>
@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        {{-- text for wafe --}}
+        
 
         <div class="flex flex-col w-full h-[150px] bg-emerald-400 relative rounded-md">
             <img src="{{ asset('assets/images/obshello.svg') }}" class="z-20 absolute left-2 -top-16 h-full w-[300px]" />
@@ -83,7 +83,7 @@
               <canvas class="p-2  w-[700px]" id="chartBar"></canvas>
             </div>
           {{-- End Chart Bar --}}
-          
+           
           
           <div class="shadow-md rounded-lg overflow-hidden">
             <div class="py-3 px-5 bg-gray-50">الاحصائيات بالدائره</div>

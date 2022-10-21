@@ -66,7 +66,10 @@
 {{-- end section Alert --}}
 
    <div id="wrapper" class="flex h-full relative">
-      <!-- fixed-top-->
+
+        <!-- begin deletionForm -->
+     @include('dashboard.admin.includes.deletionForm')
+     <!-- end deletionForm -->
 
       <!-- begin sidebar -->
       @include('dashboard.observer.includes.sidebare')

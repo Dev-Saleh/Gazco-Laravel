@@ -20,7 +20,7 @@ class CreateCitizensTable extends Migration
             $table->integer('identityNum')->unsigned();
             $table->string('attachment')->unique();
             $table->string('citPassword')->unique();
-            $table->date('unblockDate')->nullable();
+            $table->datetime('unblockDate')->nullable();
             $table->boolean('checked')->default('0');
             $table->integer('dirId')->unsigned();
             $table->integer('rigId')->unsigned();

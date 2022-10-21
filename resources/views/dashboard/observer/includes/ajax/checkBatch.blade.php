@@ -59,7 +59,7 @@
                         {
                              console.log(data);
                             if (data.status == true) 
-                            {
+                            {       newAlert(data.alertType,data.msg);    
                                     $('.offerRow'+data.gazLogId).remove();
                                     $('#lastBatchOpenBooking').prepend('<tr class="offerRow'+data.lastBatchOpenBooking.id+' bg-gray-50 hover:scale-95 transform transition-all ease-in">\
                                     <td class="p-3 text-center">'+data.lastBatchOpenBooking.id+'</td>\
@@ -77,6 +77,8 @@
                                     </td>\
                                 </tr>');
                             }
+                            else if (data.status == false) 
+                                newAlert(data.alertType,data.msg); 
                         }
                         , error: function (reject) 
                         {

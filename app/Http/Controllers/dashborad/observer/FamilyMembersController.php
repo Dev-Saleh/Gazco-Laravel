@@ -31,7 +31,7 @@ class FamilyMembersController extends Controller
                         return response()->json(
                             [
                                 'status'         => true,
-                                'msg'            => 'تم الحفظ المواطن بنجاح',
+                                'msg'            => 'تم الحفظ الفرد بنجاح',
                                 'alertType'      => '.alertSuccess', 
                             ]
                     );
@@ -43,7 +43,8 @@ class FamilyMembersController extends Controller
                     return response()->json(
                         [
                             'status'         => false,
-                            'msg'            => 'Error In Function Save ',
+                            'msg'            => 'خطأ في حفظ الفرد ',
+                            'alertType'      => '.alertError', 
                             'exceptionError' => $ex,
                         ]
                     );

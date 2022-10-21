@@ -7,17 +7,13 @@
     // Start fetch last citizen  
       function fetchLastCitizen($lastCitizenAdd)
         {
-              
+    
                 $('#fetchLastCitizen').prepend('<tr class="offerRow'+$lastCitizenAdd.id+' bg-white hover:scale-95 transform transition-all ease-in">\
                                                 <td class="p-3 text-center">'+$lastCitizenAdd.id+'</td>\
                                                 <td class="p-3 text-center">'+$lastCitizenAdd.citName+'</td>\
                                                 <td class="p-3 text-center">'+$lastCitizenAdd.identityNum+'</td>\
-                                                <td class="p-3 text-center">'+($lastCitizenAdd.checked=='لا' ? '<span class="bg-red-400 text-red-50 rounded-md px-2">'+$lastCitizenAdd.checked+'<span>':'<span class="bg-green-400 text-green-50 rounded-md px-2">'+$lastCitizenAdd.checked+'<span>')+'</td>\
+                                                <td class="p-3 text-center"> '+ (resultSearch.checked == 'لا' ? '<span class="bg-red-400 text-red-50 rounded-md px-2">'+resultSearch.checked+'</span>' : '<span class="bg-green-400 text-green-50 rounded-md px-2">'+resultSearch.checked+'</span>')+'</td>\
                                                 <td class="p-3 text-center ">\
-                                                    <div id="delete-alert" class=" h-10 w-28 rounded-full overflow-hidden hidden">\
-                                                        <button class="bg-green-200 w-14 hover:bg-green-400">Y</button>\
-                                                        <button class="bg-red-200 w-14 hover:bg-red-400">N</button>\
-                                                    </div>\
                                                     <div id="action-div" class="flex justify-center">\
                                                         <a onclick="deleteAlert();" href="#" citId="' + $lastCitizenAdd.id + '"  class="citizenDelete text-red-400  hover:text-red-600  ">\
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
@@ -38,7 +34,11 @@
                                                     </div>\
                                                 </td>\
                                             </tr>');
-                      $('#selectCitizen').prepend('<option value='+$lastCitizenAdd.id+'>'+$lastCitizenAdd.citName+'</option>');
+                    
+               
+                    $('#selectCitizen').prepend('<option value='+$lastCitizenAdd.id+'>'+$lastCitizenAdd.citName+'</option>');
+                   
+            
         }
 
     // End fetch last citizen 
@@ -121,12 +121,12 @@
     // End Add citizen By Ajax 
      
     // Start Deleteing citizen By Ajax 
-
+           
         $(document).on('click', '.citizenDelete', function (e)
          {
               e.preventDefault();
-              var citId = $(this).attr('citId');
-
+              var citId = $(this).attr('value');           
+             document.getElementById('deletionPoping').classList.replace('flex','hidden');
             $.ajax({
                     type: 'delete',
                     url: "{{route('citizen.destroy')}}",
@@ -136,21 +136,28 @@
                     },
                     success: function (data) 
                     {
-                        if (data.status == true)
-                        $('.offerRow' + data.citId).addClass("animate-fadeInLeft");
+                        if (data.status == true)  
                         {
-                           
+                            $('.offerRow' + data.citId).addClass("animate-fadeInLeft");
                             newAlert(data.alertType,data.msg);
-                        }
+                        
                         sleep(400).then(() => {
                             $('.offerRow' +data.citId).remove();
                         });
-                      
+                         }
+
+                         else (data.status == false)
+                             newAlert(data.alertType,data.msg);
+                         
+
 
                     }, error: function (reject) {
 
                     }
                 });
+              
+
+            
         });
 
    
@@ -290,6 +297,8 @@
                         $('#age').val('');
 
                      } 
+                    else if (data.status == false)
+                    newAlert(data.alertType,data.msg);
                   
                  }, error: function (reject) 
                  {
@@ -509,12 +518,12 @@
                                     $('#fetchLastCitizen').html("");
                                     $.each(data.resultSearch, function(key, resultSearch)
                                     {
-                                       
-                                                $('#fetchLastCitizen').prepend('<tr class="offerRow'+resultSearch.id+' bg-white hover:scale-95 transform transition-all ease-in">\
+                                        
+                                                $('#fetchLastCitizen').prepend('<tr class="offerRow'+resultSearch.id+' animate-fadeInRight bg-white hover:scale-95 transform transition-all ease-in">\
                                                 <td class="p-3 text-center">'+resultSearch.id+'</td>\
                                                 <td class="p-3 text-center">'+resultSearch.citName+'</td>\
                                                 <td class="p-3 text-center">'+resultSearch.identityNum+'</td>\
-                                                <td class="p-3 text-center">'+(resultSearch.checked=='لا' ? '<span class="bg-red-400 text-red-50 rounded-md px-2">'+resultSearch.checked+'<span>':'<span class="bg-green-400 text-green-50 rounded-md px-2">'+resultSearch.checked+'<span>')+'</td>\
+                                                <td class="p-3 text-center"> '+ (resultSearch.checked == 'لا' ? '<span class="bg-red-400 text-red-50 rounded-md px-2">'+resultSearch.checked+'</span>' : '<span class="bg-green-400 text-green-50 rounded-md px-2">'+resultSearch.checked+'</span>')+'</td>\
                                                 <td class="p-3 text-center ">\
                                                     <div id="delete-alert" class=" h-10 w-28 rounded-full overflow-hidden hidden">\
                                                         <button class="bg-green-200 w-14 hover:bg-green-400">Y</button>\
@@ -539,8 +548,10 @@
                                                         </a>\
                                                     </div>\
                                                 </td>\
-                                            </tr>');          
-                                    });
+                                            </tr>');
+                                       
+                                        
+                                        });
 
                             }
                         },

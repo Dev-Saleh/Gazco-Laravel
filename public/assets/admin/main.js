@@ -68,7 +68,7 @@ function newAlert(type,text)
 {
   $(type+'Text').text(text);
   $(type).addClass('flex').removeClass('hidden');
-  playSound();
+  // playSound();
   setTimeout(() => {
       $(type).addClass('hidden').removeClass('flex');
   }, 2000);
@@ -135,11 +135,14 @@ function showPreviewUser(event){
 
 
 
- function deleteAlert()
+ function deleteAlert(id)
  {
-   const alert = document.getElementById('delete-alert');
+
+  console.log("deleteAlert: " + id);
+   const alert = document.getElementById('deletionPoping');
   //  const action = document.getElementById('action-div');
   //  action.classList.replace('flex','hidden');
+  window.deletionPopingId.setAttribute('value',id);
    alert.classList.replace('hidden','flex');
   
  }

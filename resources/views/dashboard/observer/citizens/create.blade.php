@@ -235,7 +235,6 @@
                             <div class="relative z-0 w-full">
                                 <input type="number" name="identityNum" id='identityNumber' minlength="3"
                                     placeholder=" "
-                                    onchange="convertNumToIdentity(document.getElementById('identity_num').value);"
                                     class="hover:border-black pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
                                 <label for="name"
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">رقم
@@ -253,8 +252,6 @@
                         <div class="md:col-span-2 sm:col-span-6 lg:col-span-2">
                             <div class="relative z-0 w-full">
                                 <input type="number" name="age" id='age' placeholder=" "
-                                    onchange="Slugify(document.getElementById('proudct_slug').value);"
-                                    id="proudct_slug"
                                     class="hover:border-black pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
                                 <label for="name"
                                     class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">العمر</label>
@@ -450,13 +447,10 @@
                           </td> --}}
 
                                     <td class="p-3 text-center ">
-                                        <div id="delete-alert" class=" h-10 w-28 rounded-full overflow-hidden hidden">
-                                            <button class="bg-green-200 w-14 hover:bg-green-400">Y</button>
-                                            <button class="bg-red-200 w-14 hover:bg-red-400">N</button>
-                                        </div>
+                                       
                                         <div id="action-div" class="flex justify-center">
-                                            <a onclick="deleteAlert();" href="#" citId="{{ $cit->id }}"
-                                                class="citizenDelete text-red-400  hover:text-red-600  ">
+                                            <a onclick="deleteAlert($(this).attr('citId'));" href="#" citId="{{ $cit->id }}"
+                                                class=" text-red-400  hover:text-red-600  ">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -540,19 +534,7 @@
                             </tr>
                         </thead>
                         <tbody id='showfamilyMember' class="bg-white divide-y divide-gray-200">
-                            {{-- <tr>
-                            
-                            <td class="text-center px-4 py-2 whitespace-nowrap">
-                              <div class="text-sm text-gray-700">صالح عبدالله صالح</div>  
-                            </td>
-                            <td class="text-center px-4 py-2 whitespace-nowrap">
-                              <input type="checkbox"  name='status_booking'  class="confirm">
-                            </td>
-                            <td class="text-center px-4 py-2 whitespace-nowrap">
-                              <input type="checkbox" class="sms"> 
-                            </td>
-                            
-                          </tr> --}}
+                          
                         </tbody>
                     </table>
                 </div>

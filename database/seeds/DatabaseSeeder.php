@@ -268,39 +268,36 @@ class DatabaseSeeder extends Seeder
 
 
         //      ################################ ( GAZ_LOG SEEDER ) ##########################
-        $faker = Faker\Factory::create();
-        for ($i = 0; $i < 50; $i++) {
-            // $aa = Directorate::all()->random()->id;
-            // $zz = Rigon::select()->where('directorate_id', $aa)->get();
-            // $mm = Agent::select()->where('directorate_id', $aa)->get();
-            // $qq =  $zz->random()->id;
-            // $tt = $mm->random()->id;
+        // $faker = Faker\Factory::create();
+        // for ($i = 0; $i < 50; $i++) {
+        //     // $aa = Directorate::all()->random()->id;
+        //     // $zz = Rigon::select()->where('directorate_id', $aa)->get();
+        //     // $mm = Agent::select()->where('directorate_id', $aa)->get();
+        //     // $qq =  $zz->random()->id;
+        //     // $tt = $mm->random()->id;
 
            
-            $ss = Station::all()->random()->id;
-            $aa = Directorate::all()->random()->id;
-            $bb = Rigon::select()->where('dirId', $aa)->get();
-            $cc = $bb->random()->id;
-            $mm = Agent::select()->where('dirId', $cc)->get();
-            $tt= $mm->random()->id;
+        //     $ss = Station::all()->random()->id;
+        //     $aa = Directorate::all()->random()->id;
+        //     $bb = Rigon::select()->where('dirId', $aa)->get();
+        //     $cc = $bb->random()->id;
+        //     $mm = Agent::select()->where('dirId', $cc)->get();
+        //     $tt= $mm->random()->id;
 
-            $rr=rand(90,100);
-            gazLogs::create([
-                'qty'          => $rr,
-                'qtyRemaining' => $rr,
-                'dirId'        => $aa,
-                'rigId'        => $cc,
-                'staId'        => $ss,
-                'agentId'      => $tt,
-                'notice'       => ' ',
-                'statusBatch'  => rand(1, 3),
-                'created_at'   =>  $faker->dateTimeBetween($startDate = '01-09-2022', $endDate = '30-09-2022'),
-           
-               
-                
+        //     $rr=rand(90,100);
+        //     gazLogs::create([
+        //         'qty'          => $rr,
+        //         'qtyRemaining' => $rr,
+        //         'dirId'        => $aa,
+        //         'rigId'        => $cc,
+        //         'staId'        => $ss,
+        //         'agentId'      => $tt,
+        //         'notice'       => ' ',
+        //         'statusBatch'  => rand(1, 3),
+        //         'created_at'   =>  $faker->dateTimeBetween($startDate = '01-09-2022', $endDate = '30-09-2022'),  
 
-            ]);
-        }
+        //     ]);
+        // }
 
 
 
@@ -382,27 +379,27 @@ class DatabaseSeeder extends Seeder
     ]);
 
 // ################################ ( LOGS BOOKING SEEDER ) ##########################
-for ($i = 0; $i < 30; $i++) {
-    // $aa = Observer::all()->random()->id;
-    $aa = '1';
-    $bb = Citizen::select()->where('obsId', $aa)->get();
-    $cbb = $bb->random()->id;
+// for ($i = 0; $i < 30; $i++) {
+//     // $aa = Observer::all()->random()->id;
+//     $aa = '1';
+//     $bb = Citizen::select()->where('obsId', $aa)->get();
+//     $cbb = $bb->random()->id;
   
-    $agentId = Observer::select()->where('agentId', $aa)->get();
+//     $agentId = Observer::select()->where('agentId', $aa)->get();
   
-    // Determine Batch Number
+//     // Determine Batch Number
   
-    $gl =  gazLogs::select()->where('agentId', '1')->get();
-     $ggl = $gl->random()->id;
+//     $gl =  gazLogs::select()->where('agentId', '1')->get();
+//      $ggl = $gl->random()->id;
   
-    logsBooking::create([
-        'recivingDate' => $faker->dateTimeBetween($startDate = '01-09-2022', $endDate = '30-09-2022'),
-        'statusBooking' => rand(0,1),
-        'citId' => $cbb,
-        'numBatch' => $ggl,
+//     logsBooking::create([
+//         'recivingDate' => $faker->dateTimeBetween($startDate = '01-09-2022', $endDate = '30-09-2022'),
+//         'statusBooking' => rand(0,1),
+//         'citId' => $cbb,
+//         'numBatch' => $ggl,
         
-    ]);
-  }
+//     ]);
+//   }
   
 
 
