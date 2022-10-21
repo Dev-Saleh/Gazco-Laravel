@@ -40,8 +40,8 @@ Route::group(['namespace' => 'front', 'middleware' => 'authCitizen', 'prefix' =>
     });
     ################################## Booking routes ######################################
     ################################## Complaints routes ######################################
-    Route::group(['prefix' => 'Complaints'], function () {
-    
+    Route::group(['prefix' => 'whatsapp'], function () {
+        Route::get('index', 'whatsappController@index')->name('whatsapp.index');
      });
     ################################## Complaints routes ######################################
     

@@ -124,16 +124,17 @@ class checkBatchController extends Controller
 
                         return response()->json(
                         [
-                            'status' => true,
-                            'warring' => 'هدا كميه مفتوحةالحجز',      
+                            'status' => false,
+                            'msg' => 'هذه الدفعه مفتوحة الحجز بالفعل',  
+                            'alertType'        => '.alertWarning',    
                         ]);
 
                 else if($gazLog->statusBatch=='3')
 
                     return response()->json(
-                        [
-                            'status' => true,
-                            'warring' => 'تم نفاد هدا الكميه',      
+                        [    'status' => false,
+                            'msg' => 'تم نفاد الكميه',  
+                            'alertType'        => '.alertWarning',      
                         ]);
 
                 else if($gazLog->statusBatch=='1')
@@ -151,8 +152,9 @@ class checkBatchController extends Controller
                         if($lastBatchOpenBooking)
                             return response()->json(
                             [
-                                'status' => true,
-                                'warring' => 'هناك كميه مفتوحة الحجز',      
+                                'status' => false,
+                                'msg' => 'هناك دفعه مفتوحة الحجز',  
+                                'alertType'        => '.alertWarning',     
                             ]);
                     
                             
@@ -167,16 +169,15 @@ class checkBatchController extends Controller
                                         return response()->json(
                                         [
                                             'status'     => false,
-                                            'msg'        => 'This gaz Log Not Found Error In Function Update',
+                                            'msg'        => 'لا يوجد دفعه بهذا الرقم',
                                             'gazLogId'   => $request -> gazLogId, //for Test
                                         ]);
 
                                         return response()->json(
                                         [
-                                            'status'                 => true,
-                                            'lastBatchOpenBooking'   => $gazLog, //for display in table
-                                            'getStatusBatch'         => $gazLog->getStatusBatch(), //for display in table
-                                            'gazLogId'               => $request -> gazLogId, ////For Delete Row Form Table
+                                            'status'     => false,
+                                            'msg'        => 'تم فتح الحجز بنجاح',
+                                            'alertType'        => '.alertWarning',
                                         ]); 
                             }
                     

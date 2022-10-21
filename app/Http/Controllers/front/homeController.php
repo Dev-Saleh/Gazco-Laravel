@@ -44,22 +44,26 @@ class homeController extends Controller
     public function store(Request $request)
     {
          try
-          { 
+          {     $profile = profile::select()->first();
               
-                $logsbooking =logsBooking::create(
-                 [
-                    'statusBooking'   =>'0',
-                    'citId'           =>$request->citId,
-                    'numBatch'        =>$request->numBatch,
-                    'created_at'      =>now() // ???????????????????/
-                 ]
-                 );
-               $logsbooking->save();
-
-               $citizen = Citizen::find($request -> citId); //??????????
+                date_default_timezone_set('Etc/GMT-3');
+               
+               $date = now();
+               $citizen = Citizen::find($request -> citId); 
+               $citizen->unblockDate= date_add($date,date_interval_create_from_date_string($profile->numDaysBookingValid." days"));
+               $citizen->update();
                $lastGazLogs=gazLogs::where('statusBatch','2')->where('agentId',$citizen->observer->agentId)->latest('id')->first();   
                event(new newBooking( $lastGazLogs));
-               
+               $logsbooking =logsBooking::create(
+                [
+                   'statusBooking'   =>'0',
+                   'citId'           =>$request->citId,
+                   'numBatch'        =>$request->numBatch,
+                   'created_at'      =>now() 
+                ]
+                );
+               $logsbooking->save();
+
                if ($logsbooking)
                     return response()->json(
                      [
@@ -67,6 +71,7 @@ class homeController extends Controller
                         'alertType'=> '.alertSuccess',
                         'msg'          => 'تم تسجيلك بنجاح 😁👍',
                         'lastGazLogs'  => $lastGazLogs,
+                        'unblockDate'  =>  $citizen->unblockDate,
                      ]
                     );
                     
@@ -93,6 +98,7 @@ class homeController extends Controller
         try
          {          $profile = profile::select()->first();
                     $citizen = Citizen::find($request -> citId);
+                    // $asd = date_diff($citizen->unblockDate,now());
                     $lastBatchOpenBooking=gazLogs::where('statusBatch','2')->where('agentId',$citizen->observer->agentId)->latest('id')->first();
                     $citizenBookingValid=''; 
                     $numdays='0';
@@ -128,18 +134,19 @@ class homeController extends Controller
                        
                 }
                 else if($lastBatchOpenBooking && $citizenBookingValid=='false')
-                {
+                {   
+                   
                     return response()->json(
                         [
                             'status' => false,
                             'msg' => '2', //2='انت محظور يا حلو' 
                             'validDays'=> $profile->numDaysBookingValid,
-                   
+                            'unblockDate'  =>  $citizen->unblockDate,   
                             'd'=> $numdays->d,
                             'h'=> $numdays->h,
                             'm'=> $numdays->m,
                             's'=> $numdays->s,
-                            'full'=> $numdays,
+                            // 'full'=> $asd,
                         ]);
                 }
                 else if(!$lastBatchOpenBooking && $citizenBookingValid=='true' || $citizenBookingValid=='false' )

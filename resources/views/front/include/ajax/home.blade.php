@@ -26,7 +26,7 @@
                                 document.getElementById('status_msg').classList.add('border-green-600');
                                 document.getElementById('status_msg').classList.add('text-green-900');
                                 document.getElementById('gazImg').classList.add('animate-wiggle');
-                                $('#status_msg').text('مصرح لك بالحجز');                                 
+                                $('#status_msg_title').text('مصرح لك بالحجز');                                 
                                 $('.numBatch').text(data.lastGazLogs.id); 
                                 $('#numBatch').val(data.lastGazLogs.id);
                                 $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
@@ -34,13 +34,35 @@
                                
                         }
                         else if(data.msg == '2')
-                        {
+                        {       
+
+                                const countDownTimer = setInterval(() => {
+                                const today = new Date().getTime();
+                                const unblockday = new Date(data.unblockDate).getTime();
+
+                                const diff = unblockday - today;
+                                const diffDay =  Math.floor(diff / (1000 * 60 *60 * 24));
+                                const diffHour = Math.floor((diff % (1000 * 60 *60 * 24)) / (1000 * 60 *60 ));
+                                const diffMin =  Math.floor((diff % (1000 * 60 *60 )) / (1000 * 60));
+                                const diffSec =   Math.floor((diff % (1000 * 60)) / 1000 );
+
+                                $('#day').text(diffDay);
+                                $('#hour').text(diffHour);
+                                $('#min').text(diffMin);
+                                $('#sec').text(diffSec);
+                                console.log(diffSec); 
+                                }, 1000);
+                              
+
                                 window.saveBooking.setAttribute('disabled','disabled');
                                 document.getElementById('status_msg').classList.add('bg-red-200');
                                 document.getElementById('status_msg').classList.add('border-red-600');
                                 document.getElementById('status_msg').classList.add('text-red-900');
-                                $('#status_msg').text('لقد تم ايقافك مؤقتاً');
+                                $('#status_msg_title').text('تم إيقافك عن الحجز لمدة');
+                                // $('#status_msg_unblockDate').text(data.unblockDate);
+                                document.getElementById('status_msg_unblockDate').classList.replace('hidden','flex');
                                 $('#validDays').text(data.validDays);
+                                
                                
 
                         }
@@ -51,7 +73,7 @@
                                 document.getElementById('status_msg').classList.add('bg-gray-200');
                                 document.getElementById('status_msg').classList.add('border-gray-600');
                                 document.getElementById('status_msg').classList.add('text-gray-900');
-                                $('#status_msg').text('لايوجد كمية مفتوحة الحجز');
+                                $('#status_msg_title').text('لايوجد كمية مفتوحة الحجز');
                                 $('#validDays').text(data.validDays);
                         }
                     
@@ -70,7 +92,9 @@
         $(document).on('click', '#saveBooking', function (e)
          {
             e.preventDefault();
-            window.saveBooking.setAttribute('disabled','disabled');
+           const spineer = '<div><img id="spinner" class="" src="{{ asset('assets/images/loading1.svg') }}"alt=""></div>';
+                            $('#gazImg').toggleClass('hidden', 'flex');             
+                            $('#spinner').toggleClass('hidden', 'flex');             
             var formData = new FormData($('#logBookings')[0]);
             console.log('data');
             $.ajax(
@@ -84,14 +108,16 @@
                     cache: false,
                     success: function (data) 
                     {
+                            $('#spinner').toggleClass('hidden', 'flex');  
+                            $('#gazImg').toggleClass('hidden', 'flex');             
                         console.log(data);
                         if (data.status == true)
-                        {   
+                        {    window.saveBooking.setAttribute('disabled','disabled');
                             newAlert(data.alertType,data.msg);
                             asd();
                             
                         } 
-                        if (data.status == false)
+                        else if (data.status == false)
                         {
                             newAlert(data.alertType,data.msg);
                         }
