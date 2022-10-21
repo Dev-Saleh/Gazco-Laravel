@@ -286,7 +286,6 @@
                                 <select name="relationship" id='selectRelationship' value="أب"
                                     onclick="this.setAttribute('value', this.value);"
                                     class="hover:border-black pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 text-black appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                                    {{-- <option value="" id='Option'selected disabled hidden></option> --}}
                                     <option value="0">أب</option>
                                     <option value="1">أم</option>
                                     <option value="2">أخ</option>
@@ -331,7 +330,6 @@
 
                         <div class="p-20 bg-transparent text-center sm:px-6  rounded-3xl">
                             <!-- Base -->
-
                             <button type="submit" id='fmSave'>
                                 <a class="relative inline-block group focus:outline-none focus:ring" href="">
                                     <span

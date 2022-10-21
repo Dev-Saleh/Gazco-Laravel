@@ -45,6 +45,7 @@ class loginCitizenController extends Controller
                              $q->select('obsWhatsNum')->get();
                           }
                         ])->get();
+                     
                      session()->put('obsWhatsNum',$citizenInfo->observer->obsWhatsNum);
                     
                     return redirect()->route('Main.front');

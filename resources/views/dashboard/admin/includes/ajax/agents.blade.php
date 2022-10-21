@@ -159,11 +159,9 @@
                         var preview = document.getElementById("file-ip-1-preview");
                         preview.style.display = "block";
                         $('#file-ip-1-preview').attr('src', data.photo.valsrc);
-                        $('#select_directorates').focus();
-                        $('#select_rigons').focus();
                         $('#agentId').val(data.agent.id);
-                        $('#select_directorate').text(data.agent.directorate.dirName);
-                        $('#select_rigon').text(data.agent.rigon.rigName);
+                        $('#select_directorates').val(data.agent.dirId).change();
+                        $('#select_rigons').val(data.agent.rigId).change();
                         $('#agentName').val(data.agent.agentName);
                         $('#Photo').val(data.Photo);
                         window.saveAgent.style.display = "none";
@@ -197,12 +195,18 @@
                 cache: false,
                 success: function(data) {
                   
-                    if (data.status == true) {
+                    if (data.status == true)
+                     {
+                       
                         newAlert(data.alertType,data.msg);
                         window.saveAgent.style.display = "inline-flex";
                         window.updateAgent.style.display = "none";
                         $('.offerRow' + data.agentId).remove(); // حدف الحقل السابق الدي قبل التعديل 
                         fetchLastAgent(data.lastAgent, data.Photo); // اضافة اخر حقل
+                        $('#agentId').val('');
+                        $('#agentName').val('');
+                        $('#Photo').val('');
+                        $('#file-ip-1-preview').css('display', 'none');
                     }
                 },
                 error: function(reject) {

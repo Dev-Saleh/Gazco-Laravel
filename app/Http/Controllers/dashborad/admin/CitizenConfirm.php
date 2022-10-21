@@ -4,7 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Citizen;
 use App\Models\logsBooking;
 use Illuminate\Http\Request;
-
+use PhpParser\Node\Stmt\Global_;
 
 class CitizenConfirm extends Controller
 {
@@ -39,7 +39,7 @@ class CitizenConfirm extends Controller
               )->select('id','citName','identityNum','dirId','rigId','obsId','checked')->where('checked','0')->get();
               return view('dashboard.admin.CitizenConfirm.index',$data); 
 
-          }
+            }
        catch (\Exception $ex)
           {
                 return response()->json(
@@ -75,25 +75,34 @@ class CitizenConfirm extends Controller
                             $q->select('id','agentName');
                           }
                         ]
-                        )->select('id','agentId','obsName')->get();
+                        )->select('id','agentId','obsName','obsWhatsNum')->get();
                     }
                   ])->select('id','attachment','citName','created_at','identityNum','dirId','rigId','obsId','checked')->find($request -> citId);  // search in given table id only
                   $numberOfReceipt=logsBooking::where('statusBooking','1')->where('citId',$citizen->id)->get();
                   if (!$citizen)
-                    return response()->json(
+                    return response()->json
+                   (
                       [
                         'status' => false,                     
                       ]
                    );
+                   if(session()->has('obsWhats')) 
+                  { 
+                    session()->forget("obsWhats");
+                  }
+                  session()->put('obsWhats',$citizen->observer->obsWhatsNum);
+              
                   // هدا الامر بعد جلب معلومات المواطن
-                  $bookingNumber =logsBooking::where('citId',$citizen->id)->get(); 
+                  $bookingNumber =logsBooking::where('citId',$citizen->id)->get();
+                   
 
                   return response()->json(
                     [
                       'status'            => true,
                       'citizen'           => $citizen, 
                       'numberOfReceipt'   => $numberOfReceipt->count(),
-                      'bookingNumber'    => $bookingNumber->count(),
+                      'bookingNumber'     => $bookingNumber->count(),
+                      'dd'                => $citizen->observer->obsWhatsNum,//for test
   
                     ]
                 ); 
@@ -151,7 +160,7 @@ class CitizenConfirm extends Controller
            );
           
         }
-  }
+    }
     
     public function destroy(Request $request)
     {
@@ -195,8 +204,8 @@ class CitizenConfirm extends Controller
                   );
                 
               }
-      }
-      public function search(Request $request)
+    }
+   public function search(Request $request)
     {
         
         try
