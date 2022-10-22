@@ -23,7 +23,7 @@
             ease-in-out
             m-0
           focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
-        <option selected>المديريه</option>
+        <option selected disabled>المديريه</option>
            @if ($directorates && $directorates->count() > 0)
               @foreach ($directorates as $dir)
                   <option value="{{ $dir->id }}">
@@ -31,7 +31,7 @@
               @endforeach
            @endif
       </select>
-      <select name="rigId" value="" id='selectRigon' class="form-select form-select-lg 
+      <select name="rigId" value="" id='selectRigon'  class="form-select form-select-lg 
             appearance-none
             block
             w-full
@@ -47,7 +47,8 @@
             ease-in-out
             m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
-            <option selected>المربع</option>
+           
+            <option selected disabled >المربع</option>
            
       </select> 
       <select name="agentId" value="" id='selectAgent' class="form-select form-select-lg 
@@ -66,7 +67,7 @@
               ease-in-out
               m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
-              <option selected>الموزع</option>
+              <option selected disabled>الموزع</option>
              
       </select>
       <div class="relative z-0 w-full">
@@ -119,19 +120,19 @@
 
           <div class="group rounded-tr-none rounded-full bg-teal-500 w-full h-40 flex flex-col justify-center items-center space-y-2 hover:animate-wiggle">
                   <p class="text-teal-900 text-lg">عدد الدفعات</p>
-                  <span id='batchCount' class="text-teal-200 text-base bg-teal-700 rounded-full rounded-tr-none p-2 py-1 group-hover:animate-bounce">19</span>
+                  <span id='batchCount' class="text-teal-200 text-base bg-teal-700 rounded-full rounded-tr-none p-2 py-1 group-hover:animate-bounce">0</span>
           </div>
           <div class="group rounded-tl-none rounded-full bg-purple-500 w-full h-40 flex flex-col justify-center items-center space-y-2 hover:animate-wiggle">
             <p class="text-purple-900 text-lg">اجمالي الدفعات</p>
-            <span id='batchResult' class="text-purple-200 text-base bg-purple-700 rounded-full rounded-tl-none p-2 py-1 group-hover:animate-bounce">11</span>
+            <span id='batchResult' class="text-purple-200 text-base bg-purple-700 rounded-full rounded-tl-none p-2 py-1 group-hover:animate-bounce">0</span>
           </div>
           <div class="group rounded-tr-none rounded-full bg-yellow-500 w-full h-40 flex flex-col justify-center items-center space-y-2 hover:animate-wiggle">
             <p class="text-yellow-900 text-lg"> التي تم فتح الحجز</p>
-            <span id='allowBookingCount' class="text-yellow-200 text-base bg-yellow-700 rounded-full rounded-tr-none p-2 py-1 group-hover:animate-bounce">10</span>
+            <span id='allowBookingCount' class="text-yellow-200 text-base bg-yellow-700 rounded-full rounded-tr-none p-2 py-1 group-hover:animate-bounce">0</span>
           </div>
           <div  class="group rounded-tl-none rounded-full bg-sky-500 w-full h-40 flex flex-col justify-center items-center space-y-2 hover:animate-wiggle">
             <p class="text-sky-900 text-lg"> التي لم يتم فتح الحجز </p>
-            <span id='anyThings' class="text-sky-200 text-base bg-sky-700 rounded-full rounded-tl-none p-2 py-1 group-hover:animate-bounce">00</span>
+            <span id='anyThings' class="text-sky-200 text-base bg-sky-700 rounded-full rounded-tl-none p-2 py-1 group-hover:animate-bounce">0</span>
           </div>
         </div>
       </div>
@@ -146,7 +147,7 @@
         <div class="order">
           <div class="head">
             <h3>تصدير بصيغة</h3>
-              {{-- START SEARCH FORM --}}
+         {{-- START SEARCH FORM --}}
           <div class="flex mx-auto w-full">
                       
                
@@ -170,8 +171,9 @@
            {{-- END SEARCH FORM --}}
             <form action="{{route('batchReports.exportExcelBatch')}}" method="get" >
              @csrf
-            <input  type="" value='2022-09-05' name='valueDateForm' style="display:none;" class="form-control" id="valueDateForm">
-            <input  type="" value='2023-05-03' name='valueDateTo'  style="display:none;" class="form-control" id="valueDateTo">    
+            <input  type="" value='' name='valueDateForm' style="display:none;" class="form-control" id="valueDateForm">
+            <input  type="" value='' name='valueDateTo'  style="display:none;" class="form-control" id="valueDateTo">    
+            <input  type="" value='' name='agentId'  style="display:none;" class="form-control" id="valueAgentId">    
             <button type="submit" id="btnBatchPdf"    class='h-8 w-8 bg-red-100 p-1 rounded-full'><img src="{{ asset('assets/images/pdf.png') }}" alt="PDF"></button>
             <button type="submit"  id="btnBatchExcel"  class='h-8 w-8 bg-green-100 p-1 rounded-full'><img src="{{ asset('assets/images/sheets.png') }}" alt="Excel"></button>
            </form>

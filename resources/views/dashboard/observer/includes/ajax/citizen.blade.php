@@ -518,7 +518,6 @@
                                     $('#fetchLastCitizen').html("");
                                     $.each(data.resultSearch, function(key, resultSearch)
                                     {
-                                        
                                                 $('#fetchLastCitizen').prepend('<tr class="offerRow'+resultSearch.id+' animate-fadeInRight bg-white hover:scale-95 transform transition-all ease-in">\
                                                 <td class="p-3 text-center">'+resultSearch.id+'</td>\
                                                 <td class="p-3 text-center">'+resultSearch.citName+'</td>\
@@ -548,12 +547,10 @@
                                                         </a>\
                                                     </div>\
                                                 </td>\
-                                            </tr>');
-                                       
+                                            </tr>');      
                                         
-                                        });
-
-                            }
+                                    });
+                            }     
                         },
                 error: function(reject) 
                 {

@@ -6,7 +6,7 @@
      
     // Start select gazLogs Rigon by Ajax 
  
-        $(document).on('click', '#selectDirectorates', function (e) {
+        $(document).on('change', '#selectDirectorates', function (e) {
             e.preventDefault();
             var dirId= window.selectDirectorates.value;
             $.ajax({
@@ -14,21 +14,38 @@
                 enctype: 'multipart/form-data',
                 url: "{{route('batchReports.showRigons')}}",
               data:
+                {
+                        'dirId' :dirId, 
+                },
+              success: function (data) 
               {
-                     'dirId' :dirId, 
-              },
-                success: function (data) {
-                  console.log(data);
-                   if (data.status == true) {
-                       $('#selectRigon').html("");
+                   console.log(data);
+                   if (data.status == true)
+                    {
+                       
+                        $('#selectRigon').html("");
+                        $groupOption='<option selected disabled >المربع</option>';
+           
                         $.each(data.rigons, function (key , rigon)
                         {
-                          $('#selectRigon').append('<option value='+rigon.id+'>'+rigon.rigName+'</option>');
-                        }
-                        );
+                          $groupOption +='<option value='+rigon.id+'>'+rigon.rigName+'</option>';
+                        });
+                        
+                         $('#selectRigon').append($groupOption);
+                        $('#selectAgent').html("");
+                        $groupOptionAgent='<option selected disabled >الموزع</option>';
+           
+                        $.each(data.agents, function (key , agent)
+                        {
+                           $groupOptionAgent+='<option value='+agent.id+'>'+agent.agentName+'</option>';
+                        });
+
+                        $('#selectAgent').append($groupOptionAgent);
+                       
                     }
                   
-                }, error: function (reject) {
+                }, error: function (reject) 
+                {
                    
                 }
             });
@@ -37,7 +54,8 @@
     // End select gazLogs Rigon by Ajax 
     // Start select gazLogs Agent by Ajax 
  
-        $(document).on('click', '#selectRigon', function (e) {
+        $(document).on('change', '#selectRigon', function (e)
+        {
             e.preventDefault();
             var rigId= window.selectRigon.value;
             $.ajax({
@@ -47,17 +65,24 @@
               data: {
                      'rigId' :rigId, 
                     },
-                success: function (data) {
-                  console.log(data);
-                   if (data.status == true) {
-                       $('#selectAgent').html("");
-                        $.each(data.agents, function (key , agent) {
-                        $('#selectAgent').append('<option value='+agent.id+'>'+agent.agentName+'</option>');
+                success: function (data)
+                 {
+                    console.log(data);
+                   if (data.status == true) 
+                   {
+                        $('#selectAgent').html("");
+                        $groupOption='<option selected disabled >الموزع</option>';
+           
+                        $.each(data.agents, function (key , agent)
+                        {
+                           $groupOption+='<option value='+agent.id+'>'+agent.agentName+'</option>';
                         });
+
+                        $('#selectAgent').append($groupOption);
                     }
                   
-                }, error: function (reject) {
-                   
+                }, error: function (reject) 
+                {   
                 }
             });
         });
@@ -76,8 +101,9 @@
                 processData: false,
                 contentType: false,
                 cache: false,
-                success: function (data) {
-                  //console.log(data.gazLogs);
+                success: function (data) 
+                {
+                  
                    if (data.status == true) 
                    {
                         $('#fetchLestGazLogs').html("");
@@ -99,6 +125,7 @@
                         $('#allowBookingCount').text(data.allowBookingCount);
                         $('#valueDateForm').val(data.dateForm);
                         $('#valueDateTo').val(data.dateTo);
+                        $('#valueAgentId').val(data.agentId);
                    }
                   
                 }, error: function (reject)
