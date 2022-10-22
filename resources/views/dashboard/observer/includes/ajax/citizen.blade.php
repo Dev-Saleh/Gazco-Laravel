@@ -12,7 +12,7 @@
                                                 <td class="p-3 text-center">'+$lastCitizenAdd.id+'</td>\
                                                 <td class="p-3 text-center">'+$lastCitizenAdd.citName+'</td>\
                                                 <td class="p-3 text-center">'+$lastCitizenAdd.identityNum+'</td>\
-                                                <td class="p-3 text-center"> '+ (resultSearch.checked == 'لا' ? '<span class="bg-red-400 text-red-50 rounded-md px-2">'+resultSearch.checked+'</span>' : '<span class="bg-green-400 text-green-50 rounded-md px-2">'+resultSearch.checked+'</span>')+'</td>\
+                                                <td class="p-3 text-center"> '+ ($lastCitizenAdd.checked == 'لا' ? '<span class="bg-red-400 text-red-50 rounded-md px-2">'+$lastCitizenAdd.checked+'</span>' : '<span class="bg-green-400 text-green-50 rounded-md px-2">'+resultSearch.checked+'</span>')+'</td>\
                                                 <td class="p-3 text-center ">\
                                                     <div id="action-div" class="flex justify-center">\
                                                         <a onclick="deleteAlert();" href="#" citId="' + $lastCitizenAdd.id + '"  class="citizenDelete text-red-400  hover:text-red-600  ">\
