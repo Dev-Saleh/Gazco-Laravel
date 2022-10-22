@@ -57,8 +57,6 @@ class batchReportsController extends Controller
                    }
                  ])->select('id','dirId','rigId','staId','agentId','created_at','qty')
                  ->where('agentId',$request->agentId)
-                 ->where('dirId',$request->dirId)
-                 ->where('rigId',$request->rigId)
                  ->whereBetween('created_at', [$request->dateForm, $request->dateTo])
                  ->get();
                  $batchCount=$gazLogs->count();
