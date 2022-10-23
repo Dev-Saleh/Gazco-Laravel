@@ -13,7 +13,7 @@
     labels: labelsBarChart,
     datasets: [
         {
-        label: "لون الشهر",
+        label: "دفعه",
         backgroundColor: "hsl(160, 84%, 39%)",
         borderColor: "hsl(138, 76%, 97%)",
         data: [15, 10, 5, 2, 20, 30, 45],

@@ -53,7 +53,7 @@
 
         <!-- button Section -->
 
-        <div class=" p-4 mx-auto w-11/12  bg-white rounded-lg shadow-md">
+        <div class=" p-4 mx-auto w-11/12  bg-white rounded-lg shadow-md  border-b-4 border-gray-500">
             <form action="" method="POST" id='logBookings'>
                 @csrf
                 <div class="flex flex-col justify-center relative">
@@ -72,7 +72,7 @@
                     </p>
                     <button type="submit" id='saveBooking' idCitizen="{{ session()->get('idCitizen') }}"
                         class="saveBooking flex flex-col justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed p-0">
-                        <img id="gazImg" class="h-32 w-38 flex" src="{{ asset('assets/images/gaz-cart.png') }}"
+                        <img id="gazImg" class="h-36 w-52 flex" src="{{ asset('assets/images/gaz-cart.png') }}"
                             alt="">
                             <div><img id="spinner" class="hidden" src="{{ asset('assets/images/loading1.svg') }}"alt=""></div>
                     </button>

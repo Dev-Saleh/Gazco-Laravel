@@ -5,40 +5,40 @@
          <div id="containerStatus" class="mb-16 grid grid-cols-8 gap-x-7 w-full">
             <div class="relative col-span-2 group h-28 w-full bg-white rounded-md shadow-sm flex items-center p-4">
                 <div class="z-30 rotate-45 rounded-md h-20 w-20 bg-purple-500 p-3">
-                    <p class="text-emerald-100 -rotate-45 text-center ">
+                    <p class="text-purple-100 -rotate-45 text-center ">
                         عدد المواطن
                     </p>
                 </div>
                 <span
                     class="absolute p-2.5 rounded-md rotate-45 bg-purple-200 px-3 group-hover:right-40 right-20  transition-all duration-1000">
-                    <p class="text-emerald-800 -rotate-45 text-center ">
+                    <p class="text-purple-800 -rotate-45 text-center ">
                         {{ App\Models\Citizen::where('obsId',session()->get('obsId'))->count() }}
                     </p>
                 </span>
             </div>
             <div class="col-span-2 group h-28 w-full bg-white rounded-md shadow-sm flex items-center p-4">
                 <div class="z-30 rotate-45 rounded-md h-20 w-20 bg-rose-500 p-3">
-                    <p class="text-emerald-100 -rotate-45 text-center ">
+                    <p class="text-rose-100 -rotate-45 text-center ">
                         عدد الدفعات
                     </p>
                 </div>
                 <span
                     class="p-2.5 rounded-md rotate-45 bg-rose-200 px-3 group-hover:-translate-x-10 translate-x-5  transition-all duration-1000">
-                    <p class="text-emerald-800 -rotate-45 text-center ">
+                    <p class="text-rose-800 -rotate-45 text-center ">
                      <?php $v=App\Models\Observer::where('id',session()->get('obsId'))?>
-                        {{-- {{ App\Models\gazLogs::where('agentId',$v)->count() }}  --}}
+                        {{ App\Models\gazLogs::where('agentId','1')->count() }} 
                     </p>
                 </span>
             </div>
             <div class="col-span-2 group h-28 w-full bg-white rounded-md shadow-sm flex items-center p-4">
                 <div class="z-30 rotate-45 rounded-md h-20 w-20 bg-yellow-500 p-3">
-                    <p class="text-emerald-100 -rotate-45 text-center ">
+                    <p class="text-yellow-100 -rotate-45 text-center ">
                         مفتوحه الحجز
                     </p>
                 </div>
                 <span
                     class="p-2.5 rounded-md rotate-45 bg-yellow-200 px-3 group-hover:-translate-x-10 translate-x-5  transition-all duration-1000">
-                    <p class="text-emerald-800 -rotate-45 text-center ">
+                    <p class="text-yellow-800 -rotate-45 text-center ">
                         {{ App\Models\gazLogs::where('statusBatch', '2')->count() }}
                     </p>
                 </span>

@@ -146,7 +146,7 @@
                     <th class="p-3 text-center">العمليات</th>
                 </tr>
             </thead>
-            <tbody id='fetchLastAgent'>
+            <tbody id='fetchLastAgent' class="">
                 @if ($agents && $agents->count() > 0)
                     @foreach ($agents as $agent)
                         <tr
@@ -187,8 +187,10 @@
                             </td>
 
                         </tr>
+                       
                     @endforeach
                 @endif
+              
             </tbody>
         </table>
     </div>

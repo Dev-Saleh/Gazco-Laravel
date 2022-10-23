@@ -12,7 +12,7 @@
                                                 <td class="p-3 text-center">'+$lastCitizenAdd.id+'</td>\
                                                 <td class="p-3 text-center">'+$lastCitizenAdd.citName+'</td>\
                                                 <td class="p-3 text-center">'+$lastCitizenAdd.identityNum+'</td>\
-                                                <td class="p-3 text-center"> '+ (resultSearch.checked == 'لا' ? '<span class="bg-red-400 text-red-50 rounded-md px-2">'+resultSearch.checked+'</span>' : '<span class="bg-green-400 text-green-50 rounded-md px-2">'+resultSearch.checked+'</span>')+'</td>\
+                                                <td class="p-3 text-center"> '+$lastCitizenAdd.checked+'</td>\
                                                 <td class="p-3 text-center ">\
                                                     <div id="action-div" class="flex justify-center">\
                                                         <a onclick="deleteAlert();" href="#" citId="' + $lastCitizenAdd.id + '"  class="citizenDelete text-red-400  hover:text-red-600  ">\
@@ -88,7 +88,8 @@
                     
 
                     if (data.status == true)
-                     {
+                     {  
+                        $('#detailsFm').attr('open','');
                         newAlert(data.alertType,data.msg);
                         $('#citId').val('');
                         //$('#obsId').val(''); can not be null لاتفعل دا
@@ -100,7 +101,7 @@
                         $('#select_Directorate').text('');
                         $('#select_Directorate').val('');
                         $('#select_Rigon').text('');
-                        $('#selectCitizen').text(data.lastCitizenAdd.citName);
+                        $('#selectCitizen').val(data.lastCitizenAdd.citName);
                         fetchLastCitizen(data.lastCitizenAdd);
                     
                     } 
@@ -136,6 +137,7 @@
                     },
                     success: function (data) 
                     {
+                        console.log(data);
                         if (data.status == true)  
                         {
                             $('.offerRow' + data.citId).addClass("animate-fadeInLeft");
@@ -169,7 +171,7 @@
         {
              e.preventDefault();
              var citId = $(this).attr('citId');
-
+            $('#detailsCi').attr('open','');
             $.ajax({
                         type: 'get',
                         url:"{{route('citizen.edit')}}",
@@ -195,6 +197,7 @@
                             preview.style.display = "block";
                             $('#file-ip-1-preview').attr('src', data.citizen.attachment['valsrc']);
                             
+                                
                                 window.saveCitizen.style.display="none";
                                 window.updateCitizen.style.display="inline-flex";  
                             
@@ -227,9 +230,10 @@
                     cache: false,
                     success: function (data)
                    {
-                        console.log(data);  // For Test
+                       
                         if(data.status == true)
                         {
+                            newAlert(data.alertType,data.msg);
                             $('#file-ip-1-preview').css('display', 'none');
                             
                              $('#citName_error').text('');
@@ -413,7 +417,7 @@
         {
              e.preventDefault();
              var fmId = $(this).attr('fmId');
-
+             $('#detailsFm').attr('open','');
             $.ajax({
                         type: 'get',
                         url:"{{route('fm.edit')}}",
@@ -525,10 +529,6 @@
                                                 <td class="p-3 text-center">'+resultSearch.identityNum+'</td>\
                                                 <td class="p-3 text-center"> '+ (resultSearch.checked == 'لا' ? '<span class="bg-red-400 text-red-50 rounded-md px-2">'+resultSearch.checked+'</span>' : '<span class="bg-green-400 text-green-50 rounded-md px-2">'+resultSearch.checked+'</span>')+'</td>\
                                                 <td class="p-3 text-center ">\
-                                                    <div id="delete-alert" class=" h-10 w-28 rounded-full overflow-hidden hidden">\
-                                                        <button class="bg-green-200 w-14 hover:bg-green-400">Y</button>\
-                                                        <button class="bg-red-200 w-14 hover:bg-red-400">N</button>\
-                                                    </div>\
                                                     <div id="action-div" class="flex justify-center">\
                                                         <a onclick="deleteAlert();" href="#" citId="' + resultSearch.id + '"  class="citizenDelete text-red-400  hover:text-red-600  ">\
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">\

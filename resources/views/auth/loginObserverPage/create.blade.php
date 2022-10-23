@@ -23,7 +23,7 @@
             <input
                 type="text"
                 placeholder="username" name='obsUserName' id='obsUserName'
-                class="pr-8 border-b-2 font-display focus:outline-none focus:border-emerald-500 transition-all duration-500 capitalize text-lg"
+                class="pr-8 border-b-2 font-display text-teal-900 bg-transparent focus:outline-none focus:border-emerald-500 transition-all duration-500 capitalize text-lg"
             />
             </div>
             <div class="relative mt-8">
@@ -31,7 +31,7 @@
             <input
                 type="password"
                 placeholder="password" name='obsPassword' id='obsPassword'
-                class="pr-8 border-b-2 font-display focus:outline-none focus:border-emerald-500 transition-all duration-500 capitalize text-lg"
+                class="pr-8 border-b-2 font-display bg-transparent text-teal-500 focus:outline-none focus:border-emerald-500 transition-all duration-500 capitalize text-lg"
             />
             </div>
            

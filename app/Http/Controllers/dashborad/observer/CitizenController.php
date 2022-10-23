@@ -368,7 +368,7 @@ class CitizenController extends Controller
                       [
                         'status'            => true,
                         'msg'               => 'تم تعديل بيانات المواطن بنجاح',
-                        'alertType'         => '.alertWarning',
+                        'alertType'         => '.alertSuccess',
                         'attachment'        => $fileName,
                         'lastCitizenUpdate' => $lastCitizenUpdate,
                         'citId'             => $request->id,
@@ -396,15 +396,15 @@ class CitizenController extends Controller
     {
         try 
           {     
-            $fmFounding = familyMembers::where('citId',$request->citId)->get();
-            if($fmFounding)
+            $fmFounding = familyMembers::select('id')->where('citId',$request->citId)->get();
+            if($fmFounding->count() > 0)
             {
               return response()->json(
                 [
                   'status'  => false,
                   'alertType'=> '.alertWarning',
                   'msg'     => 'لا يمكنك الحذف يوجد افراد مرتبطه بالمواطن',
-                  'citId'   => $request -> citId, 
+                  'fmFounding'   => $fmFounding, 
                 ]
               );
 

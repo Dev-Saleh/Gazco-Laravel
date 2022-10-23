@@ -93,7 +93,7 @@
           class="block px-5 py-3 text-sm font-medium text-white bg-rose-600 rounded-lg transition hover:bg-rose-700 focus:outline-none focus:ring"
           type="button"
         >
-         أبلاغ عن خطأ ؟
+       الغاء حجز ؟
         </button>
   </div>
    <!-- End Table Query Booking -->

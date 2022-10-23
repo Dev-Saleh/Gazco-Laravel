@@ -59,7 +59,8 @@
                                 <td class="p-3 text-center">
                                     {{ $gazLog->created_at }}
                                 </td>
-                             
+                               
+                               
                                 <td class="p-3 grid items-center justify-center">
                                     <a href="#" gazLogId={{ $gazLog->id }}
                                         class="gazLogId text-blue-600 hover:text-blue-400">
@@ -98,7 +99,7 @@
                     class="h-8  p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-l-full border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-50 focus:border-blue-500"
                     placeholder="ابحث عن اسم او رقم المواطن ..." required="">
             </div>
-            <button type="submit" id="btnbookingsPdf"  class='h-8 w-8 bg-red-100 mx-1 p-1 rounded-full'><img src="{{ asset('assets/images/pdf.png') }}" alt="PDF"></button>
+            <button type="submit" id="btnbookingsPdf"  class='h-8 w-8 bg-green-100 mx-1 p-1 rounded-full'><img src="{{ asset('assets/images/sheets.png') }}" alt="PDF"></button>
         </div>
         {{-- END SEARCH FORM --}}
         <div class=" bg-white border-b rounded-xl border-gray-200 overflow-y-auto w-full" style="height: 450px;">
@@ -126,22 +127,17 @@
                     </tr>
                 </thead>
                 <tbody id='showLogBookingsCitizen' class="bg-white divide-y divide-gray-200">
-                    {{-- <tr>
-                    
-                    <td class="text-center px-4 py-2 whitespace-nowrap">
-                      <div class="text-sm text-gray-700">صالح عبدالله صالح</div>  
-                    </td>
-                    <td class="text-center px-4 py-2 whitespace-nowrap">
-                      <input type="checkbox"  name='status_booking'  class="confirm">
-                    </td>
-                    <td class="text-center px-4 py-2 whitespace-nowrap">
-                      <input type="checkbox" class="sms"> 
-                    </td>
-                    
-                  </tr> --}}
+             
                 </tbody>
             </table>
+           
         </div>
+        <p class="my-0">
+            الاجمالي  :
+             <span id="count">
+               
+             </span>
+           </p>
         <!-- Buttons section -->
         <div class="flex justify-center gap-x-4  mx-auto w-full rounded-full bg-white p-4 shadow-sm">
             <button type="submit" id='saveReciving'>

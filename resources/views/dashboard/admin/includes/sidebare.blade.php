@@ -31,8 +31,8 @@
        
          @if(session()->get('empRole')=='مستخدم')
 
-        <a href="" disabled class="{{ 'admin/agent/index' == request()->path() ? 'bg-red-500' : '' }}
-                flex justify-between
+        <a href=""  class="{{ 'admin/agent/index' == request()->path() ? 'bg-red-500' : '' }}
+                hidden justify-between 
                 w-full p-4 
                 text-white  
                 rounded-tl-3xl
@@ -73,7 +73,7 @@
         @endif
        @if(session()->get('empRole')=='مستخدم')
          <a href="" disabled class=" {{ 'admin/observer/index' == request()->path() ? 'bg-red-500' : '' }}
-                flex justify-between
+          hidden justify-between
                 w-full p-4 
                 text-white  
                 rounded-tl-3xl
@@ -108,7 +108,7 @@
         </a>
         @if(session()->get('empRole')=='مستخدم')
         <a href="" disabled class=" {{ 'admin/directorate/index' == request()->path() ? 'bg-red-500' : '' }}
-       flex justify-between
+          hidden justify-between
                 w-full p-4 
                 text-white  
                 rounded-tl-3xl
@@ -134,7 +134,7 @@
         @endif
         @if(session()->get('empRole')=='مستخدم')
         <a href="" disabled class=" {{ 'admin/employee/index' == request()->path() ? 'bg-red-500' : '' }}
-        flex justify-between
+          hidden justify-between
                 w-full p-4 
                 text-white  
                 rounded-tl-3xl

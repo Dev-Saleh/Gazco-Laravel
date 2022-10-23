@@ -75,6 +75,11 @@
         </tbody>
       </table>
     </div> 
-    
+    <p class="">
+     الاجمالي  :
+      <span id="count">
+        
+      </span>
+    </p>
   </div>
    <!-- End Table Query Booking -->

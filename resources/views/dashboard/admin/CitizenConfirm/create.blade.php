@@ -6,8 +6,8 @@
         
               <div class="grid grid-cols-4">
                 <div class="col-start-2 col-end-4 bg-gray-200 w-100 h-40 justify-center items-center flex rounded-md">
-                  <img id='attachment'></img>
-
+                 
+              <img id='attachment' src="" alt="" class="object-fill w-full h-40 z-30">
                 </div>
                 
               </div>

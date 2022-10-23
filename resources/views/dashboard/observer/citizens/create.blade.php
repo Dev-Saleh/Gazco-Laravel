@@ -1,4 +1,4 @@
-<details class="cursor-auto text-lg font-medium leading-6 text-gray-900 ">
+<details id="detailsCi" open class="cursor-auto text-lg font-medium leading-6 text-gray-900 ">
     <summary class="text-lg font-medium leading-6 text-gray-900 space-y-6">
         <a href="">أضافة مواطن </a>
 
@@ -178,7 +178,7 @@
 
 
 <br>
-<details class="cursor-auto text-lg font-medium leading-6 text-gray-900 ">
+<details id="detailsFm" class="cursor-auto text-lg font-medium leading-6 text-gray-900 ">
     <summary class="text-lg font-medium leading-6 text-gray-900 space-y-6">
         <a href="">أضافة فرد تابع </a>
 
