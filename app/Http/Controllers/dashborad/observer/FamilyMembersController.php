@@ -21,10 +21,17 @@ class FamilyMembersController extends Controller
                     $attachment =$request->attachmentFm;  
                     $filename = uploadImageAndResize('familyMember', $attachment , $width='220', $height='190');
 
-                    $familyMember = familyMembers::create($request->except('_token'));
-                    
-                    $familyMember->attachment=$filename;
-
+                    $familyMember = familyMembers::create(
+                    [
+                      'fmName'=>$request->fmName,
+                      'identityNum'=>$request->identityNum,
+                      'relationship'=>$request->relationship,
+                      'attachment'=>$filename,
+                      'sex'=>$request->sex,
+                      'age'=>$request->age,
+                      'citId'=>$request->citId,
+                    ]);
+           
                     $familyMember->save();
 
                         if ($familyMember)
@@ -39,6 +46,11 @@ class FamilyMembersController extends Controller
                }
            catch (\Exception $ex)
                {
+                    $imageDelete = base_path('public/assets/images/familymember/' . $filename);
+                    if (file_exists($imageDelete))
+                    {
+                        unlink($imageDelete);
+                    }
                 
                     return response()->json(
                         [

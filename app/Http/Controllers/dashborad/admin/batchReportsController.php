@@ -57,8 +57,6 @@ class batchReportsController extends Controller
                    }
                  ])->select('id','dirId','rigId','staId','agentId','created_at','qty')
                  ->where('agentId',$request->agentId)
-                 ->where('dirId',$request->dirId)
-                 ->where('rigId',$request->rigId)
                  ->whereBetween('created_at', [$request->dateForm, $request->dateTo])
                  ->get();
                  $batchCount=$gazLogs->count();
@@ -66,6 +64,7 @@ class batchReportsController extends Controller
                  $allowBookingCount=$gazLogs->where('allowBooking','0')->count();
                  $dateForm = $request->dateForm;
                  $dateTo   = $request->dateTo;
+                 $agentId  = $request->agentId;
                  if($gazLogs)
                  {
                     
@@ -78,6 +77,7 @@ class batchReportsController extends Controller
                         'allowBookingCount' => $allowBookingCount,
                         'dateForm'          => $dateForm,
                         'dateTo'            => $dateTo,
+                        'agentId'           => $agentId,
                     
                     ]);
 
@@ -101,10 +101,13 @@ class batchReportsController extends Controller
            {
        
                 $rigons = Rigon::select('id','rigName')->where('dirId',$request->dirId)->whereHas('agent')->get();
+                $agents = Agent::select('id','agentName')->where('dirId',$request->dirId)->orderby('id','DESC')->get();
                 if($rigons)
                 return response()->json([
                     'status' => true,
                     'rigons' => $rigons,
+                    'agents' => $agents,
+
                 ]);
            }
         catch (\Exception $ex)
@@ -138,14 +141,8 @@ class batchReportsController extends Controller
                 ]);
             }
     }
-    
-    
     public function exportExcelBatch(Request $request)
     {
-           
-          return Excel::download(new exportBatchReport($request->valueDateForm,$request->valueDateTo),'salah.xlsx');        
-      
+       return Excel::download(new exportBatchReport($request->valueDateForm,$request->valueDateTo,$request->agentId),'salah.xlsx');
     }
-    
-  
 }

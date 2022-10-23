@@ -38,10 +38,10 @@
 
 
                 <div class="relative z-0 w-full mb-5">
-                    <select name="dirId" value="" id='select_directorates'
+                    <select name="dirId" value="s" id='select_directorates'
                         onclick="this.setAttribute('value', this.value);" onchange="f('select_rigons');"
                         class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                        <option value="" id='select_directorate' selected disabled hidden></option>
+                        {{-- <option value="" id='select_directorate' selected disabled hidden></option> --}}
                         @if ($directorates && $directorates->count() > 0)
                             @foreach ($directorates as $dir)
                                 <option value="{{ $dir->id }}">{{ $dir->dirName }}</option>
@@ -55,10 +55,10 @@
                 </div>
 
                 <div class="relative z-0 w-full mb-5">
-                    <select name="rigId" value="" id='select_rigons'
+                    <select name="rigId" value="s" id='select_rigons'
                         onclick="this.setAttribute('value', this.value);"
                         class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none z-1 focus:outline-none focus:ring-0 focus:border-black border-gray-200">
-                        <option value="" id='select_rigon' selected disabled hidden></option>
+                        {{-- <option value="" id='select_rigon' selected disabled hidden></option> --}}
                     </select>
                     <label for="select" class="absolute duration-300 top-3 -z-1 origin-0 text-slate-500">اختر
                         المربع</label>

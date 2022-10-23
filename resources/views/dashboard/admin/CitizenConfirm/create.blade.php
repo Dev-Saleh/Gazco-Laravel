@@ -66,8 +66,8 @@
               <!-- END List Details For Prooudct -->
               
               <div class="p-8 bg-transparent text-center sm:px-6  rounded-3xl">
-                <button  id=''>
-                    <a href=" رقم جوال الواتس حق المراقب اللذي اضاف المواطن" class="  rounded-lg relative w-72 inline-block px-8 py-3 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring" href="/download">
+                <button  >
+                    <a id='sendRequestUpdate' href="" class="  rounded-lg relative w-72 inline-block px-8 py-3 overflow-hidden border border-indigo-600 group focus:outline-none focus:ring" href="/download">
                         <span class="absolute inset-x-0 top-0 h-full transition-all bg-indigo-600 group-hover:h-[1px] group-active:bg-indigo-500"></span>
                       
                         <span class="relative text-sm font-medium text-indigo-50 transition-colors group-hover:text-indigo-500">

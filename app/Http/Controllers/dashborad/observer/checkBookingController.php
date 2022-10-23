@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\dashborad\observer;
 use App\Http\Controllers\Controller;
 use App\Events\statusBooking;
+use App\Exports\exportLogBookingReport;
 use App\Listeners\changeStatusBooking;
 use App\Models\Citizen;
 use App\Models\gazLogs;
@@ -9,6 +10,7 @@ use App\Models\logsBooking;
 use App\Models\Observer;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\ArrayItem;
+use Excel;
 
 class checkBookingController extends Controller
 {
@@ -59,6 +61,7 @@ class checkBookingController extends Controller
                         'status'                 => true,
                         'msg'                    => 'success in index',
                         'showLogBookingsCitizen' => $showLogBookingsCitizen,
+                        'batchId'                => $request->gazLogId,
                     ]
                     );
                 }
@@ -166,6 +169,10 @@ class checkBookingController extends Controller
                 'exceptionError'     => $ex,
             ]);
          }
+    }
+    public function exportExcel(Request $request)
+    {
+       return Excel::download(new  exportLogBookingReport($request->valueNumBatch),'logBooking.xlsx');
     }
        
 }

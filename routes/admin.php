@@ -115,7 +115,7 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
         Route::get('showAgent/{id?}', 'batchReportsController@showAgents')->name('batchReports.showAgents');
       }
        
-      
+ 
      );
       Route::group(['prefix' => 'citizen'], function ()
       {
@@ -170,7 +170,14 @@ Route::group(['prefix' => 'familyMember'], function () {
     
   });
  
-  
+  Route::group(['prefix' => 'report'], function () 
+    {
+      Route::group(['prefix' => 'LogBooking'], function ()
+      {
+          Route::get('exportExcel', 'checkBookingController@exportExcel')->name('logBooking.exportExcel');
+      }
+     );
+    });   
   Route::group(['prefix' => 'checkBatch'], function () {
     Route::get('index', 'checkBatchController@index')->name('checkBatch.index');
     Route::post('update','checkBatchController@update')->name('checkBatch.allowBooking');

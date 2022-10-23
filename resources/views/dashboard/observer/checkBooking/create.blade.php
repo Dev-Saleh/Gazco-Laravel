@@ -99,7 +99,12 @@
                     class="h-8  p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-l-full border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-50 focus:border-blue-500"
                     placeholder="ابحث عن اسم او رقم المواطن ..." required="">
             </div>
-            <button type="submit" id="btnbookingsPdf"  class='h-8 w-8 bg-green-100 mx-1 p-1 rounded-full'><img src="{{ asset('assets/images/sheets.png') }}" alt="PDF"></button>
+
+          <form action="{{route('logBooking.exportExcel')}}" method="get" >
+             @csrf
+            <input  type="" value='' name='valueNumBatch' style="display:none;" class="form-control" id="valueNumBatch">
+            <button type="submit" id="btnbookingsPdf"  class='h-8 w-8 bg-green-100 mx-1 p-1 rounded-full'><img src="{{ asset('assets/images/sheets.png') }}" alt="Excel"></button>
+        </form>
         </div>
         {{-- END SEARCH FORM --}}
         <div class=" bg-white border-b rounded-xl border-gray-200 overflow-y-auto w-full" style="height: 450px;">

@@ -55,11 +55,13 @@
                 success: function (data) 
                 {
                      console.log(data); //for Test
-               
+                    
                      if (data.status == true) 
                     {
+                      
                        $('#attachment').attr('src', data.citizen.attachment['valsrc']);
                        $('#attachment').attr('width', '150');
+                       $('#sendRequestUpdate').attr('href', "https://wa.me/"+data.citizen.observer.obsWhatsNum+"?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%AA%D9%82%D8%AF%D9%8A%D9%85%20%D8%B4%D9%83%D9%88%D9%89");
                        $('#attachment').attr('height', '150');
                        $('.citName').text(data.citizen.citName);
                        $('.identityNum').text(data.citizen.identityNum);
