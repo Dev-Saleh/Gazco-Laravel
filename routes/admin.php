@@ -113,10 +113,16 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
         Route::get('showRigon/{id?}', 'batchReportsController@showRigons')->name('batchReports.showRigons');
         Route::get('exportExcel', 'batchReportsController@exportExcelBatch')->name('batchReports.exportExcelBatch');
         Route::get('showAgent/{id?}', 'batchReportsController@showAgents')->name('batchReports.showAgents');
-      }
-       
- 
-     );
+      });
+      Route::group(['prefix' => 'citizen'], function ()
+      {
+        Route::get('index',  'citizenReportsController@index')->name('citizenReports.index');
+        Route::Post('show',  'citizenReportsController@show')->name('citizenReports.show');
+        Route::get('showRigon/{id?}', 'citizenReportsController@showRigons')->name('citizenReports.showRigons');
+        Route::get('exportExcel', 'citizenReportsController@exportExcelCitizen')->name('citizenReports.exportExcelCitizen');
+        Route::get('showAgent/{id?}', 'citizenReportsController@showAgents')->name('citizenReports.showAgents');
+      });
+
       Route::group(['prefix' => 'citizen'], function ()
       {
           Route::get('citizenReport',  'ReportsController@citizenReport')->name('reports.citizenReport');
