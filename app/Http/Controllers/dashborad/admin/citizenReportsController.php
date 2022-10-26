@@ -116,9 +116,6 @@ class citizenReportsController extends Controller
                     $citizenCount=$citizens->count();
                    $citCheckedTrue=$citizens->where('checked','نعم')->count();
                    $citCheckedFalse=$citizens->where('checked','لا')->count();
-                //  $allowBookingCount=$gazLogs->where('allowBooking','0')->count();
-                //  $dateForm = $request->dateForm;
-                //  $dateTo   = $request->dateTo;
                    $agentId  = $request->agentId;
                  if($citizens)
                  {
@@ -131,11 +128,7 @@ class citizenReportsController extends Controller
                         'citCheckedTrue'    => $citCheckedTrue,
                         'citCheckedFalse'   => $citCheckedFalse,
                         'citizenCount'      => $citizenCount,
-                        // 'batchResult'       => $batchResult,
-                        // 'allowBookingCount' => $allowBookingCount,
-                        // 'dateForm'          => $dateForm,
-                        // 'dateTo'            => $dateTo,
-                          'agentId'           => $agentId,
+                         'agentId'          => $agentId,
                     
                     ]);
 
