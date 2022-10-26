@@ -122,6 +122,9 @@
                                 );
                             });
                             $('#agentId').val(data.agentId);
+                            $('#citizenCount').text(data.citizenCount);
+                            $('#citCheckedFalse').text(data.citCheckedFalse);
+                            $('#citCheckedTrue').text(data.citCheckedTrue);
                    }
                 }, error: function (reject)
                 {   

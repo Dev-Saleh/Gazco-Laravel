@@ -113,8 +113,9 @@ class citizenReportsController extends Controller
                 })
                 ->get();
                 
-                //  $batchCount=$gazLogs->count();
-                //  $batchResult=$gazLogs->sum('qty');
+                    $citizenCount=$citizens->count();
+                   $citCheckedTrue=$citizens->where('checked','نعم')->count();
+                   $citCheckedFalse=$citizens->where('checked','لا')->count();
                 //  $allowBookingCount=$gazLogs->where('allowBooking','0')->count();
                 //  $dateForm = $request->dateForm;
                 //  $dateTo   = $request->dateTo;
@@ -127,8 +128,9 @@ class citizenReportsController extends Controller
                         'status'            => true,
                         'msg'               => 'تم الحفظ بنجاح',
                         'citizen'           => $citizens,
-                        // 'gazLogs'           => $gazLogs,
-                        // 'batchCount'        => $batchCount,
+                        'citCheckedTrue'    => $citCheckedTrue,
+                        'citCheckedFalse'   => $citCheckedFalse,
+                        'citizenCount'      => $citizenCount,
                         // 'batchResult'       => $batchResult,
                         // 'allowBookingCount' => $allowBookingCount,
                         // 'dateForm'          => $dateForm,
