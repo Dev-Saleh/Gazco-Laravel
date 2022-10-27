@@ -1,4 +1,7 @@
 @extends('layouts.admin_dashboard')
+@section('title')
+موظف | نظره عامه
+@stop
 @section('content')
 
   <article id="Content" class="relative content-area px-10 pt-10 bg-gray-100 h-full flex flex-col space-y-4">

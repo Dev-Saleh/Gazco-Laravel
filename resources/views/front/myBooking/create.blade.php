@@ -45,20 +45,20 @@
    
    <!-- End Serach Section -->
    
-    <div class=" bg-white border-b rounded-xl border-gray-200 overflow-y-auto w-full h-[500px] ">
-      <table class="min-w-full divide-y divide-gray-200">
-        <thead class="bg-gray-50">
-          <tr>
+    <div class="  border-b rounded-xl  overflow-y-hidden overflow-x-hidden mx-auto w-full h-[500px] ">
+      <table class="w-full flex-wrap flex divide-y divide-gray-200 text-sm">
+        <thead class="bg-gray-200 w-full tableFixed">
+          <tr class="w-full">
         
-            <th scope="col" class="px-4 py-3 text-center  font-medium text-gray-900 uppercase tracking-wider">
+            <th class="px-4 py-3 text-right whitespace-wrap ">
               رقم الدفعه
             </th>
 
-            <th scope="col" class="px-4 py-3 text-center  font-medium text-gray-900 uppercase tracking-wider">
+            <th class="px-4 py-3 text-center">
               تاريخ الحجز
             </th>
             
-            <th scope="col" class="px-6 py-3 text-center  font-medium text-gray-900 uppercase tracking-wider">
+            <th class="px-12 py-3 ">
               حالة الحجز
             </th>
             
@@ -67,8 +67,8 @@
         <tbody id='' class="bg-white divide-y divide-gray-200">
          @if($myBookings && $myBookings -> count() > 0)
            @foreach($myBookings as $myBooking)
-         <tr>
-            <td class="text-center p-4 whitespace-nowrap">
+         <tr class="w-full">
+            <td class="text-center px-7 py-4 whitespace-nowrap">
             <div class="text-sm text-gray-700">{{$myBooking->numBatch}}</div>
             </td>
             <td class="text-center p-4 whitespace-nowrap">
@@ -76,10 +76,10 @@
             </td>
             <td class="text-center p-4 whitespace-nowrap">
             @if($myBooking->getStatusBooking()=='تم الاستلام')
-              <div  class="bg-green-100 text-green-700 px-3 py-1.5 rounded text-xs font-medium">{{$myBooking->getStatusBooking()}}</div>
+              <div  class="bg-green-100 text-green-700 px-3 py-1.5 rounded  ">{{$myBooking->getStatusBooking()}}</div>
              @endif
             @if($myBooking->getStatusBooking()=='لم يتم الاستلام')
-              <div  class="bg-red-100 text-red-700 px-3 py-1.5 rounded text-xs font-medium">{{$myBooking->getStatusBooking()}}</div>
+              <div  class="bg-red-100 text-red-700 px-3 py-1.5 rounded ">{{$myBooking->getStatusBooking()}}</div>
               @endif   
             </td>
           </tr>

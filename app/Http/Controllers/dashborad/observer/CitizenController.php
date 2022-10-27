@@ -73,7 +73,17 @@ class CitizenController extends Controller
    public function search(Request $request)
     {
         try 
-        {
+        {   
+
+          // if ($request->Regx == true){
+          //   $resultSearch =Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
+          //   ->where('citName', 'Like', '%' . $request->inputSearch . '%')
+          //   ->orwhere('id', 'Like', '%' . $request->inputSearch . '%')
+          //   ->orwhere('identityNum', 'Like', '%' . $request->inputSearch . '%')
+          //   ->get();
+          // }
+
+            
             if ($request->filterSearch == 'all') 
             {
                 if(preg_match("/('أ|ا|إ|ى|ي|ئ|و|ؤ|آ')/",$request->inputSearch))
@@ -104,6 +114,7 @@ class CitizenController extends Controller
             }
             else if($request->filterSearch=='citName')
             {
+              if($request->Regx == true){
                  if(preg_match("/('أ|ا|إ|ى|ي|ئ|و|ؤ|آ')/",$request->inputSearch))
                 {
                     $a=str_replace(array('ا','أ','إ','آ'),'ا',$request->inputSearch);
@@ -124,7 +135,15 @@ class CitizenController extends Controller
                          $resultSearch=Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
                          ->where('citName', 'Like', '%' . $request->inputSearch . '%')->get();
                      }
+                  }
 
+              else
+              {
+
+                $resultSearch=Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
+                ->where('citName', 'Like', '%' . $request->inputSearch . '%')->get();
+              }
+              
             }
            else if($request->filterSearch=='id')
             {
@@ -147,14 +166,17 @@ class CitizenController extends Controller
                     ]
                 );
 
-        }
+        
+        
+
+      } 
         catch (\Exception $ex)
         {
             return response()->json
             (
               [
                 'status' => false,
-                'msg' => 'فشل الحفظ برجاء المحاوله مجددا',
+                'msg' => 'فشل البحث برجاء المحاوله مجددا',
                 'exceptionError' => $ex,
              ]
            );

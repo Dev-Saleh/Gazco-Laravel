@@ -24,8 +24,8 @@
                     <button id="" type="submit"
                         class="group relative flex w-full justify-center rounded-xl border border-transparent bg-teal-600 py-2 px-4 text-sm font-medium text-white hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
                         <a href="https://wa.me/{{ session()->get('obsWhatsNum') }}?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%AA%D9%82%D8%AF%D9%8A%D9%85%20%D8%B4%D9%83%D9%88%D9%89">
+                            تقديم شكوى
                         </a>
-                       تقديم شكوى
                     </button>
                 </div>
             </form>

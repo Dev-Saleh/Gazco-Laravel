@@ -1,4 +1,7 @@
 @extends('layouts.observer_dashboard')
+@section('title')
+مراقب | نظره عامه
+@stop
 @section('content')
     <article id="content" class="relative content-area px-10 pt-10 bg-gray-100 h-full flex flex-col space-y-4 ">
 

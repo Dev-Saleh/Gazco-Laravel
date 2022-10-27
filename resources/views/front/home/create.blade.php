@@ -29,8 +29,8 @@
                 <div class="swiper-pagination"></div>
 
                 <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                {{-- <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div> --}}
 
             </div>
     </section>
@@ -101,11 +101,11 @@
                 اجمالي الدفعه    
                 </h6>
                 <p class="text-center text-teal-700">
-                    100
+                    لا يوجد بيانات
                 </p>
             </div>
 
-            <div class="bg-teal-50 border-b-4 border-teal-500 w-full flex flex-col rounded-lg shadow-md p-1 space-y-2">
+            <div class="bg-teal-50 border-b-4 border-teal-500 w-full flex flex-col rounded-lg shadow-md pt-1 space-y-2">
                 <h6 class="text-center text-teal-900">
                الكميه المتبقيه
                 </h6>

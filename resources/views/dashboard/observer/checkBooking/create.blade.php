@@ -120,13 +120,13 @@
                         <th scope="col"
                             class="px-6 py-3 text-center  font-medium text-gray-900 uppercase tracking-wider">
                             <input type="checkbox" id="option-all" onchange="checkAllConfirm(this)">
-                            <label for="option-all">الكل</label>
+                            <label for="option-all">تأكيد للكل</label>
                         </th>
 
                         <th scope="col"
                             class="px-6 py-3 text-center  font-medium text-gray-900 uppercase tracking-wider">
                             <input type="checkbox" id="option-all" onchange="checkAllSms(this)">
-                            <label for="option-all">الكل</label>
+                            <label for="option-all">إرسال للكل</label>
                         </th>
 
                     </tr>

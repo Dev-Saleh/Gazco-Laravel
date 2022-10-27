@@ -52,6 +52,7 @@ class checkBookingController extends Controller
             [
                 'status'      => true,
                 'logBookings' => $logBookings,
+                // 'logBookingsDate' => $logBookings->created_at->format("Y-m-d H:i:s"),
                 
             ]);
         }

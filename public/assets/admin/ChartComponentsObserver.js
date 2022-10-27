@@ -2,12 +2,12 @@
 // Start Bar Chart
 
     const labelsBarChart = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
+    "يونيو",
+    "يوليو",
+    "اغسطس",
+    "سبتمبر",
+    "اكتوبر",
+    "نوفمبر",
     ];
     const dataBarChart = {
     labels: labelsBarChart,
@@ -66,7 +66,7 @@
 
 // Start line Chart
 
-  const labels = ["January", "February", "March", "April", "May", "June"];
+  const labels = ["يونيو", "يوليو", "أغسطس", "سبتمبر", "اكتوبر", "نوفمبر"];
   const data = {
     labels: labels,
     datasets: [

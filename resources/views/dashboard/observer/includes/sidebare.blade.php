@@ -56,7 +56,7 @@
               rounded-br-3xl
               hover:text-emerald-100
               hover:bg-emerald-500">
-              الحجوزات
+              استعلام الحجوزات
               <i class="fa-solid fa-clipboard-question"></i>
           </a>
           

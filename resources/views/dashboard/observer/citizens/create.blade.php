@@ -376,7 +376,12 @@
              @csrf
             <div class="flex mx-auto w-full my-0 bg-white rounded-full shadow-md py-2 px-4">
 
-
+              <div class="flex flex-col justify-center items-center h-full">
+               <div class="flex flex-col">
+                <input name="Regx" class="mx-2" type="checkbox" id="Regx" class=" text-center">
+                <p class=" text-center" for="Regx">جميع الاحرف</p>
+               </div>
+              </div>
                 <select id="filterSearch" name="filterSearch"
                     class="bg-gray-50 border h-10 border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-40 p-2.5">
                     <option value="all" selected>بحث الكل</option>

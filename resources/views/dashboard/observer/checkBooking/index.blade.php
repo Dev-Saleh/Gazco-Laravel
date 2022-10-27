@@ -1,4 +1,7 @@
 @extends('layouts.observer_dashboard')
+@section('title')
+مراقب | الحجوزات
+@stop
 @section('content')
    
        <!-- Adding CitizenConfirm -->

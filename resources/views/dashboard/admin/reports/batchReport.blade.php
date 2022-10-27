@@ -1,4 +1,7 @@
 @extends('dashboard.admin.reports.index')
+@section('title')
+موظف | تقرير دفعات
+@stop
 @section('view')
 
 <div id="batchReport" class="">

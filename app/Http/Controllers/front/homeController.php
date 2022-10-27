@@ -59,7 +59,7 @@ class homeController extends Controller
                    'statusBooking'   =>'0',
                    'citId'           =>$request->citId,
                    'numBatch'        =>$request->numBatch,
-                   'created_at'      =>now() 
+                   'created_at'      =>now(),
                 ]
                 );
                $logsbooking->save();

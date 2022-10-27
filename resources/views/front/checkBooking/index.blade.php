@@ -1,7 +1,9 @@
 @extends('layouts.site')
-
+@section('title')
+غازكو | الدفعات
+@stop
 @section('content')
-    <main class="flex flex-col h-screen space-y-4 md:mr-[300px]">
+    <main class="flex flex-col h-full space-y-4">
     
             <!-- begin performing Code Ajax -->
             @include('front.include.ajax.checkBooking')
