@@ -27,6 +27,7 @@
                        $('.gazLogId').text(data.gazLog.id);
                        $('.staName').text(data.gazLog.station.staName);
                        $('.qty').text(data.gazLog.qty);
+                       $('.qtyRemaining').text(data.gazLog.qtyRemaining);
                  
                   }
                 }, error: function (reject) {
