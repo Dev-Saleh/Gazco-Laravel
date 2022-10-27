@@ -203,5 +203,8 @@
   <!-- End Table section -->
 </div>
 </div>
-                
+        
 @stop
+<!-- Start Code Ajax -->
+   @include('dashboard.admin.includes.ajax.batchReport');
+<!-- End Code Ajax -->  

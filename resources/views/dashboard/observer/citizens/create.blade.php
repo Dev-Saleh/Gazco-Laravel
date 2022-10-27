@@ -312,7 +312,7 @@
                             <label for="file-ip-2"
                                 class="px-10 relative cursor-pointer bg-white rounded-xl font-medium text-black hover:text-black focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-black border-2 border-black">
                                 <span>رفع صورة الهويه</span>
-                                <input id="file-ip-2" name='attachmentFm' accept="image/*"
+                                <input id="file-ip-2" name='attachmentFm'  accept="image/*"
                                     onchange="showPreviewFm(event);" type="file" class="sr-only">
                             </label>
 
@@ -321,7 +321,7 @@
                                 <img class="rounded w-full  object-cover" src=""  id="Fm-preview"
                                     alt="" style="display: none;" class="w-52 h-28">
                             </div>
-                            <small id='attachment_error' style='color:red'></small>
+                            <small id='attachment_fmerror' style='color:red'></small>
 
                         </div>
 

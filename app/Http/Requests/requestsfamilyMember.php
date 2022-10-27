@@ -49,7 +49,8 @@ class requestsfamilyMember extends FormRequest
             'sex.required'               =>'الجنس مطلوب',
             'sex.in'                     =>'الجنس يجب ان تكون موجوده',
             'relationship.required'      =>'صلة القرابه مطلوب',
-            'relationship.in'            =>'صلة القرابه يجب ان تكون موجوده',   
+            'relationship.in'            =>'صلة القرابه يجب ان تكون موجوده', 
+           
          ];
     }
 }

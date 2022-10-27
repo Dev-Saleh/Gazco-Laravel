@@ -6,106 +6,90 @@
 
 <div id="batchReport" class="">
   <!-- select section -->
-  <form action="" method="POST" id='batchReportForm'>
-   @csrf
-  <div class="p-6 bg-white shadow-sm rounded-xl">
-    <div class="grid grid-cols-5 gap-x-10 gap-y-2 ">
-      <select name="dirId" value="" id='selectDirectorates' class="form-select form-select-lg 
-            appearance-none
-            block
-            w-full
-            px-4
-            py-2
-            text-xl
-            font-normal
-            text-gray-700
-            bg-white bg-clip-padding bg-no-repeat
-            border border-solid border-gray-300
-            rounded
-            transition
-            ease-in-out
-            m-0
-          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
-        <option selected>المديريه</option>
-           {{-- @if ($directorates && $directorates->count() > 0)
-              @foreach ($directorates as $dir)
-                  <option value="{{ $dir->id }}">
-                      {{ $dir->dirName }}</option>
-              @endforeach
-           @endif --}}
-      </select>
-      <select name="rigId" value="" id='selectRigon' class="form-select form-select-lg 
-            appearance-none
-            block
-            w-full
-            px-4
-            py-2
-            text-xl
-            font-normal
-            text-gray-700
-            bg-white bg-clip-padding bg-no-repeat
-            border border-solid border-gray-300
-            rounded
-            transition
-            ease-in-out
-            m-0
+  <form action="" method="" id='citizenReportForm'>
+     @csrf
+      <div class="p-6 bg-white shadow-sm rounded-xl">
+        <div class="grid grid-cols-5 gap-x-10 gap-y-2 ">
+      <select name="dirId" value="" id='citSelectDirectorates' class="form-select form-select-lg 
+                appearance-none
+                block
+                w-full
+                px-4
+                py-2
+                text-xl
+                font-normal
+                text-gray-700
+                bg-white bg-clip-padding bg-no-repeat
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
-            <option selected>المربع</option>
-           
-      </select> 
-      <select name="agentId" value="" id='selectAgent' class="form-select form-select-lg 
-              appearance-none
-              block
-              w-full
-              px-4
-              py-2
-              text-xl
-              font-normal
-              text-gray-700
-              bg-white bg-clip-padding bg-no-repeat
-              border border-solid border-gray-300
-              rounded
-              transition
-              ease-in-out
-              m-0
-              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
-              <option selected>الموزع</option>
-             
-      </select>
-      <div class="relative z-0 w-full">
-        <input type="date" name="dateForm" id='dateFrom' placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
-                   appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
-                   hover:border-blue-600 text-blue-900" />
-        <label for="from" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">
-          من</label>
-        <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
+            <option selected disabled>المديريه</option>
+              @if ($directorates && $directorates->count() > 0)
+                  @foreach ($directorates as $dir)
+                      <option value="{{ $dir->id }}">
+                          {{ $dir->dirName }}</option>
+                  @endforeach
+              @endif
+          </select>
+          <select name="rigId" value="" id='citSelectRigon'  class="form-select form-select-lg 
+                appearance-none
+                block
+                w-full
+                px-4
+                py-2
+                text-xl
+                font-normal
+                text-gray-700
+                bg-white bg-clip-padding bg-no-repeat
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                m-0
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
+              
+                <option selected disabled >المربع</option>
+              
+          </select> 
+          <select name="agentId" value="" id='citSelectAgent' class="form-select form-select-lg 
+                  appearance-none
+                  block
+                  w-full
+                  px-4
+                  py-2
+                  text-xl
+                  font-normal
+                  text-gray-700
+                  bg-white bg-clip-padding bg-no-repeat
+                  border border-solid border-gray-300
+                  rounded
+                  transition
+                  ease-in-out
+                  m-0
+                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
+                  <option selected disabled>الموزع</option>
+                
+          </select>
+          <div class="col-span-5 mx-auto">
+          <button type="submit" id='btnShowCitizenReports'>
+            <a  class="relative inline-flex items-center px-8 py-3 overflow-hidden text-white bg-indigo-600 rounded group active:bg-indigo-500 focus:outline-none focus:ring" href="">
+              <span class="absolute left-0 transition-transform -translate-x-full group-hover:translate-x-4">
+                <svg class="w-5 h-5" xmlns="" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+              <span  class="text-sm font-medium transition-all group-hover:ml-4">
+                  أظهر
+              </span>
+            </a>
+            </button> 
+          </div>
+        </div>
       </div>
-      <div class="relative z-0 w-full">
-        <input type="date" name="dateTo" id='dateTo' placeholder=" " required class="pt-3 pb-2 block w-full px-1 mt-0 bg-transparent border-0 border-b-2
-                   appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 border-gray-200
-                   hover:border-blue-600 text-blue-900" />
-        <label for="to" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">
-          إلى</label>
-        <span class="text-sm text-red-600 hidden" id="error">Count is required !</span>
-      </div>
-
-      <div class="col-span-5 mx-auto">
-      <button type="" id='btnShowBatchReports'>
-        <a  class="relative inline-flex items-center px-8 py-3 overflow-hidden text-white bg-indigo-600 rounded group active:bg-indigo-500 focus:outline-none focus:ring" href="">
-          <span class="absolute left-0 transition-transform -translate-x-full group-hover:translate-x-4">
-            <svg class="w-5 h-5" xmlns="" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </span>
-          <span  class="text-sm font-medium transition-all group-hover:ml-4">
-              أظهر
-          </span>
-        </a>
-         </button> 
-      </div>
-    </div>
-  </div>
-</form>
+  </form>
   <!-- end select section -->
 
   <!-- Table section -->
@@ -121,16 +105,16 @@
         <div class="grid grid-cols-2 grid-rows-2 gap-10 p-4 h-full ">
 
           <div class="group   bg-pink-500 w-full h-36 rounded-md shadow-sm flex flex-col justify-center items-center space-y-2 hover:animate-wiggle ">
-                  <p class="text-pink-900 text-lg">عدد الدفعات</p>
-                  <span id='batchCount' class="text-pink-200 text-base bg-pink-700  p-2 py-1 group-hover:animate-bounce">19</span>
+                  <p class="text-pink-900 text-lg">عدد المواطنين</p>
+                  <span id='citizenCount' class="text-pink-200 text-base bg-pink-700  p-2 py-1 group-hover:animate-bounce">00</span>
           </div>
           <div class="group -none  bg-indigo-500 w-full h-36 rounded-md shadow-sm  flex flex-col justify-center items-center space-y-2 hover:animate-wiggle ">
-            <p class="text-indigo-900 text-lg">اجمالي الدفعات</p>
-            <span id='batchResult' class="text-indigo-200 text-base bg-indigo-700  p-2 py-1 group-hover:animate-bounce">11</span>
+            <p class="text-indigo-900 text-lg">المواطنين الموثقين</p>
+            <span id='citCheckedTrue' class="text-indigo-200 text-base bg-indigo-700  p-2 py-1 group-hover:animate-bounce">00</span>
           </div>
           <div class="group -none  bg-rose-500 w-full h-36 rounded-md shadow-sm  flex flex-col justify-center items-center space-y-2 hover:animate-wiggle ">
-            <p class="text-rose-900 text-lg"> التي تم فتح الحجز</p>
-            <span id='allowBookingCount' class="text-rose-200 text-base bg-rose-700  p-2 py-1 group-hover:animate-bounce">10</span>
+            <p class="text-rose-900 text-lg">غير الموثقين</p>
+            <span id='citCheckedFalse' class="text-rose-200 text-base bg-rose-700  p-2 py-1 group-hover:animate-bounce">00</span>
           </div>
           <div  class="group -none  bg-sky-500 w-full h-36 rounded-md shadow-sm  flex flex-col justify-center items-center space-y-2 hover:animate-wiggle ">
             <p class="text-sky-900 text-lg"> التي لم يتم فتح الحجز </p>
@@ -171,12 +155,11 @@
             
         </div>
            {{-- END SEARCH FORM --}}
-            <form action="{{route('batchReports.exportExcelBatch')}}" method="get" >
+            <form action="{{route('citizenReports.exportExcelCitizen')}}" method="get" >
              @csrf
-            <input  type="" value='2022-09-05' name='valueDateForm' style="display:none;" class="form-control" id="valueDateForm">
-            <input  type="" value='2023-05-03' name='valueDateTo'  style="display:none;" class="form-control" id="valueDateTo">    
-            <button type="submit" id="btnBatchPdf"    class='h-8 w-8 bg-red-100 p-1 rounded-full'><img src="{{ asset('assets/images/pdf.png') }}" alt="PDF"></button>
-            <button type="submit"  id="btnBatchExcel"  class='h-8 w-8 bg-green-100 p-1 rounded-full'><img src="{{ asset('assets/images/sheets.png') }}" alt="Excel"></button>
+             <input  type="" value='2023-05-03' name='agentId'  style="display:none;" class="form-control" id="agentId">    
+            <button type="submit" id="btnCitizenPdf"    class='h-8 w-8 bg-red-100 p-1 rounded-full'><img src="{{ asset('assets/images/pdf.png') }}" alt="PDF"></button>
+            <button type="submit"  id="btnCitizenExcel"  class='h-8 w-8 bg-green-100 p-1 rounded-full'><img src="{{ asset('assets/images/sheets.png') }}" alt="Excel"></button>
            </form>
            </div>
       
@@ -184,85 +167,16 @@
           <table class="table">
             <thead class="bg-white tableFixed">
               <tr>
-                <th>الاسم</th>
-                <th>التاريخ</th>
-                <th>الحاله</th>
+                  <th class="p-3">الرقم</th>
+                  <th class="p-3 text-center">اسم المواطن</th>
+                  <th class="p-3 text-center">رقم الوطني</th>
+                  <th class="p-3 text-center">رقم الجوال</th>
+                  <th class="p-3 text-center">المطابقه</th>
+                  <th class="p-3 text-center">أسم المراقب</th>
               </tr>
             </thead>
-            <tbody id='fetchLestGazLogs'>
-              <tr>
-                <td>
-                  <img src="/assest/Dev-SL.jpeg">
-                  <p>كريم علي سالم</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status completed">تم الاستلام</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="/assest/sl.JPG">
-                  <p>كريم علي سالم</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status pending">معلق</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="/assest/mz.JPG">
-                  <p>كريم علي سالم</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status process">قيد المراجعه</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="/assest/Dev-SL.jpeg">
-                  <p>كريم علي سالم</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status pending">معلق</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="/assest/Dev-SL.jpeg">
-                  <p>كريم علي سالم</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status pending">معلق</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="/assest/Dev-SL.jpeg">
-                  <p>كريم علي سالم</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status pending">معلق</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="/assest/Dev-SL.jpeg">
-                  <p>كريم علي سالم</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status pending">معلق</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="/assest/Dev-SL.jpeg">
-                  <p>كريم علي سالم</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status pending">معلق</span></td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="/assest/Dev-SL.jpeg">
-                  <p>كريم علي سالم</p>
-                </td>
-                <td>01-10-2021</td>
-                <td><span class="status pending">معلق</span></td>
-              </tr>
-             
+            <tbody id='fetchLestCitizen'>
+           
             </tbody>
           </table>
         </div>
@@ -275,3 +189,6 @@
 </div>
                 
 @stop
+  <!-- Start Code Ajax -->
+      @include('dashboard.admin.includes.ajax.citizenReport');
+  <!-- End Code Ajax -->

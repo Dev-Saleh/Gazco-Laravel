@@ -32,9 +32,10 @@ Route::group(['namespace' => 'front', 'middleware' => 'authCitizen', 'prefix' =>
         Route::post('store', 'homeController@store')->name('logBookings.store');
         
     });
-    Route::group(['prefix' => 'checkBooking'], function () {
-        Route::get('index', 'checkBookingController@index')->name('citizencheckBooking.index');
-        Route::get('show', 'checkBookingController@show')->name('citizencheckBooking.show');
+    Route::group(['prefix' =>'checkBooking'], function () {
+        Route::get('index','checkBookingController@index')->name('citizencheckBooking.index');
+        Route::get('show','checkBookingController@show')->name('citizencheckBooking.show');
+        Route::post('search','checkBookingController@search')->name('citizen.search');
         //Route::post('store', 'homeController@store')->name('logBookings.store');
         
     });

@@ -17,57 +17,57 @@ class CitizenController extends Controller
       try
          {
   
-            $data['observers']=Observer::with(
-            [
-                'directorate'=>function($q)
-                {
-                    $q->select('id','dirName');
-                }
-                ,'rigon'=>function($q)
-                {
-                    $q->select('id','rigName');
-                }
-            ]
-            )->select('id','dirId','rigId')->find(session()->get('obsId'));
-
-            $data['citizens']=Citizen::with(
-                [
+              $data['observers']=Observer::with(
+              [
                   'directorate'=>function($q)
                   {
-                    $q->select('id','dirName');
+                      $q->select('id','dirName');
                   }
                   ,'rigon'=>function($q)
                   {
-                    $q->select('id','rigName');
+                      $q->select('id','rigName');
                   }
-                  ,'observer'=>function($q)
-                  {
-                      $q->with(
-                      [
-                        'agent'=>function($q)
-                        {
-                          $q->select('id','agentName');
-                        }
-                      ]
-                      )->select('id','agentId','obsName')->get();
-                  }
-                ]
-                )->select('id','citName','dirId','rigId','obsId','identityNum','checked')->where('obsId',session()->get('obsId'))->get();  // search in given table id only
-              $data['allCitizens']=Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')->get();
-            return view('dashboard.observer.citizens.index',$data);
+              ]
+              )->select('id','dirId','rigId')->find(session()->get('obsId'));
+
+              $data['citizens']=Citizen::with(
+                  [
+                    'directorate'=>function($q)
+                    {
+                      $q->select('id','dirName');
+                    }
+                    ,'rigon'=>function($q)
+                    {
+                      $q->select('id','rigName');
+                    }
+                    ,'observer'=>function($q)
+                    {
+                        $q->with(
+                        [
+                          'agent'=>function($q)
+                          {
+                            $q->select('id','agentName');
+                          }
+                        ]
+                        )->select('id','agentId','obsName')->get();
+                    }
+                  ]
+                  )->select('id','citName','dirId','rigId','obsId','identityNum','checked')->where('obsId',session()->get('obsId'))->get();  // search in given table id only
+                $data['allCitizens']=Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')->get();
+              return view('dashboard.observer.citizens.index',$data);
        
          }
-    catch (\Exception $ex)
-         {
-            return response()->json(
-            [
-                'status'         => false,
-                'msg'            => 'Error In Function Index',
-                'exceptionError' => $ex,
-                
-            ]
-            );
-         }
+      catch (\Exception $ex)
+          {
+              return response()->json(
+              [
+                  'status'         => false,
+                  'msg'            => 'Error In Function Index',
+                  'exceptionError' => $ex,
+                  
+              ]
+              );
+          }
     
     }
    public function search(Request $request)

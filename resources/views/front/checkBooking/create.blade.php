@@ -17,19 +17,31 @@
    <!-- Table Query Booking -->
    <div class="flex flex-col space-y-4 w-full px-4 h-full">
     <!-- Serach Section -->
+    <form action="" method="Post" id='citizenSearch'>
+       @csrf
     <div class="relative">
       <label class="sr-only" for="search"> Search </label>
-
+   
       <input
         class="w-full h-10 pl-4 pr-10 text-sm bg-white border-none rounded-full shadow-sm sm:w-56"
-        id="search"
+        type="text"
+        id="numberBatch"
+        name="numBatch"
+        style='display:none;'
+        placeholder="بحث عن مواطن ..."
+      />
+      <input
+        class="w-full h-10 pl-4 pr-10 text-sm bg-white border-none rounded-full shadow-sm sm:w-56"
         type="search"
+        id="search-dropdown"
+        name="inputSearch"
         placeholder="بحث عن مواطن ..."
       />
 
       <button
         class="absolute p-2 text-gray-600 rounded-full transition -translate-y-1/2 hover:text-gray-700 bg-gray-50 top-1/2 right-1"
-        type="button"
+        type="submit"
+        id='search'
         aria-label="Submit Search"
       >
         <svg
@@ -47,6 +59,7 @@
           />
         </svg>
       </button>
+      </form>
     </div>
    <!-- End Serach Section -->
    
@@ -66,7 +79,7 @@
             <th scope="col" class="px-6 py-3 text-center  font-medium text-gray-900  ">
               تاريخ و وقت الحجز
             </th>
-            
+          
           </tr>
         </thead >
         <tbody id='fetchAllCitizenBooking' class="bg-white divide-y divide-gray-200">

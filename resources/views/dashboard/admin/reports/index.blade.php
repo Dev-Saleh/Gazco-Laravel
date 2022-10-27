@@ -130,7 +130,7 @@
         <div class="p-6 w-full">
           <nav id="nav-reports" class="navBtn w-full h-12">
             <a href="{{route('batchReports.index')}}" class="{{ 'admin/reports/Batch/index' == request()->path() ? 'bg-[#1abc9c]' : '' }}">الدفعات</a>
-           <a href="{{route('reports.citizenReport')}}" class="{{ 'admin/reports/citizen/index' == request()->path() ? 'bg-[#1abc9c]' : '' }}" >المواطنين</a>
+            <a href="{{route('citizenReports.index')}}" class="{{ 'admin/reports/citizen/index' == request()->path() ? 'bg-[#1abc9c]' : '' }}" >المواطنين</a>
             <a href="#">المراقبين</a>
             <a href="#">الموزعين</a>
             <a href="#">المديريات</a>
@@ -139,14 +139,9 @@
         </div>
         <!-- End nvabar of Reports -->
         
-        <div class="containerSlides w-full p-6">
-
-         
+        <div class="containerSlides w-full p-6">  
           @yield('view')
-
-           <!-- Start Code Ajax -->
-           @include('dashboard.admin.includes.ajax.batchReport')
-          <!-- End Code Ajax -->
+          @yield('script')
         </div>
         
     </article>    

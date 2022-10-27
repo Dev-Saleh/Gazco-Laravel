@@ -299,14 +299,15 @@
                         $('#fmName').val('');
                         $('#identityNumber').val('');
                         $('#age').val('');
-
+                        $('#file-ip-2').val('');
+                        $('#Fm-preview').attr('src','');
                      } 
                     else if (data.status == false)
                     newAlert(data.alertType,data.msg);
                   
                  }, error: function (reject) 
                  {
-                        var response = $.parseJSON(reject.responseText);
+                        var response = $.parseJSON(reject.responseText); 
                         $.each(response.errors, function (key, val) 
                         {
                             $("#" + key + "_fmerror").text(val[0]);
