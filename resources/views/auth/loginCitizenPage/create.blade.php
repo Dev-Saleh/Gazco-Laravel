@@ -5,6 +5,9 @@
    class="fixed w-full object-fill h-full transform rotate-0 -z-50"
    
    />
+       @if(Session::has('error'))
+        <p  class="group relative flex w-full justify-center rounded-md border border-transparent bg-rose-600 py-2 px-4 text-sm font-medium text-white hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2">{{Session::get('error')}}</p>
+        @endif
     <div class="flex h-screen  justify-center  px-4 sm:px-6 lg:px-8 bg-transparent rounded-md ">
        
       
@@ -65,6 +68,7 @@
                     </button>
                 </div>
             </form>
+       
         </div>
     </div>
 
