@@ -1,5 +1,7 @@
 @extends('layouts.site')
-
+@section('title')
+غازكو | الملف الشخصي
+@stop
 @section('content')
     <main class="flex flex-col h-screen space-y-4 md:mr-[300px]">
           <!-- begin header -->

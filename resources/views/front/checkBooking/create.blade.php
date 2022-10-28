@@ -15,7 +15,7 @@
    <!-- End Combobox Section -->
 
    <!-- Table Query Booking -->
-   <div class="flex flex-col space-y-4 w-full px-4">
+   <div class="flex flex-col space-y-4 w-full px-4 h-full">
     <!-- Serach Section -->
     <form action="" method="Post" id='citizenSearch'>
        @csrf
@@ -63,9 +63,9 @@
     </div>
    <!-- End Serach Section -->
    
-    <div class=" bg-white border-b rounded-xl border-gray-200 overflow-y-auto w-full " style="height:550px;">
+    <div class=" bg-white border-b rounded-xl border-gray-200 overflow-y-auto w-full h-[550px] ">
       <table class="min-w-full divide-y divide-gray-200">
-        <thead class="bg-gray-50">
+        <thead class="bg-gray-200">
           <tr>
         
             <th scope="col" class="px-4 py-3 text-center  font-medium text-gray-900 ">
@@ -88,6 +88,12 @@
         </tbody>
       </table>
     </div> 
-    
+   
   </div>
+  <p class="px-4 ">
+    الاجمالي  :
+     <span id="count">
+       
+     </span>
+   </p>
    <!-- End Table Query Booking -->

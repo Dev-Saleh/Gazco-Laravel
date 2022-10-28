@@ -26,7 +26,7 @@
                                   $.each(data.logBookings,function (key , logBooking){
                                     $('#fetchAllCitizenBooking').append('<tr>\
                                     <td class="text-center p-4 whitespace-wrap">\
-                                    <div class="text-sm text-gray-700">'+logBooking.id+'</div>\
+                                    <div class="text-sm text-gray-700">'+(key+1)+'</div>\
                                     </td>\
                                     <td class="text-center p-4 whitespace-wrap">\
                                       <div class="text-sm text-gray-700">'+logBooking.citizen.citName+'</div>\
@@ -36,7 +36,8 @@
                                     </td>\
                                   </tr>');
                                 });
-                               
+                            
+                                $('#count').text(data.logBookings.length);
                             }
                         }
                         , error: function (reject)

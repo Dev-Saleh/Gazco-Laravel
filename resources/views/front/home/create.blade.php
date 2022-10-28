@@ -29,8 +29,8 @@
                 <div class="swiper-pagination"></div>
 
                 <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                {{-- <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div> --}}
 
             </div>
     </section>
@@ -53,7 +53,7 @@
 
         <!-- button Section -->
 
-        <div class=" p-4 mx-auto w-11/12  bg-white rounded-lg shadow-md">
+        <div class=" p-4 mx-auto w-11/12  bg-white rounded-lg shadow-md  border-b-4 border-gray-500">
             <form action="" method="POST" id='logBookings'>
                 @csrf
                 <div class="flex flex-col justify-center relative">
@@ -72,7 +72,7 @@
                     </p>
                     <button type="submit" id='saveBooking' idCitizen="{{ session()->get('idCitizen') }}"
                         class="saveBooking flex flex-col justify-center items-center disabled:opacity-50 disabled:cursor-not-allowed p-0">
-                        <img id="gazImg" class="h-32 w-38 flex" src="{{ asset('assets/images/gaz-cart.png') }}"
+                        <img id="gazImg" class="h-36 w-52 flex" src="{{ asset('assets/images/gaz-cart.png') }}"
                             alt="">
                             <div><img id="spinner" class="hidden" src="{{ asset('assets/images/loading1.svg') }}"alt=""></div>
                     </button>
@@ -101,11 +101,11 @@
                 اجمالي الدفعه    
                 </h6>
                 <p class="text-center text-teal-700">
-                    100
+                    لا يوجد بيانات
                 </p>
             </div>
 
-            <div class="bg-teal-50 border-b-4 border-teal-500 w-full flex flex-col rounded-lg shadow-md p-1 space-y-2">
+            <div class="bg-teal-50 border-b-4 border-teal-500 w-full flex flex-col rounded-lg shadow-md pt-1 space-y-2">
                 <h6 class="text-center text-teal-900">
                الكميه المتبقيه
                 </h6>

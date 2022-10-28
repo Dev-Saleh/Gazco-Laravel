@@ -6,8 +6,8 @@
         
               <div class="grid grid-cols-4">
                 <div class="col-start-2 col-end-4 bg-gray-200 w-100 h-40 justify-center items-center flex rounded-md">
-                  <img id='attachment'></img>
-
+                 
+              <img id='attachment' src="" alt="" class="object-fill w-full h-40 z-30">
                 </div>
                 
               </div>
@@ -136,13 +136,13 @@
                       <span class="bg-red-400 text-gray-50 rounded-md px-2">{{ $cit->checked }}</span>
                     </td>
                     <td class="p-5 flex space-x-2">
-                      <a href="#" citId="{{$cit -> id}}" class="citizenConfirmDelete text-red-400  hover:text-red-600 float-left ">
+                      {{-- <a href="#" citId="{{$cit -> id}}" class="citizenConfirmDelete text-red-400  hover:text-red-600 float-left ">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                           stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                         </svg>
-                      </a>
+                      </a> --}}
                       <a href="#" citId="{{$cit -> id}}" class="citizenConfirmShow text-blue-400 hover:text-blue-600  ml-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                           <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />

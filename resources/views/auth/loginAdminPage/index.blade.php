@@ -9,11 +9,11 @@
     />
      <!-- Tailwind CSS Link -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/output.css') }}">
-
+    <title>الموظفين | تسجيل الدخول</title
   </head>
   <body dir="rtl">
    
-
+    
           @include('auth.loginAdminPage.create')
 
 

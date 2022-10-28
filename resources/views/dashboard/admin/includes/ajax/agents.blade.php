@@ -238,11 +238,10 @@
                 contentType: false,
                 cache: false,
                 success: function(data) {
-                    console.log(data); // for Test
-                    if (data.status == true) {
+               
+                    if (data.status == true && data.resultSearch.length > 0) {
                         $('#fetchLastAgent').html("");
                         $.each(data.resultSearch, function(key, resultSearch) {
-                     
                             $('#fetchLastAgent').prepend('<tr class="offerRow' + resultSearch
                                 .id + ' animate-fadeInRight bg-white hover:scale-95 transform transition-all ease-in">\
                                     <td class="p-3 text-center">' + resultSearch.id + '</td>\
@@ -268,6 +267,12 @@
                                     </td>\
                                   </tr>');
                         });
+
+                    }
+                    else if (data.status == true && data.resultSearch.length <= 0)
+                    {   
+                         $('#fetchLastAgent').html("");
+                        // $('#noResault').toggleClass('hidden','flex'); ;
 
                     }
 

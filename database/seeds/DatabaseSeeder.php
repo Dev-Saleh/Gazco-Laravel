@@ -2,6 +2,7 @@
 
 use App\Models\Agent;
 use App\Models\Citizen;
+use App\Models\familyMembers;
 use App\Models\Observer;
 use App\Models\Rigon;
 use App\Models\Directorate;
@@ -102,15 +103,15 @@ class DatabaseSeeder extends Seeder
 
             $agentArray = array(
             "كريم حسن القعر",
-            "معاذ عبدالله يحيى",
+            "معاذ عبدالله يحيئ",
             "عبدالناصر اسماعيل علي",
             "عبدالرب احمد سالمين",
-            "ياسر احمد محمود",
+            "ياسر احمد محمؤد",
             " حسن علي القعر",
             " عبدالله يحيى",
-            " اسماعيل علي",
-            " احمد سالمين",
-            " احمد محمود",
+            " إسماعيل علي",
+            " أحمد سالمين",
+            " أحمد محمود",
             "مراد محسن",
             "مهند قاسم",
             "وليد علي",
@@ -267,37 +268,37 @@ class DatabaseSeeder extends Seeder
 
 
 
-        //      ################################ ( GAZ_LOG SEEDER ) ##########################
-        // $faker = Faker\Factory::create();
-        // for ($i = 0; $i < 50; $i++) {
-        //     // $aa = Directorate::all()->random()->id;
-        //     // $zz = Rigon::select()->where('directorate_id', $aa)->get();
-        //     // $mm = Agent::select()->where('directorate_id', $aa)->get();
-        //     // $qq =  $zz->random()->id;
-        //     // $tt = $mm->random()->id;
+             ################################ ( GAZ_LOG SEEDER ) ##########################
+        $faker = Faker\Factory::create();
+        for ($i = 0; $i < 10; $i++) {
+            // $aa = Directorate::all()->random()->id;
+            // $zz = Rigon::select()->where('directorate_id', $aa)->get();
+            // $mm = Agent::select()->where('directorate_id', $aa)->get();
+            // $qq =  $zz->random()->id;
+            // $tt = $mm->random()->id;
 
            
-        //     $ss = Station::all()->random()->id;
-        //     $aa = Directorate::all()->random()->id;
-        //     $bb = Rigon::select()->where('dirId', $aa)->get();
-        //     $cc = $bb->random()->id;
-        //     $mm = Agent::select()->where('dirId', $cc)->get();
-        //     $tt= $mm->random()->id;
+            $ss = Station::all()->random()->id;
+            $aa = Directorate::all()->random()->id;
+            $bb = Rigon::select()->where('dirId', $aa)->get();
+            $cc = $bb->random()->id;
+            $mm = Agent::select()->where('agentName', 'كريم حسن القعر')->get();
+            $tt= $mm->random()->id;
 
-        //     $rr=rand(90,100);
-        //     gazLogs::create([
-        //         'qty'          => $rr,
-        //         'qtyRemaining' => $rr,
-        //         'dirId'        => $aa,
-        //         'rigId'        => $cc,
-        //         'staId'        => $ss,
-        //         'agentId'      => $tt,
-        //         'notice'       => ' ',
-        //         'statusBatch'  => rand(1, 3),
-        //         'created_at'   =>  $faker->dateTimeBetween($startDate = '01-09-2022', $endDate = '30-09-2022'),  
+            // $rr=rand(70,99);
+            gazLogs::create([
+                'qty'          => '100',
+                'qtyRemaining' => rand(70,99),
+                'dirId'        => $aa,
+                'rigId'        => $cc,
+                'staId'        => $ss,
+                'agentId'      => $tt,
+                'notice'       => ' ',
+                'statusBatch'  => rand(1, 3),
+                'created_at'   =>  $faker->dateTimeBetween($startDate = '01-09-2022', $endDate = '30-09-2022'),  
 
-        //     ]);
-        // }
+            ]);
+        }
 
 
 
@@ -306,15 +307,25 @@ class DatabaseSeeder extends Seeder
 
         $citizenArray = array(
             "رامي تركي علي",
-            "احمد عبدالفتاح جداوي",
+            "مازن عدنان احمد عامر",
             "معتز قاسم علاء",
-            "مصعب ناجي صلاح",
-            "ثامر عيسى داوؤد",
+            "أحمد ناجي صلاح",
+            "مؤيد عيسى داوؤد",
             "عبدالله قاسم الزبيدي",
             "عيدروس احمد بانبيله",
-            "عزالدين مشعل سامي",
+            "إبراهيم مشعل سامي",
             "حسين فضل فايز",
             "خالد باسل سالم",
+            "رؤى تركي علي",
+            "عامر عدنان وليد",
+            "سبأ قاسم منصر",
+            "أحمد صلاح سامي",
+            "هدى أحمد ثامر",
+            " مرؤى ثامر صالح ",
+            " أنهار حمد رامي ",
+            "ريان عبدالإله صالح",
+            " فايز علاء محمود",
+            "فؤاد وليد سالم",
         );
         for ($i = 0; $i < count($citizenArray); $i++) {
             // $aa = Directorate::all()->random()->id;
@@ -356,7 +367,7 @@ class DatabaseSeeder extends Seeder
         "صالح عبدالاله الكهالي",
         "مازن عبدالكريم العقر",
         "احمد عبدالفتاح",
-        "محمد احمد هتاري",
+        "محمد مصطفى هتاري",
         "احمد خالد تركي",
     );
 
@@ -378,28 +389,28 @@ class DatabaseSeeder extends Seeder
         
     ]);
 
-// ################################ ( LOGS BOOKING SEEDER ) ##########################
-// for ($i = 0; $i < 30; $i++) {
-//     // $aa = Observer::all()->random()->id;
-//     $aa = '1';
-//     $bb = Citizen::select()->where('obsId', $aa)->get();
-//     $cbb = $bb->random()->id;
+################################ ( LOGS BOOKING SEEDER ) ##########################
+for ($i = 0; $i < 30; $i++) {
+    // $aa = Observer::all()->random()->id;
+    $aa = '1';
+    $bb = Citizen::select()->where('obsId', $aa)->get();
+    $cbb = $bb->random()->id;
   
-//     $agentId = Observer::select()->where('agentId', $aa)->get();
+    $agentId = Observer::select()->where('agentId', $aa)->get();
   
-//     // Determine Batch Number
+    // Determine Batch Number
   
-//     $gl =  gazLogs::select()->where('agentId', '1')->get();
-//      $ggl = $gl->random()->id;
+    $gl =  gazLogs::select()->where('agentId', '1')->where('statusBatch','2')->orwhere('statusBatch','3')->get();
+    $ggl = $gl->random()->id;
   
-//     logsBooking::create([
-//         'recivingDate' => $faker->dateTimeBetween($startDate = '01-09-2022', $endDate = '30-09-2022'),
-//         'statusBooking' => rand(0,1),
-//         'citId' => $cbb,
-//         'numBatch' => $ggl,
+    logsBooking::create([
+        'created_at' => $faker->dateTimeBetween($startDate = '01-09-2022', $endDate = '30-09-2022'),
+        'statusBooking' => rand(0,1),
+        'citId' => $cbb,
+        'numBatch' => $ggl,
         
-//     ]);
-//   }
+    ]);
+  }
   
 
 
@@ -411,6 +422,33 @@ class DatabaseSeeder extends Seeder
     'contentMessage' => 'تم وصول اسطوانة الغاز تعال لاستلامها',
     
 ]);
+
+##################################(CITIZEN MEMBERS)###############################
+
+$familyMembersArray = array(
+    "علي تركي",
+    "عبدالفتاح جداوي",
+    " قاسم علاء",
+    " ناجي صلاح",
+    " عيسى داوؤد",
+    " قاسم الزبيدي",
+    " احمد بانبيله",
+    " مشعل سامي",
+    " فضل فايز",
+    " باسل سالم",
+);
+for ($i = 0; $i < count($familyMembersArray); $i++) {
+    familyMembers::create([
+        'fmName' => $familyMembersArray[$i],
+        'identityNum' => +rand(999999, 99999999),
+        'relationship' => rand(0,5),
+        'attachment' => Str::random(10),
+        'sex' => rand(0,1),
+        'age' => $aa,
+        'citId' => rand(1,3),
+       
+    ]);
+}
   }
     
 }

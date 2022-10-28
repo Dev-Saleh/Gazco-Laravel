@@ -2,18 +2,18 @@
 // Start Bar Chart
 
     const labelsBarChart = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
+    "يونيو",
+    "يوليو",
+    "اغسطس",
+    "سبتمبر",
+    "اكتوبر",
+    "نوفمبر",
     ];
     const dataBarChart = {
     labels: labelsBarChart,
     datasets: [
         {
-        label: "لون الشهر",
+        label: "دفعه",
         backgroundColor: "hsl(160, 84%, 39%)",
         borderColor: "hsl(138, 76%, 97%)",
         data: [15, 10, 5, 2, 20, 30, 45],
@@ -66,7 +66,7 @@
 
 // Start line Chart
 
-  const labels = ["January", "February", "March", "April", "May", "June"];
+  const labels = ["يونيو", "يوليو", "أغسطس", "سبتمبر", "اكتوبر", "نوفمبر"];
   const data = {
     labels: labels,
     datasets: [

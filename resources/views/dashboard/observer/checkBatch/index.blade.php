@@ -1,4 +1,8 @@
 @extends('layouts.observer_dashboard')
+
+@section('title')
+مراقب | الدفعات
+@stop
 @section('content')
    
        <!-- Adding CitizenConfirm -->

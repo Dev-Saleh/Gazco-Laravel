@@ -21,7 +21,7 @@ class StationController extends Controller
                 if ($station)
                 return response()->json([
                     'status'           => true,
-                    'msg'              => 'تم حفظ بيانات المربع بنجاح', 
+                    'msg'              => 'تم حفظ بيانات المحطه بنجاح', 
                     'alertType'        => '.alertSuccess', 
                     'lastStation'      => $lastStation,
                 ]);

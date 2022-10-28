@@ -10,7 +10,7 @@ class logsBooking extends Model
 	
    
     protected $fillable =['id','RecivingDate','statusBooking','citId','numBatch','created_at','updated_at'];
-    public  $timestamps = true;
+    public  $timestamps = false;
 
     public function citizen()
     {
@@ -21,6 +21,9 @@ class logsBooking extends Model
         return  $this -> statusBooking  == 0 ?  'لم يتم الاستلام'   : 'تم الاستلام' ;
     }
   
-  
+    // public function getCreatedAtAttribute($date)
+    // {
+    //     return Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d H:i:s');
+    // }
 
 }

@@ -100,7 +100,7 @@
                                            </tr>');
                                      }
                                 });
-                            
+                                $('#count').text(data.showLogBookingsCitizen.length);
                         }
                         }
                         , error: function (reject)
@@ -139,9 +139,9 @@
                               },
                               success: function (data) 
                               {
-                                  console.log(data); //for Test
-                                  if (data.status == true && data.logBookingsId.length)
-                                  {      
+                                // && data.logBookingsId.length
+                                  if (data.status == true )
+                                  {     newAlert(data.alertType,data.msg); 
                                         $.each(data.logBookingsId,function (key , BookingCitizen)
                                           {
                                                 $('.offerRow' + BookingCitizen.id).remove();

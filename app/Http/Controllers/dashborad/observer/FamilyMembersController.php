@@ -19,7 +19,7 @@ class FamilyMembersController extends Controller
                {  
 
                     $attachment =$request->attachmentFm;  
-                    $filename = uploadImageAndResize('familymember', $attachment , $width='220', $height='190');
+                    $filename = uploadImageAndResize('familyMember', $attachment , $width='220', $height='190');
 
                     $familyMember = familyMembers::create(
                     [

@@ -35,20 +35,6 @@
               المواطنين
               <i class="fa-light fa-people-group"></i>
           </a>
-          <a href="{{route('checkBooking.index')}}"
-              class="{{ 'observer/checkBooking/index' == request()->path() ? 'bg-emerald-500' : '' }}
-              flex justify-between
-              w-full p-5 
-              text-white  
-              rounded-tl-3xl
-              rounded-br-3xl
-              hover:text-emerald-100
-              hover:bg-emerald-500">
-              الحجوزات
-              <i class="fa-sharp fa-solid fa-clipboard-question"></i>
-          </a>
-
-
           <a href="{{route('checkBatch.index')}}"
               class="{{ 'observer/checkBatch/index' == request()->path() ? 'bg-emerald-500' : '' }}
               flex justify-between
@@ -60,7 +46,20 @@
               hover:bg-emerald-500">
               استعلام الدفعات          
               <i class="fa-light fa-clipboard-question"></i>
-            </a>
+           </a>
+          <a href="{{route('checkBooking.index')}}"
+              class="{{ 'observer/checkBooking/index' == request()->path() ? 'bg-emerald-500' : '' }}
+              flex justify-between
+              w-full p-5 
+              text-white  
+              rounded-tl-3xl
+              rounded-br-3xl
+              hover:text-emerald-100
+              hover:bg-emerald-500">
+              استعلام الحجوزات
+              <i class="fa-solid fa-clipboard-question"></i>
+          </a>
+          
          
             <div class="w-full relative inline-block py-4 px-6 text-white bg-transparent h-18 rounded-tl-3xl
             rounded-br-3xl group">

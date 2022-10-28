@@ -83,7 +83,7 @@ class checkBatchController extends Controller
                         $q->select('id','rigName');
                     }
                 ]
-                )->select('id','dirId','rigId','staId','agentId','qty','created_at')->find($request -> checkBatchId);  // search in given table id only
+                )->select('id','dirId','rigId','staId','agentId','qty','qtyRemaining','created_at')->find($request -> checkBatchId);  // search in given table id only
           
                 if (!$gazLog)
                 return response()->json(

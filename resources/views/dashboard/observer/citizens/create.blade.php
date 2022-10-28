@@ -1,4 +1,4 @@
-<details class="cursor-auto text-lg font-medium leading-6 text-gray-900 ">
+<details id="detailsCi" open class="cursor-auto text-lg font-medium leading-6 text-gray-900 ">
     <summary class="text-lg font-medium leading-6 text-gray-900 space-y-6">
         <a href="">أضافة مواطن </a>
 
@@ -178,7 +178,7 @@
 
 
 <br>
-<details class="cursor-auto text-lg font-medium leading-6 text-gray-900 ">
+<details id="detailsFm" class="cursor-auto text-lg font-medium leading-6 text-gray-900 ">
     <summary class="text-lg font-medium leading-6 text-gray-900 space-y-6">
         <a href="">أضافة فرد تابع </a>
 
@@ -376,7 +376,12 @@
              @csrf
             <div class="flex mx-auto w-full my-0 bg-white rounded-full shadow-md py-2 px-4">
 
-
+              <div class="flex flex-col justify-center items-center h-full">
+               <div class="flex flex-col">
+                <input name="Regx" class="mx-2" type="checkbox" id="Regx" class=" text-center">
+                <p class=" text-center" for="Regx">جميع الاحرف</p>
+               </div>
+              </div>
                 <select id="filterSearch" name="filterSearch"
                     class="bg-gray-50 border h-10 border-gray-300 text-gray-900 text-sm rounded-r-lg focus:ring-blue-500 focus:border-blue-500 block w-40 p-2.5">
                     <option value="all" selected>بحث الكل</option>

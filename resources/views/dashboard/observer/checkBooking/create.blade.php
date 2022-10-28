@@ -59,7 +59,8 @@
                                 <td class="p-3 text-center">
                                     {{ $gazLog->created_at }}
                                 </td>
-                             
+                               
+                               
                                 <td class="p-3 grid items-center justify-center">
                                     <a href="#" gazLogId={{ $gazLog->id }}
                                         class="gazLogId text-blue-600 hover:text-blue-400">
@@ -98,10 +99,11 @@
                     class="h-8  p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-l-full border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-50 focus:border-blue-500"
                     placeholder="ابحث عن اسم او رقم المواطن ..." required="">
             </div>
+
           <form action="{{route('logBooking.exportExcel')}}" method="get" >
              @csrf
             <input  type="" value='' name='valueNumBatch' style="display:none;" class="form-control" id="valueNumBatch">
-            <button type="submit" id="btnbookingsPdf"  class='h-8 w-8 bg-red-100 mx-1 p-1 rounded-full'><img src="{{ asset('assets/images/pdf.png') }}" alt="PDF"></button>
+            <button type="submit" id="btnbookingsPdf"  class='h-8 w-8 bg-green-100 mx-1 p-1 rounded-full'><img src="{{ asset('assets/images/sheets.png') }}" alt="Excel"></button>
         </form>
         </div>
         {{-- END SEARCH FORM --}}
@@ -118,34 +120,29 @@
                         <th scope="col"
                             class="px-6 py-3 text-center  font-medium text-gray-900 uppercase tracking-wider">
                             <input type="checkbox" id="option-all" onchange="checkAllConfirm(this)">
-                            <label for="option-all">الكل</label>
+                            <label for="option-all">تأكيد للكل</label>
                         </th>
 
                         <th scope="col"
                             class="px-6 py-3 text-center  font-medium text-gray-900 uppercase tracking-wider">
                             <input type="checkbox" id="option-all" onchange="checkAllSms(this)">
-                            <label for="option-all">الكل</label>
+                            <label for="option-all">إرسال للكل</label>
                         </th>
 
                     </tr>
                 </thead>
                 <tbody id='showLogBookingsCitizen' class="bg-white divide-y divide-gray-200">
-                    {{-- <tr>
-                    
-                    <td class="text-center px-4 py-2 whitespace-nowrap">
-                      <div class="text-sm text-gray-700">صالح عبدالله صالح</div>  
-                    </td>
-                    <td class="text-center px-4 py-2 whitespace-nowrap">
-                      <input type="checkbox"  name='status_booking'  class="confirm">
-                    </td>
-                    <td class="text-center px-4 py-2 whitespace-nowrap">
-                      <input type="checkbox" class="sms"> 
-                    </td>
-                    
-                  </tr> --}}
+             
                 </tbody>
             </table>
+           
         </div>
+        <p class="my-0">
+            الاجمالي  :
+             <span id="count">
+               
+             </span>
+           </p>
         <!-- Buttons section -->
         <div class="flex justify-center gap-x-4  mx-auto w-full rounded-full bg-white p-4 shadow-sm">
             <button type="submit" id='saveReciving'>

@@ -1,4 +1,7 @@
 @extends('layouts.observer_dashboard')
+@section('title')
+مراقب | المواطنين
+@stop
 @section('content')
        <article id="Content" class="content-area p-10 bg-gray-100">
        <!-- Adding CitizenConfirm -->
