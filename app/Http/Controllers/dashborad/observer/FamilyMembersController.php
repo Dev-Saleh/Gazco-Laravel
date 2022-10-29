@@ -19,14 +19,14 @@ class FamilyMembersController extends Controller
                {  
 
                     $attachment =$request->attachmentFm;  
-                    $filename = uploadImageAndResize('familyMember', $attachment , $width='220', $height='190');
+                    $filename = uploadImageAndResize('familymember', $attachment , $width='220', $height='190');
 
                     $familyMember = familyMembers::create(
                     [
                       'fmName'=>$request->fmName,
                       'identityNum'=>$request->identityNum,
                       'relationship'=>$request->relationship,
-                      'attachment'=>$filename,
+                      'attachment'=> $filename,
                       'sex'=>$request->sex,
                       'age'=>$request->age,
                       'citId'=>$request->citId,
@@ -40,6 +40,7 @@ class FamilyMembersController extends Controller
                                 'status'         => true,
                                 'msg'            => 'تم الحفظ الفرد بنجاح',
                                 'alertType'      => '.alertSuccess', 
+                                
                             ]
                     );
                    
