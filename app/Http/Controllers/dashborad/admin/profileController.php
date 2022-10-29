@@ -28,7 +28,7 @@ class profileController extends Controller
            ]);
         }
     }
-    public function store(Request $request)
+    public function update(Request $request)
     {
         
         try
@@ -36,23 +36,30 @@ class profileController extends Controller
 
                   /* $file =$request->profilePhoto;
                    $filename = uploadImage('adminProfile', $file);*/
-                  
-                   $profile = profile::create(
+                   $profile = profile::select()->get()->last();
+                   if (!$profile) 
+                   {
+                       return response()->json(
+                       [
+                           'status' => false,
+                           'msg' => 'هذ العرض غير موجود',
+                       ]);
+                   }
+                   //update date
+                   $profile->update(
                     [ 
                        'numDaysBookingValid'  =>$request->numDaysBookingValid,
                        'nameMessage'          =>$request->nameMessage,
                        'contentMessage'       =>$request->contentMessage,
                    ]);
                   // $profile->profilePhoto=$filename;
-                   $profile->save();
-                  
+                 
              if ($profile)
                 return response()->json(
                  [
-                    'status' => true,
-                    'msg' => 'تم حفظ بيانات الوكيل بنجاح', 
-                    'alertType'=> '.alertSuccess',   
-                   
+                    'status'      => true,
+                    'msg'         => 'تم تحديد بيانات بنجاح', 
+                    'alertType'   => '.alertSuccess',
                  ]
               );
 
