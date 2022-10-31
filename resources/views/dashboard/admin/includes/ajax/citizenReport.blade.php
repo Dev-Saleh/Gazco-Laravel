@@ -123,6 +123,7 @@
                             });
                             $('#agentId').val(data.agentId);
                             $('#citizenCount').text(data.citizenCount);
+                            $('#bookingCount').text(data.bookingCount);
                             $('#citCheckedFalse').text(data.citCheckedFalse);
                             $('#citCheckedTrue').text(data.citCheckedTrue);
                    }

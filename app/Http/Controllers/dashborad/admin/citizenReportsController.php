@@ -10,6 +10,7 @@ use App\Models\Agent;
 use App\Models\Citizen;
 use App\Models\Directorate;
 use App\Models\gazLogs;
+use App\Models\logsBooking;
 use App\Models\Rigon;
 use Mpdf\Config\ConfigVariables;
 use Excel;
@@ -112,7 +113,13 @@ class citizenReportsController extends Controller
                     $q->where('agentId',$request->agentId);
                 })
                 ->get();
-                
+                 //$bookingCount=logsBooking::where('statusBooking','1')->where('citId',$citizen->id)->get();
+               
+                 foreach($citizens as $cit)
+                 {
+                       $AllCitsId[]=$cit->id;
+                 }
+                   $bookingCount= logsBooking::whereIn('citId',$AllCitsId)->count();
                    $citizenCount=$citizens->count();
                    $citCheckedTrue=$citizens->where('checked','نعم')->count();
                    $citCheckedFalse=$citizens->where('checked','لا')->count();
@@ -129,6 +136,7 @@ class citizenReportsController extends Controller
                         'citCheckedFalse'   => $citCheckedFalse,
                         'citizenCount'      => $citizenCount,
                          'agentId'          => $agentId,
+                         'bookingCount'     => $bookingCount,
                     
                     ]);
 
