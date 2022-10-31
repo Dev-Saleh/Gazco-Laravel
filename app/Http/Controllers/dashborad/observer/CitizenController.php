@@ -376,7 +376,7 @@ class CitizenController extends Controller
             
             if ($request->filterSearch == 'all') 
             {
-                if(preg_match("/('أ|ا|إ|ى|ي|ئ|و|ؤ|آ')/",$request->inputSearch))
+                if(preg_match("/('أ|ا|إ|ى|ي|ئ|و|ؤ|آ')/",$request->inputSearch) && $request->Regx == true)
                 {
                     $a=str_replace(array('ا','أ','إ','آ'),'ا',$request->inputSearch);
                     $b=str_replace(array('ا','أ','إ','آ'),'أ',$request->inputSearch);
@@ -405,7 +405,7 @@ class CitizenController extends Controller
             else if($request->filterSearch=='citName')
             {
               if($request->Regx == true){
-                 if(preg_match("/('أ|ا|إ|ى|ي|ئ|و|ؤ|آ')/",$request->inputSearch))
+                 if(preg_match("/('أ|ا|إ|ى|ي|ئ|و|ؤ|آ')/",$request->inputSearch) && $request->Regx == true)
                 {
                     $a=str_replace(array('ا','أ','إ','آ'),'ا',$request->inputSearch);
                     $b=str_replace(array('ا','أ','إ','آ'),'أ',$request->inputSearch);
