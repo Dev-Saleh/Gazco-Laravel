@@ -103,7 +103,7 @@
                 cache: false,
                 success: function (data) 
                 {
-                  
+                   console.log(data);
                    if (data.status == true) 
                    {
                         $('#fetchLestGazLogs').html("");
@@ -111,10 +111,13 @@
                          {
                             $('#fetchLestGazLogs').prepend
                             (
-                                '<tr><td>\
-                                <p>'+gazLogs.agent.agentName+'</p></td>\
-                                <td>'+gazLogs.created_at+'</td>\
-                                <td><span class="status completed">تم الاستلام</span></td>\
+                               '<tr class="animate-fadeInRight bg-white hover:scale-95 transform transition-all ease-in" >\
+                                <td class="p-3 text-center">'+gazLogs.agent.agentName+'</td>\
+                                <td class="p-3 text-center">'+gazLogs.station.staName+'</td>\
+                                <td class="p-3 text-center">'+gazLogs.directorate.dirName+'</td>\
+                                <td class="p-3 text-center">'+gazLogs.rigon.rigName+'</td>\
+                                <td class="p-3 text-center">'+gazLogs.created_at+'</td>\
+                                <td class="p-3 text-center">'+gazLogs.qty+'</td>\
                                 </tr>'
                             );
                           }

@@ -186,9 +186,12 @@
           <table class="table">
             <thead class="bg-white tableFixed">
               <tr>
-                <th>الاسم</th>
-                <th>التاريخ</th>
-                <th>الحاله</th>
+                <th class="p-3 text-center">الموزع</th>
+                <th class="p-3 text-center">المحطه</th>
+                <th class="p-3 text-center">المديريه</th>
+                <th class="p-3 text-center">المربع</th>
+                <th class="p-3 text-center">التاريخ</th>
+                <th class="p-3 text-center">الكميه</th>
               </tr>
             </thead>
             <tbody id='fetchLestGazLogs'>

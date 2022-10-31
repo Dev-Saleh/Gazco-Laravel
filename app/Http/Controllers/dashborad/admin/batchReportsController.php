@@ -55,7 +55,7 @@ class batchReportsController extends Controller
                    {
                      $q->select('id','rigName')->get();
                    }
-                 ])->select('id','dirId','rigId','staId','agentId','created_at','qty')
+                 ])->select('id','dirId','rigId','staId','agentId','created_at','statusBatch','qty')
                  ->where('agentId',$request->agentId)
                  ->whereBetween('created_at', [$request->dateForm, $request->dateTo])
                  ->get();
