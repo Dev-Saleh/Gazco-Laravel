@@ -52,7 +52,7 @@ class CitizenController extends Controller
                         )->select('id','agentId','obsName')->get();
                     }
                   ]
-                  )->select('id','citName','dirId','rigId','obsId','identityNum','checked')->where('obsId',session()->get('obsId'))->get();  // search in given table id only
+                  )->select('id','citName','dirId','rigId','obsId','identityNum','checked')->where('obsId',session()->get('obsId'))->orderByDesc('id')->get();  // search in given table id only
                 $data['allCitizens']=Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')->get();
               return view('dashboard.observer.citizens.index',$data);
        

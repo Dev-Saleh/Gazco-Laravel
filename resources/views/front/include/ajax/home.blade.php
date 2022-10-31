@@ -30,6 +30,7 @@
                                 $('.numBatch').text(data.lastGazLogs.id); 
                                 $('#numBatch').val(data.lastGazLogs.id);
                                 $('.qtyRemaining').text(data.lastGazLogs.qtyRemaining);
+                                $('.totalQty').text(data.lastGazLogs.qty);
                                 $('#validDays').text(data.validDays);
                                
                         }

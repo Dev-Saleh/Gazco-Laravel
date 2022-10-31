@@ -24,7 +24,7 @@ class checkBookingController extends Controller
                 $data['gazLogs']=gazLogs::select('id','created_at')->where(
                     [
                       ['agentId',$observer->agentId]
-                    ])->get();
+                    ])->orderByDesc('id')->get();
                 
                 return view('dashboard.observer.checkBooking.index',$data);
         }

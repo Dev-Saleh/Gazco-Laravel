@@ -445,7 +445,7 @@ for ($i = 0; $i < count($familyMembersArray); $i++) {
         'attachment' => Str::random(10),
         'sex' => rand(0,1),
         'age' => $aa,
-        'citId' => rand(1,3),
+        'citId' => rand(17,20),
        
     ]);
 }
