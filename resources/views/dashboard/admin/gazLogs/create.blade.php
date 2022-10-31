@@ -212,7 +212,6 @@
                                 <th class="p-3 text-center">المحطه</th>
                                 <th class="p-3 text-center">المديريه</th>
                                 <th class="p-3 text-center">المربع</th>
-                                <th class="p-3 text-center">الموزع</th>
                                 <th class="p-3 text-center">العمليات</th>
                             </tr>
                         </thead>

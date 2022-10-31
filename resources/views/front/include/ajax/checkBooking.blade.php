@@ -57,7 +57,7 @@
             $.ajax({
                         type: 'Post',
                         enctype: 'multipart/form-data',
-                        url: "{{ route('citizen.search') }}",
+                        url: "{{ route('citizen.front.search') }}",
                         data: formData,
                         processData: false,
                         contentType: false,

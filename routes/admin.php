@@ -23,8 +23,7 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
    // the first page admin visits if authenticated
    Route::get('/', 'OverviewController@index')->name('admin.dashboard'); 
    Route::get('settings', 'settingsController@index')->name('admin.settings'); 
-   Route::get('profile', 'profileController@index')->name('admin.profile'); 
-    ################################## directorate routes ######################################
+   ################################## directorate routes ######################################
   //  Route::group(['prefix' => 'directorate'], function () {
     
     // Route::resource('directorate', 'directoratesController');
@@ -60,7 +59,8 @@ Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'pre
       });
       Route::group(['prefix' => 'profile'], function () {
         
-        Route::post('update', 'profileController@store')->name('profile.update');
+        Route::get('profile', 'profileController@index')->name('admin.profile'); 
+        Route::post('update', 'profileController@update')->name('profile.update');
        
       });
       Route::group(['prefix' => 'employee'], function () {

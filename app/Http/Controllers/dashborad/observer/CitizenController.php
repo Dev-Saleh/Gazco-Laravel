@@ -70,118 +70,7 @@ class CitizenController extends Controller
           }
     
     }
-   public function search(Request $request)
-    {
-        try 
-        {   
-
-          // if ($request->Regx == true){
-          //   $resultSearch =Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
-          //   ->where('citName', 'Like', '%' . $request->inputSearch . '%')
-          //   ->orwhere('id', 'Like', '%' . $request->inputSearch . '%')
-          //   ->orwhere('identityNum', 'Like', '%' . $request->inputSearch . '%')
-          //   ->get();
-          // }
-
-            
-            if ($request->filterSearch == 'all') 
-            {
-                if(preg_match("/('أ|ا|إ|ى|ي|ئ|و|ؤ|آ')/",$request->inputSearch))
-                {
-                    $a=str_replace(array('ا','أ','إ','آ'),'ا',$request->inputSearch);
-                    $b=str_replace(array('ا','أ','إ','آ'),'أ',$request->inputSearch);
-                    $c=str_replace(array('ا','أ','إ','آ'),'إ',$request->inputSearch);
-                    $d=str_replace(array('ا','أ','إ','آ'),'آ',$request->inputSearch);
-                    $e=str_replace(array('ئ','ي','ى'),'ي',$request->inputSearch);
-                    $f=str_replace(array('ئ','ي','ى'),'ى',$request->inputSearch);
-                    $g=str_replace(array('ئ','ي','ى'),'ئ',$request->inputSearch);
-                    $h=str_replace(array('ؤ','و'),'و',$request->inputSearch);
-                    $i=str_replace(array('ؤ','و'),'ؤ',$request->inputSearch);
-                    $resultSearch =Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
-                    ->where('citName','REGEXP',"(".$a."|".$b."|".$c."|".$d."|".$e."|".$f."|".$g."|".$h."|".$i.")") //for test
-                    ->orwhere('id', 'Like', '%' . $request->inputSearch . '%')
-                    ->orwhere('identityNum', 'Like', '%' . $request->inputSearch . '%')
-                    ->get();
-                }
-                else
-                {
-                    $resultSearch =Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
-                    ->where('citName', 'Like', '%' . $request->inputSearch . '%')
-                    ->orwhere('id', 'Like', '%' . $request->inputSearch . '%')
-                    ->orwhere('identityNum', 'Like', '%' . $request->inputSearch . '%')
-                    ->get();
-                }
-            }
-            else if($request->filterSearch=='citName')
-            {
-              if($request->Regx == true){
-                 if(preg_match("/('أ|ا|إ|ى|ي|ئ|و|ؤ|آ')/",$request->inputSearch))
-                {
-                    $a=str_replace(array('ا','أ','إ','آ'),'ا',$request->inputSearch);
-                    $b=str_replace(array('ا','أ','إ','آ'),'أ',$request->inputSearch);
-                    $c=str_replace(array('ا','أ','إ','آ'),'إ',$request->inputSearch);
-                    $d=str_replace(array('ا','أ','إ','آ'),'آ',$request->inputSearch);
-                    $e=str_replace(array('ئ','ي','ى'),'ي',$request->inputSearch);
-                    $f=str_replace(array('ئ','ي','ى'),'ى',$request->inputSearch);
-                    $g=str_replace(array('ئ','ي','ى'),'ئ',$request->inputSearch);
-                    $h=str_replace(array('ؤ','و'),'و',$request->inputSearch);
-                    $i=str_replace(array('ؤ','و'),'ؤ',$request->inputSearch);
-                    $resultSearch=Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
-                     ->where('citName','REGEXP',"(".$a."|".$b."|".$c."|".$d."|".$e."|".$f."|".$g."|".$h."|".$i.")") //for test
-                     ->get();
-                 }
-                 else
-                     {
-                         $resultSearch=Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
-                         ->where('citName', 'Like', '%' . $request->inputSearch . '%')->get();
-                     }
-                  }
-
-              else
-              {
-
-                $resultSearch=Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
-                ->where('citName', 'Like', '%' . $request->inputSearch . '%')->get();
-              }
-              
-            }
-           else if($request->filterSearch=='id')
-            {
-              $resultSearch =Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
-              ->where('id', 'Like', '%' . $request->inputSearch . '%')
-              ->get();
-            }
-           else if($request->filterSearch=='identityNum')
-            {
-              $resultSearch =Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
-              ->where('identityNum', 'Like', '%' . $request->inputSearch . '%')
-              ->get();
-            }
-            if ($resultSearch)
-                return response()->json
-                (
-                    [
-                        'status'        => true, 
-                        'resultSearch'  =>  $resultSearch->where('obsId',session()->get('obsId')),
-                    ]
-                );
-
-        
-        
-
-      } 
-        catch (\Exception $ex)
-        {
-            return response()->json
-            (
-              [
-                'status' => false,
-                'msg' => 'فشل البحث برجاء المحاوله مجددا',
-                'exceptionError' => $ex,
-             ]
-           );
-        }
-    }
+  
       
   
     public function store(requestsCitizen $request)
@@ -469,5 +358,118 @@ class CitizenController extends Controller
             );
           
          }
+    }
+    public function search(Request $request)
+    {
+        try 
+        {   
+
+          // if ($request->Regx == true)
+          //   {
+          //       $resultSearch =Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
+          //       ->where('citName', 'Like', '%' . $request->inputSearch . '%')
+          //       ->orwhere('id', 'Like', '%' . $request->inputSearch . '%')
+          //       ->orwhere('identityNum', 'Like', '%' . $request->inputSearch . '%')
+          //       ->get();
+          //   }
+           
+            
+            if ($request->filterSearch == 'all') 
+            {
+                if(preg_match("/('أ|ا|إ|ى|ي|ئ|و|ؤ|آ')/",$request->inputSearch) && $request->Regx == true)
+                {
+                    $a=str_replace(array('ا','أ','إ','آ'),'ا',$request->inputSearch);
+                    $b=str_replace(array('ا','أ','إ','آ'),'أ',$request->inputSearch);
+                    $c=str_replace(array('ا','أ','إ','آ'),'إ',$request->inputSearch);
+                    $d=str_replace(array('ا','أ','إ','آ'),'آ',$request->inputSearch);
+                    $e=str_replace(array('ئ','ي','ى'),'ي',$request->inputSearch);
+                    $f=str_replace(array('ئ','ي','ى'),'ى',$request->inputSearch);
+                    $g=str_replace(array('ئ','ي','ى'),'ئ',$request->inputSearch);
+                    $h=str_replace(array('ؤ','و'),'و',$request->inputSearch);
+                    $i=str_replace(array('ؤ','و'),'ؤ',$request->inputSearch);
+                    $resultSearch =Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
+                    ->where('citName','REGEXP',"(".$a."|".$b."|".$c."|".$d."|".$e."|".$f."|".$g."|".$h."|".$i.")") //for test
+                    ->orwhere('id', 'Like', '%' . $request->inputSearch . '%')
+                    ->orwhere('identityNum', 'Like', '%' . $request->inputSearch . '%')
+                    ->get();
+                }
+                else
+                {
+                    $resultSearch =Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
+                    ->where('citName', 'Like', '%' . $request->inputSearch . '%')
+                    ->orwhere('id', 'Like', '%' . $request->inputSearch . '%')
+                    ->orwhere('identityNum', 'Like', '%' . $request->inputSearch . '%')
+                    ->get();
+                }
+            }
+            else if($request->filterSearch=='citName')
+            {
+              if($request->Regx == true){
+                 if(preg_match("/('أ|ا|إ|ى|ي|ئ|و|ؤ|آ')/",$request->inputSearch) && $request->Regx == true)
+                {
+                    $a=str_replace(array('ا','أ','إ','آ'),'ا',$request->inputSearch);
+                    $b=str_replace(array('ا','أ','إ','آ'),'أ',$request->inputSearch);
+                    $c=str_replace(array('ا','أ','إ','آ'),'إ',$request->inputSearch);
+                    $d=str_replace(array('ا','أ','إ','آ'),'آ',$request->inputSearch);
+                    $e=str_replace(array('ئ','ي','ى'),'ي',$request->inputSearch);
+                    $f=str_replace(array('ئ','ي','ى'),'ى',$request->inputSearch);
+                    $g=str_replace(array('ئ','ي','ى'),'ئ',$request->inputSearch);
+                    $h=str_replace(array('ؤ','و'),'و',$request->inputSearch);
+                    $i=str_replace(array('ؤ','و'),'ؤ',$request->inputSearch);
+                    $resultSearch=Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
+                     ->where('citName','REGEXP',"(".$a."|".$b."|".$c."|".$d."|".$e."|".$f."|".$g."|".$h."|".$i.")") //for test
+                     ->get();
+                 }
+                 else
+                     {
+                         $resultSearch=Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
+                         ->where('citName', 'Like', '%' . $request->inputSearch . '%')->get();
+                     }
+                  }
+
+              else
+              {
+
+                $resultSearch=Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
+                ->where('citName', 'Like', '%' . $request->inputSearch . '%')->get();
+              }
+              
+            }
+           else if($request->filterSearch=='id')
+            {
+              $resultSearch =Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
+              ->where('id', 'Like', '%' . $request->inputSearch . '%')
+              ->get();
+            }
+           else if($request->filterSearch=='identityNum')
+            {
+              $resultSearch =Citizen::select('id','citName','dirId','rigId','obsId','identityNum','checked')
+              ->where('identityNum', 'Like', '%' . $request->inputSearch . '%')
+              ->get();
+            }
+            if ($resultSearch)
+                return response()->json
+                (
+                    [
+                        'status'        => true, 
+                        'resultSearch'  =>  $resultSearch->where('obsId',session()->get('obsId')),
+                    ]
+                );
+
+        
+        
+
+      } 
+        catch (\Exception $ex)
+        {
+            return response()->json
+            (
+              [
+                'status' => false,
+                'msg' => 'فشل البحث برجاء المحاوله مجددا',
+                'exceptionError' => $ex,
+             ]
+           );
+        }
     }
 }
