@@ -504,7 +504,8 @@
 
   // Start Search Citizen Agent By Ajax 
 
-        $(document).on('keyup', '#search-dropdown', function(e) {
+        $(document).on('keyup', '#search-dropdown', function(e) 
+        {
             e.preventDefault();
             var formData = new FormData($('#citizenSearch')[0]);
             $.ajax({

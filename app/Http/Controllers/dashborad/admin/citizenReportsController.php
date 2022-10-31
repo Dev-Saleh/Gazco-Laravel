@@ -113,7 +113,7 @@ class citizenReportsController extends Controller
                 })
                 ->get();
                 
-                    $citizenCount=$citizens->count();
+                   $citizenCount=$citizens->count();
                    $citCheckedTrue=$citizens->where('checked','نعم')->count();
                    $citCheckedFalse=$citizens->where('checked','لا')->count();
                    $agentId  = $request->agentId;
