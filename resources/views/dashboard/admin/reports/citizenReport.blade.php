@@ -117,8 +117,8 @@
             <span id='citCheckedFalse' class="text-rose-200 text-base bg-rose-700  p-2 py-1 group-hover:animate-bounce">00</span>
           </div>
           <div  class="group -none  bg-sky-500 w-full h-36 rounded-md shadow-sm  flex flex-col justify-center items-center space-y-2 hover:animate-wiggle ">
-            <p class="text-sky-900 text-lg"> التي لم يتم فتح الحجز </p>
-            <span id='anyThings' class="text-sky-200 text-base bg-sky-700  p-2 py-1 group-hover:animate-bounce">00</span>
+            <p class="text-sky-900 text-lg">عدد الحجوزات</p>
+            <span id='bookingCount' class="text-sky-200 text-base bg-sky-700  p-2 py-1 group-hover:animate-bounce">00</span>
           </div>
         </div>
       </div>
