@@ -184,7 +184,7 @@ class CitizenController extends Controller
                           )->select('id','agentId','obsName')->get();
                       }
                     ]
-                  )->select('id','citName','identityNum','citPassword','mobileNum','attachment','dirId','rigId','obsId')->find($request -> citId);
+                  )->select('id','citName','identityNum','citPassword','mobileNum','attachment','checked','dirId','rigId','obsId')->find($request -> citId);
              
                 if (!$citizen)
                   return response()->json(

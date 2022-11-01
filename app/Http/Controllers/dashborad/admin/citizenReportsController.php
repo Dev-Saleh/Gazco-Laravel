@@ -108,7 +108,7 @@ class citizenReportsController extends Controller
                       )->select('id','agentId','obsName')->get();
                   }
                 ]
-                )->select('id','citName','dirId','rigId','obsId','identityNum','mobileNum','checked')
+                )->select('id','citName','dirId','rigId','obsId','identityNum','unblockDate','mobileNum','checked')
                 ->wherehas('observer', function ($q) use ($request) {
                     $q->where('agentId',$request->agentId);
                 })
