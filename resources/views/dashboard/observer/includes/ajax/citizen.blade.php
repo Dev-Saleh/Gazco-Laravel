@@ -278,7 +278,8 @@
         $(document).on('click', '#fmSave', function (e)
          {
              e.preventDefault();
-            var formData = new FormData($('#fmForm')[0]);       
+            var formData = new FormData($('#fmForm')[0]);  
+            console.log("data"),     
             $.ajax({
                 type: 'POST',
                 enctype: 'multipart/form-data',
@@ -287,6 +288,7 @@
                 processData: false,
                 contentType: false,
                 cache: false,
+                
                 success: function (data)
                  {
                       console.log(data);
@@ -395,12 +397,12 @@
                     {
                         if (data.status == true)
                         {
-                            $('.offerRow' + data.fmId).addClass("animate-fadeInLeft");
+                            // $('.offerRow' + data.fmId).addClass("animate-fadeInLeft");
                             newAlert(data.alertType,data.msg);
-                            sleep(400).then(() =>
-                            {
-                                $('.offerRow' +data.fmId).remove();
-                            });
+                            // sleep(400).then(() =>
+                            // {
+                            //     $('.offerRow' +data.fmId).remove();
+                            // });
                         }
 
                     }, error: function (reject) {

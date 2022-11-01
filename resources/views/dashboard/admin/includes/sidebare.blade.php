@@ -158,7 +158,7 @@
           <i class="fa-light fa-user"></i>
         </a>
         @endif
-        <a href="{{route('batchReports.index')}}" class=" {{  'admin/reports/citizenReport'  == request()->path() ? 'bg-indigo-500' : '' }} {{ 'admin/reports/Batch/index'  == request()->path() ? 'bg-indigo-500' : '' }} 
+        <a href="{{route('batchReports.index')}}" class=" {{  'admin/reports/citizen/index'  == request()->path() ? 'bg-indigo-500' : '' }} {{ 'admin/reports/Batch/index'  == request()->path() ? 'bg-indigo-500' : '' }} 
         flex justify-between
                 w-full p-4 
                 text-white  

@@ -106,7 +106,7 @@ class FamilyMembersController extends Controller
                 [
                     'status' => true,
                     'alertType'=> '.alertSuccess',
-                    'msg'    => 'تم حذف المواطن بنجاح',
+                    'msg'    => 'تم حذف الفرد بنجاح',
                     'fmId'  => $request -> fmId
                 ]
               );

@@ -9,7 +9,7 @@
   <form action="" method="" id='citizenReportForm'>
      @csrf
       <div class="p-6 bg-white shadow-sm rounded-xl">
-        <div class="grid grid-cols-5 gap-x-10 gap-y-2 ">
+        <div class="grid grid-cols-3 gap-x-10 gap-y-2 ">
       <select name="dirId" value="" id='citSelectDirectorates' class="form-select form-select-lg 
                 appearance-none
                 block

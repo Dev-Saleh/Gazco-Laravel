@@ -100,7 +100,7 @@
                 <h6 class="text-center text-teal-900">
                 اجمالي الدفعه    
                 </h6>
-                <p class="text-center text-teal-700">
+                <p class="totalQty text-center text-teal-700">
                     لا يوجد بيانات
                 </p>
             </div>

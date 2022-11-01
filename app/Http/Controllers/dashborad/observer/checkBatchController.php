@@ -41,6 +41,7 @@ class checkBatchController extends Controller
                     ]
                     )->select('id','dirId','rigId','staId','agentId','statusBatch','created_at')
                     ->where('agentId',$observer->agentId)
+                    ->orderByDesc('id')
                     ->get();
                    
                     return view('dashboard.observer.checkBatch.index',$data);
