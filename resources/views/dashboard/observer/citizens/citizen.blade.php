@@ -182,7 +182,7 @@
                         success: function (data)
                         {
                           
-                         
+                          console.log(data);// for Test
                             if (data.status == true) {
                             $('#citId').val(data.citizen.id);
                             $('#obsId').val(data.citizen.observer_id);

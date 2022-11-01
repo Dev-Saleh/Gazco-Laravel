@@ -124,17 +124,17 @@ class checkBatchController extends Controller
 
                         return response()->json(
                         [
-                            'status' => false,
-                            'msg' => 'هذه الدفعه مفتوحة الحجز بالفعل',  
-                            'alertType'        => '.alertWarning',    
+                            'status'      => false,
+                            'msg'         => 'هذه الدفعه مفتوحة الحجز بالفعل',  
+                            'alertType'   => '.alertWarning',    
                         ]);
 
                 else if($gazLog->statusBatch=='3')
 
                     return response()->json(
-                        [    'status' => false,
-                            'msg' => 'تم نفاد الكميه',  
-                            'alertType'        => '.alertWarning',      
+                        [    'status'     => false,
+                            'msg'         => 'تم نفاد الكميه',  
+                            'alertType'   => '.alertWarning',      
                         ]);
 
                 else if($gazLog->statusBatch=='1')
@@ -145,16 +145,16 @@ class checkBatchController extends Controller
                         $lastBatchOpenBooking=gazLogs::where('statusBatch','2')->where(
                         [
                             ['agentId',$obs->agentId]
-                            ,['qtyRemaining','>','0']
+                           ,['qtyRemaining','>','0']
                         ])->latest()->first();
                     
                             
                         if($lastBatchOpenBooking)
                             return response()->json(
                             [
-                                'status' => false,
-                                'msg' => 'هناك دفعه مفتوحة الحجز',  
-                                'alertType'        => '.alertWarning',     
+                                'status'       => false,
+                                'msg'          => 'هناك دفعه مفتوحة الحجز',  
+                                'alertType'    => '.alertWarning',     
                             ]);
                     
                             
@@ -172,12 +172,31 @@ class checkBatchController extends Controller
                                             'msg'        => 'لا يوجد دفعه بهذا الرقم',
                                             'gazLogId'   => $request -> gazLogId, //for Test
                                         ]);
+                                 
+                                // start Code send Message Sms
+                                  $citizens=Citizen::select('obsId','unblockDate','mobileNum')
+                                  ->where('unblockDate','>',now())
+                                  ->orwhere('unblockDate',null)
+                                  ->wherehas('observer', function ($q) use ($gazLog) 
+                                    {
+                                        $q->where('agentId',$gazLog->agentId);
+                                    })
+                                  ->get();
+                                //   foreach($citizens as $phoneNum) 
+                                //   {
+                                            /// send Message for all citizen
+                                //   }
+                                
+                                // end Code send Message Sms
+                                
 
-                                        return response()->json(
+                                    
+                              return response()->json(
                                         [
                                             'status'     => false,
                                             'msg'        => 'تم فتح الحجز بنجاح',
-                                            'alertType'        => '.alertWarning',
+                                            'alertType'  => '.alertWarning',
+                                            'test'       => $citizens,
                                         ]); 
                             }
                     

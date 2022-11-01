@@ -58,7 +58,7 @@
                         },
                         success: function (data) 
                         {
-                             console.log(data);
+                             console.log(data);// for Test
                             if (data.status == true) 
                             {       newAlert(data.alertType,data.msg);    
                                     $('.offerRow'+data.gazLogId).remove();
