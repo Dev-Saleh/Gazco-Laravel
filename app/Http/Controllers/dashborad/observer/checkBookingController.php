@@ -78,7 +78,7 @@ class checkBookingController extends Controller
             }
     }
 
-   //في داله التحديث لما اكذا استلام كل المواطنين لازم اغير خاصيه صالح البيع في جدول الكشوفات الي 0
+   //في داله التحديث لما اكذا استلام كل المواطنين لازم اغير خاصيه صالح البيع في جدول الدفعات الي 0
     public function update(Request $request)
     {  
         try

@@ -132,7 +132,7 @@
             <a href="{{route('batchReports.index')}}" class="{{ 'admin/reports/Batch/index' == request()->path() ? 'bg-[#1abc9c]' : '' }}">الدفعات</a>
             <a href="{{route('citizenReports.index')}}" class="{{ 'admin/reports/citizen/index' == request()->path() ? 'bg-[#1abc9c]' : '' }}" >المواطنين</a>
             <a href="#">المراقبين</a>
-            <a href="#">الموزعين</a>
+            <a href="#">الوكلاء</a>
             <a href="#">المديريات</a>
             <div class="animation"></div>
           </nav>

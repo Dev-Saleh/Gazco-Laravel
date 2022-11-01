@@ -18,7 +18,7 @@
             </svg>
           </span>
         </span>
-        <h5 class="P-2 mr-2 text-emerald-700"> عدد الموزعين</h5>
+        <h5 class="P-2 mr-2 text-emerald-700"> عدد الوكلاء</h5>
         <span
           class="bg-emerald-200 px-3 py-2 rounded-full rounded-tr-none absolute left-0 group-hover:left-20 transition-all duration-1000 ">{{App\Models\Agent::count()}}</span>
       </div>

@@ -61,7 +61,8 @@ class batchReportsController extends Controller
                  ->get();
                  $batchCount=$gazLogs->count();
                  $batchResult=$gazLogs->sum('qty');
-                 $allowBookingCount=$gazLogs->where('allowBooking','0')->count();
+                 $allowBookingCount=$gazLogs->where('statusBatch','3')->count();
+                 $notallowBookingCount=$gazLogs->where('statusBatch','1')->count();
                  $dateForm = $request->dateForm;
                  $dateTo   = $request->dateTo;
                  $agentId  = $request->agentId;
@@ -75,6 +76,7 @@ class batchReportsController extends Controller
                         'batchCount'        => $batchCount,
                         'batchResult'       => $batchResult,
                         'allowBookingCount' => $allowBookingCount,
+                        'notallowBookingCount' => $notallowBookingCount,
                         'dateForm'          => $dateForm,
                         'dateTo'            => $dateTo,
                         'agentId'           => $agentId,

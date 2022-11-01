@@ -126,6 +126,7 @@
                         $('#batchCount').text(data.batchCount);
                         $('#batchResult').text(data.batchResult);
                         $('#allowBookingCount').text(data.allowBookingCount);
+                        $('#notallowBookingCount').text(data.notallowBookingCount);
                         $('#valueDateForm').val(data.dateForm);
                         $('#valueDateTo').val(data.dateTo);
                         $('#valueAgentId').val(data.agentId);

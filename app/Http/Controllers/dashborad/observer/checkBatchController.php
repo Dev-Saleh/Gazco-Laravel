@@ -164,9 +164,9 @@ class checkBatchController extends Controller
                                 $gazLog = gazLogs::find($request -> gazLogId);     
                                 $gazLog->statusBatch='2';
                                 $gazLog->update();
-                                // نتاكذا من الكشف المرسل هل هو موجد في جدول الكشوفات
+                                // نتاكذا من الدفعه المرسل هل هو موجد في جدول الدفعات
                             
-                                    if (!$gazLog) // هذا الشرط اذا الكشف المرسل لا نرسل رساله حظاء
+                                    if (!$gazLog) // هذا الشرط اذا الدفعه المرسل لا نرسل رساله حظاء
                                         return response()->json(
                                         [
                                             'status'     => false,

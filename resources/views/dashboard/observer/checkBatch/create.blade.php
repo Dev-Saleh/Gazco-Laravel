@@ -1,6 +1,6 @@
  <article id="Content" class="content-area px-10 bg-gray-100 h-full">
         <div class="px-4 py-4 sm:px-0">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">معاينة الكشوفات و فتح الحجز</h3>
+          <h3 class="text-lg font-medium leading-6 text-gray-900">معاينة الدفعات و فتح الحجز</h3>
         </div>
         <div class=" py-4 border-t border-gray-200">
         </div>
@@ -12,12 +12,12 @@
             <div class="flex-col space-y-4 w-full">
               <input type="text" name='obsId' value="{{$observers->id}}" style="display:none;" class="obsId form-control"> 
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
-                <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> الكشف للموزع : 
+                <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> الدفعه للموزع : 
                   <span class="agentName text-xs bg-gray-800 text-gray-200 p-2 rounded-full"></span>
                 </li>
               </ul>
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
-                <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> تاريخ الكشف :
+                <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> تاريخ الدفعه :
                   <span class="created_at text-xs bg-gray-800 text-gray-200 p-2 rounded-full"> </span>
                 </li>
               </ul>
@@ -85,7 +85,7 @@
                 <thead class="bg-gray-200 text-gray-500 tableFixed">
                   <tr>
                     <th class="p-3 text-center">رقم الدفعه</th>
-                    <th class="p-3">تاريخ الكشف</th>
+                    <th class="p-3">تاريخ الدفعه</th>
                     <th class="p-3"> حالة البيع</th>
                     <th class="p-3 text-center">العمليات</th>
                   </tr>
