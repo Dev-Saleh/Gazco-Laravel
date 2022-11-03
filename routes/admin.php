@@ -7,7 +7,8 @@ use App\Http\Controllers\SendSMSController;
  
 
 
-Route::get('/test', 'ReeportController@index')->name('Test');
+Route::get('/test', 'TestController@sendSms')->name('Test');
+
 
 Route::group(['namespace' => 'auth'],function(){
 
@@ -18,7 +19,6 @@ Route::group(['namespace' => 'auth'],function(){
 
 
 Route::group(['namespace' => 'dashborad\admin','middleware' => 'authAdmin', 'prefix' => 'admin'], function () {
-
   
    // the first page admin visits if authenticated
    Route::get('/', 'OverviewController@index')->name('admin.dashboard'); 

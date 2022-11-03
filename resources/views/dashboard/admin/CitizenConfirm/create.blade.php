@@ -50,7 +50,7 @@
                     <span  class="rigName text-xs bg-gray-800 text-gray-200 px-1 rounded-full"></span>
                   </li>
         
-                  <li class="px-4 py-2 flex justify-between items-center font-bold">الموزع
+                  <li class="px-4 py-2 flex justify-between items-center font-bold">الوكيل
                     <span  class="agentName text-xs bg-gray-800 text-gray-200 px-1 rounded-full"></span>
                   </li>
                   <div class="px-4 py-2 font-bold flex justify-between">

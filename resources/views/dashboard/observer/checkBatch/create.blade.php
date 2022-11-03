@@ -1,6 +1,6 @@
  <article id="Content" class="content-area px-10 bg-gray-100 h-full">
         <div class="px-4 py-4 sm:px-0">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">معاينة الدفعات و فتح الحجز</h3>
+          <h3 class="text-lg font-medium leading-6 text-gray-900">معاينة الكشوفات و فتح الحجز</h3>
         </div>
         <div class=" py-4 border-t border-gray-200">
         </div>
@@ -12,12 +12,12 @@
             <div class="flex-col space-y-4 w-full">
               <input type="text" name='obsId' value="{{$observers->id}}" style="display:none;" class="obsId form-control"> 
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
-                <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> الدفعه للموزع : 
+                <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> الكشف للموزع : 
                   <span class="agentName text-xs bg-gray-800 text-gray-200 p-2 rounded-full"></span>
                 </li>
               </ul>
               <ul class="bg-gray-100 rounded w-full divide-y divide-gray-700 divide-opacity-25 text-gray-800">
-                <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> تاريخ الدفعه :
+                <li class="px-4 py-2 flex text-sm justify-between items-center font-bold"> تاريخ الكشف :
                   <span class="created_at text-xs bg-gray-800 text-gray-200 p-2 rounded-full"> </span>
                 </li>
               </ul>
@@ -44,13 +44,20 @@
             </div>
             <button type="submit">
               <a class="allowBooking relative inline-block group focus:outline-none focus:ring" href="">
+                
                 <span class="absolute inset-0 transition-transform translate-x-1.5 translate-y-1.5 bg-emerald-400 group-hover:translate-y-0 group-hover:translate-x-0"></span>
             
-                <span class="relative inline-block px-8 py-3 text-sm font-bold tracking-widest text-black uppercase border-2 border-current group-active:text-opacity-75">
-                     فتح الحجز  
+                <span class="flex relative px-8 py-3 text-sm font-bold tracking-widest text-black uppercase border-2 border-current group-active:text-opacity-75">
+                   <P >فتح الحجز</P> 
+                   <div id="spinner" class="hidden mr-2">
+                    <svg width="24" height="24" stroke="#000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_V8m1{transform-origin:center;animation:spinner_zKoa 2s linear infinite}.spinner_V8m1 circle{stroke-linecap:round;animation:spinner_YpZS 1.5s ease-in-out infinite}@keyframes spinner_zKoa{100%{transform:rotate(360deg)}}@keyframes spinner_YpZS{0%{stroke-dasharray:0 150;stroke-dashoffset:0}47.5%{stroke-dasharray:42 150;stroke-dashoffset:-16}95%,100%{stroke-dasharray:42 150;stroke-dashoffset:-59}}</style><g class="spinner_V8m1"><circle cx="12" cy="12" r="9.5" fill="none" stroke-width="2"></circle></g></svg>
+                   </div>
                 </span>
+                
+               
             </a>
             </button>
+           
           </div>
         <!-- END  Details For Logs -->
 
@@ -85,7 +92,7 @@
                 <thead class="bg-gray-200 text-gray-500 tableFixed">
                   <tr>
                     <th class="p-3 text-center">رقم الدفعه</th>
-                    <th class="p-3">تاريخ الدفعه</th>
+                    <th class="p-3">تاريخ الكشف</th>
                     <th class="p-3"> حالة البيع</th>
                     <th class="p-3 text-center">العمليات</th>
                   </tr>

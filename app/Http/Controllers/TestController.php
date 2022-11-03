@@ -39,12 +39,15 @@ class TestController extends Controller
 
     public function sendSms(Request $request)
     {
-        $basic  = new \Vonage\Client\Credentials\Basic("bbd927f5", "Jr0KNpOnEGjKMgTN");
+
+
+
+        $basic  = new \Vonage\Client\Credentials\Basic("0b7f2938", "wz6ZpeHzTUApU3ON");
         $client = new \Vonage\Client($basic);
 
 
         $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("967734043538", 'Gazco', 'مرحبا مزوني دبة الغاز وصلتك تعال استلمها يكلب')
+            new \Vonage\SMS\Message\SMS("967718360830", 'Gasco | Aden', 'تم صدور دفعه جديده لوكيلك وتم فتح الحجز')
         );
         
         $message = $response->current();

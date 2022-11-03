@@ -70,7 +70,7 @@
               ease-in-out
               m-0
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example">
-              <option selected disabled>الموزع</option>
+              <option selected disabled>الوكيل</option>
              
       </select>
       <div class="relative z-0 w-full">
@@ -186,7 +186,7 @@
           <table class="table">
             <thead class="bg-white tableFixed">
               <tr>
-                <th class="p-3 text-center">الموزع</th>
+                <th class="p-3 text-center">الوكيل</th>
                 <th class="p-3 text-center">المحطه</th>
                 <th class="p-3 text-center">المديريه</th>
                 <th class="p-3 text-center">المربع</th>

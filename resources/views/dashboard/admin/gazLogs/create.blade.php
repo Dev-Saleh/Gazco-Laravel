@@ -115,7 +115,7 @@
                                         <option value="A" id='select_Agent' selected disabled hidden></option>
                                     </select>
                                     <label for="select"
-                                        class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الموزع
+                                        class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">الوكيل
                                     </label>
                                     <span class="text-sm text-red-600 hidden" id="error">Option has to be
                                         selected</span>
@@ -189,7 +189,7 @@
                     <option value="staName">المحطه</option>
                     <option value="dirName">المديريه</option>
                     <option value="rigName">المربع</option>
-                    <option value="agentName">الموزع</option>
+                    <option value="agentName">الوكيل</option>
                 </select>
            
                 <div class="relative w-full">

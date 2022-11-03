@@ -33,7 +33,7 @@
                         
                          $('#citSelectRigon').append($groupOption);
                         $('#citSelectAgent').html("");
-                        $groupOptionAgent='<option selected disabled >الموزع</option>';
+                        $groupOptionAgent='<option selected disabled >الوكيل</option>';
            
                         $.each(data.agents, function (key , agent)
                         {
@@ -71,7 +71,7 @@
                    if (data.status == true) 
                    {
                         $('#citSelectAgent').html("");
-                        $groupOption='<option selected disabled >الموزع</option>';
+                        $groupOption='<option selected disabled >الوكيل</option>';
            
                         $.each(data.agents, function (key , agent)
                         {

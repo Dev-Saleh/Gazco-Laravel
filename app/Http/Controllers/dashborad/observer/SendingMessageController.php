@@ -29,7 +29,7 @@ class SendingMessageController extends Controller
 
  
 
-            $basic  = new \Vonage\Client\Credentials\Basic("dc27f7f7", "zxSVqS8FrnISAGdM");
+            $basic  = new \Vonage\Client\Credentials\Basic("0b7f2938", "wz6ZpeHzTUApU3ON");
             $client = new \Vonage\Client($basic);
 
 

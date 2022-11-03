@@ -176,7 +176,7 @@ class checkBatchController extends Controller
                                  
                                 // start Code send Message Sms
                                   $citizens=Citizen::select('obsId','unblockDate','mobileNum')
-                                  ->where('unblockDate','>',now())
+                                  ->where('unblockDate','<',now())
                                   ->orwhere('unblockDate',null)
                                   ->wherehas('observer', function ($q) use ($gazLog) 
                                     {
@@ -194,9 +194,9 @@ class checkBatchController extends Controller
                                     
                               return response()->json(
                                         [
-                                            'status'     => false,
-                                            'msg'        => 'تم فتح الحجز بنجاح',
-                                            'alertType'  => '.alertWarning',
+                                            'status'     => true,
+                                            'msg'        => 'تم فتح الحجز وارسال الاشعار بنجاح',
+                                            'alertType'  => '.alertSuccess',
                                             'test'       => $citizens,
                                         ]); 
                             }
