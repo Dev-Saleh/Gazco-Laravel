@@ -21,9 +21,5 @@ class logsBooking extends Model
         return  $this -> statusBooking  == 0 ?  'لم يتم الاستلام'   : 'تم الاستلام' ;
     }
   
-    // public function getCreatedAtAttribute($date)
-    // {
-    //     return Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d H:i:s');
-    // }
 
 }

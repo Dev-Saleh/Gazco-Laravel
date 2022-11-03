@@ -103,10 +103,10 @@ class homeController extends Controller
                     $citizenBookingValid=''; 
                     $numdays='0';
                     $lastRequestBookingtocitz=logsBooking::where('citid',$request -> citId)->latest('id')->first();
-                   
                     if($lastRequestBookingtocitz) // if have record
                     {
-                        $numdays=date_diff($lastRequestBookingtocitz->created_at,now()); // get Number Days Between Reciving_date and current Date
+                        $date = date_create($lastRequestBookingtocitz->created_at);
+                        $numdays=date_diff($date,now()); // get Number Days Between Reciving_date and current Date
                         $numdays->format('%R%a') > $profile->numDaysBookingValid ? $citizenBookingValid='true' : $citizenBookingValid='false';
                     }
 
