@@ -49,10 +49,10 @@ class checkBookingController extends Controller
                     [
                       'citizen'=>function($q)
                         {
-                            $q->select('id','citName','mobileNum');
+                            $q->select('id','citName','mobileNum','unblockDate');
                         }
                     ]
-                )->select('id','citId','statusBooking')->where('NumBatch',$request->gazLogId)->get();
+                )->select('id','citId','statusBooking','created_at')->where('NumBatch',$request->gazLogId)->get();
                
               if($showLogBookingsCitizen)
                 {

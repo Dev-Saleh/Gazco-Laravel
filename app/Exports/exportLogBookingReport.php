@@ -25,10 +25,10 @@ class exportLogBookingReport implements FromView
             [
               'citizen'=>function($q)
                 {
-                    $q->select('id','citName','mobileNum');
+                    $q->select('id','citName','mobileNum','unblockDate');
                 }
             ]
-        )->select('id','citId','statusBooking')->where('NumBatch',$this->valueNumBatch)->get();
+        )->select('id','citId','statusBooking','created_at')->where('NumBatch',$this->valueNumBatch)->get();
         $data['LogBookingCitizen']=$LogBookingCitizen;
         $data['CitizenSB1']=$LogBookingCitizen->where('statusBooking','1');
         $data['CitizenSB2']=$LogBookingCitizen->where('statusBooking','2');

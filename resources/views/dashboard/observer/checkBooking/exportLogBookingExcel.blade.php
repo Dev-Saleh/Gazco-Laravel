@@ -1,20 +1,20 @@
 <table>
     <thead>
     <tr>
-        <th>رقم الفريد</th> 
+        <th>الرقم</th> 
         <th>أسم المواطن</th> 
-        <th>رقم الجوال</th>
+        <th>تاريخ الحجز</th>
+        <th>تاريخ فتح الحظر</th>
         <th>التوقيع</th>
-        <th>الملاحظات</th>
     </tr>
     </thead>
     <tbody>
     @foreach($LogBookingCitizen as $Citizen)
         <tr>
-            <td>{{ $Citizen->id }}</td> 
+            <td>{{ $Citizen->citizen->id}}</td> 
             <td>{{ $Citizen->citizen->citName }}</td> 
-            <td>{{ $Citizen->citizen->mobileNum }}</td> 
-            <td></td> 
+            <td>{{ $Citizen->created_at }}</td> 
+            <td>{{ $Citizen->citizen->unblockDate }}</td> 
             <td></td> 
         </tr>
     @endforeach

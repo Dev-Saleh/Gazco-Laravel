@@ -100,11 +100,7 @@
                     placeholder="ابحث عن اسم او رقم المواطن ..." required="">
             </div>
 
-          <form action="{{route('logBooking.exportExcel')}}" method="get" >
-             @csrf
-            <input  type="" value='' name='valueNumBatch' style="display:none;" class="form-control" id="valueNumBatch">
-            <button type="submit" id="btnbookingsPdf"  class='h-8 w-8 bg-green-100 mx-1 p-1 rounded-full'><img src="{{ asset('assets/images/sheets.png') }}" alt="Excel"></button>
-        </form>
+          
         </div>
         {{-- END SEARCH FORM --}}
         <div class=" bg-white border-b rounded-xl border-gray-200 overflow-y-auto w-full" style="height: 450px;">
@@ -118,16 +114,21 @@
                         </th>
 
                         <th scope="col"
+                            class="px-4 py-3 text-center  font-medium text-gray-900 uppercase tracking-wider">
+                           وقت الحجز
+                        </th>
+
+                        <th scope="col"
                             class="px-6 py-3 text-center  font-medium text-gray-900 uppercase tracking-wider">
                             <input type="checkbox" id="option-all" onchange="checkAllConfirm(this)">
                             <label for="option-all">تأكيد للكل</label>
                         </th>
 
-                        <th scope="col"
+                        {{-- <th scope="col"
                             class="px-6 py-3 text-center  font-medium text-gray-900 uppercase tracking-wider">
                             <input type="checkbox" id="option-all" onchange="checkAllSms(this)">
                             <label for="option-all">إرسال للكل</label>
-                        </th>
+                        </th> --}}
 
                     </tr>
                 </thead>
@@ -152,21 +153,25 @@
 
                     <span
                         class="relative inline-block px-8 py-3 text-sm font-bold tracking-widest text-black uppercase border-2 border-current group-active:text-opacity-75">
-                        تأكيد استلام الدبه
+                        تأكيد الاستلام
                     </span>
                 </a>
             </button>
-            <button type="submit" id='sendTestMessage'>
+            <form action="{{route('logBooking.exportExcel')}}" method="get" >
+                @csrf
+               <input  type="" value='' name='valueNumBatch' style="display:none;" class="form-control" id="valueNumBatch">
+            <button type="submit" id="btnbookingsPdf">
                 <a class="relative inline-block group focus:outline-none focus:ring" href="/download">
                     <span
                         class="absolute inset-0 transition-transform translate-x-1.5 translate-y-1.5 bg-yellow-400 group-hover:translate-y-0 group-hover:translate-x-0"></span>
-
-                    <span
+                       
+                        <span
                         class="relative inline-block px-8 py-3 text-sm font-bold tracking-widest text-black uppercase border-2 border-current group-active:text-opacity-75">
-                        ارسال رساله نصيه
+                        تصدير الكشف
                     </span>
                 </a>
             </button>
+        </form>
         </div>
     </div>
 

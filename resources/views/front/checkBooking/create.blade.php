@@ -96,4 +96,6 @@
        
      </span>
    </p>
+   <br>
+   <br>
    <!-- End Table Query Booking -->
