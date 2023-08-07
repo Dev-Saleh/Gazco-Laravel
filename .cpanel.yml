@@ -3,5 +3,6 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/repo_gasco_path/
-    - /bin/cp -r * $DEPLOYPATH
+    - /bin/cp -r .vscode $DEPLOYPATH
+    - /bin/cp notes.txt $DEPLOYPATH
    
