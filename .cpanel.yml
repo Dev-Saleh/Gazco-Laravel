@@ -1,0 +1,8 @@
+##### THIS ALLOWS US TO DEPLOY THE SITE FROM A GIT REPO ######
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/repo_gasco_path/
+    - /bin/cp -r .vscode $DEPLOYPATH
+    - /bin/cp notes.txt $DEPLOYPATH
+   
