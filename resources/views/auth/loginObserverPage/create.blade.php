@@ -1,4 +1,7 @@
-    <img
+   
+<div class="hidden lg:block">
+
+   <img
         src={{ asset('assets/images/loginLogo/waveObs.png') }}
         class="fixed hidden lg:block inset-0 h-full transform rotate-180"
         style="z-index: -1;"
@@ -41,3 +44,6 @@
         </form>
         </div>
    
+        </div>
+
+        <div class="lg:hidden">pls open it in desktop</div>
